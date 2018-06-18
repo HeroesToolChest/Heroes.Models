@@ -56,5 +56,26 @@ namespace Heroes.Models
             else
                 throw new ArgumentException($"parameter {value} not found");
         }
+
+        /// <summary>
+        /// Convert the string to an Enumeration type.
+        /// </summary>
+        /// <typeparam name="T">The Enumeration type to be converted to.</typeparam>
+        /// <param name="value">The stirng to be converted.</param>
+        /// <param name="result">The enumeration result.</param>
+        /// <returns></returns>
+        public static bool ConvertToEnum<T>(this string value, out T result)
+            where T : struct
+        {
+            if (string.IsNullOrEmpty(value))
+                throw new ArgumentNullException(nameof(value));
+
+            value = Regex.Replace(value, @"\s+", string.Empty);
+
+            if (Enum.TryParse(value, true, out result))
+                return true;
+            else
+                return false;
+        }
     }
 }
