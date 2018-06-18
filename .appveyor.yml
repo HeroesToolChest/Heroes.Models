@@ -1,0 +1,14 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration:
+- Debug
+- Release
+platform: Any CPU
+install:
+- cmd: git submodule update --init --recursive
+before_build:
+- cmd: dotnet build
+build:
+  project: Heroes.Models.sln
+  parallel: true
+  verbosity: minimal
