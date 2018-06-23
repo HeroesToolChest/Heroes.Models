@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public class HeroArmor
+    public class UnitArmor
     {
         /// <summary>
         /// Gets or sets the physical (basic) armor.

@@ -53,11 +53,6 @@ namespace Heroes.Models
         public HeroRatings Ratings { get; set; } = new HeroRatings();
 
         /// <summary>
-        /// Gets or sets the armor of the hero.
-        /// </summary>
-        public HeroArmor HeroArmor { get; set; }
-
-        /// <summary>
         /// Gets or sets the talents.
         /// </summary>
         public Dictionary<string, Talent> Talents { get; set; }

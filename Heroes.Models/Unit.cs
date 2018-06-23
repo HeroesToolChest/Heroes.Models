@@ -41,6 +41,11 @@ namespace Heroes.Models
         /// </summary>
         public UnitEnergy Energy { get; set; } = new UnitEnergy();
 
+        /// <summary>
+        /// Gets or sets the armor.
+        /// </summary>
+        public UnitArmor Armor { get; set; }
+
         public double Radius { get; set; }
 
         public double InnerRadius { get; set; }
