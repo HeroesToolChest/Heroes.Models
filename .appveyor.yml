@@ -1,11 +1,10 @@
-image: Visual Studio 2017
-install:
-- cmd: git submodule update --init --recursive
+image:
+- Visual Studio 2017
+- Ubuntu
 build_script:
-- pwsh: >-
-    dotnet build --configuration Debug
-    
-    dotnet build --configuration Release
-    
+- pwsh: |
+    git submodule update --init --recursive
+    dotnet build --configuration Debug    
+    dotnet build --configuration Release    
     dotnet test
     
