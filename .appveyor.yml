@@ -1,10 +1,24 @@
 image:
 - Visual Studio 2017
 - Ubuntu
+environment:
+  matrix:
+    - configuration: Debug
+    - configuration: Release
 build_script:
 - pwsh: |
     git submodule update --init --recursive
-    dotnet build --configuration Debug    
-    dotnet build --configuration Release    
-    dotnet test
-    
+    dotnet build -c Debug
+    dotnet test -c Debug
+for:
+-
+  matrix:
+    only:
+      - image: Visual Studio 2017
+      - image: Ubuntu
+        configuration: Release
+  build_script:
+    - pwsh: |
+        git submodule update --init --recursive
+        dotnet build -c Release
+        dotnet test -c Release
