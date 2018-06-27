@@ -15,6 +15,15 @@ for:
   matrix:
     only:
       - image: Visual Studio 2017
+        configuration: Release
+  build_script:
+    - pwsh: |
+        git submodule update --init --recursive
+        dotnet build -c Release
+        dotnet test -c Release
+-
+  matrix:
+    only:
       - image: Ubuntu
         configuration: Release
   build_script:
