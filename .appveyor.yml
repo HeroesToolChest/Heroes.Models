@@ -9,7 +9,7 @@ build_script:
 - pwsh: |
     git submodule update --init --recursive
     dotnet build -c Debug
-    dotnet test -c Debug
+    dotnet test -c Debug --no-build
 for:
 -
   matrix:
@@ -20,7 +20,7 @@ for:
     - pwsh: |
         git submodule update --init --recursive
         dotnet build -c Release
-        dotnet test -c Release
+        dotnet test -c Release --no-build
 -
   matrix:
     only:
@@ -30,4 +30,4 @@ for:
     - pwsh: |
         git submodule update --init --recursive
         dotnet build -c Release
-        dotnet test -c Release
+        dotnet test -c Release --no-build
