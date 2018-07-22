@@ -1,14 +1,33 @@
-version: 1.0.{build}
-image: Visual Studio 2017
-configuration:
-- Debug
-- Release
-platform: Any CPU
-install:
-- cmd: git submodule update --init --recursive
-before_build:
-- cmd: dotnet build
-build:
-  project: Heroes.Models.sln
-  parallel: true
-  verbosity: minimal
+image:
+- Visual Studio 2017
+- Ubuntu
+environment:
+  matrix:
+    - configuration: Debug
+    - configuration: Release
+build_script:
+- pwsh: |
+    git submodule update --init --recursive
+    dotnet build -c Debug
+    dotnet test -c Debug --no-build
+for:
+-
+  matrix:
+    only:
+      - image: Visual Studio 2017
+        configuration: Release
+  build_script:
+    - pwsh: |
+        git submodule update --init --recursive
+        dotnet build -c Release
+        dotnet test -c Release --no-build
+-
+  matrix:
+    only:
+      - image: Ubuntu
+        configuration: Release
+  build_script:
+    - pwsh: |
+        git submodule update --init --recursive
+        dotnet build -c Release
+        dotnet test -c Release --no-build
