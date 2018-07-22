@@ -25,6 +25,11 @@
         public double DamageScaling { get; set; }
 
         /// <summary>
+        /// Gets or sets the unit that is associated with this weapon.
+        /// </summary>
+        public string ParentLink { get; set; }
+
+        /// <summary>
         /// Gets the attacks per second.
         /// </summary>
         /// <returns></returns>

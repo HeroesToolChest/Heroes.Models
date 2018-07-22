@@ -95,6 +95,15 @@ namespace Heroes.Models
            return Abilities?.Values.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
+        /// <summary>
+        /// Returns a lookup of all the parent linked weapons.
+        /// </summary>
+        /// <returns></returns>
+        public ILookup<string, UnitWeapon> ParentLinkedWeapons()
+        {
+            return Weapons?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+        }
+
         public override string ToString()
         {
             return Name;
