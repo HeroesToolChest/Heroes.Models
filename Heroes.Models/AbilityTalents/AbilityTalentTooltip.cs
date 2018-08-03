@@ -71,10 +71,7 @@ namespace Heroes.Models.AbilityTalents
 
                 string time = Cooldown.CooldownValue.Value > 1 ? "seconds" : "second";
 
-                if (Charges.HasCharges)
-                    text += $"Charge Cooldown: {Cooldown.RecastCooldown.Value} {time}";
-                else
-                    text += $"Cooldown: {Cooldown.CooldownValue.Value} {time}";
+                text += $"Cooldown: {Cooldown.CooldownValue.Value} {time}";
             }
 
             if (!string.IsNullOrEmpty(Custom))
