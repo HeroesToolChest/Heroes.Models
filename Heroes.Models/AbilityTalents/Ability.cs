@@ -21,6 +21,12 @@
         /// </summary>
         public string ParentLink { get; set; }
 
+        /// <summary>
+        /// Gets or sets the button name of the ability.
+        /// Should be used for internal purposes only.
+        /// </summary>
+        public string ButtonName { get; set; }
+
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
 }
