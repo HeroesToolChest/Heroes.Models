@@ -3,20 +3,13 @@
     public class TooltipCooldown
     {
         /// <summary>
-        /// Gets or sets the cooldown.
+        /// Gets or sets the cooldown text.
         /// </summary>
-        public double? CooldownValue { get; set; }
+        public string CooldownText { get; set; }
 
         public override string ToString()
         {
-            string text = string.Empty;
-            if (CooldownValue.HasValue)
-                text += $"Cooldown: {CooldownValue.Value}";
-
-            if (string.IsNullOrEmpty(text))
-                return "None";
-            else
-                return text;
+            return CooldownText;
         }
     }
 }

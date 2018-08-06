@@ -36,11 +36,6 @@ namespace Heroes.Models.AbilityTalents
         public TooltipDescription FullTooltip { get; set; }
 
         /// <summary>
-        /// Gets or sets the custom string that goes after the cooldown string.
-        /// </summary>
-        public string Custom { get; set; }
-
-        /// <summary>
         /// Returns a string of the ability/talent's cooldown, mana/life cost, and custom string.
         /// </summary>
         /// <returns></returns>
@@ -48,12 +43,9 @@ namespace Heroes.Models.AbilityTalents
         {
             string text = string.Empty;
 
-            if (Energy.EnergyCost.HasValue)
+            if (!string.IsNullOrEmpty(Energy.EnergyText))
             {
-                if (Energy.IsPerCost)
-                    text += $"{Energy.EnergyType.ToString()}: {Energy.EnergyCost.Value} per second";
-                else
-                    text += $"{Energy.EnergyType.ToString()}: {Energy.EnergyCost.Value}";
+                text += $"{Energy.EnergyType.ToString()}: {Energy.EnergyText}";
             }
 
             if (Life.LifeCost.HasValue)
@@ -64,22 +56,12 @@ namespace Heroes.Models.AbilityTalents
                 text += $"Health: {Life.LifeCost.Value}";
             }
 
-            if (Cooldown.CooldownValue.HasValue)
+            if (!string.IsNullOrEmpty(Cooldown.CooldownText))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
 
-                string time = Cooldown.CooldownValue.Value > 1 ? "seconds" : "second";
-
-                text += $"Cooldown: {Cooldown.CooldownValue.Value} {time}";
-            }
-
-            if (!string.IsNullOrEmpty(Custom))
-            {
-                if (!string.IsNullOrEmpty(text))
-                    text += Environment.NewLine;
-
-                text += Custom;
+                text += $"Cooldown: {Cooldown.CooldownText}";
             }
 
             return text;
