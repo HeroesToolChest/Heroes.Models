@@ -3,9 +3,9 @@
     public class TooltipLife
     {
         /// <summary>
-        /// Gets or sets the health cost.
+        /// Gets or sets the health text.
         /// </summary>
-        public int? LifeCost { get; set; } = null;
+        public string LifeCostText { get; set; }
 
         /// <summary>
         /// Gets or sets if whether the life is a percentage cost.
@@ -14,10 +14,10 @@
 
         public override string ToString()
         {
-            if (LifeCost.HasValue)
-                return $"Life: {LifeCost} - IsLifePercentage: {IsLifePercentage}";
+            if (string.IsNullOrEmpty(LifeCostText))
+                return string.Empty;
             else
-                return "None";
+                return $"Life: {LifeCostText}";
         }
     }
 }

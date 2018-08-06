@@ -48,12 +48,12 @@ namespace Heroes.Models.AbilityTalents
                 text += $"{Energy.EnergyType.ToString()}: {Energy.EnergyText}";
             }
 
-            if (Life.LifeCost.HasValue)
+            if (!string.IsNullOrEmpty(Life.LifeCostText))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
 
-                text += $"Health: {Life.LifeCost.Value}";
+                text += $"Health: {Life.LifeCostText}";
             }
 
             if (!string.IsNullOrEmpty(Cooldown.CooldownText))

@@ -14,7 +14,10 @@
 
         public override string ToString()
         {
-            return $"Energy: {EnergyText} - Type: {EnergyType}";
+            if (string.IsNullOrEmpty(EnergyText))
+                return string.Empty;
+            else
+                return $"Energy: {EnergyText} - Type: {EnergyType}";
         }
     }
 }

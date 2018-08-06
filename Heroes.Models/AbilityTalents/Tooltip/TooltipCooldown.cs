@@ -9,7 +9,10 @@
 
         public override string ToString()
         {
-            return CooldownText;
+            if (string.IsNullOrEmpty(CooldownText))
+                return string.Empty;
+            else
+                return $"Cooldown: {CooldownText}";
         }
     }
 }
