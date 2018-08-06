@@ -18,11 +18,6 @@
         public int? CountUse { get; set; } = null;
 
         /// <summary>
-        /// Gets or sets the cooldown of the charge.
-        /// </summary>
-        public double? CooldownValue { get; set; } = null;
-
-        /// <summary>
         /// Gets or sets if charges are hidden.
         /// </summary>
         public bool? IsHideCount { get; set; } = null;
@@ -32,10 +27,15 @@
         /// </summary>
         public bool HasCharges => CountMax.HasValue || (CountMax.HasValue && CountMax.Value > 0);
 
+        /// <summary>
+        /// Gets or sets the charge cooldown text.
+        /// </summary>
+        public string CooldownText { get; set; }
+
         public override string ToString()
         {
             if (HasCharges)
-                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount} - Cooldown: {CooldownValue}";
+                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount} - {CooldownText}";
             else
                 return "No charges";
         }
