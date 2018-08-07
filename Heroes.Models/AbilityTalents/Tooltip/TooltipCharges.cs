@@ -30,12 +30,12 @@
         /// <summary>
         /// Gets or sets the charge cooldown text.
         /// </summary>
-        public string CooldownText { get; set; }
+        public TooltipDescription CooldownText { get; set; }
 
         public override string ToString()
         {
             if (HasCharges)
-                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount} - {CooldownText}";
+                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount} - {CooldownText.RawDescription}";
             else
                 return "No charges";
         }

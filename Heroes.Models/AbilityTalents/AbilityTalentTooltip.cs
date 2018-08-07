@@ -43,12 +43,12 @@ namespace Heroes.Models.AbilityTalents
         {
             string text = string.Empty;
 
-            if (!string.IsNullOrEmpty(Energy.EnergyText))
+            if (!string.IsNullOrEmpty(Energy.EnergyText?.RawDescription))
             {
                 text += $"{Energy.EnergyType.ToString()}: {Energy.EnergyText}";
             }
 
-            if (!string.IsNullOrEmpty(Life.LifeCostText))
+            if (!string.IsNullOrEmpty(Life.LifeCostText?.RawDescription))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
@@ -56,7 +56,7 @@ namespace Heroes.Models.AbilityTalents
                 text += $"Health: {Life.LifeCostText}";
             }
 
-            if (!string.IsNullOrEmpty(Cooldown.CooldownText))
+            if (!string.IsNullOrEmpty(Cooldown.CooldownText?.RawDescription))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
