@@ -18,6 +18,11 @@
         public int? CountUse { get; set; } = null;
 
         /// <summary>
+        /// Gets or sets the cooldown between charge casts.
+        /// </summary>
+        public double RecastCoodown { get; set; }
+
+        /// <summary>
         /// Gets or sets if charges are hidden.
         /// </summary>
         public bool? IsHideCount { get; set; } = null;
@@ -26,11 +31,6 @@
         /// Returns true is charges exists.
         /// </summary>
         public bool HasCharges => CountMax.HasValue || (CountMax.HasValue && CountMax.Value > 0);
-
-        /// <summary>
-        /// Gets or sets the charge cooldown text.
-        /// </summary>
-        public TooltipDescription CooldownText { get; set; }
 
         public override string ToString()
         {

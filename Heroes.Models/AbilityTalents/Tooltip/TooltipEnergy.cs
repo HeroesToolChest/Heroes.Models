@@ -8,16 +8,13 @@
         public TooltipDescription EnergyText { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of energy.
+        /// Gets or sets the energy value.
         /// </summary>
-        public UnitEnergyType EnergyType { get; set; } = UnitEnergyType.None;
+        public double EnergyValue { get; set; }
 
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(EnergyText?.RawDescription))
-                return string.Empty;
-            else
-                return $"Energy: {EnergyText.RawDescription} - Type: {EnergyType}";
+            return EnergyText.RawDescription;
         }
     }
 }
