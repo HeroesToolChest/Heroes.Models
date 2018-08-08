@@ -20,7 +20,7 @@
         /// <summary>
         /// Gets or sets the cooldown between charge casts.
         /// </summary>
-        public double RecastCoodown { get; set; }
+        public double? RecastCoodown { get; set; } = null;
 
         /// <summary>
         /// Gets or sets if charges are hidden.
