@@ -35,7 +35,7 @@
         public override string ToString()
         {
             if (HasCharges)
-                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount} - {CooldownText.RawDescription}";
+                return $"Max Charges: {CountMax} - Start: {CountStart} - Use: {CountUse} - Hidden: {IsHideCount}";
             else
                 return "No charges";
         }
