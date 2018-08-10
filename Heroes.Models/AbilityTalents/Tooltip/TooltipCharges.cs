@@ -28,7 +28,7 @@
         public bool? IsHideCount { get; set; } = null;
 
         /// <summary>
-        /// Returns true is charges exists.
+        /// Returns true if charges exists.
         /// </summary>
         public bool HasCharges => CountMax.HasValue || (CountMax.HasValue && CountMax.Value > 0);
 
