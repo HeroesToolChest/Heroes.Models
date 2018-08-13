@@ -16,6 +16,9 @@ namespace Heroes.Models
 
         private DescriptionValidator(string gameString)
         {
+            if (string.IsNullOrEmpty(gameString))
+                gameString = string.Empty;
+
             GameString = RemovedStartingRogueTags(gameString);
         }
 

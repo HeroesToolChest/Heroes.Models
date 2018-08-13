@@ -25,5 +25,33 @@ namespace Heroes.Models.Tests
             Assert.Equal(ColoredText, tooltipDescription.ColoredText);
             Assert.Equal(ColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
         }
+
+        [Fact]
+        public void DescriptionEmptyTest()
+        {
+            TooltipDescription tooltipDescription = new TooltipDescription(string.Empty);
+
+            Assert.Empty(tooltipDescription.RawDescription);
+            Assert.Empty(tooltipDescription.PlainText);
+            Assert.Empty(tooltipDescription.PlainTextWithNewlines);
+            Assert.Empty(tooltipDescription.PlainTextWithScaling);
+            Assert.Empty(tooltipDescription.PlainTextWithScalingWithNewlines);
+            Assert.Empty(tooltipDescription.ColoredText);
+            Assert.Empty(tooltipDescription.ColoredTextWithScaling);
+        }
+
+        [Fact]
+        public void DescriptionNullTest()
+        {
+            TooltipDescription tooltipDescription = new TooltipDescription(null);
+
+            Assert.Empty(tooltipDescription.RawDescription);
+            Assert.Empty(tooltipDescription.PlainText);
+            Assert.Empty(tooltipDescription.PlainTextWithNewlines);
+            Assert.Empty(tooltipDescription.PlainTextWithScaling);
+            Assert.Empty(tooltipDescription.PlainTextWithScalingWithNewlines);
+            Assert.Empty(tooltipDescription.ColoredText);
+            Assert.Empty(tooltipDescription.ColoredTextWithScaling);
+        }
     }
 }

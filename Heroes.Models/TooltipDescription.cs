@@ -8,6 +8,9 @@
         /// <param name="description">A parsed description that has yet to be validated.</param>
         public TooltipDescription(string description)
         {
+            if (string.IsNullOrEmpty(description))
+                description = string.Empty;
+
             RawDescription = description;
 
             PlainText = DescriptionValidator.GetPlainText(description, false, false);
