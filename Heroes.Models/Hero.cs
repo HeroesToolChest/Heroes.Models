@@ -20,7 +20,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the difficulty of the hero.
         /// </summary>
-        public HeroDifficulty Difficulty { get; set; }
+        public string Difficulty { get; set; }
 
         /// <summary>
         /// Gets or sets the franchise the hero belongs to.
@@ -60,7 +60,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the roles of the hero, multiclass will be first if hero has multiple roles.
         /// </summary>
-        public IList<HeroRole> Roles { get; set; } = new List<HeroRole>();
+        public IList<string> Roles { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the additional hero units associated with this hero.

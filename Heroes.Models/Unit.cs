@@ -29,7 +29,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unit type: Melee or ranged.
         /// </summary>
-        public UnitType? Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the Life properties.
