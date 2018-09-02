@@ -43,25 +43,25 @@ namespace Heroes.Models.AbilityTalents
         {
             string text = string.Empty;
 
-            if (!string.IsNullOrEmpty(Energy.EnergyText?.RawDescription))
+            if (!string.IsNullOrEmpty(Energy.EnergyTooltip?.RawDescription))
             {
-                text += Energy.EnergyText;
+                text += Energy.EnergyTooltip;
             }
 
-            if (!string.IsNullOrEmpty(Life.LifeCostText?.RawDescription))
+            if (!string.IsNullOrEmpty(Life.LifeCostTooltip?.RawDescription))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
 
-                text += Life.LifeCostText;
+                text += Life.LifeCostTooltip;
             }
 
-            if (!string.IsNullOrEmpty(Cooldown.CooldownText?.RawDescription))
+            if (!string.IsNullOrEmpty(Cooldown.CooldownTooltip?.RawDescription))
             {
                 if (!string.IsNullOrEmpty(text))
                     text += Environment.NewLine;
 
-                text += Cooldown.CooldownText;
+                text += Cooldown.CooldownTooltip;
             }
 
             return text;

@@ -5,7 +5,7 @@
         /// <summary>
         /// Gets or sets the health text.
         /// </summary>
-        public TooltipDescription LifeCostText { get; set; }
+        public TooltipDescription LifeCostTooltip { get; set; }
 
         /// <summary>
         /// Gets or sets the life value.
@@ -14,7 +14,7 @@
 
         public override string ToString()
         {
-            return LifeCostText.RawDescription;
+            return LifeCostTooltip.RawDescription;
         }
     }
 }
