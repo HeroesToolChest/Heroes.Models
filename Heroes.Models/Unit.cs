@@ -54,7 +54,7 @@ namespace Heroes.Models
 
         public double Sight { get; set; }
 
-        public Dictionary<string, Ability> Abilities { get; set; }
+        public Dictionary<string, Ability> Abilities { get; set; } = new Dictionary<string, Ability>();
 
         /// <summary>
         /// Gets or sets the parent link of this unit.

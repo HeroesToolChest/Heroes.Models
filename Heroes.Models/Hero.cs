@@ -7,6 +7,11 @@ namespace Heroes.Models
 {
     public class Hero : Unit
     {
+        public Hero()
+        {
+            AddDefaultTalents();
+        }
+
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
         /// </summary>
@@ -55,7 +60,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the talents.
         /// </summary>
-        public Dictionary<string, Talent> Talents { get; set; }
+        public Dictionary<string, Talent> Talents { get; set; } = new Dictionary<string, Talent>();
 
         /// <summary>
         /// Gets or sets the roles of the hero, multiclass will be first if hero has multiple roles.
@@ -67,61 +72,67 @@ namespace Heroes.Models
         /// </summary>
         public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
 
-        /*/// <summary>
-        /// Returns an ability object given the reference name.
+        /// <summary>
+        /// Returns an ability object.
         /// </summary>
-        /// <param name="referenceName">Reference name of the ability.</param>
+        /// <param name="referenceNameId">Reference name of the ability.</param>
         /// <returns></returns>
-        public Ability GetAbility(string referenceName)
+        public Ability GetAbility(string referenceNameId)
         {
-            if (string.IsNullOrEmpty(referenceName))
-            {
+            if (string.IsNullOrEmpty(referenceNameId))
                 return null;
-            }
 
-            if (Abilities.TryGetValue(referenceName, out Ability ability))
-            {
+            if (Abilities.TryGetValue(referenceNameId, out Ability ability))
                 return ability;
-            }
             else
-            {
                 return null;
-            }
         }
 
         /// <summary>
-        /// Returns a talent object given the reference name.
+        /// Returns a talent object.
         /// </summary>
-        /// <param name="referenceName">Reference name of the talent.</param>
+        /// <param name="referenceNameId">Reference name of the talent.</param>
         /// <returns></returns>
-        public Talent GetTalent(string referenceName)
+        public Talent GetTalent(string referenceNameId)
         {
-            if (string.IsNullOrEmpty(referenceName))
-            {
-                return Talents[string.Empty]; // no pick
-            }
+            if (string.IsNullOrEmpty(referenceNameId))
+                return Talents[TalentType.NoPick.ToString()]; // no pick
 
-            if (Talents.TryGetValue(referenceName, out Talent talent))
+            if (Talents.TryGetValue(referenceNameId, out Talent talent))
             {
                 return talent;
             }
             else
             {
-                talent = Talents["NotFound"];
-                talent.Name = referenceName;
+                talent = Talents[TalentType.NotFound.ToString()];
+                talent.Name = referenceNameId;
                 return talent;
             }
         }
-        */
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
         /// </summary>
-        /// <param name = "tier" > The talent tier.</param>
+        /// <param name="tier"> The talent tier.</param>
         /// <returns></returns>
         public ICollection<Talent> TierTalents(TalentTier tier)
         {
             return Talents.Values.Where(x => x.Tier == tier).ToList();
+        }
+
+        private void AddDefaultTalents()
+        {
+            Talents.Add(TalentType.NoPick.ToString(), new Talent()
+            {
+                Name = "No Pick",
+                IconFileName = "storm_ui_ingame_leader_talent_unselected.png",
+            });
+
+            Talents.Add(TalentType.NotFound.ToString(), new Talent()
+            {
+                Name = "Unknown",
+                IconFileName = "storm_ui_icon_no_pick2.png",
+            });
         }
     }
 }
