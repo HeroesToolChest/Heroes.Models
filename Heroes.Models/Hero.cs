@@ -7,11 +7,6 @@ namespace Heroes.Models
 {
     public class Hero : Unit
     {
-        public Hero()
-        {
-            AddDefaultTalents();
-        }
-
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
         /// </summary>
@@ -118,21 +113,6 @@ namespace Heroes.Models
         public ICollection<Talent> TierTalents(TalentTier tier)
         {
             return Talents.Values.Where(x => x.Tier == tier).ToList();
-        }
-
-        private void AddDefaultTalents()
-        {
-            Talents.Add(TalentType.NoPick.ToString(), new Talent()
-            {
-                Name = "No Pick",
-                IconFileName = "storm_ui_ingame_leader_talent_unselected.png",
-            });
-
-            Talents.Add(TalentType.NotFound.ToString(), new Talent()
-            {
-                Name = "Unknown",
-                IconFileName = "storm_ui_icon_no_pick2.png",
-            });
         }
     }
 }
