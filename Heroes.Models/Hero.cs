@@ -91,7 +91,14 @@ namespace Heroes.Models
         public Talent GetTalent(string referenceNameId)
         {
             if (string.IsNullOrEmpty(referenceNameId))
-                return Talents[TalentType.NoPick.ToString()]; // no pick
+            {
+                // no pick
+                return new Talent()
+                {
+                    Name = "No Pick",
+                    IconFileName = "storm_ui_ingame_leader_talent_unselected.png",
+                };
+            }
 
             if (Talents.TryGetValue(referenceNameId, out Talent talent))
             {
@@ -99,9 +106,11 @@ namespace Heroes.Models
             }
             else
             {
-                talent = Talents[TalentType.NotFound.ToString()];
-                talent.Name = referenceNameId;
-                return talent;
+                return new Talent()
+                {
+                    Name = referenceNameId,
+                    IconFileName = "storm_ui_icon_monk_trait1.png",
+                };
             }
         }
 
