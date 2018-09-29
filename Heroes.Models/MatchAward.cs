@@ -31,5 +31,10 @@
         /// Gets or sets the award description.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or set the unique tag.
+        /// </summary>
+        public string Tag { get; set; }
     }
 }
