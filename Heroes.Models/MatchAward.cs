@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public class MatchAward
+    public class MatchAward : IName
     {
         /// <summary>
         /// Gets or sets the unique id.
