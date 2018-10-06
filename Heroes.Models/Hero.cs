@@ -119,7 +119,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier"> The talent tier.</param>
         /// <returns></returns>
-        public ICollection<Talent> TierTalents(TalentTier tier)
+        public IList<Talent> TierTalents(TalentTier tier)
         {
             return Talents.Values.Where(x => x.Tier == tier).ToList();
         }

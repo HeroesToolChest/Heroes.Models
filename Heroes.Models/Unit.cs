@@ -71,7 +71,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
-        public ICollection<Ability> PrimaryAbilities(AbilityTier tier)
+        public IList<Ability> PrimaryAbilities(AbilityTier tier)
         {
             return Abilities?.Values.Where(x => x.Tier == tier && string.IsNullOrEmpty(x.ParentLink)).ToList();
         }
@@ -81,7 +81,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
-        public ICollection<Ability> SubAbilities(AbilityTier tier)
+        public IList<Ability> SubAbilities(AbilityTier tier)
         {
             return Abilities?.Values.Where(x => x.Tier == tier && !string.IsNullOrEmpty(x.ParentLink)).ToList();
         }
