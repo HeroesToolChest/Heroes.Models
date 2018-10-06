@@ -30,7 +30,7 @@
         /// <summary>
         /// Gets or sets the award description.
         /// </summary>
-        public string Description { get; set; }
+        public TooltipDescription Description { get; set; }
 
         /// <summary>
         /// Gets or set the unique tag.
