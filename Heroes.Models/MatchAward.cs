@@ -23,9 +23,19 @@
         public string MVPScreenImageFileName { get; set; }
 
         /// <summary>
+        /// Gets or sets the MVP screen image original file name.
+        /// </summary>
+        public string MVPScreenImageFileNameOriginal { get; set; }
+
+        /// <summary>
         /// Gets or sets the score screen image file name.
         /// </summary>
         public string ScoreScreenImageFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the score screen image original file name.
+        /// </summary>
+        public string ScoreScreenImageFileNameOriginal { get; set; }
 
         /// <summary>
         /// Gets or sets the award description.
