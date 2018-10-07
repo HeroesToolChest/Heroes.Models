@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -388,7 +389,7 @@ namespace Heroes.Models
                 {
                     if (replace)
                     {
-                        scaleText = $" (+{double.Parse(sb.ToString()) * 100}% per level)";
+                        scaleText = $" (+{double.Parse(sb.ToString(), CultureInfo.InvariantCulture) * 100}% per level)";
                         return true;
                     }
                     else
