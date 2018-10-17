@@ -3,8 +3,8 @@
     public interface IName
     {
         /// <summary>
-        /// Gets or sets the unique id.
+        /// Gets or sets the full name.
         /// </summary>
-        string Id { get; set; }
+        string Name { get; set; }
     }
 }
