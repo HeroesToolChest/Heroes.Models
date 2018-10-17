@@ -8,6 +8,11 @@
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the short name.
+        /// </summary>
+        public string ShortName { get; set; }
+
+        /// <summary>
         /// Gets or sets the full name.
         /// </summary>
         public string Name { get; set; }
