@@ -8,5 +8,6 @@
         Overwatch = 2,
         Starcraft = 3,
         Warcraft = 4,
+        Nexus = 5,
     }
 }
