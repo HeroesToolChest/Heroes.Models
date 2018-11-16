@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models.AbilityTalents
+﻿using System.Collections.Generic;
+
+namespace Heroes.Models.AbilityTalents
 {
     public class Talent : AbilityTalentBase
     {
@@ -17,6 +19,8 @@
         public TalentTier Tier { get; set; }
 
         public int Column { get; set; }
+
+        public IEnumerable<string> AbilityUpgrades { get; set; }
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
