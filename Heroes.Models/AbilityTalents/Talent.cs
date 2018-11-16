@@ -20,7 +20,7 @@ namespace Heroes.Models.AbilityTalents
 
         public int Column { get; set; }
 
-        public IEnumerable<string> AbilityUpgrades { get; set; }
+        public string AbilityIdUpgraded { get; set; }
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
