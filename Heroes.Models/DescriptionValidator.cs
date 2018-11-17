@@ -16,12 +16,12 @@ namespace Heroes.Models
         private int Iterator = 0;
         private Stack<string> TextStack = new Stack<string>(101);
 
-        private DescriptionValidator(string gameString, Localization localization = Localization.ENUS)
+        private DescriptionValidator(string gameString, Localization scaleLocale = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(gameString))
                 gameString = string.Empty;
 
-            Localization = localization;
+            Localization = scaleLocale;
             GameString = RemovedStartingRogueTags(gameString);
         }
 
@@ -39,11 +39,11 @@ namespace Heroes.Models
         /// Takes a game string and removes unmatched and nested tags.
         /// </summary>
         /// <param name="gameString">The game string text.</param>
-        /// <param name="localization">The selected localization.</param>
+        /// <param name="scaleLocale">Locale for the per level string.</param>
         /// <returns></returns>
-        public static string Validate(string gameString, Localization localization)
+        public static string Validate(string gameString, Localization scaleLocale)
         {
-            return new DescriptionValidator(gameString, localization).Validate();
+            return new DescriptionValidator(gameString, scaleLocale).Validate();
         }
 
         /// <summary>
@@ -52,10 +52,11 @@ namespace Heroes.Models
         /// <param name="gameString">The game string text.</param>
         /// <param name="includeNewLineTags">If true, includes the newline tags.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
+        /// <param name="scaleLocale">Locale for the per level string.</param>
         /// <returns></returns>
-        public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling, Localization localization = Localization.ENUS)
+        public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
-            return new DescriptionValidator(gameString, localization).ParsePlainText(includeNewLineTags, includeScaling);
+            return new DescriptionValidator(gameString, scaleLocale).ParsePlainText(includeNewLineTags, includeScaling);
         }
 
         /// <summary>
@@ -63,10 +64,11 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="gameString">The game string text.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
+        /// <param name="scaleLocale">Locale for the per level string.</param>
         /// <returns></returns>
-        public static string GetColoredText(string gameString, bool includeScaling, Localization localization = Localization.ENUS)
+        public static string GetColoredText(string gameString, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
-            return new DescriptionValidator(gameString, localization).ParseColoredText(includeScaling);
+            return new DescriptionValidator(gameString, scaleLocale).ParseColoredText(includeScaling);
         }
 
         private string Validate()

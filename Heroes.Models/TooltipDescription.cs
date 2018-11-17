@@ -2,27 +2,28 @@
 {
     public class TooltipDescription
     {
-        private readonly Localization Localization = Localization.ENUS;
+        private readonly Localization ScaleLocale = Localization.ENUS;
 
         /// <summary>
         /// Contructor.
         /// </summary>
         /// <param name="description">A parsed description that has yet to be validated.</param>
-        public TooltipDescription(string description, Localization localization = Localization.ENUS)
+        /// <param name="scaleLocale">Locale for the per level string.</param>
+        public TooltipDescription(string description, Localization scaleLocale = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(description))
                 description = string.Empty;
 
             RawDescription = description;
-            Localization = localization;
+            ScaleLocale = scaleLocale;
 
-            PlainText = DescriptionValidator.GetPlainText(description, false, false, Localization);
-            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false, Localization);
-            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true, Localization);
-            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true, Localization);
+            PlainText = DescriptionValidator.GetPlainText(description, false, false, ScaleLocale);
+            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false, ScaleLocale);
+            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true, ScaleLocale);
+            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true, ScaleLocale);
 
-            ColoredText = DescriptionValidator.GetColoredText(description, false, Localization);
-            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true, Localization);
+            ColoredText = DescriptionValidator.GetColoredText(description, false, ScaleLocale);
+            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true, ScaleLocale);
         }
 
         /// <summary>
