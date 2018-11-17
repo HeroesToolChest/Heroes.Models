@@ -9,17 +9,19 @@ namespace Heroes.Models
     {
         private readonly int SmallSize = 51;
         private readonly int LargeSize = 501;
+        private readonly Localization Localization = Localization.ENUS;
 
         private string GameString;
 
         private int Iterator = 0;
         private Stack<string> TextStack = new Stack<string>(101);
 
-        private DescriptionValidator(string gameString)
+        private DescriptionValidator(string gameString, Localization localization = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(gameString))
                 gameString = string.Empty;
 
+            Localization = localization;
             GameString = RemovedStartingRogueTags(gameString);
         }
 
@@ -31,6 +33,17 @@ namespace Heroes.Models
         public static string Validate(string gameString)
         {
             return new DescriptionValidator(gameString).Validate();
+        }
+
+        /// <summary>
+        /// Takes a game string and removes unmatched and nested tags.
+        /// </summary>
+        /// <param name="gameString">The game string text.</param>
+        /// <param name="localization">The selected localization.</param>
+        /// <returns></returns>
+        public static string Validate(string gameString, Localization localization)
+        {
+            return new DescriptionValidator(gameString, localization).Validate();
         }
 
         /// <summary>
@@ -389,7 +402,7 @@ namespace Heroes.Models
                 {
                     if (replace)
                     {
-                        scaleText = $" (+{double.Parse(sb.ToString(), CultureInfo.InvariantCulture) * 100}% per level)";
+                        scaleText = $" (+{GetPerLevelLocale(double.Parse(sb.ToString(), CultureInfo.InvariantCulture) * 100)})";
                         return true;
                     }
                     else
@@ -410,6 +423,36 @@ namespace Heroes.Models
                 gameString = gameString.Remove(0, 5);
 
             return gameString;
+        }
+
+        private string GetPerLevelLocale(double value)
+        {
+            if (Localization == Localization.DEDE)
+                return $"{value}% pro Stufe";
+            else if (Localization == Localization.ENUS)
+                return $"{value}% per level";
+            else if (Localization == Localization.ESES)
+                return $"{value}% por nivel";
+            else if (Localization == Localization.ESMX)
+                return $"{value}% por nivel";
+            else if (Localization == Localization.FRFR)
+                return $"{value}% par niveau";
+            else if (Localization == Localization.ITIT)
+                return $"{value}% per livello";
+            else if (Localization == Localization.KOKR)
+                return $"레벨 당 {value} %";
+            else if (Localization == Localization.PLPL)
+                return $"{value}% na poziom";
+            else if (Localization == Localization.PTBR)
+                return $"{value}% por nível";
+            else if (Localization == Localization.RURU)
+                return $"{value}% за уровень";
+            else if (Localization == Localization.ZHCN)
+                return $"每级{value}%";
+            else if (Localization == Localization.ZHTW)
+                return $"每級{value}%";
+            else
+                return $"{value}% per level";
         }
     }
 }
