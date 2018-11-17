@@ -22,10 +22,6 @@ namespace Heroes.Models.AbilityTalents
 
         public string AbilityIdUpgraded { get; set; }
 
-        public string ActivatedAbilityId { get; set; }
-
-        public string TalentIdUpgraded { get; set; }
-
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
 }
