@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Heroes.Models.AbilityTalents
+﻿namespace Heroes.Models.AbilityTalents
 {
     public class Talent : AbilityTalentBase
     {
