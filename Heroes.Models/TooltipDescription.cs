@@ -2,24 +2,27 @@
 {
     public class TooltipDescription
     {
+        private readonly Localization Localization = Localization.ENUS;
+
         /// <summary>
         /// Contructor.
         /// </summary>
         /// <param name="description">A parsed description that has yet to be validated.</param>
-        public TooltipDescription(string description)
+        public TooltipDescription(string description, Localization localization = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(description))
                 description = string.Empty;
 
             RawDescription = description;
+            Localization = localization;
 
-            PlainText = DescriptionValidator.GetPlainText(description, false, false);
-            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false);
-            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true);
-            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true);
+            PlainText = DescriptionValidator.GetPlainText(description, false, false, Localization);
+            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false, Localization);
+            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true, Localization);
+            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true, Localization);
 
-            ColoredText = DescriptionValidator.GetColoredText(description, false);
-            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true);
+            ColoredText = DescriptionValidator.GetColoredText(description, false, Localization);
+            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true, Localization);
         }
 
         /// <summary>

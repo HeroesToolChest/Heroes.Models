@@ -13,6 +13,14 @@ namespace Heroes.Models.Tests
         private readonly string ColoredText = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 </c>damage per second";
         private readonly string ColoredTextWithScaling = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500 (+3.5% per level)</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 (+4% per level) </c>damage per second";
 
+        // locale strings
+        private readonly string LocalePlainText = "Deal 500 damage Deal an additional 200 damage per second";
+        private readonly string LocalePlainTextWithNewlines = "Deal 500 damage<n/>Deal an additional 200 damage per second";
+        private readonly string LocalePlainTextWithScaling = "Deal 500 (레벨 당 +3.5%) damage Deal an additional 200 (레벨 당 +4%) damage per second";
+        private readonly string LocalePlainTextWithScalingWithNewlines = "Deal 500 (레벨 당 +3.5%) damage<n/>Deal an additional 200 (레벨 당 +4%) damage per second";
+        private readonly string LocaleColoredText = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 </c>damage per second";
+        private readonly string LocaleColoredTextWithScaling = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500 (레벨 당 +3.5%)</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 (레벨 당 +4%) </c>damage per second";
+
         [Fact]
         public void DescriptionTest()
         {
@@ -52,6 +60,19 @@ namespace Heroes.Models.Tests
             Assert.Empty(tooltipDescription.PlainTextWithScalingWithNewlines);
             Assert.Empty(tooltipDescription.ColoredText);
             Assert.Empty(tooltipDescription.ColoredTextWithScaling);
+        }
+
+        [Fact]
+        public void DescriptionLocaleTests()
+        {
+            TooltipDescription tooltipDescription = new TooltipDescription(TestDescription, Localization.KOKR);
+
+            Assert.Equal(LocalePlainText, tooltipDescription.PlainText);
+            Assert.Equal(LocalePlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
+            Assert.Equal(LocalePlainTextWithScaling, tooltipDescription.PlainTextWithScaling);
+            Assert.Equal(LocalePlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
+            Assert.Equal(LocaleColoredText, tooltipDescription.ColoredText);
+            Assert.Equal(LocaleColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
         }
     }
 }

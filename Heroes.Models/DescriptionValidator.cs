@@ -53,9 +53,9 @@ namespace Heroes.Models
         /// <param name="includeNewLineTags">If true, includes the newline tags.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <returns></returns>
-        public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling)
+        public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling, Localization localization = Localization.ENUS)
         {
-            return new DescriptionValidator(gameString).ParsePlainText(includeNewLineTags, includeScaling);
+            return new DescriptionValidator(gameString, localization).ParsePlainText(includeNewLineTags, includeScaling);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace Heroes.Models
         /// <param name="gameString">The game string text.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <returns></returns>
-        public static string GetColoredText(string gameString, bool includeScaling)
+        public static string GetColoredText(string gameString, bool includeScaling, Localization localization = Localization.ENUS)
         {
-            return new DescriptionValidator(gameString).ParseColoredText(includeScaling);
+            return new DescriptionValidator(gameString, localization).ParseColoredText(includeScaling);
         }
 
         private string Validate()
@@ -402,7 +402,7 @@ namespace Heroes.Models
                 {
                     if (replace)
                     {
-                        scaleText = $" (+{GetPerLevelLocale(double.Parse(sb.ToString(), CultureInfo.InvariantCulture) * 100)})";
+                        scaleText = $" ({GetPerLevelLocale(double.Parse(sb.ToString(), CultureInfo.InvariantCulture) * 100)})";
                         return true;
                     }
                     else
@@ -428,29 +428,29 @@ namespace Heroes.Models
         private string GetPerLevelLocale(double value)
         {
             if (Localization == Localization.DEDE)
-                return $"{value}% pro Stufe";
+                return $"+{value}% pro Stufe";
             else if (Localization == Localization.ENUS)
-                return $"{value}% per level";
+                return $"+{value}% per level";
             else if (Localization == Localization.ESES)
-                return $"{value}% por nivel";
+                return $"+{value}% por nivel";
             else if (Localization == Localization.ESMX)
-                return $"{value}% por nivel";
+                return $"+{value}% por nivel";
             else if (Localization == Localization.FRFR)
-                return $"{value}% par niveau";
+                return $"+{value}% par niveau";
             else if (Localization == Localization.ITIT)
-                return $"{value}% per livello";
+                return $"+{value}% per livello";
             else if (Localization == Localization.KOKR)
-                return $"레벨 당 {value} %";
+                return $"레벨 당 +{value}%";
             else if (Localization == Localization.PLPL)
-                return $"{value}% na poziom";
+                return $"+{value}% na poziom";
             else if (Localization == Localization.PTBR)
-                return $"{value}% por nível";
+                return $"+{value}% por nível";
             else if (Localization == Localization.RURU)
-                return $"{value}% за уровень";
+                return $"+{value}% за уровень";
             else if (Localization == Localization.ZHCN)
-                return $"每级{value}%";
+                return $"每级 +{value}%";
             else if (Localization == Localization.ZHTW)
-                return $"每級{value}%";
+                return $"每級 +{value}%";
             else
                 return $"{value}% per level";
         }
