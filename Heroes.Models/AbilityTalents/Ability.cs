@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models.AbilityTalents
+﻿using System.Collections.Generic;
+
+namespace Heroes.Models.AbilityTalents
 {
     public class Ability : AbilityTalentBase
     {
@@ -14,6 +16,9 @@
             Tooltip = talentBase.Tooltip;
         }
 
+        /// <summary>
+        /// Gets or sets the tier of the ability.
+        /// </summary>
         public AbilityTier Tier { get; set; }
 
         /// <summary>
@@ -26,6 +31,11 @@
         /// Should be used for internal purposes only.
         /// </summary>
         public string ButtonName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the talent ids that are associated with the ability.
+        /// </summary>
+        public ICollection<string> TalentIdUpgrades { get; set; } = new List<string>();
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
