@@ -35,7 +35,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the talent ids that are associated with the ability.
         /// </summary>
-        public ICollection<string> TalentIdUpgrades { get; set; } = new List<string>();
+        public HashSet<string> TalentIdUpgrades { get; set; } = new HashSet<string>();
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }

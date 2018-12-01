@@ -29,7 +29,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the ability and talents that the talent affects or upgrades.
         /// </summary>
-        public ICollection<string> AbilityTalentLinkIds { get; set; } = new List<string>();
+        public HashSet<string> AbilityTalentLinkIds { get; set; } = new HashSet<string>();
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
