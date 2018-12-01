@@ -10,5 +10,6 @@
         Trait,
         Active,
         Passive,
+        B,
     }
 }

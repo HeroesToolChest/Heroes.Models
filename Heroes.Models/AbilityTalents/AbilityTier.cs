@@ -16,5 +16,7 @@ namespace Heroes.Models.AbilityTalents
         Mount,
         [Description("Activable Ability")]
         Activable,
+        [Description("Hearth Ability")]
+        Hearth,
     }
 }
