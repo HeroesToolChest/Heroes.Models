@@ -23,6 +23,16 @@ namespace Heroes.Models
         public string Difficulty { get; set; }
 
         /// <summary>
+        /// Gets or sets the mount link id.
+        /// </summary>
+        public string MountLinkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hearth link id.
+        /// </summary>
+        public string HearthLinkId { get; set; }
+
+        /// <summary>
         /// Gets or sets the franchise the hero belongs to.
         /// </summary>
         public HeroFranchise Franchise { get; set; }
