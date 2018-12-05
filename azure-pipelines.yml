@@ -2,16 +2,16 @@ variables:
   config_debug: debug
   config_release: release
 
-job: Linux
-strategy:
-  matrix:
-    _DEBUG:
-      configuration: $(config_debug)
-    _RELEASE:
-      configuration: $(config_release)    
-steps:
-- script: dotnet build -c $(configuration)
-  displayName: Build $(configuration)
+- job: Linux
+  strategy:
+    matrix:
+      _DEBUG:
+        configuration: $(config_debug)
+      _RELEASE:
+        configuration: $(config_release)    
+  steps:
+  - script: dotnet build -c $(configuration)
+    displayName: Build $(configuration)
   
 #- job: Windows
 #  pool:
