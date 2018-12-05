@@ -1,26 +1,32 @@
-
-pool:
-  vmImage: 'VS2017-Win2016'
-
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  config_debug: debug
+  config_release: release
 
+- job: Linux
+  strategy:
+    matrix:
+      _DEBUG:
+        configuration: $(config_debug)
+      _RELEASE:
+        configuration: $(config_release)    
 steps:
-- task: NuGetToolInstaller@0
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- script: dotnet build -c $(configuration)
+  displayName: Build $(configuration)
+  
+#- job: Windows
+#  pool:
+#    vmImage: 'vs2017-win2016'
+#  steps:
+#  - script: echo hello from Windows
+#  
+#- job: macOS
+#  pool:
+#    vmImage: 'macOS-10.13'
+#  steps:
+#  - script: echo hello from macOS
+#  
+#- job: Linux
+#  pool:
+#    vmImage: 'ubuntu-16.04'
+#  steps:
+#  - script: echo hello from Linux
