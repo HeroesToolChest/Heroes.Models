@@ -1,7 +1,8 @@
-﻿using Xunit;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Heroes.Models.Tests
 {
+    [TestClass]
     public class TooltipDescriptionTests
     {
         private readonly string TestDescription = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second";
@@ -21,58 +22,58 @@ namespace Heroes.Models.Tests
         private readonly string LocaleColoredText = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 </c>damage per second";
         private readonly string LocaleColoredTextWithScaling = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500 (레벨 당 +3.5%)</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 (레벨 당 +4%) </c>damage per second";
 
-        [Fact]
+        [TestMethod]
         public void DescriptionTest()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(TestDescription);
 
-            Assert.Equal(PlainText, tooltipDescription.PlainText);
-            Assert.Equal(PlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
-            Assert.Equal(PlainTextWithScaling, tooltipDescription.PlainTextWithScaling);
-            Assert.Equal(PlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
-            Assert.Equal(ColoredText, tooltipDescription.ColoredText);
-            Assert.Equal(ColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
+            Assert.AreEqual(PlainText, tooltipDescription.PlainText);
+            Assert.AreEqual(PlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
+            Assert.AreEqual(PlainTextWithScaling, tooltipDescription.PlainTextWithScaling);
+            Assert.AreEqual(PlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
+            Assert.AreEqual(ColoredText, tooltipDescription.ColoredText);
+            Assert.AreEqual(ColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
         }
 
-        [Fact]
+        [TestMethod]
         public void DescriptionEmptyTest()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(string.Empty);
 
-            Assert.Empty(tooltipDescription.RawDescription);
-            Assert.Empty(tooltipDescription.PlainText);
-            Assert.Empty(tooltipDescription.PlainTextWithNewlines);
-            Assert.Empty(tooltipDescription.PlainTextWithScaling);
-            Assert.Empty(tooltipDescription.PlainTextWithScalingWithNewlines);
-            Assert.Empty(tooltipDescription.ColoredText);
-            Assert.Empty(tooltipDescription.ColoredTextWithScaling);
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.RawDescription));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainText));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithNewlines));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScaling));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScalingWithNewlines));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredText));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredTextWithScaling));
         }
 
-        [Fact]
+        [TestMethod]
         public void DescriptionNullTest()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(null);
 
-            Assert.Empty(tooltipDescription.RawDescription);
-            Assert.Empty(tooltipDescription.PlainText);
-            Assert.Empty(tooltipDescription.PlainTextWithNewlines);
-            Assert.Empty(tooltipDescription.PlainTextWithScaling);
-            Assert.Empty(tooltipDescription.PlainTextWithScalingWithNewlines);
-            Assert.Empty(tooltipDescription.ColoredText);
-            Assert.Empty(tooltipDescription.ColoredTextWithScaling);
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.RawDescription));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainText));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithNewlines));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScaling));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScalingWithNewlines));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredText));
+            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredTextWithScaling));
         }
 
-        [Fact]
+        [TestMethod]
         public void DescriptionLocaleTests()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(TestDescription, Localization.KOKR);
 
-            Assert.Equal(LocalePlainText, tooltipDescription.PlainText);
-            Assert.Equal(LocalePlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
-            Assert.Equal(LocalePlainTextWithScaling, tooltipDescription.PlainTextWithScaling);
-            Assert.Equal(LocalePlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
-            Assert.Equal(LocaleColoredText, tooltipDescription.ColoredText);
-            Assert.Equal(LocaleColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
+            Assert.AreEqual(LocalePlainText, tooltipDescription.PlainText);
+            Assert.AreEqual(LocalePlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
+            Assert.AreEqual(LocalePlainTextWithScaling, tooltipDescription.PlainTextWithScaling);
+            Assert.AreEqual(LocalePlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
+            Assert.AreEqual(LocaleColoredText, tooltipDescription.ColoredText);
+            Assert.AreEqual(LocaleColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
         }
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heroes.Models", "Heroes.Models\Heroes.Models.csproj", "{40F1FB4E-A654-4264-84DD-DB0A8E555D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.Models.Tests", "Heroes.Models.Tests\Heroes.Models.Tests.csproj", "{93E1967C-EF68-4921-ADD1-30B7696068FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.Models.Tests", "Heroes.Models.Tests\Heroes.Models.Tests.csproj", "{53C6CE1C-8D75-4049-8CF5-D928C82EF537}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{40F1FB4E-A654-4264-84DD-DB0A8E555D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40F1FB4E-A654-4264-84DD-DB0A8E555D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40F1FB4E-A654-4264-84DD-DB0A8E555D85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93E1967C-EF68-4921-ADD1-30B7696068FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93E1967C-EF68-4921-ADD1-30B7696068FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93E1967C-EF68-4921-ADD1-30B7696068FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93E1967C-EF68-4921-ADD1-30B7696068FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C6CE1C-8D75-4049-8CF5-D928C82EF537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C6CE1C-8D75-4049-8CF5-D928C82EF537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C6CE1C-8D75-4049-8CF5-D928C82EF537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C6CE1C-8D75-4049-8CF5-D928C82EF537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,8 @@
-﻿using Xunit;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Heroes.Models.Tests
 {
+    [TestClass]
     public class DescriptionValidationTests
     {
         private readonly string NoTagsDescription = "previous location.";
@@ -111,126 +112,126 @@ namespace Heroes.Models.Tests
         private readonly string ColoredTextScaling2 = "<c val=\"#TooltipNumbers\">100~~0.04~~</c> damage per second ~~0.05~~";
         private readonly string ColoredTextScaling2Corrected = "<c val=\"#TooltipNumbers\">100 (+4% per level)</c> damage per second  (+5% per level)";
 
-        [Fact]
+        [TestMethod]
         public void ValidateTests()
         {
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(NoTagsDescription)); // no changes
-            Assert.Equal(NormalTagsDescription1, DescriptionValidator.Validate(NormalTagsDescription1)); // no changes
-            Assert.Equal(NormalTagsDescription2, DescriptionValidator.Validate(NormalTagsDescription2)); // no changes
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription1));
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription2));
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription3));
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription4));
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription5));
-            Assert.Equal(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription6));
-            Assert.Equal(NewLineTagDescription1, DescriptionValidator.Validate(NewLineTagDescription1)); // no changes
-            Assert.Equal(NewLineTagDescription2, DescriptionValidator.Validate(NewLineTagDescription2)); // no changes
-            Assert.Equal(SelfCloseTagDescription1, DescriptionValidator.Validate(SelfCloseTagDescription1)); // no changes
-            Assert.Equal(SelfCloseTagDescription2, DescriptionValidator.Validate(SelfCloseTagDescription2)); // no changes
-            Assert.Equal(SelfCloseTagDescription3, DescriptionValidator.Validate(SelfCloseTagDescription3)); // no changes
-            Assert.Equal(SelfCloseTagDescription4, DescriptionValidator.Validate(SelfCloseTagDescription4)); // no changes
-            Assert.Equal(NormalTagsDescription2, DescriptionValidator.Validate(DuplicateTagsDescription1));
-            Assert.Equal(NormalTagsDescription2, DescriptionValidator.Validate(DuplicateTagsDescription2));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(NoTagsDescription)); // no changes
+            Assert.AreEqual(NormalTagsDescription1, DescriptionValidator.Validate(NormalTagsDescription1)); // no changes
+            Assert.AreEqual(NormalTagsDescription2, DescriptionValidator.Validate(NormalTagsDescription2)); // no changes
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription1));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription2));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription3));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription4));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription5));
+            Assert.AreEqual(NoTagsDescription, DescriptionValidator.Validate(ExtraTagDescription6));
+            Assert.AreEqual(NewLineTagDescription1, DescriptionValidator.Validate(NewLineTagDescription1)); // no changes
+            Assert.AreEqual(NewLineTagDescription2, DescriptionValidator.Validate(NewLineTagDescription2)); // no changes
+            Assert.AreEqual(SelfCloseTagDescription1, DescriptionValidator.Validate(SelfCloseTagDescription1)); // no changes
+            Assert.AreEqual(SelfCloseTagDescription2, DescriptionValidator.Validate(SelfCloseTagDescription2)); // no changes
+            Assert.AreEqual(SelfCloseTagDescription3, DescriptionValidator.Validate(SelfCloseTagDescription3)); // no changes
+            Assert.AreEqual(SelfCloseTagDescription4, DescriptionValidator.Validate(SelfCloseTagDescription4)); // no changes
+            Assert.AreEqual(NormalTagsDescription2, DescriptionValidator.Validate(DuplicateTagsDescription1));
+            Assert.AreEqual(NormalTagsDescription2, DescriptionValidator.Validate(DuplicateTagsDescription2));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateConvertedNewlineTagsTests()
         {
-            Assert.Equal(ConvertNewLineTagDescription1Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription1));
-            Assert.Equal(ConvertNewLineTagDescription2Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription2));
-            Assert.Equal(ConvertNewLineTagDescription3Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription3));
+            Assert.AreEqual(ConvertNewLineTagDescription1Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription1));
+            Assert.AreEqual(ConvertNewLineTagDescription2Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription2));
+            Assert.AreEqual(ConvertNewLineTagDescription3Corrected, DescriptionValidator.Validate(ConvertNewLineTagDescription3));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateCaseTagsTests()
         {
-            Assert.Equal(UpperCaseTagDescription1Corrected, DescriptionValidator.Validate(UpperCaseTagDescription1));
+            Assert.AreEqual(UpperCaseTagDescription1Corrected, DescriptionValidator.Validate(UpperCaseTagDescription1));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateSpaceTagsTests()
         {
-            Assert.Equal(NormalTagsDescription2, DescriptionValidator.Validate(ExtraSpacesTagDescription1));
-            Assert.Equal(NormalTagsDescription2, DescriptionValidator.Validate(ExtraSpacesTagDescription2));
+            Assert.AreEqual(NormalTagsDescription2, DescriptionValidator.Validate(ExtraSpacesTagDescription1));
+            Assert.AreEqual(NormalTagsDescription2, DescriptionValidator.Validate(ExtraSpacesTagDescription2));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateEmptyTagsTests()
         {
-            Assert.Equal(EmptyTagsDescription1Corrected, DescriptionValidator.Validate(EmptyTagsDescription1));
-            Assert.Equal(EmptyTagsDescription2Corrected, DescriptionValidator.Validate(EmptyTagsDescription2));
-            Assert.Equal(EmptyTagsDescription3Corrected, DescriptionValidator.Validate(EmptyTagsDescription3));
+            Assert.AreEqual(EmptyTagsDescription1Corrected, DescriptionValidator.Validate(EmptyTagsDescription1));
+            Assert.AreEqual(EmptyTagsDescription2Corrected, DescriptionValidator.Validate(EmptyTagsDescription2));
+            Assert.AreEqual(EmptyTagsDescription3Corrected, DescriptionValidator.Validate(EmptyTagsDescription3));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateNestedTagsTests()
         {
-            Assert.Equal(NestedTagDescription1Corrected, DescriptionValidator.Validate(NestedTagDescription1));
-            Assert.Equal(NestedTagDescription2Corrected, DescriptionValidator.Validate(NestedTagDescription2));
-            Assert.Equal(NestedTagDescription3Corrected, DescriptionValidator.Validate(NestedTagDescription3));
-            Assert.Equal(NestedTagDescription4Corrected, DescriptionValidator.Validate(NestedTagDescription4));
+            Assert.AreEqual(NestedTagDescription1Corrected, DescriptionValidator.Validate(NestedTagDescription1));
+            Assert.AreEqual(NestedTagDescription2Corrected, DescriptionValidator.Validate(NestedTagDescription2));
+            Assert.AreEqual(NestedTagDescription3Corrected, DescriptionValidator.Validate(NestedTagDescription3));
+            Assert.AreEqual(NestedTagDescription4Corrected, DescriptionValidator.Validate(NestedTagDescription4));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateNestedNewLineTagsTests()
         {
-            Assert.Equal(NestedNewLineTagDescription1Corrected, DescriptionValidator.Validate(NestedNewLineTagDescription1));
-            Assert.Equal(NestedNewLineTagDescription2Corrected, DescriptionValidator.Validate(NestedNewLineTagDescription2));
+            Assert.AreEqual(NestedNewLineTagDescription1Corrected, DescriptionValidator.Validate(NestedNewLineTagDescription1));
+            Assert.AreEqual(NestedNewLineTagDescription2Corrected, DescriptionValidator.Validate(NestedNewLineTagDescription2));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateRealDescriptionTests()
         {
-            Assert.Equal(DiabloBlackSoulstoneCorrected, DescriptionValidator.Validate(DiabloBlackSoulstone));
-            Assert.Equal(DVaMechSelfDestructCorrected, DescriptionValidator.Validate(DVaMechSelfDestruct));
-            Assert.Equal(ValeeraCheapShotCorrected, DescriptionValidator.Validate(ValeeraCheapShot));
-            Assert.Equal(CrusaderPunishSame, DescriptionValidator.Validate(CrusaderPunish));
+            Assert.AreEqual(DiabloBlackSoulstoneCorrected, DescriptionValidator.Validate(DiabloBlackSoulstone));
+            Assert.AreEqual(DVaMechSelfDestructCorrected, DescriptionValidator.Validate(DVaMechSelfDestruct));
+            Assert.AreEqual(ValeeraCheapShotCorrected, DescriptionValidator.Validate(ValeeraCheapShot));
+            Assert.AreEqual(CrusaderPunishSame, DescriptionValidator.Validate(CrusaderPunish));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidatePlainTextTests()
         {
-            Assert.Equal(PlainText1, DescriptionValidator.GetPlainText(NestedTagDescription1, false, false));
-            Assert.Equal(PlainText2, DescriptionValidator.GetPlainText(NestedNewLineTagDescription2Corrected, false, false));
-            Assert.Equal(PlainText3, DescriptionValidator.GetPlainText(ValeeraCheapShotCorrected, false, false));
-            Assert.Equal(PlainText4Corrected, DescriptionValidator.GetPlainText(PlainText4, false, false));
-            Assert.Equal(PlainText5Corrected, DescriptionValidator.GetPlainText(PlainText5, false, false));
+            Assert.AreEqual(PlainText1, DescriptionValidator.GetPlainText(NestedTagDescription1, false, false));
+            Assert.AreEqual(PlainText2, DescriptionValidator.GetPlainText(NestedNewLineTagDescription2Corrected, false, false));
+            Assert.AreEqual(PlainText3, DescriptionValidator.GetPlainText(ValeeraCheapShotCorrected, false, false));
+            Assert.AreEqual(PlainText4Corrected, DescriptionValidator.GetPlainText(PlainText4, false, false));
+            Assert.AreEqual(PlainText5Corrected, DescriptionValidator.GetPlainText(PlainText5, false, false));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidatePlainTextNewlineTests()
         {
-            Assert.Equal(PlainTextNewline1, DescriptionValidator.GetPlainText(NestedNewLineTagDescription1Corrected, true, false));
-            Assert.Equal(PlainTextNewline2, DescriptionValidator.GetPlainText(ValeeraCheapShotCorrected, true, false));
-            Assert.Equal(PlainTextNewline3Corrected, DescriptionValidator.GetPlainText(PlainTextNewline3, true, false));
+            Assert.AreEqual(PlainTextNewline1, DescriptionValidator.GetPlainText(NestedNewLineTagDescription1Corrected, true, false));
+            Assert.AreEqual(PlainTextNewline2, DescriptionValidator.GetPlainText(ValeeraCheapShotCorrected, true, false));
+            Assert.AreEqual(PlainTextNewline3Corrected, DescriptionValidator.GetPlainText(PlainTextNewline3, true, false));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidatePlainTextScalingTests()
         {
-            Assert.Equal(PlainTextScaling1Corrected, DescriptionValidator.GetPlainText(PlainTextScaling1, false, true));
-            Assert.Equal(PlainTextScaling2Corrected, DescriptionValidator.GetPlainText(PlainTextScaling2, false, true));
+            Assert.AreEqual(PlainTextScaling1Corrected, DescriptionValidator.GetPlainText(PlainTextScaling1, false, true));
+            Assert.AreEqual(PlainTextScaling2Corrected, DescriptionValidator.GetPlainText(PlainTextScaling2, false, true));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidatePlainTextScalingNewlineTests()
         {
-            Assert.Equal(PlainTextScalingNewline1Corrected, DescriptionValidator.GetPlainText(PlainTextScalingNewline1, true, true));
-            Assert.Equal(PlainTextScalingNewline2Corrected, DescriptionValidator.GetPlainText(PlainTextScalingNewline2, true, true));
+            Assert.AreEqual(PlainTextScalingNewline1Corrected, DescriptionValidator.GetPlainText(PlainTextScalingNewline1, true, true));
+            Assert.AreEqual(PlainTextScalingNewline2Corrected, DescriptionValidator.GetPlainText(PlainTextScalingNewline2, true, true));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateColoredTextTests()
         {
-            Assert.Equal(ColoredText1Corrected, DescriptionValidator.GetColoredText(ColoredText1, false));
-            Assert.Equal(ColoredText2Corrected, DescriptionValidator.GetColoredText(ColoredText2, false));
+            Assert.AreEqual(ColoredText1Corrected, DescriptionValidator.GetColoredText(ColoredText1, false));
+            Assert.AreEqual(ColoredText2Corrected, DescriptionValidator.GetColoredText(ColoredText2, false));
         }
 
-        [Fact]
+        [TestMethod]
         public void ValidateColoredTextScalingTests()
         {
-            Assert.Equal(ColoredTextScaling1Corrected, DescriptionValidator.GetColoredText(ColoredTextScaling1, true));
-            Assert.Equal(ColoredTextScaling2Corrected, DescriptionValidator.GetColoredText(ColoredTextScaling2, true));
+            Assert.AreEqual(ColoredTextScaling1Corrected, DescriptionValidator.GetColoredText(ColoredTextScaling1, true));
+            Assert.AreEqual(ColoredTextScaling2Corrected, DescriptionValidator.GetColoredText(ColoredTextScaling2, true));
         }
     }
 }
