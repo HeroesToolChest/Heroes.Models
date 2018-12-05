@@ -1,3 +1,2 @@
 # Heroes Models
-[![Build status](https://ci.appveyor.com/api/projects/status/7v5y2y5b8doo16bu?svg=true)](https://ci.appveyor.com/project/koliva8245/heroes-models)
-[![Build Status](https://travis-ci.org/koliva8245/Heroes.Models.svg?branch=master)](https://travis-ci.org/koliva8245/Heroes.Models)
+[![Build Status](https://dev.azure.com/kevinkoliva/Heroes%20of%20the%20Storm%20Projects/_apis/build/status/koliva8245.Heroes.Models)](https://dev.azure.com/kevinkoliva/Heroes%20of%20the%20Storm%20Projects/_build/latest?definitionId=2)
