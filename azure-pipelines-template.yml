@@ -12,11 +12,13 @@ jobs:
       matrix:
         DEBUG:
           configuration: $(config_debug)
+          CONFIG: $(config_debug)
         RELEASE:
           configuration: $(config_release)   
+          CONFIG: $(config_release)
     steps:
     - script: dotnet build -c $(configuration)
-      displayName: Build $(configuration)
+      displayName: Build $(CONFIG)
  
     - script: dotnet test -c $(configuration) --no-build
-      displayName: Test debug $(configuration)
+      displayName: Test $(CONFIG)
