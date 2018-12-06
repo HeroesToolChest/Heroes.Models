@@ -1,35 +1,18 @@
-variables:
-  config_debug: debug
-  config_release: release
-
 jobs:
-  - job: Linux
+- template: azure-pipelines-template.yml
+  parameters:
+    name: Linux
     pool:
       vmImage: 'ubuntu-16.04'
-    strategy:
-      matrix:
-        _DEBUG:
-          configuration: $(config_debug)
-        _RELEASE:
-          configuration: $(config_release)   
-    steps:
-    - script: dotnet build -c $(configuration)
-      displayName: Build $(configuration)
+
+- template: azure-pipelines-template.yml
+  parameters:
+    name: macOS
+    pool:
+      vmImage: 'macOS-10.13'
   
-#- job: Windows
-#  pool:
-#    vmImage: 'vs2017-win2016'
-#  steps:
-#  - script: echo hello from Windows
-#  
-#- job: macOS
-#  pool:
-#    vmImage: 'macOS-10.13'
-#  steps:
-#  - script: echo hello from macOS
-#  
-#- job: Linux
-#  pool:
-#    vmImage: 'ubuntu-16.04'
-#  steps:
-#  - script: echo hello from Linux
+- template: azure-pipelines-template.yml
+  parameters:
+    name: Windows
+    pool:
+      vmImage: 'vs2017-win2016'
