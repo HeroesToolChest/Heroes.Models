@@ -10,16 +10,35 @@ jobs:
       config_release: release
     strategy:
       matrix:
-        DEBUG:
+        Build_Debug:
           configuration: $(config_debug)
-        RELEASE:
+        Build_Release:
           configuration: $(config_release)
     steps:
     - task: DotNetCoreInstaller@0
       inputs:
         version: '2.2.100'
+        
     - script: dotnet build -c $(configuration)
       displayName: Build
  
     - script: dotnet test -c $(configuration) --no-build
       displayName: Run tests
+      
+    - task: DotNetCoreCLI@2
+      inputs:
+        publishTestResults: true
+      
+#    - task: PublishTestResults@2
+#      inputs:
+#        testResultsFormat: 'VSTtest'
+#        testResultsFiles: '**/TEST-*.trx'
+ #       
+ ##   - task: PublishCodeCoverageResults@1
+ #     inputs:
+ ##       #codeCoverageTool: 'JaCoCo' # Options: cobertura, jaCoCo
+  #      summaryFileLocation: 
+  #      #reportDirectory: # Optional
+  #      #additionalCodeCoverageFiles: # Optional
+  #      #failIfCoverageEmpty: false # Optional
+        
