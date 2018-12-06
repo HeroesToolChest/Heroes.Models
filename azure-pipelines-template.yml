@@ -22,11 +22,15 @@ jobs:
     - script: dotnet build -c $(configuration)
       displayName: Build
  
-    - script: dotnet test -c $(configuration) --no-build
-      displayName: Run tests
+##    - script: dotnet test -c $(configuration) --no-build
+##      displayName: Run tests
       
     - task: DotNetCoreCLI@2
+      displayName: Run tests
       inputs:
+        command: test
+        configuration: $(configuration)
+        nobuild: true
         publishTestResults: true
       
 #    - task: PublishTestResults@2
@@ -34,11 +38,5 @@ jobs:
 #        testResultsFormat: 'VSTtest'
 #        testResultsFiles: '**/TEST-*.trx'
  #       
- ##   - task: PublishCodeCoverageResults@1
- #     inputs:
- ##       #codeCoverageTool: 'JaCoCo' # Options: cobertura, jaCoCo
-  #      summaryFileLocation: 
-  #      #reportDirectory: # Optional
-  #      #additionalCodeCoverageFiles: # Optional
-  #      #failIfCoverageEmpty: false # Optional
+
         
