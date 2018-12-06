@@ -6,9 +6,9 @@ variables:
   strategy:
     matrix:
       _DEBUG:
-        configuration: $(config_debug)
+        configuration: '$(config_debug)'
       _RELEASE:
-        configuration: $(config_release)    
+        configuration: '$(config_release)'    
   steps:
   - script: dotnet build -c $(configuration)
     displayName: Build $(configuration)
