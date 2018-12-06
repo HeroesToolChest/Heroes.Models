@@ -1,10 +1,15 @@
 parameters:
   name: ''
   pool: ''
+  config_debug: ''
+  config_release: ''
 
 jobs:
   - job: ${{ parameters.name }}
     pool: ${{ parameters.pool }}
+    variables:
+      config_debug: debug
+      config_release: release
     strategy:
       matrix:
         DEBUG:
