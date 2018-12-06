@@ -1,8 +1,6 @@
 parameters:
   name: ''
   pool: ''
-  config_debug: ''
-  config_release: ''
 
 jobs:
   - job: ${{ parameters.name }}
