@@ -1,0 +1,19 @@
+parameters:
+  name: ''
+  pool: ''
+
+jobs:
+  - job: ${{ parameters.name }}
+    pool: ${{ parameters.pool }}
+    strategy:
+      matrix:
+        DEBUG:
+          configuration: '$(config_debug)'
+        RELEASE:
+          configuration: '$(config_release)'   
+    steps:
+    - script: dotnet build -c $(configuration)
+      displayName: Build $(configuration)
+ 
+    - script: dotnet test -c $(configuration) --no-build
+      displayName: Test debug $(configuration)
