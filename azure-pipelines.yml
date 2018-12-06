@@ -1,17 +1,17 @@
-variables:
-  config_debug: debug
-  config_release: release
+#variables:
+#  config_debug: debug
+#  config_release: release
 
 - job: Linux
   strategy:
     matrix:
       _DEBUG:
-        configuration: '$(config_debug)'
+        configuration: 'debug'
       _RELEASE:
-        configuration: '$(config_release)'    
+        configuration: 'release'    
   steps:
-  - script: dotnet build -c $(configuration)
-    displayName: Build $(configuration)
+  - script: dotnet build -c debug
+    displayName: Build release
   
 #- job: Windows
 #  pool:
