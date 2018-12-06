@@ -12,13 +12,14 @@ jobs:
       matrix:
         DEBUG:
           configuration: $(config_debug)
-          CONFIG: $(config_debug)
         RELEASE:
-          configuration: $(config_release)   
-          CONFIG: $(config_release)
+          configuration: $(config_release)
     steps:
+    - task: DotNetCoreInstaller@0
+      inputs:
+        version: '2.2.100'
     - script: dotnet build -c $(configuration)
-      displayName: Build $(CONFIG)
+      displayName: Build
  
     - script: dotnet test -c $(configuration) --no-build
-      displayName: Test $(CONFIG)
+      displayName: Run tests
