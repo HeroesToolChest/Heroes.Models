@@ -2,7 +2,15 @@
 {
     public class UnitWeapon
     {
+        /// <summary>
+        /// Gets or sets the unique id of the weapon.
+        /// </summary>
         public string WeaponNameId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the weapon.
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of damage the attack deals.
