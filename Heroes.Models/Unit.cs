@@ -27,6 +27,11 @@ namespace Heroes.Models
         public TooltipDescription Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the hero play styles.
+        /// </summary>
+        public ICollection<string> HeroDescriptors { get; set; } = new List<string>();
+
+        /// <summary>
         /// Gets or sets the unit type: Melee or ranged.
         /// </summary>
         public string Type { get; set; }

@@ -78,11 +78,6 @@ namespace Heroes.Models
         public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
 
         /// <summary>
-        /// Gets or sets the hero play styles.
-        /// </summary>
-        public ICollection<string> HeroDescriptors { get; set; } = new List<string>();
-
-        /// <summary>
         /// Returns an ability object.
         /// </summary>
         /// <param name="referenceNameId">Reference name of the ability.</param>
