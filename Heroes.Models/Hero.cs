@@ -73,6 +73,11 @@ namespace Heroes.Models
         public IList<string> Roles { get; set; } = new List<string>();
 
         /// <summary>
+        /// Gets or sets the search text. Space delimited.
+        /// </summary>
+        public string SearchText { get; set; }
+
+        /// <summary>
         /// Gets or sets the additional hero units associated with this hero.
         /// </summary>
         public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
