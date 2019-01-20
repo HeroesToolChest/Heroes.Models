@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public interface IName
+    public interface INameable
     {
         /// <summary>
         /// Gets or sets the short name.

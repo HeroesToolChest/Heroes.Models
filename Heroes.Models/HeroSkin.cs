@@ -2,7 +2,7 @@
 
 namespace Heroes.Models
 {
-    public class HeroSkin : IName
+    public class HeroSkin : INameable
     {
         /// Gets or sets the short name.
         /// </summary>
