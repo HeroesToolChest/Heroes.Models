@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public class MatchAward : INameable
+    public class MatchAward : IExtractable
     {
         /// <summary>
         /// Gets or sets the short name.

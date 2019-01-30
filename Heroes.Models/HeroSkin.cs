@@ -2,7 +2,7 @@
 
 namespace Heroes.Models
 {
-    public class HeroSkin : INameable
+    public class HeroSkin : IExtractable
     {
         /// Gets or sets the short name.
         /// </summary>

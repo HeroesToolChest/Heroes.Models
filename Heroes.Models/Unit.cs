@@ -4,7 +4,7 @@ using Heroes.Models.AbilityTalents;
 
 namespace Heroes.Models
 {
-    public class Unit : INameable
+    public class Unit : IExtractable
     {
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
