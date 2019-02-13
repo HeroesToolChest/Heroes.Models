@@ -73,6 +73,11 @@ namespace Heroes.Models
         public IList<string> Roles { get; set; } = new List<string>();
 
         /// <summary>
+        /// Gets or sets the expanded role of the hero.
+        /// </summary>
+        public string ExpandedRole { get; set; }
+
+        /// <summary>
         /// Gets or sets the information text.
         /// </summary>
         public string InfoText { get; set; }
