@@ -104,7 +104,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public Ability GetAbility(string referenceNameId)
         {
-            if (string.IsNullOrEmpty(referenceNameId))
+            if (string.IsNullOrEmpty(referenceNameId) || Abilities == null)
                 return null;
 
             if (Abilities.TryGetValue(referenceNameId, out Ability ability))
@@ -120,6 +120,9 @@ namespace Heroes.Models
         /// <returns></returns>
         public Talent GetTalent(string referenceNameId)
         {
+            if (Talents == null)
+                return null;
+
             if (string.IsNullOrEmpty(referenceNameId))
             {
                 // no pick
