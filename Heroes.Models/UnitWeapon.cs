@@ -43,6 +43,9 @@
         /// <returns></returns>
         public double GetAttacksPerSecond()
         {
+            if (Period == 0)
+                return 0;
+
             return 1 / Period;
         }
 
