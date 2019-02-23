@@ -4,6 +4,12 @@ namespace Heroes.Models
 {
     public class HeroSkin : IExtractable
     {
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        public string Id { get; set; }
+
+        ///
         /// Gets or sets the short name.
         /// </summary>
         public string ShortName { get; set; }
@@ -28,6 +34,10 @@ namespace Heroes.Models
         /// </summary>
         public string SearchText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the attribute id.
+        /// </summary>
+        public string AttributeId { get; set; }
         /// <summary>
         /// Gets or sets the release date of the skin.
         /// </summary>
