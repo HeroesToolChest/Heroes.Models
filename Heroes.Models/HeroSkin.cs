@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models
 {
@@ -43,5 +44,15 @@ namespace Heroes.Models
         /// Gets or sets the release date of the skin.
         /// </summary>
         public DateTime? ReleaseDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rarity.
+        /// </summary>
+        public Rarity Rarity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of features.
+        /// </summary>
+        public IList<string> Features { get; set; } = new List<string>();
     }
 }
