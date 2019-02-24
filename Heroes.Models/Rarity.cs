@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public enum HeroRarity
+    public enum Rarity
     {
         None,
         Rare,

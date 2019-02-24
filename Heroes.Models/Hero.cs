@@ -55,7 +55,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the rarity of the hero.
         /// </summary>
-        public HeroRarity? Rarity { get; set; }
+        public Rarity? Rarity { get; set; }
 
         /// <summary>
         /// Gets or sets the ratings of the hero.
