@@ -2,7 +2,7 @@
 
 namespace Heroes.Models
 {
-    public class Mount
+    public class Mount : IExtractable
     {
         /// <summary>
         /// Gets or sets the mount id.
