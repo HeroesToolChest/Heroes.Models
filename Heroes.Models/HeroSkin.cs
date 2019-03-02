@@ -10,10 +10,10 @@ namespace Heroes.Models
         /// </summary>
         public string Id { get; set; }
 
-        ///
-        /// Gets or sets the short name.
+        /// <summary>
+        /// Gets or sets the hyperlink id.
         /// </summary>
-        public string ShortName { get; set; }
+        public string HyperlinkId { get; set; }
 
         /// <summary>
         /// Gets or sets the full name.

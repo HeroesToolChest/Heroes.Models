@@ -22,9 +22,9 @@ namespace Heroes.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the  shorthand name.
+        /// Gets or sets the hyperlink id.
         /// </summary>
-        public string ShortName { get; set; }
+        public string HyperlinkId { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the unit.

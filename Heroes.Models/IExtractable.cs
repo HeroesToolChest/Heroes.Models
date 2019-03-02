@@ -8,9 +8,9 @@
         string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the short name.
+        /// Gets or sets the hyperlink id.
         /// </summary>
-        string ShortName { get; set; }
+        string HyperlinkId { get; set; }
 
         /// <summary>
         /// Gets or sets the full name.
