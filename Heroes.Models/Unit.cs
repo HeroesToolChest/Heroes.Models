@@ -7,6 +7,11 @@ namespace Heroes.Models
     public class Unit : IExtractable
     {
         /// <summary>
+        /// Gets or sets the unique id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
         /// </summary>
         public string CUnitId { get; set; }

@@ -3,6 +3,11 @@
     public class MatchAward : IExtractable
     {
         /// <summary>
+        /// Gets or sets the unique id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the short name.
         /// </summary>
         public string ShortName { get; set; }

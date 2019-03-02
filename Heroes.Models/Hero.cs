@@ -7,6 +7,10 @@ namespace Heroes.Models
 {
     public class Hero : Unit
     {
+        private readonly string NoPickName = "No Pick";
+        private readonly string NoPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
+        private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
+
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
         /// </summary>
@@ -128,8 +132,8 @@ namespace Heroes.Models
                 // no pick
                 return new Talent()
                 {
-                    Name = "No Pick",
-                    IconFileName = "storm_ui_ingame_leader_talent_unselected.png",
+                    Name = NoPickName,
+                    IconFileName = NoPickTalentIconFileName,
                 };
             }
 
@@ -142,7 +146,7 @@ namespace Heroes.Models
                 return new Talent()
                 {
                     Name = referenceNameId,
-                    IconFileName = "storm_ui_icon_monk_trait1.png",
+                    IconFileName = UnknownTalentIconFileName,
                 };
             }
         }

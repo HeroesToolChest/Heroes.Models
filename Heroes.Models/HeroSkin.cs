@@ -6,9 +6,9 @@ namespace Heroes.Models
     public class HeroSkin : IExtractable
     {
         /// <summary>
-        /// Gets or sets the skin id.
+        /// Gets or sets the unique id.
         /// </summary>
-        public string SkinId { get; set; }
+        public string Id { get; set; }
 
         ///
         /// Gets or sets the short name.

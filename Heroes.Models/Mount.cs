@@ -5,11 +5,11 @@ namespace Heroes.Models
     public class Mount : IExtractable
     {
         /// <summary>
-        /// Gets or sets the mount id.
+        /// Gets or sets the unique id.
         /// </summary>
-        public string MountId { get; set; }
+        public string Id { get; set; }
 
-        ///
+        /// <summary>
         /// Gets or sets the short name.
         /// </summary>
         public string ShortName { get; set; }
