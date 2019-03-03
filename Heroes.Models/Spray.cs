@@ -53,5 +53,10 @@ namespace Heroes.Models
         /// Gets or sets the type of collection category.
         /// </summary>
         public string CollectionCategory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event name associated with this spray.
+        /// </summary>
+        public string EventName { get; set; }
     }
 }
