@@ -48,5 +48,20 @@ namespace Heroes.Models
         /// Gets or sets the rarity.
         /// </summary>
         public Rarity Rarity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of mount category.
+        /// </summary>
+        public string MountCategory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of collection category.
+        /// </summary>
+        public string CollectionCategory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event name associated with this mount.
+        /// </summary>
+        public string EventName { get; set; }
     }
 }
