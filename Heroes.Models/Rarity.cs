@@ -2,6 +2,7 @@
 {
     public enum Rarity
     {
+        Unknown,
         None,
         Rare,
         Epic,
