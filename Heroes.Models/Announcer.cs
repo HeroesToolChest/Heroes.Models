@@ -53,5 +53,15 @@ namespace Heroes.Models
         /// Gets or sets the image file name.
         /// </summary>
         public string ImageFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the gender of the announcer.
+        /// </summary>
+        public string Gender { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hero associated with the announcer.
+        /// </summary>
+        public string Hero { get; set; }
     }
 }
