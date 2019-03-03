@@ -43,5 +43,10 @@ namespace Heroes.Models
         /// Gets or sets the rarity.
         /// </summary>
         public Rarity Rarity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of collection category.
+        /// </summary>
+        public string CollectionCategory { get; set; }
     }
 }
