@@ -58,5 +58,10 @@ namespace Heroes.Models
         /// Gets or sets the event name associated with this spray.
         /// </summary>
         public string EventName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image file name.
+        /// </summary>
+        public string ImageFileName { get; set; }
     }
 }
