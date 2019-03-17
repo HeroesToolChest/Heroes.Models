@@ -27,17 +27,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets a collection of universal aliases for the emoticon.
         /// </summary>
-        public ICollection<string> UniversalAliases { get; set; }
+        public ICollection<string> UniversalAliases { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets a collection of localized aliases for the emoticon.
         /// </summary>
-        public ICollection<string> LocalizedAliases { get; set; }
+        public ICollection<string> LocalizedAliases { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets a collection of search texts for the emoticon.
         /// </summary>
-        public ICollection<string> SearchTexts { get; set; }
+        public ICollection<string> SearchTexts { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets if the aliases are case sensitive.
@@ -57,11 +57,11 @@ namespace Heroes.Models
         /// <summary>
         /// Get or sets the texture sheet associated with the emoticon.
         /// </summary>
-        public TextureSheet TextureSheet { get; set; }
+        public TextureSheet TextureSheet { get; set; } = new TextureSheet();
 
         /// <summary>
         /// Gets or sets the image properties of the emoticon.
         /// </summary>
-        public EmoticonImage Image { get; set; }
+        public EmoticonImage Image { get; set; } = new EmoticonImage();
     }
 }
