@@ -50,6 +50,11 @@ namespace Heroes.Models
         public string HeroId { get; set; }
 
         /// <summary>
+        /// Gets or sets the hero skin id assoicated with the emoticon.
+        /// </summary>
+        public string HeroSkinId { get; set; }
+
+        /// <summary>
         /// Get or sets the texture sheet associated with the emoticon.
         /// </summary>
         public TextureSheet TextureSheet { get; set; }
