@@ -35,6 +35,11 @@ namespace Heroes.Models
         public ICollection<string> LocalizedAliases { get; set; }
 
         /// <summary>
+        /// Gets or sets a collection of search texts for the emoticon.
+        /// </summary>
+        public ICollection<string> SearchTexts { get; set; }
+
+        /// <summary>
         /// Gets or sets if the aliases are case sensitive.
         /// </summary>
         public bool IsAliasCaseSensitive { get; set; }
