@@ -62,6 +62,6 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the image properties of the emoticon.
         /// </summary>
-        public (string FileName, int Index, int Width) Image { get; set; }
+        public EmoticonImage Image { get; set; }
     }
 }
