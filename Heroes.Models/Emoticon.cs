@@ -40,9 +40,9 @@ namespace Heroes.Models
         public bool IsAliasCaseSensitive { get; set; }
 
         /// <summary>
-        /// Gets or sets the hero associated with the emoticon.
+        /// Gets or sets the hero id associated with the emoticon.
         /// </summary>
-        public string AssociatedHero { get; set; }
+        public string HeroId { get; set; }
 
         /// <summary>
         /// Get or sets the texture sheet associated with the emoticon.
@@ -50,7 +50,7 @@ namespace Heroes.Models
         public TextureSheet TextureSheet { get; set; }
 
         /// <summary>
-        /// Gets or sets the iamge properties of the emoticon.
+        /// Gets or sets the image properties of the emoticon.
         /// </summary>
         public (string FileName, int Index, int Width) Image { get; set; }
     }
