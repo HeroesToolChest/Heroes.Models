@@ -1,22 +1,7 @@
 ﻿namespace Heroes.Models
 {
-    public class MatchAward : IExtractable
+    public class MatchAward : ExtractableBase<MatchAward>, IExtractable
     {
-        /// <summary>
-        /// Gets or sets the unique id.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hyperlink id.
-        /// </summary>
-        public string HyperlinkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the full name.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets the MVP screen image file name.
         /// </summary>

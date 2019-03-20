@@ -4,27 +4,12 @@ using Heroes.Models.AbilityTalents;
 
 namespace Heroes.Models
 {
-    public class Unit : IExtractable
+    public class Unit : ExtractableBase<Unit>, IExtractable
     {
-        /// <summary>
-        /// Gets or sets the unique id.
-        /// </summary>
-        public string Id { get; set; }
-
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
         /// </summary>
         public string CUnitId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the real in game name.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hyperlink id.
-        /// </summary>
-        public string HyperlinkId { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the unit.

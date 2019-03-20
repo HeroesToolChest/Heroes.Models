@@ -2,23 +2,8 @@
 
 namespace Heroes.Models
 {
-    public class Emoticon : IExtractable
+    public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     {
-        /// <summary>
-        /// Gets or sets the unique id.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hyperlink id.
-        /// </summary>
-        public string HyperlinkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the full name. Also known as Expression.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>

@@ -3,23 +3,8 @@ using System.Collections.Generic;
 
 namespace Heroes.Models
 {
-    public class HeroSkin : IExtractable
+    public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     {
-        /// <summary>
-        /// Gets or sets the unique id.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hyperlink id.
-        /// </summary>
-        public string HyperlinkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the full name.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets the sort name used for sorting the hero skins.
         /// </summary>
