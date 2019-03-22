@@ -25,7 +25,7 @@ namespace Heroes.Models
         public string AttributeId { get; set; }
 
         /// <summary>
-        /// Gets or sets the release date of the banner.
+        /// Gets or sets the release date.
         /// </summary>
         public DateTime? ReleaseDate { get; set; }
 
