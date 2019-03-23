@@ -31,8 +31,8 @@ namespace Heroes.Models
         public string EventName { get; set; }
 
         /// <summary>
-        /// Gets or sets the emoticons in this emoticon pack.
+        /// Gets or sets the emoticons ids in this emoticon pack.
         /// </summary>
-        public ICollection<string> EmoticonCollection { get; set; } = new List<string>();
+        public ICollection<string> EmoticonIds { get; set; } = new List<string>();
     }
 }
