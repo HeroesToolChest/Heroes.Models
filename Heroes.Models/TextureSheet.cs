@@ -26,5 +26,10 @@
         /// Gets or sets the duration per frame.
         /// </summary>
         public int DurationPerFrame { get; set; }
+
+        /// <summary>
+        /// Get or sets width of the frame.
+        /// </summary>
+        public int Width { get; set; }
     }
 }
