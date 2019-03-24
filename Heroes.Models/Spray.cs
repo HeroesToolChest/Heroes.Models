@@ -48,5 +48,15 @@ namespace Heroes.Models
         /// Gets or sets the image file name.
         /// </summary>
         public string ImageFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the animation count.
+        /// </summary>
+        public int AnimationCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the animation duration.
+        /// </summary>
+        public int AnimationDuration { get; set; }
     }
 }
