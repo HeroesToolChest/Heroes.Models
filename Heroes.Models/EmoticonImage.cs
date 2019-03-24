@@ -16,5 +16,15 @@
         /// Get or sets the width of the image.
         /// </summary>
         public int Width { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount of frames.
+        /// </summary>
+        public int? Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets the duration per frame.
+        /// </summary>
+        public int? DurationPerFrame { get; set; }
     }
 }
