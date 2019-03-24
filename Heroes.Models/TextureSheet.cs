@@ -16,5 +16,15 @@
         /// Gets or sets the number of column in the texture sheet.
         /// </summary>
         public int Columns { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount of frames.
+        /// </summary>
+        public int Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets the duration per frame.
+        /// </summary>
+        public int DurationPerFrame { get; set; }
     }
 }
