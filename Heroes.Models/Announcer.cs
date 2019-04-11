@@ -47,6 +47,6 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the hero associated with the announcer.
         /// </summary>
-        public string Hero { get; set; }
+        public string HeroId { get; set; }
     }
 }
