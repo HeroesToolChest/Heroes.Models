@@ -62,6 +62,16 @@ namespace Heroes.Models
         public IList<UnitWeapon> Weapons { get; set; } = new List<UnitWeapon>();
 
         /// <summary>
+        /// Gets or sets a list of attributes.
+        /// </summary>
+        public ICollection<string> Attributes { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Gets or sets the damage type of this unit.
+        /// </summary>
+        public string DamageType { get; set; }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>
