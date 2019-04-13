@@ -72,6 +72,11 @@ namespace Heroes.Models
         public string DamageType { get; set; }
 
         /// <summary>
+        /// Gets or sets the target info panel image file name.
+        /// </summary>
+        public string TargetInfoPanelImageFileName { get; set; }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>
