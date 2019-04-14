@@ -22,11 +22,6 @@ namespace Heroes.Models
         public ICollection<string> HeroDescriptors { get; set; } = new List<string>();
 
         /// <summary>
-        /// Gets or sets the unit type: Melee or ranged.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets the Life properties.
         /// </summary>
         public UnitLife Life { get; set; } = new UnitLife();
@@ -72,9 +67,9 @@ namespace Heroes.Models
         public string DamageType { get; set; }
 
         /// <summary>
-        /// Gets or sets the target info panel image file name.
+        /// Gets or sets the target info panel image file name(s).
         /// </summary>
-        public string TargetInfoPanelImageFileName { get; set; }
+        public ICollection<string> TargetInfoPanelImageFileNames { get; set; }
 
         /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).

@@ -97,6 +97,11 @@ namespace Heroes.Models
         public string SearchText { get; set; }
 
         /// <summary>
+        /// Gets or sets the unit type: Melee or ranged.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Gets or sets the additional hero units associated with this hero.
         /// </summary>
         public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
