@@ -59,7 +59,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets a list of attributes.
         /// </summary>
-        public ICollection<string> Attributes { get; set; } = new List<string>();
+        public HashSet<string> Attributes { get; set; } = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the damage type of this unit.
@@ -69,7 +69,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the target info panel image file name(s).
         /// </summary>
-        public ICollection<string> TargetInfoPanelImageFileNames { get; set; } = new List<string>();
+        public HashSet<string> TargetInfoPanelImageFileNames { get; set; } = new HashSet<string>();
 
         /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
