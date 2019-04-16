@@ -11,5 +11,8 @@
         Active,
         Passive,
         B,
+        Stop,
+        Cancel,
+        Interact,
     }
 }
