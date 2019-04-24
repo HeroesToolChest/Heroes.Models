@@ -21,5 +21,8 @@
         Spray,
         Voice,
         ForceMove,
+
+        Standard = Q | W | E | Heroic | Z | Trait | Active | Passive | B,
+        Misc = Attack | Stop | Stop | Hold | Cancel | Interact | Taunt | Dance | Spray | Voice | ForceMove,
     }
 }
