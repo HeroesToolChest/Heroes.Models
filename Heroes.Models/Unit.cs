@@ -69,7 +69,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the target info panel image file name.
         /// </summary>
-        public string TargetInfoPanelImageFileNames { get; set; }
+        public string TargetInfoPanelImageFileName { get; set; }
 
         /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
