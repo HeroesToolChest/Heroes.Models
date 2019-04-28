@@ -72,6 +72,16 @@ namespace Heroes.Models
         public string TargetInfoPanelImageFileName { get; set; }
 
         /// <summary>
+        /// Gets whether this unit is unique to a map.
+        /// </summary>
+        public bool IsMapUnique => !string.IsNullOrEmpty(MapName);
+
+        /// <summary>
+        /// Gets or sets the map name that is associated with this unit.
+        /// </summary>
+        public string MapName { get; set; }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>

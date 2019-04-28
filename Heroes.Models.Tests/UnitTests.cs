@@ -66,6 +66,15 @@ namespace Heroes.Models.Tests
             Assert.IsNull(NullUnit.ParentLinkedWeapons());
         }
 
+        [TestMethod]
+        public void IsMapUniqueTests()
+        {
+            Assert.IsFalse(Unit.IsMapUnique);
+
+            Unit.MapName = "map";
+            Assert.IsTrue(Unit.IsMapUnique);
+        }
+
         private void AddAbilities()
         {
             Unit.Abilities.Add("Abil1", new Ability()
