@@ -23,7 +23,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the collection of attribute factors.
         /// </summary>
-        public ICollection<WeaponAttributeFactor> AttributeFactor { get; set; } = new List<WeaponAttributeFactor>();
+        public ICollection<WeaponAttributeFactor> AttributeFactors { get; set; } = new List<WeaponAttributeFactor>();
 
         /// <summary>
         /// Gets or sets the time between attacks.
