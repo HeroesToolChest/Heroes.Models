@@ -34,7 +34,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the armor.
         /// </summary>
-        public UnitArmor Armor { get; set; } = new UnitArmor();
+        public ICollection<UnitArmor> Armor { get; set; } = new List<UnitArmor>();
 
         public double Radius { get; set; }
 
