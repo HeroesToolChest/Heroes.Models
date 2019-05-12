@@ -3,6 +3,11 @@
     public class UnitArmor
     {
         /// <summary>
+        /// Gets or sets the type of armor (Hero, Merc, etc...)
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Gets or sets the physical (basic) armor.
         /// </summary>
         public int BasicArmor { get; set; }
