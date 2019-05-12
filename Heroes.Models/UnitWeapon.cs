@@ -49,6 +49,19 @@
             return 1 / Period;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!(obj is UnitWeapon item))
+                return false;
+
+            return WeaponNameId == item.WeaponNameId;
+        }
+
+        public override int GetHashCode()
+        {
+            return WeaponNameId.GetHashCode();
+        }
+
         public override string ToString()
         {
             return WeaponNameId;

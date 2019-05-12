@@ -46,5 +46,18 @@
         /// Gets or sets the AbilityTalentTooltip object.
         /// </summary>
         public AbilityTalentTooltip Tooltip { get; set; } = new AbilityTalentTooltip();
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is AbilityTalentBase item))
+                return false;
+
+            return ReferenceNameId == item.ReferenceNameId;
+        }
+
+        public override int GetHashCode()
+        {
+            return ReferenceNameId.GetHashCode();
+        }
     }
 }

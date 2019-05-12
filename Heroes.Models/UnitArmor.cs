@@ -21,5 +21,23 @@
         /// Gets or sets the Splash armor.
         /// </summary>
         public int SplashArmor { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is UnitArmor item))
+                return false;
+
+            return Type == item.Type;
+        }
+
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"Type: {Type}, Basic: {BasicArmor}, Ability: {AbilityArmor}, Splash: {SplashArmor}";
+        }
     }
 }
