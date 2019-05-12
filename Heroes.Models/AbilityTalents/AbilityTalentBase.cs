@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models.AbilityTalents
+﻿using System;
+
+namespace Heroes.Models.AbilityTalents
 {
     public class AbilityTalentBase
     {
@@ -52,7 +54,7 @@
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return ReferenceNameId == item.ReferenceNameId;
+            return ReferenceNameId.Equals(item.ReferenceNameId, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()

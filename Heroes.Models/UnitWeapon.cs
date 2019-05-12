@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models
+﻿using System;
+
+namespace Heroes.Models
 {
     public class UnitWeapon
     {
@@ -54,7 +56,7 @@
             if (!(obj is UnitWeapon item))
                 return false;
 
-            return WeaponNameId == item.WeaponNameId;
+            return WeaponNameId.Equals(item.WeaponNameId, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()

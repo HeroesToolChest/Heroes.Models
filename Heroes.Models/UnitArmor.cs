@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models
+﻿using System;
+
+namespace Heroes.Models
 {
     public class UnitArmor
     {
@@ -27,7 +29,7 @@
             if (!(obj is UnitArmor item))
                 return false;
 
-            return Type == item.Type;
+            return Type.Equals(item.Type, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()

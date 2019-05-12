@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models
+﻿using System;
+
+namespace Heroes.Models
 {
     public class ExtractableBase<T>
         where T : IExtractable
@@ -20,7 +22,7 @@
 
         public override bool Equals(object obj)
         {
-            return Id == ((T)obj).Id;
+            return Id.Equals(((T)obj).Id, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()
