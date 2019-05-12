@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models
 {
@@ -18,6 +19,11 @@ namespace Heroes.Models
         /// Gets or sets the amount of damage the attack deals.
         /// </summary>
         public double Damage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of attribute factors.
+        /// </summary>
+        public ICollection<WeaponAttributeFactor> AttributeFactor { get; set; } = new List<WeaponAttributeFactor>();
 
         /// <summary>
         /// Gets or sets the time between attacks.
