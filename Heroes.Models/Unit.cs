@@ -217,6 +217,18 @@ namespace Heroes.Models
         }
 
         /// <summary>
+        /// Adds a range of attribute values. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddRangeAttribute(IEnumerable<string> values)
+        {
+            foreach (string item in values)
+            {
+                AttributeList.Add(item);
+            }
+        }
+
+        /// <summary>
         /// Removes an attribute value.
         /// </summary>
         /// <param name="value"></param>
