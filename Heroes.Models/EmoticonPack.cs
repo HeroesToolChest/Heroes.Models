@@ -5,6 +5,8 @@ namespace Heroes.Models
 {
     public class EmoticonPack : ExtractableBase<EmoticonPack>, IExtractable
     {
+        private readonly HashSet<string> EmoticonIdList = new HashSet<string>();
+
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>
@@ -31,8 +33,27 @@ namespace Heroes.Models
         public string EventName { get; set; }
 
         /// <summary>
-        /// Gets or sets the emoticons ids in this emoticon pack.
+        /// Gets a collection of emoticons ids in this emoticon pack.
         /// </summary>
-        public ICollection<string> EmoticonIds { get; set; } = new List<string>();
+        public IEnumerable<string> EmoticonIds => EmoticonIdList;
+
+        /// <summary>
+        /// Adds an emoticon id value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddEmoticonId(string value)
+        {
+            EmoticonIdList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool EmoticonIdExists(string value)
+        {
+            return EmoticonIdList.Contains(value);
+        }
     }
 }
