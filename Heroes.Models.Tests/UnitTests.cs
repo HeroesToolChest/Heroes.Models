@@ -15,6 +15,7 @@ namespace Heroes.Models.Tests
         {
             AddAbilities();
             AddWeapons();
+            AddArmor();
         }
 
         [TestMethod]
@@ -82,6 +83,17 @@ namespace Heroes.Models.Tests
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
+            }));
+        }
+
+        [TestMethod]
+        public void UnitArmorExistsTest()
+        {
+            Assert.IsTrue(Unit.UnitArmorExists(new UnitArmor()
+            {
+                Type = "Structure",
+                AbilityArmor = 5,
+                SplashArmor = 15,
             }));
         }
 
@@ -174,6 +186,34 @@ namespace Heroes.Models.Tests
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
+            });
+        }
+
+        private void AddArmor()
+        {
+            Unit.AddUnitArmor(new UnitArmor()
+            {
+                Type = "Minion",
+                AbilityArmor = 5,
+                BasicArmor = 10,
+                SplashArmor = 15,
+            });
+            Unit.AddUnitArmor(new UnitArmor()
+            {
+                Type = "Heroic",
+                AbilityArmor = 5,
+            });
+            Unit.AddUnitArmor(new UnitArmor()
+            {
+                Type = "Structure",
+                AbilityArmor = 5,
+                SplashArmor = 15,
+            });
+            Unit.AddUnitArmor(new UnitArmor()
+            {
+                Type = "Structure",
+                AbilityArmor = 5,
+                SplashArmor = 15,
             });
         }
     }

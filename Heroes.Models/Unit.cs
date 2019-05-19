@@ -7,6 +7,7 @@ namespace Heroes.Models
     public class Unit : ExtractableBase<Unit>, IExtractable
     {
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
+        private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -36,7 +37,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the armor.
         /// </summary>
-        public ICollection<UnitArmor> Armor { get; set; } = new List<UnitArmor>();
+        public IEnumerable<UnitArmor> Armor => UnitArmorList;
 
         public double Radius { get; set; }
 
@@ -146,6 +147,28 @@ namespace Heroes.Models
         public bool UnitWeaponExists(UnitWeapon unitWeapon)
         {
             return UnitWeaponList.Contains(unitWeapon);
+        }
+
+        /// <summary>
+        /// Adds a <see cref="UnitArmor"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="unitArmor"></param>
+        public void AddUnitArmor(UnitArmor unitArmor)
+        {
+            if (UnitArmorList.Contains(unitArmor))
+                UnitArmorList.Remove(unitArmor);
+
+            UnitArmorList.Add(unitArmor);
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="UnitArmor"/> exists.
+        /// </summary>
+        /// <param name="unitArmor"></param>
+        /// <returns></returns>
+        public bool UnitArmorExists(UnitArmor unitArmor)
+        {
+            return UnitArmorList.Contains(unitArmor);
         }
     }
 }
