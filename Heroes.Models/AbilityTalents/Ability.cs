@@ -4,6 +4,8 @@ namespace Heroes.Models.AbilityTalents
 {
     public class Ability : AbilityTalentBase
     {
+        private HashSet<string> TalentIdUpgradeList = new HashSet<string>();
+
         public Ability() { }
 
         public Ability(AbilityTalentBase talentBase)
@@ -33,10 +35,29 @@ namespace Heroes.Models.AbilityTalents
         public string ButtonName { get; set; }
 
         /// <summary>
-        /// Gets or sets the talent ids that are associated with the ability.
+        /// Gets a collectin of talent ids that are associated with the ability.
         /// </summary>
-        public HashSet<string> TalentIdUpgrades { get; set; } = new HashSet<string>();
+        public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
+
+        /// <summary>
+        /// Adds a talent id upgrade value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddTalentIdUpgrade(string value)
+        {
+            TalentIdUpgradeList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool TalentIdUpgradeExists(string value)
+        {
+            return TalentIdUpgradeList.Contains(value);
+        }
     }
 }

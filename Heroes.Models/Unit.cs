@@ -6,8 +6,12 @@ namespace Heroes.Models
 {
     public class Unit : ExtractableBase<Unit>, IExtractable
     {
+        private readonly HashSet<string> HeroDescriptorsList = new HashSet<string>();
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
         private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
+        private readonly HashSet<string> AttributeList = new HashSet<string>();
+
+        private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -20,9 +24,9 @@ namespace Heroes.Models
         public TooltipDescription Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the hero play styles.
+        /// Gets a collection of the hero play styles.
         /// </summary>
-        public ICollection<string> HeroDescriptors { get; set; } = new List<string>();
+        public IEnumerable<string> HeroDescriptors => HeroDescriptorsList;
 
         /// <summary>
         /// Gets or sets the Life properties.
@@ -47,7 +51,15 @@ namespace Heroes.Models
 
         public double Sight { get; set; }
 
-        public Dictionary<string, Ability> Abilities { get; set; } = new Dictionary<string, Ability>();
+        /// <summary>
+        /// Gets a collection of abilities.
+        /// </summary>
+        public IEnumerable<Ability> Abilities => AbilitiesById.Values;
+
+        /// <summary>
+        /// Gets a collection of ability ids.
+        /// </summary>
+        public IEnumerable<string> AbilityIds => AbilitiesById.Keys;
 
         /// <summary>
         /// Gets or sets the parent link of this unit.
@@ -60,9 +72,9 @@ namespace Heroes.Models
         public IEnumerable<UnitWeapon> Weapons => UnitWeaponList;
 
         /// <summary>
-        /// Gets or sets a list of attributes.
+        /// Gets a collection of attributes.
         /// </summary>
-        public HashSet<string> Attributes { get; set; } = new HashSet<string>();
+        public IEnumerable<string> Attributes => AttributeList;
 
         /// <summary>
         /// Gets or sets the damage type of this unit.
@@ -94,9 +106,9 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
-        public IList<Ability> PrimaryAbilities(AbilityTier tier)
+        public IEnumerable<Ability> PrimaryAbilities(AbilityTier tier)
         {
-            return Abilities?.Values.Where(x => x.Tier == tier && string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.Tier == tier && string.IsNullOrEmpty(x.ParentLink)).ToList();
         }
 
         /// <summary>
@@ -104,9 +116,9 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
-        public IList<Ability> SubAbilities(AbilityTier tier)
+        public IEnumerable<Ability> SubAbilities(AbilityTier tier)
         {
-            return Abilities?.Values.Where(x => x.Tier == tier && !string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.Tier == tier && !string.IsNullOrEmpty(x.ParentLink)).ToList();
         }
 
         /// <summary>
@@ -115,7 +127,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public ILookup<string, Ability> ParentLinkedAbilities()
         {
-           return Abilities?.Values.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+           return Abilities?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
         /// <summary>
@@ -133,6 +145,25 @@ namespace Heroes.Models
         }
 
         /// <summary>
+        /// Adds a descriptor value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddHeroDescriptor(string value)
+        {
+            HeroDescriptorsList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool HeroDescriptorExists(string value)
+        {
+            return HeroDescriptorsList.Contains(value);
+        }
+
+        /// <summary>
         /// Adds a <see cref="UnitWeapon"/>. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="unitWeapon"></param>
@@ -147,7 +178,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the <see cref="UnitWeapon"/> exists.
         /// </summary>
-        /// <param name="unitWeapon"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         public bool UnitWeaponExists(UnitWeapon unitWeapon)
         {
@@ -174,6 +205,55 @@ namespace Heroes.Models
         public bool UnitArmorExists(UnitArmor unitArmor)
         {
             return UnitArmorList.Contains(unitArmor);
+        }
+
+        /// <summary>
+        /// Adds an attribute value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddAttribute(string value)
+        {
+            AttributeList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool AttributeExists(string value)
+        {
+            return AttributeList.Contains(value);
+        }
+
+        /// <summary>
+        /// Adds an <see cref="Ability"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="ability"></param>
+        public void AddAbility(Ability ability)
+        {
+            AbilitiesById[ability.ReferenceNameId] = ability;
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool AbilityExists(string abilityId)
+        {
+            return AbilitiesById.ContainsKey(abilityId);
+        }
+
+        /// <summary>
+        /// Try to get the ability from the specified ability id.
+        /// </summary>
+        /// <param name="abilityId"></param>
+        /// <param name="ability"></param>
+        /// <returns></returns>
+        public bool TryGetAbility(string abilityId, out Ability ability)
+        {
+            return AbilitiesById.TryGetValue(abilityId, out ability);
         }
     }
 }
