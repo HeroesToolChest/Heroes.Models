@@ -217,6 +217,15 @@ namespace Heroes.Models
         }
 
         /// <summary>
+        /// Removes an attribute value.
+        /// </summary>
+        /// <param name="value"></param>
+        public void RemoveAttribute(string value)
+        {
+            AttributeList.Remove(value);
+        }
+
+        /// <summary>
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
