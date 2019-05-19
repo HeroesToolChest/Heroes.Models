@@ -255,5 +255,18 @@ namespace Heroes.Models
         {
             return AbilitiesById.TryGetValue(abilityId, out ability);
         }
+
+        /// <summary>
+        /// Returns an ability from the ability id.
+        /// </summary>
+        /// <param name="abilityId"></param>
+        /// <returns></returns>
+        public Ability GetAbility(string abilityId)
+        {
+            if (AbilitiesById.TryGetValue(abilityId, out Ability ability))
+                return ability;
+            else
+                return null;
+        }
     }
 }

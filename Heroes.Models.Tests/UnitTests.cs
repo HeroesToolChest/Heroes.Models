@@ -21,28 +21,28 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetPrimaryAbilitiesTests()
         {
-            IList<Ability> basicAbilities = Unit.PrimaryAbilities(AbilityTier.Basic);
+            IList<Ability> basicAbilities = Unit.PrimaryAbilities(AbilityTier.Basic).ToList();
             Assert.AreEqual(3, basicAbilities.Count);
 
-            IList<Ability> heroicAbilities = Unit.PrimaryAbilities(AbilityTier.Heroic);
+            IList<Ability> heroicAbilities = Unit.PrimaryAbilities(AbilityTier.Heroic).ToList();
             Assert.AreEqual(2, heroicAbilities.Count);
 
-            IList<Ability> hearthAbilities = Unit.PrimaryAbilities(AbilityTier.Hearth);
+            IList<Ability> hearthAbilities = Unit.PrimaryAbilities(AbilityTier.Hearth).ToList();
             Assert.AreEqual(0, hearthAbilities.Count);
 
-            Assert.IsNull(NullUnit.PrimaryAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(NullUnit.PrimaryAbilities(AbilityTier.Mount));
         }
 
         [TestMethod]
         public void GetSubAbilitiesTests()
         {
-            IList<Ability> basicAbilities = Unit.SubAbilities(AbilityTier.Basic);
+            IList<Ability> basicAbilities = Unit.SubAbilities(AbilityTier.Basic).ToList();
             Assert.AreEqual(2, basicAbilities.Count);
 
-            IList<Ability> mountAbilities = Unit.SubAbilities(AbilityTier.Mount);
+            IList<Ability> mountAbilities = Unit.SubAbilities(AbilityTier.Mount).ToList();
             Assert.AreEqual(0, mountAbilities.Count);
 
-            Assert.IsNull(NullUnit.SubAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(NullUnit.SubAbilities(AbilityTier.Mount));
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace Heroes.Models.Tests
             Assert.IsTrue(parentLinkedAbilities.Contains("Abil7"));
             Assert.AreEqual(2, parentLinkedAbilities["Abil7"].Count());
 
-            Assert.IsNull(NullUnit.ParentLinkedAbilities());
+            Assert.IsNotNull(NullUnit.ParentLinkedAbilities());
         }
 
         [TestMethod]
@@ -99,61 +99,68 @@ namespace Heroes.Models.Tests
 
         private void AddAbilities()
         {
-            Unit.Abilities.Add("Abil1", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil2", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil3", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil3",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil4", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil4",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil5", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil5",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil6", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil6",
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("Abil7", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil7",
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
             });
 
-            Unit.Abilities.Add("SubAbil1", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "SubAbil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
-            Unit.Abilities.Add("SubAbil2", new Ability()
+            Unit.AddAbility(new Ability()
             {
+                ReferenceNameId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
-
-            NullUnit.Abilities = null;
         }
 
         private void AddWeapons()

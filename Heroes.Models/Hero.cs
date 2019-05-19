@@ -107,22 +107,6 @@ namespace Heroes.Models
         public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
 
         /// <summary>
-        /// Returns an ability object.
-        /// </summary>
-        /// <param name="referenceNameId">Reference name of the ability.</param>
-        /// <returns></returns>
-        public Ability GetAbility(string referenceNameId)
-        {
-            if (string.IsNullOrEmpty(referenceNameId) || Abilities == null)
-                return null;
-
-            if (Abilities.TryGetValue(referenceNameId, out Ability ability))
-                return ability;
-            else
-                return null;
-        }
-
-        /// <summary>
         /// Returns a talent object.
         /// </summary>
         /// <param name="referenceNameId">Reference name of the talent.</param>

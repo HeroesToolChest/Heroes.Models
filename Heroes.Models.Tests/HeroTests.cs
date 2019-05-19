@@ -54,61 +54,68 @@ namespace Heroes.Models.Tests
 
         private void AddAbilities()
         {
-            Hero.Abilities.Add("Abil1", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil2", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil3", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil3",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil4", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil4",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil5", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil5",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil6", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil6",
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("Abil7", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "Abil7",
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
             });
 
-            Hero.Abilities.Add("SubAbil1", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "SubAbil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
-            Hero.Abilities.Add("SubAbil2", new Ability()
+            Hero.AddAbility(new Ability()
             {
+                ReferenceNameId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
-
-            NullHero.Abilities = null;
         }
 
         private void AddTalents()
