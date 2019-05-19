@@ -35,7 +35,7 @@ namespace Heroes.Models
         public UnitEnergy Energy { get; set; } = new UnitEnergy();
 
         /// <summary>
-        /// Gets or sets the armor.
+        /// Gets a collection unit armor.
         /// </summary>
         public IEnumerable<UnitArmor> Armor => UnitArmorList;
 

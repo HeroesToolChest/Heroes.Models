@@ -5,6 +5,8 @@ namespace Heroes.Models
 {
     public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     {
+        private readonly HashSet<string> FeaturesList = new HashSet<string>();
+
         /// <summary>
         /// Gets or sets the sort name used for sorting the hero skins.
         /// </summary>
@@ -36,8 +38,27 @@ namespace Heroes.Models
         public Rarity Rarity { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of features.
+        /// Gets a collection of features.
         /// </summary>
-        public IList<string> Features { get; set; } = new List<string>();
+        public IEnumerable<string> Features => FeaturesList;
+
+        /// <summary>
+        /// Adds a feature value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddFeature(string value)
+        {
+            FeaturesList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool FeatureExists(string value)
+        {
+            return FeaturesList.Contains(value);
+        }
     }
 }
