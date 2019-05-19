@@ -4,8 +4,8 @@ namespace Heroes.Models
 {
     public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     {
-        private readonly HashSet<string> UniversalAliaseList = new HashSet<string>();
-        private readonly HashSet<string> LocalizedAliaseList = new HashSet<string>();
+        private readonly HashSet<string> UniversalAliasList = new HashSet<string>();
+        private readonly HashSet<string> LocalizedAliasList = new HashSet<string>();
         private readonly HashSet<string> SearchTextList = new HashSet<string>();
 
         /// <summary>
@@ -16,12 +16,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of universal aliases for the emoticon.
         /// </summary>
-        public IEnumerable<string> UniversalAliases => UniversalAliaseList;
+        public IEnumerable<string> UniversalAliases => UniversalAliasList;
 
         /// <summary>
         /// Gets a collection of localized aliases for the emoticon.
         /// </summary>
-        public IEnumerable<string> LocalizedAliases => LocalizedAliaseList;
+        public IEnumerable<string> LocalizedAliases => LocalizedAliasList;
 
         /// <summary>
         /// Gets a collection of search texts for the emoticon.
@@ -57,9 +57,9 @@ namespace Heroes.Models
         /// Adds a universal aliase value. Replaces if value already exists in collection.
         /// </summary>
         /// <param name="value"></param>
-        public void AddUniversalAliase(string value)
+        public void AddUniversalAlias(string value)
         {
-            UniversalAliaseList.Add(value);
+            UniversalAliasList.Add(value);
         }
 
         /// <summary>
@@ -67,18 +67,18 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool UniversalAliaseExists(string value)
+        public bool UniversalAliasExists(string value)
         {
-            return UniversalAliaseList.Contains(value);
+            return UniversalAliasList.Contains(value);
         }
 
         /// <summary>
         /// Adds a localized aliase value. Replaces if value already exists in collection.
         /// </summary>
         /// <param name="value"></param>
-        public void AddLocalizedAliase(string value)
+        public void AddLocalizedAlias(string value)
         {
-            LocalizedAliaseList.Add(value);
+            LocalizedAliasList.Add(value);
         }
 
         /// <summary>
@@ -86,9 +86,9 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool LocalizedAliaseExists(string value)
+        public bool LocalizedAliasExists(string value)
         {
-            return LocalizedAliaseList.Contains(value);
+            return LocalizedAliasList.Contains(value);
         }
 
         /// <summary>
