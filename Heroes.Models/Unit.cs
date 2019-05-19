@@ -272,6 +272,9 @@ namespace Heroes.Models
         /// <returns></returns>
         public Ability GetAbility(string abilityId)
         {
+            if (string.IsNullOrEmpty(abilityId))
+                return null;
+
             if (AbilitiesById.TryGetValue(abilityId, out Ability ability))
                 return ability;
             else
