@@ -85,6 +85,11 @@ namespace Heroes.Models
         public string MapName { get; set; }
 
         /// <summary>
+        /// Gets or sets the scaling behavior link.
+        /// </summary>
+        public string ScalingBehaviorLink { get; set; }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>
