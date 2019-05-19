@@ -25,8 +25,10 @@ namespace Heroes.Models.AbilityTalents
         Spray = 1 << 16,
         Voice = 1 << 17,
         ForceMove = 1 << 18,
+        MapMechanic = 1 << 19,
 
         Standard = Q | W | E | Heroic | Z | Trait | Active | Passive | B,
-        Misc = Attack | Stop | Stop | Hold | Cancel | Interact | Taunt | Dance | Spray | Voice | ForceMove,
+        Special = Taunt | Dance | Spray | Voice | MapMechanic,
+        Misc = Attack | Stop | Stop | Hold | Cancel | Interact | ForceMove,
     }
 }
