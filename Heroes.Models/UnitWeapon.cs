@@ -23,7 +23,7 @@ namespace Heroes.Models
         public double Damage { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of attribute factors.
+        /// Gets the collection of attribute factors.
         /// </summary>
         public IEnumerable<WeaponAttributeFactor> AttributeFactors => WeaponAttributeFactorList;
 
@@ -94,7 +94,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="weaponAttributeFactor"></param>
         /// <returns></returns>
-        public bool AttributeFactorExits(WeaponAttributeFactor weaponAttributeFactor)
+        public bool AttributeFactorExists(WeaponAttributeFactor weaponAttributeFactor)
         {
             return WeaponAttributeFactorList.Contains(weaponAttributeFactor);
         }

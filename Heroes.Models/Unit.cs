@@ -6,6 +6,8 @@ namespace Heroes.Models
 {
     public class Unit : ExtractableBase<Unit>, IExtractable
     {
+        private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
+
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
         /// </summary>
@@ -52,9 +54,9 @@ namespace Heroes.Models
         public string ParentLink { get; set; }
 
         /// <summary>
-        /// Gets or sets a list of basic attack weapons.
+        /// Gets a collection of basic attack weapons.
         /// </summary>
-        public IList<UnitWeapon> Weapons { get; set; } = new List<UnitWeapon>();
+        public IEnumerable<UnitWeapon> Weapons => UnitWeaponList;
 
         /// <summary>
         /// Gets or sets a list of attributes.
@@ -116,12 +118,34 @@ namespace Heroes.Models
         /// <returns></returns>
         public ILookup<string, UnitWeapon> ParentLinkedWeapons()
         {
-            return Weapons?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+            return UnitWeaponList?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
         public override string ToString()
         {
             return Name;
+        }
+
+        /// <summary>
+        /// Adds a <see cref="UnitWeapon"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="unitWeapon"></param>
+        public void AddUnitWeapon(UnitWeapon unitWeapon)
+        {
+            if (UnitWeaponList.Contains(unitWeapon))
+                UnitWeaponList.Remove(unitWeapon);
+
+            UnitWeaponList.Add(unitWeapon);
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="UnitWeapon"/> exists.
+        /// </summary>
+        /// <param name="unitWeapon"></param>
+        /// <returns></returns>
+        public bool UnitWeaponExists(UnitWeapon unitWeapon)
+        {
+            return UnitWeaponList.Contains(unitWeapon);
         }
     }
 }

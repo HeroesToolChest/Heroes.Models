@@ -63,7 +63,7 @@ namespace Heroes.Models.Tests
             Assert.IsTrue(parentLinkedWeapons.Contains("Weapon2"));
             Assert.AreEqual(2, parentLinkedWeapons["Weapon2"].Count());
 
-            Assert.IsNull(NullUnit.ParentLinkedWeapons());
+            Assert.IsNotNull(NullUnit.ParentLinkedWeapons());
         }
 
         [TestMethod]
@@ -73,6 +73,16 @@ namespace Heroes.Models.Tests
 
             Unit.MapName = "map";
             Assert.IsTrue(Unit.IsMapUnique);
+        }
+
+        [TestMethod]
+        public void UnitWeaponExistsTest()
+        {
+            Assert.IsTrue(Unit.UnitWeaponExists(new UnitWeapon()
+            {
+                WeaponNameId = "Weapon1",
+                ParentLink = string.Empty,
+            }));
         }
 
         private void AddAbilities()
@@ -136,31 +146,35 @@ namespace Heroes.Models.Tests
 
         private void AddWeapons()
         {
-            Unit.Weapons.Add(new UnitWeapon()
+            Unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
             });
 
-            Unit.Weapons.Add(new UnitWeapon()
+            Unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon2",
                 ParentLink = string.Empty,
             });
 
-            Unit.Weapons.Add(new UnitWeapon()
+            Unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon3",
                 ParentLink = "Weapon2",
             });
 
-            Unit.Weapons.Add(new UnitWeapon()
+            Unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
             });
 
-            NullUnit.Weapons = null;
+            Unit.AddUnitWeapon(new UnitWeapon()
+            {
+                WeaponNameId = "Weapon4",
+                ParentLink = "Weapon2",
+            });
         }
     }
 }
