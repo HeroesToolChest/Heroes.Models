@@ -158,7 +158,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool HeroDescriptorExists(string value)
+        public bool ContainsHeroDescriptor(string value)
         {
             return HeroDescriptorsList.Contains(value);
         }
@@ -180,7 +180,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool UnitWeaponExists(UnitWeapon unitWeapon)
+        public bool ContainsUnitWeapon(UnitWeapon unitWeapon)
         {
             return UnitWeaponList.Contains(unitWeapon);
         }
@@ -202,7 +202,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="unitArmor"></param>
         /// <returns></returns>
-        public bool UnitArmorExists(UnitArmor unitArmor)
+        public bool ContainsUnitArmor(UnitArmor unitArmor)
         {
             return UnitArmorList.Contains(unitArmor);
         }
@@ -242,7 +242,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool AttributeExists(string value)
+        public bool ContainsAttribute(string value)
         {
             return AttributeList.Contains(value);
         }
@@ -261,7 +261,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool AbilityExists(string abilityId)
+        public bool ContainsAbility(string abilityId)
         {
             return AbilitiesById.ContainsKey(abilityId);
         }

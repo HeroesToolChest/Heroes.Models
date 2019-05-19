@@ -51,7 +51,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool EmoticonIdExists(string value)
+        public bool ContainsEmoticonId(string value)
         {
             return EmoticonIdList.Contains(value);
         }

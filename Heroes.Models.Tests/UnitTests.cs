@@ -79,7 +79,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void UnitWeaponExistsTest()
         {
-            Assert.IsTrue(Unit.UnitWeaponExists(new UnitWeapon()
+            Assert.IsTrue(Unit.ContainsUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
@@ -89,7 +89,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void UnitArmorExistsTest()
         {
-            Assert.IsTrue(Unit.UnitArmorExists(new UnitArmor()
+            Assert.IsTrue(Unit.ContainsUnitArmor(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,

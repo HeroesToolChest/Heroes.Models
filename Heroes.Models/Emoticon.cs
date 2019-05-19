@@ -67,7 +67,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool UniversalAliasExists(string value)
+        public bool ContainsUniversalAlias(string value)
         {
             return UniversalAliasList.Contains(value);
         }
@@ -86,7 +86,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool LocalizedAliasExists(string value)
+        public bool ContainsLocalizedAlias(string value)
         {
             return LocalizedAliasList.Contains(value);
         }
@@ -105,7 +105,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool SearchTextExists(string value)
+        public bool ContainsSearchText(string value)
         {
             return SearchTextList.Contains(value);
         }

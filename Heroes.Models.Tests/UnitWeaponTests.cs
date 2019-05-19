@@ -37,7 +37,7 @@ namespace Heroes.Models.Tests
 
             unitWeapon.AddAttributeFactor(weaponAttributeFactor);
 
-            Assert.IsTrue(unitWeapon.AttributeFactorExists(weaponAttributeFactor));
+            Assert.IsTrue(unitWeapon.ContainsAttributeFactor(weaponAttributeFactor));
 
             WeaponAttributeFactor weaponAttributeFactor2 = new WeaponAttributeFactor()
             {
@@ -56,7 +56,7 @@ namespace Heroes.Models.Tests
         {
             UnitWeapon unitWeapon = new UnitWeapon();
 
-            Assert.IsFalse(unitWeapon.AttributeFactorExists(new WeaponAttributeFactor()));
+            Assert.IsFalse(unitWeapon.ContainsAttributeFactor(new WeaponAttributeFactor()));
         }
     }
 }

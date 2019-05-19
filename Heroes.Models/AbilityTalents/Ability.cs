@@ -55,7 +55,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool TalentIdUpgradeExists(string value)
+        public bool ContainsTalentIdUpgrade(string value)
         {
             return TalentIdUpgradeList.Contains(value);
         }

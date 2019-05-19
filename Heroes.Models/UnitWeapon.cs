@@ -94,7 +94,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="weaponAttributeFactor"></param>
         /// <returns></returns>
-        public bool AttributeFactorExists(WeaponAttributeFactor weaponAttributeFactor)
+        public bool ContainsAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
         {
             return WeaponAttributeFactorList.Contains(weaponAttributeFactor);
         }
