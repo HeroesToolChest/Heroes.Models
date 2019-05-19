@@ -5,6 +5,8 @@ namespace Heroes.Models
 {
     public class UnitWeapon
     {
+        private readonly HashSet<WeaponAttributeFactor> WeaponAttributeFactorList = new HashSet<WeaponAttributeFactor>();
+
         /// <summary>
         /// Gets or sets the unique id of the weapon.
         /// </summary>
@@ -23,7 +25,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the collection of attribute factors.
         /// </summary>
-        public ICollection<WeaponAttributeFactor> AttributeFactors { get; set; } = new List<WeaponAttributeFactor>();
+        public IEnumerable<WeaponAttributeFactor> AttributeFactors => WeaponAttributeFactorList;
 
         /// <summary>
         /// Gets or sets the time between attacks.
@@ -73,6 +75,28 @@ namespace Heroes.Models
         public override string ToString()
         {
             return WeaponNameId;
+        }
+
+        /// <summary>
+        /// Adds a <see cref="WeaponAttributeFactor"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="weaponAttributeFactor"></param>
+        public void AddAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
+        {
+            if (WeaponAttributeFactorList.Contains(weaponAttributeFactor))
+                WeaponAttributeFactorList.Remove(weaponAttributeFactor);
+
+            WeaponAttributeFactorList.Add(weaponAttributeFactor);
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="WeaponAttributeFactor"/> exists.
+        /// </summary>
+        /// <param name="weaponAttributeFactor"></param>
+        /// <returns></returns>
+        public bool AttributeFactorExits(WeaponAttributeFactor weaponAttributeFactor)
+        {
+            return WeaponAttributeFactorList.Contains(weaponAttributeFactor);
         }
     }
 }
