@@ -18,5 +18,15 @@ namespace Heroes.Models.AbilityTalents
         Activable,
         [Description("Hearth Ability")]
         Hearth,
+        [Description("Taunt Ability")]
+        Taunt,
+        [Description("Dance Ability")]
+        Dance,
+        [Description("Spray Ability")]
+        Spray,
+        [Description("Voice Ability")]
+        Voice,
+        [Description("MapMechanic Ability")]
+        MapMechanic,
     }
 }
