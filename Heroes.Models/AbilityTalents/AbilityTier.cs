@@ -26,7 +26,7 @@ namespace Heroes.Models.AbilityTalents
         Spray,
         [Description("Voice Ability")]
         Voice,
-        [Description("MapMechanic Ability")]
+        [Description("Map Mechanic Ability")]
         MapMechanic,
     }
 }
