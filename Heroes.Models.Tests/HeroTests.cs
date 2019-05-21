@@ -1,5 +1,6 @@
 ﻿using Heroes.Models.AbilityTalents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace Heroes.Models.Tests
 {
@@ -42,14 +43,14 @@ namespace Heroes.Models.Tests
             talent = Hero.GetTalent("asdf");
             Assert.AreEqual("asdf", talent.Name);
 
-            Assert.IsNull(NullHero.GetTalent("asdf"));
+            Assert.IsNotNull(NullHero.GetTalent("asdf"));
         }
 
         [TestMethod]
         public void GetTierTalentsTests()
         {
-            Assert.AreEqual(2, Hero.TierTalents(TalentTier.Level1).Count);
-            Assert.AreEqual(1, Hero.TierTalents(TalentTier.Level4).Count);
+            Assert.AreEqual(2, Hero.TierTalents(TalentTier.Level1).Count());
+            Assert.AreEqual(1, Hero.TierTalents(TalentTier.Level4).Count());
         }
 
         private void AddAbilities()
@@ -120,28 +121,29 @@ namespace Heroes.Models.Tests
 
         private void AddTalents()
         {
-            Hero.Talents.Add("Talent1", new Talent()
+            Hero.AddTalent(new Talent()
             {
+                ReferenceNameId = "Talent1",
                 Name = "Talent 1",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level1,
             });
 
-            Hero.Talents.Add("Talent2", new Talent()
+            Hero.AddTalent(new Talent()
             {
+                ReferenceNameId = "Talent2",
                 Name = "Talent 2",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level1,
             });
 
-            Hero.Talents.Add("Talent3", new Talent()
+            Hero.AddTalent(new Talent()
             {
+                ReferenceNameId = "Talent3",
                 Name = "Talent 3",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level4,
             });
-
-            NullHero.Talents = null;
         }
     }
 }

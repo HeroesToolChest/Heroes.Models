@@ -11,6 +11,11 @@ namespace Heroes.Models
         private readonly string NoPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
         private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
+        private readonly HashSet<string> RoleList = new HashSet<string>();
+        private readonly HashSet<Unit> HeroUnitList = new HashSet<Unit>();
+
+        private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>();
+
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
         /// </summary>
@@ -67,14 +72,19 @@ namespace Heroes.Models
         public HeroRatings Ratings { get; set; } = new HeroRatings();
 
         /// <summary>
-        /// Gets or sets the talents.
+        /// Gets a collection of talents.
         /// </summary>
-        public Dictionary<string, Talent> Talents { get; set; } = new Dictionary<string, Talent>();
+        public IEnumerable<Talent> Talents => TalentsById.Values;
 
         /// <summary>
-        /// Gets or sets the roles of the hero, multiclass will be first if hero has multiple roles.
+        /// Gets a collection of talent ids.
         /// </summary>
-        public IList<string> Roles { get; set; } = new List<string>();
+        public IEnumerable<string> TalentIds => TalentsById.Keys;
+
+        /// <summary>
+        /// Gets a collection roles of the hero, multiclass will be first if hero has multiple roles.
+        /// </summary>
+        public IEnumerable<string> Roles => RoleList;
 
         /// <summary>
         /// Gets or sets the expanded role of the hero.
@@ -102,21 +112,99 @@ namespace Heroes.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the additional hero units associated with this hero.
+        /// Gets a collection of additional hero units associated with this hero.
         /// </summary>
-        public IList<Unit> HeroUnits { get; set; } = new List<Unit>();
+        public IEnumerable<Unit> HeroUnits => HeroUnitList;
 
         /// <summary>
-        /// Returns a talent object.
+        /// Returns a collection of all the talents in the selected tier.
         /// </summary>
-        /// <param name="referenceNameId">Reference name of the talent.</param>
+        /// <param name="tier"> The talent tier.</param>
         /// <returns></returns>
-        public Talent GetTalent(string referenceNameId)
+        public IEnumerable<Talent> TierTalents(TalentTier tier)
         {
-            if (Talents == null)
-                return null;
+            return Talents.Where(x => x.Tier == tier);
+        }
 
-            if (string.IsNullOrEmpty(referenceNameId))
+        /// <summary>
+        /// Adds a role value. Replaces if value already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddRole(string value)
+        {
+            RoleList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsRole(string value)
+        {
+            return RoleList.Contains(value);
+        }
+
+        /// <summary>
+        /// Adds a <see cref="Unit"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="unit"></param>
+        public void AddHeroUnit(Unit unit)
+        {
+            if (HeroUnitList.Contains(unit))
+                HeroUnitList.Remove(unit);
+
+            HeroUnitList.Add(unit);
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="UnitWeapon"/> exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsHeroUnit(Unit unit)
+        {
+            return HeroUnitList.Contains(unit);
+        }
+
+        /// <summary>
+        /// Adds an <see cref="Talent"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="talent"></param>
+        public void AddTalent(Talent talent)
+        {
+            TalentsById[talent.ReferenceNameId] = talent;
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsTalent(string talentId)
+        {
+            return TalentsById.ContainsKey(talentId);
+        }
+
+        /// <summary>
+        /// Try to get the talent from the specified talent id.
+        /// </summary>
+        /// <param name="talentId"></param>
+        /// <param name="talent"></param>
+        /// <returns></returns>
+        public bool TryGetTalent(string talentId, out Talent talent)
+        {
+            return TalentsById.TryGetValue(talentId, out talent);
+        }
+
+        /// <summary>
+        /// Returns a talent from the talent id.
+        /// </summary>
+        /// <param name="talentId"></param>
+        /// <returns></returns>
+        public Talent GetTalent(string talentId)
+        {
+            if (string.IsNullOrEmpty(talentId))
             {
                 // no pick
                 return new Talent()
@@ -126,7 +214,7 @@ namespace Heroes.Models
                 };
             }
 
-            if (Talents.TryGetValue(referenceNameId, out Talent talent))
+            if (TalentsById.TryGetValue(talentId, out Talent talent))
             {
                 return talent;
             }
@@ -134,20 +222,10 @@ namespace Heroes.Models
             {
                 return new Talent()
                 {
-                    Name = referenceNameId,
+                    Name = talentId,
                     IconFileName = UnknownTalentIconFileName,
                 };
             }
-        }
-
-        /// <summary>
-        /// Returns a collection of all the talents in the selected tier.
-        /// </summary>
-        /// <param name="tier"> The talent tier.</param>
-        /// <returns></returns>
-        public IList<Talent> TierTalents(TalentTier tier)
-        {
-            return Talents.Values.Where(x => x.Tier == tier).ToList();
         }
     }
 }
