@@ -149,7 +149,7 @@ namespace Heroes.Models
         /// Adds a value. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="value"></param>
-        public void AddHeroUnit(string value)
+        public void AddUnit(string value)
         {
             UnitList.Add(value);
         }
