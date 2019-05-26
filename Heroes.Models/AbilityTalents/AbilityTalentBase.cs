@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models.AbilityTalents
 {
     public class AbilityTalentBase
     {
+        private readonly HashSet<string> CreatedUnitList = new HashSet<string>();
+
         /// <summary>
         /// Gets or sets the real name.
         /// </summary>
@@ -45,14 +48,14 @@ namespace Heroes.Models.AbilityTalents
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Gets or sets if the abilityTalent creates a unit.
-        /// </summary>
-        public (bool DoesCreateUnit, string UnitId) CreateUnit { get; set; }
-
-        /// <summary>
         /// Gets or sets the AbilityTalentTooltip object.
         /// </summary>
         public AbilityTalentTooltip Tooltip { get; set; } = new AbilityTalentTooltip();
+
+        /// <summary>
+        /// Gets a collection of created units.
+        /// </summary>
+        public IEnumerable<string> CreatedUnits => CreatedUnitList;
 
         public override bool Equals(object obj)
         {
@@ -65,6 +68,25 @@ namespace Heroes.Models.AbilityTalents
         public override int GetHashCode()
         {
             return ReferenceNameId.GetHashCode();
+        }
+
+        /// <summary>
+        /// Adds a value. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddCreatedUnit(string value)
+        {
+            CreatedUnitList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsCreatedUnit(string value)
+        {
+            return CreatedUnitList.Contains(value);
         }
     }
 }
