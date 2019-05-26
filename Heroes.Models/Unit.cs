@@ -10,6 +10,7 @@ namespace Heroes.Models
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
         private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
         private readonly HashSet<string> AttributeList = new HashSet<string>();
+        private readonly HashSet<string> UnitList = new HashSet<string>();
 
         private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
 
@@ -62,11 +63,6 @@ namespace Heroes.Models
         public IEnumerable<string> AbilityIds => AbilitiesById.Keys;
 
         /// <summary>
-        /// Gets or sets the parent link of this unit.
-        /// </summary>
-        public string ParentLink { get; set; }
-
-        /// <summary>
         /// Gets a collection of basic attack weapons.
         /// </summary>
         public IEnumerable<UnitWeapon> Weapons => UnitWeaponList;
@@ -75,6 +71,16 @@ namespace Heroes.Models
         /// Gets a collection of attributes.
         /// </summary>
         public IEnumerable<string> Attributes => AttributeList;
+
+        /// <summary>
+        /// Gets a collection of additional units associated with this hero.
+        /// </summary>
+        public IEnumerable<string> Units => UnitList;
+
+        /// <summary>
+        /// Gets or sets the parent link of this unit.
+        /// </summary>
+        public string ParentLink { get; set; }
 
         /// <summary>
         /// Gets or sets the damage type of this unit.
@@ -291,6 +297,25 @@ namespace Heroes.Models
                 return ability;
             else
                 return null;
+        }
+
+        /// <summary>
+        /// Adds a value. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddUnit(string value)
+        {
+            UnitList.Add(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsUnit(string value)
+        {
+            return UnitList.Contains(value);
         }
     }
 }

@@ -12,8 +12,6 @@ namespace Heroes.Models
         private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
         private readonly HashSet<string> RoleList = new HashSet<string>();
-        private readonly HashSet<string> UnitList = new HashSet<string>();
-
         private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>();
 
         /// <summary>
@@ -112,11 +110,6 @@ namespace Heroes.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets a collection of additional units associated with this hero.
-        /// </summary>
-        public IEnumerable<string> Units => UnitList;
-
-        /// <summary>
         /// Returns a collection of all the talents in the selected tier.
         /// </summary>
         /// <param name="tier"> The talent tier.</param>
@@ -143,25 +136,6 @@ namespace Heroes.Models
         public bool ContainsRole(string value)
         {
             return RoleList.Contains(value);
-        }
-
-        /// <summary>
-        /// Adds a value. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="value"></param>
-        public void AddUnit(string value)
-        {
-            UnitList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public bool ContainsUnit(string value)
-        {
-            return UnitList.Contains(value);
         }
 
         /// <summary>
