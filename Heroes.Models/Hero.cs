@@ -12,7 +12,7 @@ namespace Heroes.Models
         private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
         private readonly HashSet<string> RoleList = new HashSet<string>();
-        private readonly HashSet<Unit> HeroUnitList = new HashSet<Unit>();
+        private readonly HashSet<string> UnitList = new HashSet<string>();
 
         private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>();
 
@@ -112,9 +112,9 @@ namespace Heroes.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets a collection of additional hero units associated with this hero.
+        /// Gets a collection of additional units associated with this hero.
         /// </summary>
-        public IEnumerable<Unit> HeroUnits => HeroUnitList;
+        public IEnumerable<string> Units => UnitList;
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
@@ -146,25 +146,22 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Adds a <see cref="Unit"/>. Replaces if object already exists in collection.
+        /// Adds a value. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="unit"></param>
-        public void AddHeroUnit(Unit unit)
+        /// <param name="value"></param>
+        public void AddHeroUnit(string value)
         {
-            if (HeroUnitList.Contains(unit))
-                HeroUnitList.Remove(unit);
-
-            HeroUnitList.Add(unit);
+            UnitList.Add(value);
         }
 
         /// <summary>
-        /// Determines whether the <see cref="UnitWeapon"/> exists.
+        /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool ContainsHeroUnit(Unit unit)
+        public bool ContainsUnit(string value)
         {
-            return HeroUnitList.Contains(unit);
+            return UnitList.Contains(value);
         }
 
         /// <summary>
