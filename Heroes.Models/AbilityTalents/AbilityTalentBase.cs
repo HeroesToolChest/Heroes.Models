@@ -47,7 +47,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets if the abilityTalent creates a unit.
         /// </summary>
-        public (bool doesCreateUnit, string unitId) CreateUnit { get; set; }
+        public (bool DoesCreateUnit, string UnitId) CreateUnit { get; set; }
 
         /// <summary>
         /// Gets or sets the AbilityTalentTooltip object.
