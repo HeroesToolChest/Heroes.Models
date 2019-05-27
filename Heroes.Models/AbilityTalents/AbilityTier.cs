@@ -6,6 +6,8 @@ namespace Heroes.Models.AbilityTalents
     [Flags]
     public enum AbilityTier
     {
+        [Description("Unknown Ability")]
+        Unknown,
         [Description("Basic Ability")]
         Basic,
         [Description("Heroic Ability")]
