@@ -30,5 +30,9 @@ namespace Heroes.Models.AbilityTalents
         Voice,
         [Description("Map Mechanic Ability")]
         MapMechanic,
+        [Description("Interact Ability")]
+        Interact,
+        [Description("Action Ability")]
+        Action,
     }
 }
