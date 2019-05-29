@@ -53,6 +53,11 @@ namespace Heroes.Models
         public double Sight { get; set; }
 
         /// <summary>
+        /// Gets or sets the gender of the hero.
+        /// </summary>
+        public HeroGender? Gender { get; set; }
+
+        /// <summary>
         /// Gets a collection of abilities.
         /// </summary>
         public IEnumerable<Ability> Abilities => AbilitiesById.Values;

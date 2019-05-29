@@ -55,11 +55,6 @@ namespace Heroes.Models
         public DateTime? ReleaseDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the gender of the hero.
-        /// </summary>
-        public HeroGender? Gender { get; set; }
-
-        /// <summary>
         /// Gets or sets the rarity of the hero.
         /// </summary>
         public Rarity? Rarity { get; set; }
