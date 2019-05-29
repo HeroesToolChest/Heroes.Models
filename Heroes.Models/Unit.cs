@@ -55,7 +55,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the gender of the hero.
         /// </summary>
-        public HeroGender? Gender { get; set; }
+        public UnitGender? Gender { get; set; }
 
         /// <summary>
         /// Gets a collection of abilities.

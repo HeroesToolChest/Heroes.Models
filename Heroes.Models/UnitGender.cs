@@ -1,6 +1,6 @@
 ﻿namespace Heroes.Models
 {
-    public enum HeroGender
+    public enum UnitGender
     {
         Neutral,
         Male,
