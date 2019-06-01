@@ -34,6 +34,8 @@ namespace Heroes.Models.AbilityTalents
         Interact = 1 << 11,
         [Description("Action Ability")]
         Action = 1 << 12,
+        [Description("Hidden Ability")]
+        Hidden = 1 << 13,
 
         Standard = Basic | Heroic | Trait | Mount | Activable,
         Special = Hearth | Taunt | Dance | Spray | Voice | MapMechanic,

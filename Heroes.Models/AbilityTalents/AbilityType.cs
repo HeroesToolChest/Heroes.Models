@@ -26,6 +26,7 @@ namespace Heroes.Models.AbilityTalents
         Voice = 1 << 17,
         ForceMove = 1 << 18,
         MapMechanic = 1 << 19,
+        Hidden = 1 << 20,
 
         Standard = Q | W | E | Heroic | Z | Trait | Active | Passive | B,
         Special = Taunt | Dance | Spray | Voice | MapMechanic,
