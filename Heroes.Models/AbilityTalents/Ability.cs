@@ -35,11 +35,6 @@ namespace Heroes.Models.AbilityTalents
         public string ButtonName { get; set; }
 
         /// <summary>
-        /// Gets or sets the value if the ability is passive.
-        /// </summary>
-        public bool IsPassive { get; set; }
-
-        /// <summary>
         /// Gets a collectin of talent ids that are associated with the ability.
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;

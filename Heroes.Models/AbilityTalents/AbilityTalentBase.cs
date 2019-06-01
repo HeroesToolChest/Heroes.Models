@@ -48,6 +48,11 @@ namespace Heroes.Models.AbilityTalents
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Gets or sets the value if the ability is passive.
+        /// </summary>
+        public bool IsPassive { get; set; }
+
+        /// <summary>
         /// Gets or sets the AbilityTalentTooltip object.
         /// </summary>
         public AbilityTalentTooltip Tooltip { get; set; } = new AbilityTalentTooltip();
