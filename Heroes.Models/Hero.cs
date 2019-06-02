@@ -70,14 +70,29 @@ namespace Heroes.Models
         public IEnumerable<Talent> Talents => TalentsById.Values;
 
         /// <summary>
+        /// Gets the amount of talents.
+        /// </summary>
+        public int TalentsCount => TalentsById.Values.Count;
+
+        /// <summary>
         /// Gets a collection of talent ids.
         /// </summary>
         public IEnumerable<string> TalentIds => TalentsById.Keys;
 
         /// <summary>
+        /// Gets the amount of talent ids.
+        /// </summary>
+        public int TalentIdsCount => TalentsById.Keys.Count;
+
+        /// <summary>
         /// Gets a collection roles of the hero, multiclass will be first if hero has multiple roles.
         /// </summary>
         public IEnumerable<string> Roles => RoleList;
+
+        /// <summary>
+        /// Gets the amount of roles.
+        /// </summary>
+        public int RolesCount => RoleList.Count;
 
         /// <summary>
         /// Gets or sets the expanded role of the hero.

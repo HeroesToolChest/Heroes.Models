@@ -168,7 +168,17 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Returns a collection of all the sub abilities in the selected tier..
+        /// Returns a collection of all the sub abilities.
+        /// </summary>
+        /// <param name="tier">The ability tier.</param>
+        /// <returns></returns>
+        public IEnumerable<Ability> SubAbilities()
+        {
+            return Abilities?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToList();
+        }
+
+        /// <summary>
+        /// Returns a collection of all the sub abilities in the selected tier.
         /// </summary>
         /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
