@@ -30,6 +30,9 @@ namespace Heroes.Models.Tests
             IList<Ability> hearthAbilities = Unit.PrimaryAbilities(AbilityTier.Hearth).ToList();
             Assert.AreEqual(0, hearthAbilities.Count);
 
+            IList<Ability> allPrimaryAbilities = Unit.PrimaryAbilities().ToList();
+            Assert.AreEqual(7, allPrimaryAbilities.Count);
+
             Assert.IsNotNull(NullUnit.PrimaryAbilities(AbilityTier.Mount));
         }
 

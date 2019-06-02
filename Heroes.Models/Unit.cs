@@ -113,6 +113,15 @@ namespace Heroes.Models
         public string ScalingBehaviorLink { get; set; }
 
         /// <summary>
+        /// Returns a collection of all the primary abilities (no parent linked abilities).
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Ability> PrimaryAbilities()
+        {
+            return Abilities?.Where(x => string.IsNullOrEmpty(x.ParentLink)).ToList();
+        }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>
