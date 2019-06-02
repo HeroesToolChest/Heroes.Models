@@ -34,7 +34,13 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
 
-        public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(ParentLink))
+                return $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
+            else
+                return $"{Tier.GetFriendlyName()} | {ReferenceNameId} | SubAbility to {ParentLink}";
+        }
 
         /// <summary>
         /// Adds a talent id upgrade value. Replaces if value already exists in collection.
