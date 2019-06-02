@@ -24,11 +24,6 @@ namespace Heroes.Models.AbilityTalents
         public AbilityTier Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets the ability parent that is associated with this ability.
-        /// </summary>
-        public string ParentLink { get; set; }
-
-        /// <summary>
         /// Gets or sets the button name of the ability.
         /// Should be used for internal purposes only.
         /// </summary>
