@@ -48,6 +48,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddFeature(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             FeaturesList.Add(value);
         }
 
@@ -58,6 +63,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool FeatureExists(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return FeaturesList.Contains(value);
         }
     }

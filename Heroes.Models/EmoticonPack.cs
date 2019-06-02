@@ -43,6 +43,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddEmoticonId(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             EmoticonIdList.Add(value);
         }
 
@@ -53,6 +58,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsEmoticonId(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return EmoticonIdList.Contains(value);
         }
     }

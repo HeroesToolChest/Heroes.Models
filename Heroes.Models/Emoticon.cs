@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models
 {
@@ -59,6 +60,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddUniversalAlias(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             UniversalAliasList.Add(value);
         }
 
@@ -69,6 +75,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsUniversalAlias(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return UniversalAliasList.Contains(value);
         }
 
@@ -78,6 +89,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddLocalizedAlias(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             LocalizedAliasList.Add(value);
         }
 
@@ -88,6 +104,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsLocalizedAlias(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return LocalizedAliasList.Contains(value);
         }
 
@@ -97,6 +118,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddSearchText(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             SearchTextList.Add(value);
         }
 
@@ -107,6 +133,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsSearchText(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return SearchTextList.Contains(value);
         }
     }

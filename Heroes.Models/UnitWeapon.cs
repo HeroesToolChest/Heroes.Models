@@ -83,6 +83,11 @@ namespace Heroes.Models
         /// <param name="weaponAttributeFactor"></param>
         public void AddAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
         {
+            if (weaponAttributeFactor == null)
+            {
+                throw new ArgumentNullException(nameof(weaponAttributeFactor));
+            }
+
             if (WeaponAttributeFactorList.Contains(weaponAttributeFactor))
                 WeaponAttributeFactorList.Remove(weaponAttributeFactor);
 
@@ -96,6 +101,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
         {
+            if (weaponAttributeFactor == null)
+            {
+                throw new ArgumentNullException(nameof(weaponAttributeFactor));
+            }
+
             return WeaponAttributeFactorList.Contains(weaponAttributeFactor);
         }
     }

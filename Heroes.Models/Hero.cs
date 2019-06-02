@@ -120,6 +120,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddRole(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             RoleList.Add(value);
         }
 
@@ -130,6 +135,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsRole(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return RoleList.Contains(value);
         }
 
@@ -139,6 +149,11 @@ namespace Heroes.Models
         /// <param name="talent"></param>
         public void AddTalent(Talent talent)
         {
+            if (talent == null)
+            {
+                throw new ArgumentNullException(nameof(talent));
+            }
+
             TalentsById[talent.ReferenceNameId] = talent;
         }
 
@@ -149,6 +164,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsTalent(string talentId)
         {
+            if (talentId == null)
+            {
+                throw new ArgumentNullException(nameof(talentId));
+            }
+
             return TalentsById.ContainsKey(talentId);
         }
 
@@ -160,6 +180,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool TryGetTalent(string talentId, out Talent talent)
         {
+            if (talentId == null)
+            {
+                throw new ArgumentNullException(nameof(talentId));
+            }
+
             return TalentsById.TryGetValue(talentId, out talent);
         }
 

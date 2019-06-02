@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Heroes.Models.AbilityTalents;
 
@@ -30,6 +31,11 @@ namespace Heroes.Models
         public IEnumerable<string> HeroDescriptors => HeroDescriptorsList;
 
         /// <summary>
+        /// Gets the amount of hero play styles.
+        /// </summary>
+        public int HeroDescriptorsCount => HeroDescriptorsList.Count;
+
+        /// <summary>
         /// Gets or sets the Life properties.
         /// </summary>
         public UnitLife Life { get; set; } = new UnitLife();
@@ -43,6 +49,11 @@ namespace Heroes.Models
         /// Gets a collection unit armor.
         /// </summary>
         public IEnumerable<UnitArmor> Armor => UnitArmorList;
+
+        /// <summary>
+        /// Gets the amount of unit armors.
+        /// </summary>
+        public int ArmorCount => UnitArmorList.Count;
 
         public double Radius { get; set; }
 
@@ -63,9 +74,19 @@ namespace Heroes.Models
         public IEnumerable<Ability> Abilities => AbilitiesById.Values;
 
         /// <summary>
+        /// Gets the amount of abilities.
+        /// </summary>
+        public int AbilitiesCount => AbilitiesById.Values.Count;
+
+        /// <summary>
         /// Gets a collection of ability ids.
         /// </summary>
         public IEnumerable<string> AbilityIds => AbilitiesById.Keys;
+
+        /// <summary>
+        /// Gets the amount of ability ids.
+        /// </summary>
+        public int AbilityIdsCount => AbilitiesById.Keys.Count;
 
         /// <summary>
         /// Gets a collection of basic attack weapons.
@@ -73,14 +94,29 @@ namespace Heroes.Models
         public IEnumerable<UnitWeapon> Weapons => UnitWeaponList;
 
         /// <summary>
+        /// Gets the amount of weapons.
+        /// </summary>
+        public int WeaponsCount => UnitWeaponList.Count;
+
+        /// <summary>
         /// Gets a collection of attributes.
         /// </summary>
         public IEnumerable<string> Attributes => AttributeList;
 
         /// <summary>
+        /// Gets the amount of attributes.
+        /// </summary>
+        public int AttributesCount => AttributeList.Count;
+
+        /// <summary>
         /// Gets a collection of additional units associated with this hero.
         /// </summary>
         public IEnumerable<string> Units => UnitList;
+
+        /// <summary>
+        /// Gets the amount of units.
+        /// </summary>
+        public int UnitsCount => UnitList.Count;
 
         /// <summary>
         /// Gets or sets the parent link of this unit.
@@ -170,6 +206,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddHeroDescriptor(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             HeroDescriptorsList.Add(value);
         }
 
@@ -180,6 +221,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsHeroDescriptor(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return HeroDescriptorsList.Contains(value);
         }
 
@@ -189,6 +235,11 @@ namespace Heroes.Models
         /// <param name="unitWeapon"></param>
         public void AddUnitWeapon(UnitWeapon unitWeapon)
         {
+            if (unitWeapon == null)
+            {
+                throw new ArgumentNullException(nameof(unitWeapon));
+            }
+
             if (UnitWeaponList.Contains(unitWeapon))
                 UnitWeaponList.Remove(unitWeapon);
 
@@ -202,6 +253,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsUnitWeapon(UnitWeapon unitWeapon)
         {
+            if (unitWeapon == null)
+            {
+                throw new ArgumentNullException(nameof(unitWeapon));
+            }
+
             return UnitWeaponList.Contains(unitWeapon);
         }
 
@@ -211,6 +267,11 @@ namespace Heroes.Models
         /// <param name="unitArmor"></param>
         public void AddUnitArmor(UnitArmor unitArmor)
         {
+            if (unitArmor == null)
+            {
+                throw new ArgumentNullException(nameof(unitArmor));
+            }
+
             if (UnitArmorList.Contains(unitArmor))
                 UnitArmorList.Remove(unitArmor);
 
@@ -224,6 +285,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsUnitArmor(UnitArmor unitArmor)
         {
+            if (unitArmor == null)
+            {
+                throw new ArgumentNullException(nameof(unitArmor));
+            }
+
             return UnitArmorList.Contains(unitArmor);
         }
 
@@ -233,6 +299,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddAttribute(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             AttributeList.Add(value);
         }
 
@@ -242,6 +313,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddRangeAttribute(IEnumerable<string> values)
         {
+            if (values == null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+
             foreach (string item in values)
             {
                 AttributeList.Add(item);
@@ -254,6 +330,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void RemoveAttribute(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             AttributeList.Remove(value);
         }
 
@@ -264,6 +345,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsAttribute(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return AttributeList.Contains(value);
         }
 
@@ -273,6 +359,11 @@ namespace Heroes.Models
         /// <param name="ability"></param>
         public void AddAbility(Ability ability)
         {
+            if (ability == null)
+            {
+                throw new ArgumentNullException(nameof(ability));
+            }
+
             AbilitiesById[ability.ReferenceNameId] = ability;
         }
 
@@ -283,6 +374,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsAbility(string abilityId)
         {
+            if (abilityId == null)
+            {
+                throw new ArgumentNullException(nameof(abilityId));
+            }
+
             return AbilitiesById.ContainsKey(abilityId);
         }
 
@@ -294,6 +390,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool TryGetAbility(string abilityId, out Ability ability)
         {
+            if (abilityId == null)
+            {
+                throw new ArgumentNullException(nameof(abilityId));
+            }
+
             return AbilitiesById.TryGetValue(abilityId, out ability);
         }
 
@@ -319,6 +420,11 @@ namespace Heroes.Models
         /// <param name="value"></param>
         public void AddUnit(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             UnitList.Add(value);
         }
 
@@ -329,6 +435,11 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsUnit(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return UnitList.Contains(value);
         }
     }

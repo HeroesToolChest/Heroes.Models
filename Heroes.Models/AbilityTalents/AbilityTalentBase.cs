@@ -88,6 +88,11 @@ namespace Heroes.Models.AbilityTalents
         /// <param name="value"></param>
         public void AddCreatedUnit(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             CreatedUnitList.Add(value);
         }
 
@@ -98,6 +103,11 @@ namespace Heroes.Models.AbilityTalents
         /// <returns></returns>
         public bool ContainsCreatedUnit(string value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             return CreatedUnitList.Contains(value);
         }
     }
