@@ -149,6 +149,11 @@ namespace Heroes.Models
         public string ScalingBehaviorLink { get; set; }
 
         /// <summary>
+        /// Gets or sets the kill xp.
+        /// </summary>
+        public int KillXP { get; set; }
+
+        /// <summary>
         /// Returns a collection of all the primary abilities (no parent linked abilities).
         /// </summary>
         /// <returns></returns>
