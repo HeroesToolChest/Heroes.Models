@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Heroes.Models.AbilityTalents
+﻿namespace Heroes.Models.AbilityTalents
 {
     public class Talent : AbilityTalentBase
     {
@@ -25,11 +23,6 @@ namespace Heroes.Models.AbilityTalents
         /// Gets or sets the column number, also known as the sort index number.
         /// </summary>
         public int Column { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ability and talents that the talent affects or upgrades.
-        /// </summary>
-        public HashSet<string> AbilityTalentLinkIds { get; set; } = new HashSet<string>();
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }

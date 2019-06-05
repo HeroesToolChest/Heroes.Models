@@ -88,9 +88,9 @@ namespace Heroes.Models.AbilityTalents
         /// <param name="value"></param>
         public void AddCreatedUnit(string value)
         {
-            if (value == null)
+            if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentNullException(nameof(value));
+                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
             CreatedUnitList.Add(value);
@@ -103,9 +103,9 @@ namespace Heroes.Models.AbilityTalents
         /// <returns></returns>
         public bool ContainsCreatedUnit(string value)
         {
-            if (value == null)
+            if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentNullException(nameof(value));
+                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
             return CreatedUnitList.Contains(value);

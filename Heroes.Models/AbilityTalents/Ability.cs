@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models.AbilityTalents
 {
@@ -30,7 +31,7 @@ namespace Heroes.Models.AbilityTalents
         public string ButtonName { get; set; }
 
         /// <summary>
-        /// Gets a collectin of talent ids that are associated with the ability.
+        /// Gets a collection of talent ids that are associated with the ability.
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
 
@@ -48,6 +49,11 @@ namespace Heroes.Models.AbilityTalents
         /// <param name="value"></param>
         public void AddTalentIdUpgrade(string value)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
+            }
+
             TalentIdUpgradeList.Add(value);
         }
 
@@ -58,6 +64,11 @@ namespace Heroes.Models.AbilityTalents
         /// <returns></returns>
         public bool ContainsTalentIdUpgrade(string value)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
+            }
+
             return TalentIdUpgradeList.Contains(value);
         }
     }
