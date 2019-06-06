@@ -5,7 +5,7 @@ namespace Heroes.Models.AbilityTalents
 {
     public class Ability : AbilityTalentBase
     {
-        private readonly HashSet<string> TalentIdUpgradeList = new HashSet<string>();
+        private readonly HashSet<string> TalentIdUpgradeList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public Ability() { }
 
