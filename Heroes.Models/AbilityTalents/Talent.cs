@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models.AbilityTalents
 {
@@ -46,10 +47,24 @@ namespace Heroes.Models.AbilityTalents
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new System.ArgumentException("Argument cannot be null or empty.", nameof(value));
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
             AbilityTalentLinkIdList.Add(value);
+        }
+
+        /// <summary>
+        /// Removes an abilityTalentLinkId.
+        /// </summary>
+        /// <param name="value"></param>
+        public void RemoveAbilityTalentLinkId(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
+            }
+
+            AbilityTalentLinkIdList.Remove(value);
         }
 
         /// <summary>
@@ -61,7 +76,7 @@ namespace Heroes.Models.AbilityTalents
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new System.ArgumentException("Argument cannot be null or empty.", nameof(value));
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
             return AbilityTalentLinkIdList.Contains(value);
