@@ -11,7 +11,7 @@ namespace Heroes.Models
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
         private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
         private readonly HashSet<string> AttributeList = new HashSet<string>();
-        private readonly HashSet<string> UnitList = new HashSet<string>();
+        private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
         private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
 
@@ -109,14 +109,14 @@ namespace Heroes.Models
         public int AttributesCount => AttributeList.Count;
 
         /// <summary>
-        /// Gets a collection of additional units associated with this hero.
+        /// Gets a collection of additional units associated with this unit.
         /// </summary>
-        public IEnumerable<string> Units => UnitList;
+        public IEnumerable<string> UnitIds => UnitIdList;
 
         /// <summary>
         /// Gets the amount of units.
         /// </summary>
-        public int UnitsCount => UnitList.Count;
+        public int UnitIdsCount => UnitIdList.Count;
 
         /// <summary>
         /// Gets or sets the parent link of this unit.
@@ -433,14 +433,14 @@ namespace Heroes.Models
         /// Adds a value. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="value"></param>
-        public void AddUnit(string value)
+        public void AddUnitId(string value)
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            UnitList.Add(value);
+            UnitIdList.Add(value);
         }
 
         /// <summary>
@@ -448,14 +448,14 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool ContainsUnit(string value)
+        public bool ContainsUnitId(string value)
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return UnitList.Contains(value);
+            return UnitIdList.Contains(value);
         }
     }
 }

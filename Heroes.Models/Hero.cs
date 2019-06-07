@@ -13,6 +13,7 @@ namespace Heroes.Models
 
         private readonly HashSet<string> RoleList = new HashSet<string>();
         private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>();
+        private readonly HashSet<Unit> UnitList = new HashSet<Unit>();
 
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
@@ -118,6 +119,16 @@ namespace Heroes.Models
         /// Gets or sets the unit type: Melee or ranged.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets a collectin of <see cref="Unit"/>s.
+        /// </summary>
+        public IEnumerable<Unit> Units => UnitList;
+
+        /// <summary>
+        /// Gets the amount of <see cref="Unit"/>s.
+        /// </summary>
+        public int UnitCount => UnitList.Count;
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
@@ -232,6 +243,20 @@ namespace Heroes.Models
                     IconFileName = UnknownTalentIconFileName,
                 };
             }
+        }
+
+        /// <summary>
+        /// Adds a <see cref="Unit"/>. Replaces if object already exists in collection.
+        /// </summary>
+        /// <param name="unit"></param>
+        public void AddUnit(Unit unit)
+        {
+            if (unit == null)
+            {
+                throw new ArgumentNullException(nameof(unit));
+            }
+
+            UnitList.Add(unit);
         }
     }
 }
