@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Heroes.Models.AbilityTalents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Heroes.Models.AbilityTalents;
 
 namespace Heroes.Models
 {
@@ -11,7 +11,7 @@ namespace Heroes.Models
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
         private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
         private readonly HashSet<string> AttributeList = new HashSet<string>();
-        private readonly HashSet<string> UnitList = new HashSet<string>();
+        private readonly HashSet<Unit> UnitList = new HashSet<Unit>();
 
         private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
 
@@ -109,9 +109,9 @@ namespace Heroes.Models
         public int AttributesCount => AttributeList.Count;
 
         /// <summary>
-        /// Gets a collection of additional units associated with this hero.
+        /// Gets a collection of additional <see cref="Unit"/>s associated with this unit.
         /// </summary>
-        public IEnumerable<string> Units => UnitList;
+        public IEnumerable<Unit> Units => UnitList;
 
         /// <summary>
         /// Gets the amount of units.
@@ -430,32 +430,32 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Adds a value. Replaces if object already exists in collection.
+        /// Adds a <see cref="Unit"/>. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
-        public void AddUnit(string value)
+        /// <param name="unit"></param>
+        public void AddUnit(Unit unit)
         {
-            if (value == null)
+            if (unit == null)
             {
-                throw new ArgumentNullException(nameof(value));
+                throw new ArgumentNullException(nameof(unit));
             }
 
-            UnitList.Add(value);
+            UnitList.Add(unit);
         }
 
         /// <summary>
-        /// Determines whether the value exists.
+        /// Determines whether the <see cref="Unit"/> exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="unit"></param>
         /// <returns></returns>
-        public bool ContainsUnit(string value)
+        public bool ContainsUnit(Unit unit)
         {
-            if (value == null)
+            if (unit == null)
             {
-                throw new ArgumentNullException(nameof(value));
+                throw new ArgumentNullException(nameof(unit));
             }
 
-            return UnitList.Contains(value);
+            return UnitList.Contains(unit);
         }
     }
 }
