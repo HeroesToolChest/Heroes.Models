@@ -33,7 +33,7 @@ namespace Heroes.Models.AbilityTalents
         /// Gets a unique key for determining if this ability is near identical to another ability. Usuallly the abilities will only differ by the reference name id.
         /// </summary>
         /// <returns></returns>
-        internal string DuplicateId => ShortTooltipNameId + FullTooltipNameId + IsActive + IsPassive + IsQuest + Tier + AbilityType;
+        internal string DuplicateId => Name + ShortTooltipNameId + FullTooltipNameId + IsActive + IsPassive + IsQuest + Tier + AbilityType;
 
         public override string ToString()
         {
