@@ -383,7 +383,7 @@ namespace Heroes.Models
             if (!AbilitiesByName.ContainsKey(ability.DuplicateId))
             {
                 AbilitiesByName.Add(ability.DuplicateId, ability);
-                AbilitiesById.Add(ability.ReferenceNameId, ability);
+                AbilitiesById[ability.ReferenceNameId] = ability;
             }
         }
 
