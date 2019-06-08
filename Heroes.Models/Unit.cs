@@ -343,14 +343,14 @@ namespace Heroes.Models
         /// Removes an attribute value.
         /// </summary>
         /// <param name="value"></param>
-        public void RemoveAttribute(string value)
+        public bool RemoveAttribute(string value)
         {
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            AttributeList.Remove(value);
+            return AttributeList.Remove(value);
         }
 
         /// <summary>
@@ -395,6 +395,21 @@ namespace Heroes.Models
             }
 
             return AbilitiesById.ContainsKey(abilityId);
+        }
+
+        /// <summary>
+        /// Removes an <see cref="Ability"/>.
+        /// </summary>
+        /// <param name="abilityId"></param>
+        /// <returns></returns>
+        public bool RemoveAbility(string abilityId)
+        {
+            if (string.IsNullOrEmpty(abilityId))
+            {
+                throw new ArgumentException("Argument cannot be null or emtpy", nameof(abilityId));
+            }
+
+            return AbilitiesById.Remove(abilityId);
         }
 
         /// <summary>

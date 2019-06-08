@@ -57,14 +57,14 @@ namespace Heroes.Models.AbilityTalents
         /// Removes an abilityTalentLinkId.
         /// </summary>
         /// <param name="value"></param>
-        public void RemoveAbilityTalentLinkId(string value)
+        public bool RemoveAbilityTalentLinkId(string value)
         {
             if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            AbilityTalentLinkIdList.Remove(value);
+            return AbilityTalentLinkIdList.Remove(value);
         }
 
         /// <summary>
