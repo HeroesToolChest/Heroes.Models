@@ -107,7 +107,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test1",
             });
 
             Unit.AddAbility(new Ability()
@@ -115,7 +114,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test2",
             });
 
             Unit.AddAbility(new Ability()
@@ -123,7 +121,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil3",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test3",
             });
 
             Unit.AddAbility(new Ability()
@@ -131,7 +128,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil4",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test4",
             });
 
             Unit.AddAbility(new Ability()
@@ -139,7 +135,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil5",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test5",
             });
 
             Unit.AddAbility(new Ability()
@@ -147,7 +142,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil6",
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test6",
             });
 
             Unit.AddAbility(new Ability()
@@ -155,7 +149,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil7",
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
-                ShortTooltipNameId = "test7",
             });
 
             Unit.AddAbility(new Ability()
@@ -163,7 +156,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "SubAbil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
-                ShortTooltipNameId = "test17",
             });
 
             Unit.AddAbility(new Ability()
@@ -171,7 +163,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
-                ShortTooltipNameId = "test18",
             });
         }
 

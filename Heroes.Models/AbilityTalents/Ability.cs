@@ -25,15 +25,15 @@ namespace Heroes.Models.AbilityTalents
         public AbilityTier Tier { get; set; }
 
         /// <summary>
+        /// Gets or sets the button name of the ability.
+        /// Should be used for internal purposes only.
+        /// </summary>
+        public string ButtonName { get; set; }
+
+        /// <summary>
         /// Gets a collection of talent ids that are associated with the ability.
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
-
-        /// <summary>
-        /// Gets a unique key for determining if this ability is near identical to another ability. Usuallly the abilities will only differ by the reference name id.
-        /// </summary>
-        /// <returns></returns>
-        internal string DuplicateId => Name + ShortTooltipNameId + FullTooltipNameId + IsActive + IsPassive + IsQuest + Tier + AbilityType;
 
         public override string ToString()
         {

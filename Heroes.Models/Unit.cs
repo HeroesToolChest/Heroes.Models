@@ -14,7 +14,6 @@ namespace Heroes.Models
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
         private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
-        private readonly Dictionary<string, Ability> AbilitiesByName = new Dictionary<string, Ability>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -370,7 +369,7 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Adds an <see cref="Ability"/>.
+        /// Adds an <see cref="Ability"/>. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="ability"></param>
         public void AddAbility(Ability ability)
@@ -380,11 +379,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (!AbilitiesByName.ContainsKey(ability.DuplicateId))
-            {
-                AbilitiesByName.Add(ability.DuplicateId, ability);
-                AbilitiesById.Add(ability.ReferenceNameId, ability);
-            }
+            AbilitiesById[ability.ReferenceNameId] = ability;
         }
 
         /// <summary>

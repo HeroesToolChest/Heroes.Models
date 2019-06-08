@@ -20,7 +20,7 @@ namespace Heroes.Models.Tests
         public void GetAbilityTests()
         {
             Ability abil = Hero.GetAbility("Abil3");
-            Assert.AreEqual(AbilityTier.Dance, abil.Tier);
+            Assert.AreEqual(AbilityTier.Basic, abil.Tier);
             Assert.AreEqual(string.Empty, abil.ParentLink);
 
             Assert.IsNull(Hero.GetAbility(string.Empty));
@@ -65,14 +65,14 @@ namespace Heroes.Models.Tests
             Hero.AddAbility(new Ability()
             {
                 ReferenceNameId = "Abil2",
-                Tier = AbilityTier.Spray,
+                Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 ReferenceNameId = "Abil3",
-                Tier = AbilityTier.Dance,
+                Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
@@ -86,7 +86,7 @@ namespace Heroes.Models.Tests
             Hero.AddAbility(new Ability()
             {
                 ReferenceNameId = "Abil5",
-                Tier = AbilityTier.Taunt,
+                Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
@@ -107,7 +107,7 @@ namespace Heroes.Models.Tests
             Hero.AddAbility(new Ability()
             {
                 ReferenceNameId = "SubAbil1",
-                Tier = AbilityTier.Voice,
+                Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
@@ -116,7 +116,6 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
-                ShortTooltipNameId = "test",
             });
         }
 
