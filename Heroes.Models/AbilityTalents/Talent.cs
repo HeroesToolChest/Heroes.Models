@@ -82,6 +82,14 @@ namespace Heroes.Models.AbilityTalents
             return AbilityTalentLinkIdList.Contains(value);
         }
 
+        /// <summary>
+        /// Removes all elements from the collection.
+        /// </summary>
+        public void ClearAbilityTalentLinkIds()
+        {
+            AbilityTalentLinkIdList.Clear();
+        }
+
         public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
     }
 }
