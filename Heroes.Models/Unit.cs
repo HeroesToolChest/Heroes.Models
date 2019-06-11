@@ -13,7 +13,7 @@ namespace Heroes.Models
         private readonly HashSet<string> AttributeList = new HashSet<string>();
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>();
+        private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.

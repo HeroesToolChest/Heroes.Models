@@ -12,7 +12,7 @@ namespace Heroes.Models
         private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
         private readonly HashSet<string> RoleList = new HashSet<string>();
-        private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>();
+        private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>(StringComparer.OrdinalIgnoreCase);
         private readonly HashSet<Unit> UnitList = new HashSet<Unit>();
 
         /// <summary>
