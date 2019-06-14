@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Heroes.Models.AbilityTalents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Heroes.Models.AbilityTalents;
 
 namespace Heroes.Models
 {
@@ -388,8 +388,26 @@ namespace Heroes.Models
             }
 
             if (AbilitiesById.TryGetValue(ability.ReferenceNameId, out HashSet<Ability> value))
-            {
                 return value.Contains(ability);
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsAbility(string abilityId)
+        {
+            if (string.IsNullOrEmpty(abilityId))
+            {
+                return false;
+            }
+
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
+            {
+                return value.Any(x => x.ReferenceNameId == abilityId);
             }
             else
             {
@@ -423,7 +441,7 @@ namespace Heroes.Models
         /// <param name="abilityId"></param>
         /// <param name="ability"></param>
         /// <returns></returns>
-        public bool TryGetAbility(string abilityId, out IEnumerable<Ability> ability)
+        public bool TryGetAbilities(string abilityId, out IEnumerable<Ability> ability)
         {
             if (abilityId == null)
             {
@@ -447,7 +465,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public IEnumerable<Ability> GetAbility(string abilityId)
+        public IEnumerable<Ability> GetAbilities(string abilityId)
         {
             if (string.IsNullOrEmpty(abilityId))
                 return null;

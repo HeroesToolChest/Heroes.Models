@@ -20,17 +20,17 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetAbilityTests()
         {
-            List<Ability> abil = Hero.GetAbility("Abil3").ToList();
+            List<Ability> abil = Hero.GetAbilities("Abil3").ToList();
             Assert.AreEqual(AbilityTier.Basic, abil[0].Tier);
             Assert.AreEqual(string.Empty, abil[0].ParentLink);
 
-            Assert.IsNull(Hero.GetAbility(string.Empty));
-            Assert.IsNull(Hero.GetAbility(null));
-            Assert.AreEqual(0, Hero.GetAbility("Asdf").ToList().Count);
+            Assert.IsNull(Hero.GetAbilities(string.Empty));
+            Assert.IsNull(Hero.GetAbilities(null));
+            Assert.AreEqual(0, Hero.GetAbilities("Asdf").ToList().Count);
 
-            Assert.AreEqual(0, NullHero.GetAbility("Asdf").ToList().Count);
+            Assert.AreEqual(0, NullHero.GetAbilities("Asdf").ToList().Count);
 
-            Assert.AreEqual(3, Hero.GetAbility("Abil1").ToList().Count);
+            Assert.AreEqual(3, Hero.GetAbilities("Abil1").ToList().Count);
         }
 
         [TestMethod]
