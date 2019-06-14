@@ -74,12 +74,12 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return ReferenceNameId.Equals(item.ReferenceNameId, StringComparison.OrdinalIgnoreCase);
+            return $"{item.ReferenceNameId + item.FullTooltipNameId + item.ShortTooltipNameId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{ReferenceNameId + FullTooltipNameId + ShortTooltipNameId + IconFileName + AbilityType}".ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return ReferenceNameId.GetHashCode();
+            return $"{ReferenceNameId + FullTooltipNameId + ShortTooltipNameId + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>

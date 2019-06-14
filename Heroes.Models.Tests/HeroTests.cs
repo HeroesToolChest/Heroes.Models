@@ -1,5 +1,6 @@
 ﻿using Heroes.Models.AbilityTalents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Heroes.Models.Tests
@@ -19,15 +20,17 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetAbilityTests()
         {
-            Ability abil = Hero.GetAbility("Abil3");
-            Assert.AreEqual(AbilityTier.Basic, abil.Tier);
-            Assert.AreEqual(string.Empty, abil.ParentLink);
+            List<Ability> abil = Hero.GetAbility("Abil3").ToList();
+            Assert.AreEqual(AbilityTier.Basic, abil[0].Tier);
+            Assert.AreEqual(string.Empty, abil[0].ParentLink);
 
             Assert.IsNull(Hero.GetAbility(string.Empty));
             Assert.IsNull(Hero.GetAbility(null));
-            Assert.IsNull(Hero.GetAbility("asdf"));
+            Assert.AreEqual(0, Hero.GetAbility("Asdf").ToList().Count);
 
-            Assert.IsNull(NullHero.GetAbility("asdf"));
+            Assert.AreEqual(0, NullHero.GetAbility("Asdf").ToList().Count);
+
+            Assert.AreEqual(3, Hero.GetAbility("Abil1").ToList().Count);
         }
 
         [TestMethod]
@@ -60,6 +63,22 @@ namespace Heroes.Models.Tests
                 ReferenceNameId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
+            });
+
+            Hero.AddAbility(new Ability()
+            {
+                ReferenceNameId = "Abil1",
+                Tier = AbilityTier.Basic,
+                ParentLink = string.Empty,
+                AbilityType = AbilityType.W,
+            });
+
+            Hero.AddAbility(new Ability()
+            {
+                ReferenceNameId = "Abil1",
+                Tier = AbilityTier.Basic,
+                ParentLink = string.Empty,
+                AbilityType = AbilityType.Q,
             });
 
             Hero.AddAbility(new Ability()

@@ -13,7 +13,7 @@ namespace Heroes.Models
         private readonly HashSet<string> AttributeList = new HashSet<string>();
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, Ability> AbilitiesById = new Dictionary<string, Ability>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, HashSet<Ability>> AbilitiesById = new Dictionary<string, HashSet<Ability>>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -71,22 +71,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of abilities.
         /// </summary>
-        public IEnumerable<Ability> Abilities => AbilitiesById.Values;
+        public IEnumerable<Ability> Abilities => AbilitiesById.Values.SelectMany(x => x);
 
         /// <summary>
         /// Gets the amount of abilities.
         /// </summary>
-        public int AbilitiesCount => AbilitiesById.Values.Count;
-
-        /// <summary>
-        /// Gets a collection of ability ids.
-        /// </summary>
-        public IEnumerable<string> AbilityIds => AbilitiesById.Keys;
-
-        /// <summary>
-        /// Gets the amount of ability ids.
-        /// </summary>
-        public int AbilityIdsCount => AbilitiesById.Keys.Count;
+        public int AbilitiesCount => AbilitiesById.Values.Sum(x => x.Count);
 
         /// <summary>
         /// Gets a collection of basic attack weapons.
@@ -379,7 +369,10 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            AbilitiesById[ability.ReferenceNameId] = ability;
+            if (AbilitiesById.TryGetValue(ability.ReferenceNameId, out HashSet<Ability> value))
+                value.Add(ability);
+            else
+                AbilitiesById.Add(ability.ReferenceNameId, new HashSet<Ability>() { ability });
         }
 
         /// <summary>
@@ -387,14 +380,21 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool ContainsAbility(string abilityId)
+        public bool ContainsAbility(Ability ability)
         {
-            if (abilityId == null)
+            if (ability == null)
             {
-                throw new ArgumentNullException(nameof(abilityId));
+                throw new ArgumentNullException(nameof(ability));
             }
 
-            return AbilitiesById.ContainsKey(abilityId);
+            if (AbilitiesById.TryGetValue(ability.ReferenceNameId, out HashSet<Ability> value))
+            {
+                return value.Contains(ability);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -402,30 +402,44 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public bool RemoveAbility(string abilityId)
+        public bool RemoveAbility(Ability ability)
         {
-            if (string.IsNullOrEmpty(abilityId))
+            if (ability == null)
             {
-                throw new ArgumentException("Argument cannot be null or emtpy", nameof(abilityId));
+                throw new ArgumentNullException(nameof(ability));
             }
 
-            return AbilitiesById.Remove(abilityId);
+            if (AbilitiesById.TryGetValue(ability.ReferenceNameId, out HashSet<Ability> value))
+            {
+                return value.Remove(ability);
+            }
+
+            return false;
         }
 
         /// <summary>
-        /// Try to get the ability from the specified ability id.
+        /// Try to get the abilities from the specified ability reference id.
         /// </summary>
         /// <param name="abilityId"></param>
         /// <param name="ability"></param>
         /// <returns></returns>
-        public bool TryGetAbility(string abilityId, out Ability ability)
+        public bool TryGetAbility(string abilityId, out IEnumerable<Ability> ability)
         {
             if (abilityId == null)
             {
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            return AbilitiesById.TryGetValue(abilityId, out ability);
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
+            {
+                ability = value;
+                return true;
+            }
+            else
+            {
+                ability = new HashSet<Ability>();
+                return false;
+            }
         }
 
         /// <summary>
@@ -433,15 +447,15 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public Ability GetAbility(string abilityId)
+        public IEnumerable<Ability> GetAbility(string abilityId)
         {
             if (string.IsNullOrEmpty(abilityId))
                 return null;
 
-            if (AbilitiesById.TryGetValue(abilityId, out Ability ability))
-                return ability;
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
+                return value;
             else
-                return null;
+                return new HashSet<Ability>();
         }
 
         /// <summary>
