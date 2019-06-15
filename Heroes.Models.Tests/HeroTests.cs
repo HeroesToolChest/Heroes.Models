@@ -60,14 +60,14 @@ namespace Heroes.Models.Tests
         {
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil1",
+                AbilityId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil1",
+                AbilityId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
                 AbilityType = AbilityType.W,
@@ -75,7 +75,7 @@ namespace Heroes.Models.Tests
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil1",
+                AbilityId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
                 AbilityType = AbilityType.Q,
@@ -83,56 +83,56 @@ namespace Heroes.Models.Tests
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil2",
+                AbilityId = "Abil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil3",
+                AbilityId = "Abil3",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil4",
+                AbilityId = "Abil4",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil5",
+                AbilityId = "Abil5",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil6",
+                AbilityId = "Abil6",
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "Abil7",
+                AbilityId = "Abil7",
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "SubAbil1",
+                AbilityId = "SubAbil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
             Hero.AddAbility(new Ability()
             {
-                ReferenceNameId = "SubAbil2",
+                AbilityId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
@@ -142,7 +142,7 @@ namespace Heroes.Models.Tests
         {
             Hero.AddTalent(new Talent()
             {
-                ReferenceNameId = "Talent1",
+                AbilityId = "Talent1",
                 Name = "Talent 1",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level1,
@@ -150,7 +150,7 @@ namespace Heroes.Models.Tests
 
             Hero.AddTalent(new Talent()
             {
-                ReferenceNameId = "Talent2",
+                AbilityId = "Talent2",
                 Name = "Talent 2",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level1,
@@ -158,7 +158,7 @@ namespace Heroes.Models.Tests
 
             Hero.AddTalent(new Talent()
             {
-                ReferenceNameId = "Talent3",
+                AbilityId = "Talent3",
                 Name = "Talent 3",
                 IconFileName = "storm_ui.png",
                 Tier = TalentTier.Level4,

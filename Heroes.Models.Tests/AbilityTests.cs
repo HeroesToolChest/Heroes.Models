@@ -12,20 +12,18 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
+                ButtonId = "abil1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "AbilitY1",
+                AbilityId = "AbilitY1",
+                ButtonId = "abil1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Assert.AreEqual(ability1, ability2);
@@ -36,20 +34,17 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
+                ButtonId = "Ability",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Assert.AreNotEqual(ability1, ability2);
@@ -60,20 +55,16 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "AbilitY1",
+                AbilityId = "AbilitY1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             HashSet<Ability> abilities = new HashSet<Ability>();
@@ -86,20 +77,16 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "AbilitY1",
+                AbilityId = "AbilitY1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             HashSet<Ability> abilities = new HashSet<Ability>();
@@ -112,29 +99,23 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceNameId = "Ability2",
+                AbilityId = "Ability2",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Unit unit = new Unit();
@@ -150,29 +131,23 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceNameId = "Ability2",
+                AbilityId = "Ability2",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Unit unit = new Unit();
@@ -182,27 +157,21 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.ContainsAbility(new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
             Assert.IsFalse(unit.ContainsAbility(new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Hidden,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
             Assert.IsFalse(unit.ContainsAbility(new Ability()
             {
-                ReferenceNameId = "Ability4",
+                AbilityId = "Ability4",
                 AbilityType = AbilityType.Hidden,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
 
             Assert.IsTrue(unit.ContainsAbility("Ability1"));
@@ -214,29 +183,22 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceNameId = "Ability2",
+                AbilityId = "Ability2",
                 AbilityType = AbilityType.Heroic,
-                IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             };
 
             Unit unit = new Unit();
@@ -248,30 +210,24 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.RemoveAbility(new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
 
             // try to remove again
             Assert.IsFalse(unit.RemoveAbility(new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
 
             Assert.IsFalse(unit.RemoveAbility(new Ability()
             {
-                ReferenceNameId = "Ability3",
+                AbilityId = "Ability3",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
 
             Assert.AreEqual(2, unit.AbilitiesCount);
@@ -279,11 +235,9 @@ namespace Heroes.Models.Tests
             // remove 1
             Assert.IsTrue(unit.RemoveAbility(new Ability()
             {
-                ReferenceNameId = "Ability1",
+                AbilityId = "Ability1",
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
-                ShortTooltipNameId = "abil1",
-                FullTooltipNameId = "abil1",
             }));
 
             Assert.AreEqual(1, unit.AbilitiesCount);

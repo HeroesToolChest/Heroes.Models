@@ -13,19 +13,14 @@ namespace Heroes.Models.AbilityTalents
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique reference name id.
+        /// Gets or sets the ability id.
         /// </summary>
-        public string ReferenceNameId { get; set; }
+        public string AbilityId { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique tooltip name id for the full tooltip.
+        /// Gets or sets the button id.
         /// </summary>
-        public string FullTooltipNameId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the unique tooltip name id for the short tooltip.
-        /// </summary>
-        public string ShortTooltipNameId { get; set; }
+        public string ButtonId { get; set; }
 
         /// <summary>
         /// Gets or sets the icon file name.
@@ -74,12 +69,12 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return $"{item.ReferenceNameId + item.FullTooltipNameId + item.ShortTooltipNameId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{ReferenceNameId + FullTooltipNameId + ShortTooltipNameId + IconFileName + AbilityType}".ToUpper());
+            return $"{item.AbilityId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{AbilityId + ButtonId + IconFileName + AbilityType}".ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{ReferenceNameId + FullTooltipNameId + ShortTooltipNameId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return $"{AbilityId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>

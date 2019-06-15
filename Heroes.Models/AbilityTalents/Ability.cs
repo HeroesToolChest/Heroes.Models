@@ -12,9 +12,8 @@ namespace Heroes.Models.AbilityTalents
         public Ability(AbilityTalentBase talentBase)
         {
             Name = talentBase.Name;
-            ReferenceNameId = talentBase.ReferenceNameId;
-            FullTooltipNameId = talentBase.FullTooltipNameId;
-            ShortTooltipNameId = talentBase.ShortTooltipNameId;
+            AbilityId = talentBase.AbilityId;
+            ButtonId = talentBase.ButtonId;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
         }
@@ -32,9 +31,9 @@ namespace Heroes.Models.AbilityTalents
         public override string ToString()
         {
             if (string.IsNullOrEmpty(ParentLink))
-                return $"{Tier.GetFriendlyName()} | {ReferenceNameId}";
+                return $"{Tier.GetFriendlyName()} | {AbilityId} | {ButtonId}";
             else
-                return $"{Tier.GetFriendlyName()} | {ReferenceNameId} | SubAbility to {ParentLink}";
+                return $"{Tier.GetFriendlyName()} | {AbilityId} | {ButtonId} -> sub-ability to {ParentLink}";
         }
 
         /// <summary>
