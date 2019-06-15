@@ -369,10 +369,10 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
+            if (AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
                 value.Add(ability);
             else
-                AbilitiesById.Add(ability.AbilityId, new HashSet<Ability>() { ability });
+                AbilitiesById.Add(ability.ReferenceId, new HashSet<Ability>() { ability });
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
+            if (AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
                 return value.Contains(ability);
             else
                 return false;
@@ -407,7 +407,7 @@ namespace Heroes.Models
 
             if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
             {
-                return value.Any(x => x.AbilityId == abilityId);
+                return value.Any(x => x.ReferenceId == abilityId);
             }
             else
             {
@@ -427,7 +427,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
+            if (AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
             {
                 return value.Remove(ability);
             }

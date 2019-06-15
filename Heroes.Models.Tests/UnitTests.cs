@@ -104,63 +104,63 @@ namespace Heroes.Models.Tests
         {
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil1",
+                ReferenceId = "Abil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil2",
+                ReferenceId = "Abil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil3",
+                ReferenceId = "Abil3",
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil4",
+                ReferenceId = "Abil4",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil5",
+                ReferenceId = "Abil5",
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil6",
+                ReferenceId = "Abil6",
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "Abil7",
+                ReferenceId = "Abil7",
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "SubAbil1",
+                ReferenceId = "SubAbil1",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = "SubAbil2",
+                ReferenceId = "SubAbil2",
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });

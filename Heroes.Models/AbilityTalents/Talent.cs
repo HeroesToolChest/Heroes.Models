@@ -12,7 +12,7 @@ namespace Heroes.Models.AbilityTalents
         public Talent(AbilityTalentBase talentBase)
         {
             Name = talentBase.Name;
-            AbilityId = talentBase.AbilityId;
+            ReferenceId = talentBase.ReferenceId;
             ButtonId = talentBase.ButtonId;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
@@ -89,6 +89,6 @@ namespace Heroes.Models.AbilityTalents
             AbilityTalentLinkIdList.Clear();
         }
 
-        public override string ToString() => $"{Tier.GetFriendlyName()} | {AbilityId}";
+        public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceId}";
     }
 }

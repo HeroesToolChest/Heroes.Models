@@ -13,9 +13,9 @@ namespace Heroes.Models.AbilityTalents
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the ability id.
+        /// Gets or sets the reference id.
         /// </summary>
-        public string AbilityId { get; set; }
+        public string ReferenceId { get; set; }
 
         /// <summary>
         /// Gets or sets the button id.
@@ -69,12 +69,12 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return $"{item.AbilityId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{AbilityId + ButtonId + IconFileName + AbilityType}".ToUpper());
+            return $"{item.ReferenceId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{ReferenceId + ButtonId + IconFileName + AbilityType}".ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{AbilityId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return $"{ReferenceId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>
