@@ -1,6 +1,8 @@
 ﻿using Heroes.Models.AbilityTalents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Heroes.Models.Tests
 {
@@ -241,6 +243,133 @@ namespace Heroes.Models.Tests
             }));
 
             Assert.AreEqual(1, unit.AbilitiesCount);
+        }
+
+        [TestMethod]
+        public void AddAbilityIsNullTest()
+        {
+            Unit unit = new Unit();
+            Assert.ThrowsException<ArgumentNullException>(() => { unit.AddAbility(null); });
+        }
+
+        [TestMethod]
+        public void AddPassiveAbilityTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+        }
+
+        [TestMethod]
+        public void ContainsPassiveAbilityTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass2",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+
+            Assert.IsTrue(unit.ContainsAbility(new Ability()
+            {
+                ButtonId = "pass2",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            }));
+
+            Assert.IsFalse(unit.ContainsAbility(new Ability()
+            {
+                ButtonId = "pass3",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            }));
+
+            Assert.IsFalse(unit.ContainsAbility(string.Empty));
+            Assert.IsTrue(unit.ContainsAbility("pass2"));
+        }
+
+        [TestMethod]
+        public void RemovePassiveAbilityTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass2",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+
+            Assert.IsTrue(unit.RemoveAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            }));
+        }
+
+        [TestMethod]
+        public void GetPassiveAbilitiesTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass2",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+
+            Ability ability = unit.GetAbilities("pass2").ToList()[0];
+            Assert.AreEqual("pass2", ability.ButtonId);
+            Assert.AreEqual(null, ability.ReferenceId);
+        }
+
+        [TestMethod]
+        public void TryGetPassiveAbilitiesTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass1",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                ButtonId = "pass2",
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+
+            Assert.IsTrue(unit.TryGetAbilities("pass2", out IEnumerable<Ability> abilities));
         }
     }
 }
