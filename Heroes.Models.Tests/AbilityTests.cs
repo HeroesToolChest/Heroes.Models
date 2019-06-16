@@ -349,7 +349,7 @@ namespace Heroes.Models.Tests
 
             Ability ability = unit.GetAbilities("pass2").ToList()[0];
             Assert.AreEqual("pass2", ability.ButtonId);
-            Assert.AreEqual(null, ability.ReferenceId);
+            Assert.AreEqual(string.Empty, ability.ReferenceId);
         }
 
         [TestMethod]

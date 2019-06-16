@@ -15,12 +15,12 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the reference id.
         /// </summary>
-        public string ReferenceId { get; set; }
+        public string ReferenceId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the button id.
         /// </summary>
-        public string ButtonId { get; set; }
+        public string ButtonId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the icon file name.
