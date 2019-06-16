@@ -30,10 +30,14 @@ namespace Heroes.Models.AbilityTalents
 
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(ParentLink))
+            if (string.IsNullOrEmpty(ParentLink) && !IsPassive)
                 return $"{Tier.GetFriendlyName()} | {ReferenceId} | {ButtonId}";
-            else
+            else if (string.IsNullOrEmpty(ParentLink) && IsPassive)
+                return $"{Tier.GetFriendlyName()} | (Passive) | {ButtonId}";
+            else if (!string.IsNullOrEmpty(ParentLink) && !IsPassive)
                 return $"{Tier.GetFriendlyName()} | {ReferenceId} | {ButtonId} -> sub-ability to {ParentLink}";
+            else
+                return $"{Tier.GetFriendlyName()} | (Passive) | {ButtonId} -> sub-ability to {ParentLink}";
         }
 
         /// <summary>
