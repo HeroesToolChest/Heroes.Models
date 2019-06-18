@@ -12,11 +12,19 @@ namespace Heroes.Models.AbilityTalents
         public Talent(AbilityTalentBase talentBase)
         {
             Name = talentBase.Name;
-            ReferenceId = talentBase.ReferenceId;
-            ButtonId = talentBase.ButtonId;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
         }
+
+        /// <summary>
+        /// Gets the talent id.
+        /// </summary>
+        public string TalentId { get; set; }
+
+        /// <summary>
+        /// Gets the button id.
+        /// </summary>
+        public string ButtonId { get; set; }
 
         /// <summary>
         /// Gets or sets the tier of the talent.
@@ -37,6 +45,26 @@ namespace Heroes.Models.AbilityTalents
         /// Gets the amount of abilityTalentLinkIds.
         /// </summary>
         public int AbilityTalentLinkIdsCount => AbilityTalentLinkIdList.Count;
+
+        public static bool operator ==(Talent talent1, Talent talent2)
+        {
+            if (talent1 is null)
+            {
+                return talent2 is null;
+            }
+
+            return talent1.Equals(talent2);
+        }
+
+        public static bool operator !=(Talent talent1, Talent talent2)
+        {
+            if (talent1 is null)
+            {
+                return talent2 is null;
+            }
+
+            return !talent1.Equals(talent2);
+        }
 
         /// <summary>
         /// Adds an abilityTalentLinkId.
@@ -89,6 +117,19 @@ namespace Heroes.Models.AbilityTalents
             AbilityTalentLinkIdList.Clear();
         }
 
-        public override string ToString() => $"{Tier.GetFriendlyName()} | {ReferenceId}";
+        public override string ToString() => $"{Tier.GetFriendlyName()} | {TalentId} | {ButtonId}";
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Talent item))
+                return false;
+
+            return $"{item.TalentId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{TalentId + ButtonId + IconFileName + AbilityType}".ToUpper());
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{TalentId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+        }
     }
 }

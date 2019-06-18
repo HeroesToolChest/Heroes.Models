@@ -13,7 +13,7 @@ namespace Heroes.Models
         private readonly HashSet<string> AttributeList = new HashSet<string>();
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, HashSet<Ability>> AbilitiesById = new Dictionary<string, HashSet<Ability>>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<AbilityId, HashSet<Ability>> AbilitiesById = new Dictionary<AbilityId, HashSet<Ability>>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -369,24 +369,15 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (!string.IsNullOrEmpty(ability.ReferenceId))
+            if (ability.AbilityId == null)
             {
-                if (AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
-                    value.Add(ability);
-                else
-                    AbilitiesById.Add(ability.ReferenceId, new HashSet<Ability>() { ability });
+                throw new NullReferenceException(nameof(ability.AbilityId));
             }
-            else if (string.IsNullOrEmpty(ability.ReferenceId) && !string.IsNullOrEmpty(ability.ButtonId) && ability.IsPassive)
-            {
-                if (AbilitiesById.TryGetValue(PassiveId(ability.ButtonId), out HashSet<Ability> value))
-                    value.Add(ability);
-                else
-                    AbilitiesById.Add(PassiveId(ability.ButtonId), new HashSet<Ability>() { ability });
-            }
+
+            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
+                value.Add(ability);
             else
-            {
-                throw new ArgumentException("Ability buttonId is null or empty and ability is not passive");
-            }
+                AbilitiesById.Add(ability.AbilityId, new HashSet<Ability>() { ability });
         }
 
         /// <summary>
@@ -401,50 +392,35 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (!string.IsNullOrEmpty(ability.ReferenceId))
+            if (ability.AbilityId == null)
             {
-                if (AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
-                    return value.Contains(ability);
-                else
-                    return false;
+                throw new NullReferenceException(nameof(ability.AbilityId));
             }
-            else if (string.IsNullOrEmpty(ability.ReferenceId) && !string.IsNullOrEmpty(ability.ButtonId) && ability.IsPassive)
-            {
-                if (AbilitiesById.TryGetValue(PassiveId(ability.ButtonId), out HashSet<Ability> value))
-                    return value.Contains(ability);
-                else
-                    return false;
-            }
+
+            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
+                return value.Contains(ability);
             else
-            {
-                throw new ArgumentException("Ability buttonId is null or empty and ability is not passive");
-            }
+                return false;
         }
 
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="id">Can be either an abilityId or buttonId.</param>
+        /// <param name="abilityId"></param>
         /// <returns></returns>
-        public bool ContainsAbility(string id)
+        public bool ContainsAbility(AbilityId abilityId)
         {
-            if (string.IsNullOrEmpty(id))
+            if (abilityId == null)
             {
-                return false;
+                throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesById.TryGetValue(id, out HashSet<Ability> value))
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
             {
-                return value.Any(x => x.ReferenceId == id);
+                return value.Any(x => x.AbilityId == abilityId);
             }
-            else if (AbilitiesById.TryGetValue(PassiveId(id), out value))
-            {
-                return value.Any(x => x.ButtonId == id);
-            }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         /// <summary>
@@ -459,11 +435,12 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
             }
 
-            if (!string.IsNullOrEmpty(ability.ReferenceId) && AbilitiesById.TryGetValue(ability.ReferenceId, out HashSet<Ability> value))
+            if (ability.AbilityId == null)
             {
-                return value.Remove(ability);
+                throw new NullReferenceException(nameof(ability.AbilityId));
             }
-            else if (string.IsNullOrEmpty(ability.ReferenceId) && ability.IsPassive && AbilitiesById.TryGetValue(PassiveId(ability.ButtonId), out value))
+
+            if (AbilitiesById.TryGetValue(ability.AbilityId, out HashSet<Ability> value))
             {
                 return value.Remove(ability);
             }
@@ -472,24 +449,19 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Try to get the abilities from the ability id or button id.
+        /// Try to get the abilities from an <see cref="AbilityId"/>.
         /// </summary>
-        /// <param name="id">Can be either an abilityId or buttonId.</param>
+        /// <param name="abilityId"></param>
         /// <param name="abilities"></param>
         /// <returns></returns>
-        public bool TryGetAbilities(string id, out IEnumerable<Ability> abilities)
+        public bool TryGetAbilities(AbilityId abilityId, out IEnumerable<Ability> abilities)
         {
-            if (id == null)
+            if (abilityId == null)
             {
-                throw new ArgumentNullException(nameof(id));
+                throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesById.TryGetValue(id, out HashSet<Ability> value))
-            {
-                abilities = value;
-                return true;
-            }
-            else if (AbilitiesById.TryGetValue(PassiveId(id), out value))
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
             {
                 abilities = value;
                 return true;
@@ -502,18 +474,18 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Returns a collection of abilities from the abilityId or buttonId.
+        /// Returns a collection of abilities an <see cref="AbilityId"/>.
         /// </summary>
-        /// <param name="id">Can be either an abilityId or buttonId.</param>
+        /// <param name="abilityId"></param>
         /// <returns></returns>
-        public IEnumerable<Ability> GetAbilities(string id)
+        public IEnumerable<Ability> GetAbilities(AbilityId abilityId)
         {
-            if (string.IsNullOrEmpty(id))
-                return null;
+            if (abilityId == null)
+            {
+                throw new ArgumentNullException(nameof(abilityId));
+            }
 
-            if (AbilitiesById.TryGetValue(id, out HashSet<Ability> value))
-                return value;
-            else if (AbilitiesById.TryGetValue(PassiveId(id), out value))
+            if (AbilitiesById.TryGetValue(abilityId, out HashSet<Ability> value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -547,7 +519,5 @@ namespace Heroes.Models
 
             return UnitIdList.Contains(value);
         }
-
-        private string PassiveId(string buttonId) => $"(passive){buttonId}";
     }
 }

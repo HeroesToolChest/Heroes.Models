@@ -12,11 +12,14 @@ namespace Heroes.Models.AbilityTalents
         public Ability(AbilityTalentBase talentBase)
         {
             Name = talentBase.Name;
-            ReferenceId = talentBase.ReferenceId;
-            ButtonId = talentBase.ButtonId;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
         }
+
+        /// <summary>
+        /// Gets or sets the reference id.
+        /// </summary>
+        public AbilityId AbilityId { get; set; }
 
         /// <summary>
         /// Gets or sets the tier of the ability.
@@ -28,16 +31,24 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
 
-        public override string ToString()
+        public static bool operator ==(Ability ability1, Ability ability2)
         {
-            if (string.IsNullOrEmpty(ParentLink) && !IsPassive)
-                return $"{Tier.GetFriendlyName()} | {ReferenceId} | {ButtonId}";
-            else if (string.IsNullOrEmpty(ParentLink) && IsPassive)
-                return $"{Tier.GetFriendlyName()} | (Passive) | {ButtonId}";
-            else if (!string.IsNullOrEmpty(ParentLink) && !IsPassive)
-                return $"{Tier.GetFriendlyName()} | {ReferenceId} | {ButtonId} -> sub-ability to {ParentLink}";
-            else
-                return $"{Tier.GetFriendlyName()} | (Passive) | {ButtonId} -> sub-ability to {ParentLink}";
+            if (ability1 is null)
+            {
+                return ability2 is null;
+            }
+
+            return ability1.Equals(ability2);
+        }
+
+        public static bool operator !=(Ability ability1, Ability ability2)
+        {
+            if (ability1 is null)
+            {
+                return ability2 is null;
+            }
+
+            return !ability1.Equals(ability2);
         }
 
         /// <summary>
@@ -67,6 +78,31 @@ namespace Heroes.Models.AbilityTalents
             }
 
             return TalentIdUpgradeList.Contains(value);
+        }
+
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(ParentLink) && !IsPassive)
+                return $"{Tier.GetFriendlyName()} | {AbilityId}";
+            else if (string.IsNullOrEmpty(ParentLink) && IsPassive)
+                return $"{Tier.GetFriendlyName()} | (Passive) | {AbilityId}";
+            else if (!string.IsNullOrEmpty(ParentLink) && !IsPassive)
+                return $"{Tier.GetFriendlyName()} | {AbilityId} -> sub-ability to {ParentLink}";
+            else
+                return $"{Tier.GetFriendlyName()} | (Passive) | {AbilityId} -> sub-ability to {ParentLink}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Ability item))
+                return false;
+
+            return $"{item.AbilityId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{AbilityId + IconFileName + AbilityType}".ToUpper());
+        }
+
+        public override int GetHashCode()
+        {
+            return $"{AbilityId + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
     }
 }

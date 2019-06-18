@@ -13,16 +13,6 @@ namespace Heroes.Models.AbilityTalents
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference id.
-        /// </summary>
-        public string ReferenceId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the button id.
-        /// </summary>
-        public string ButtonId { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the icon file name.
         /// </summary>
         public string IconFileName { get; set; }
@@ -69,12 +59,12 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return $"{item.ReferenceId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{ReferenceId + ButtonId + IconFileName + AbilityType}".ToUpper());
+            return $"{item.Name + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{Name + IconFileName + AbilityType}".ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{ReferenceId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return $"{Name + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>

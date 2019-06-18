@@ -170,7 +170,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(talent));
             }
 
-            TalentsById[talent.ReferenceId] = talent;
+            TalentsById[talent.TalentId] = talent;
         }
 
         /// <summary>

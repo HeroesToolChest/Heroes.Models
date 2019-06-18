@@ -14,16 +14,14 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
-                ButtonId = "abil1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "AbilitY1",
-                ButtonId = "abil1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
@@ -36,15 +34,14 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "Ability1",
-                ButtonId = "Ability",
+                AbilityId = new AbilityId("Ability1", "Ability"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
@@ -57,14 +54,14 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "AbilitY1",
+                AbilityId = new AbilityId("AbilitY1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
@@ -79,14 +76,14 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "AbilitY1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
@@ -101,21 +98,21 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceId = "Ability2",
+                AbilityId = new AbilityId("Ability2", "abil2"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
@@ -133,21 +130,21 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceId = "Ability2",
+                AbilityId = new AbilityId("Ability2", "abil2"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
@@ -159,25 +156,25 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.ContainsAbility(new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             }));
             Assert.IsFalse(unit.ContainsAbility(new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Hidden,
                 IconFileName = "test.png",
             }));
             Assert.IsFalse(unit.ContainsAbility(new Ability()
             {
-                ReferenceId = "Ability4",
+                AbilityId = new AbilityId("Ability4", "abil4"),
                 AbilityType = AbilityType.Hidden,
                 IconFileName = "test.png",
             }));
 
-            Assert.IsTrue(unit.ContainsAbility("Ability1"));
-            Assert.IsFalse(unit.ContainsAbility("Ability5"));
+            Assert.IsTrue(unit.ContainsAbility(new AbilityId("Ability1", "abil1")));
+            Assert.IsFalse(unit.ContainsAbility(new AbilityId("Ability5", string.Empty)));
         }
 
         [TestMethod]
@@ -185,21 +182,21 @@ namespace Heroes.Models.Tests
         {
             Ability ability1 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             };
 
             Ability ability2 = new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             };
 
             Ability ability3 = new Ability()
             {
-                ReferenceId = "Ability2",
+                AbilityId = new AbilityId("Ability2", "abil2"),
                 AbilityType = AbilityType.Heroic,
             };
 
@@ -212,7 +209,7 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.RemoveAbility(new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             }));
@@ -220,14 +217,14 @@ namespace Heroes.Models.Tests
             // try to remove again
             Assert.IsFalse(unit.RemoveAbility(new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Active,
                 IconFileName = "test.png",
             }));
 
             Assert.IsFalse(unit.RemoveAbility(new Ability()
             {
-                ReferenceId = "Ability3",
+                AbilityId = new AbilityId("Ability3", "abil3"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             }));
@@ -237,7 +234,7 @@ namespace Heroes.Models.Tests
             // remove 1
             Assert.IsTrue(unit.RemoveAbility(new Ability()
             {
-                ReferenceId = "Ability1",
+                AbilityId = new AbilityId("Ability1", "abil1"),
                 AbilityType = AbilityType.Heroic,
                 IconFileName = "test.png",
             }));
@@ -258,13 +255,13 @@ namespace Heroes.Models.Tests
             Unit unit = new Unit();
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
@@ -276,33 +273,33 @@ namespace Heroes.Models.Tests
             Unit unit = new Unit();
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass2",
+                AbilityId = new AbilityId(string.Empty, "pass2"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
 
             Assert.IsTrue(unit.ContainsAbility(new Ability()
             {
-                ButtonId = "pass2",
+                AbilityId = new AbilityId(string.Empty, "pass2"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             }));
 
             Assert.IsFalse(unit.ContainsAbility(new Ability()
             {
-                ButtonId = "pass3",
+                AbilityId = new AbilityId(string.Empty, "pass3"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             }));
 
-            Assert.IsFalse(unit.ContainsAbility(string.Empty));
-            Assert.IsTrue(unit.ContainsAbility("pass2"));
+            Assert.IsFalse(unit.ContainsAbility(new AbilityId(string.Empty, "asdf")));
+            Assert.IsTrue(unit.ContainsAbility(new AbilityId(string.Empty, "pass2")));
         }
 
         [TestMethod]
@@ -311,20 +308,20 @@ namespace Heroes.Models.Tests
             Unit unit = new Unit();
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass2",
+                AbilityId = new AbilityId(string.Empty, "pass2"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
 
             Assert.IsTrue(unit.RemoveAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             }));
@@ -336,20 +333,20 @@ namespace Heroes.Models.Tests
             Unit unit = new Unit();
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass2",
+                AbilityId = new AbilityId(string.Empty, "pass2"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
 
-            Ability ability = unit.GetAbilities("pass2").ToList()[0];
-            Assert.AreEqual("pass2", ability.ButtonId);
-            Assert.AreEqual(string.Empty, ability.ReferenceId);
+            Ability ability = unit.GetAbilities(new AbilityId(string.Empty, "pass2")).ToList()[0];
+            Assert.AreEqual("pass2", ability.AbilityId.ButtonId);
+            Assert.AreEqual(string.Empty, ability.AbilityId.ReferenceId);
         }
 
         [TestMethod]
@@ -358,18 +355,18 @@ namespace Heroes.Models.Tests
             Unit unit = new Unit();
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass1",
+                AbilityId = new AbilityId(string.Empty, "pass1"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
             unit.AddAbility(new Ability()
             {
-                ButtonId = "pass2",
+                AbilityId = new AbilityId(string.Empty, "pass2"),
                 AbilityType = AbilityType.Passive,
                 IsPassive = true,
             });
 
-            Assert.IsTrue(unit.TryGetAbilities("pass2", out IEnumerable<Ability> abilities));
+            Assert.IsTrue(unit.TryGetAbilities(new AbilityId(string.Empty, "pass2"), out _));
         }
     }
 }
