@@ -19,14 +19,14 @@
         public string Id => ToString();
 
         /// <summary>
-        /// Gets the reference id. This is usually the ability id.
+        /// Gets or sets the reference id. This is usually the ability id.
         /// </summary>
-        public string ReferenceId { get; }
+        public string ReferenceId { get; set; }
 
         /// <summary>
-        /// Gets the button id.
+        /// Gets or sets the button id.
         /// </summary>
-        public string ButtonId { get; }
+        public string ButtonId { get; set; }
 
         public static bool operator ==(AbilityTalentId abilityTalentId1, AbilityTalentId abilityTalentId2)
         {
