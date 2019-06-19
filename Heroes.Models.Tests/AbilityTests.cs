@@ -173,6 +173,8 @@ namespace Heroes.Models.Tests
                 IconFileName = "test.png",
             }));
 
+            Assert.IsTrue(unit.ContainsAbility("Ability1"));
+
             Assert.IsTrue(unit.ContainsAbility(new AbilityTalentId("Ability1", "abil1")));
             Assert.IsFalse(unit.ContainsAbility(new AbilityTalentId("Ability5", string.Empty)));
         }
@@ -367,6 +369,27 @@ namespace Heroes.Models.Tests
             });
 
             Assert.IsTrue(unit.TryGetAbilities(new AbilityTalentId(string.Empty, "pass2"), out _));
+            Assert.IsFalse(unit.TryGetAbilities("pass2", out _));
+        }
+
+        [TestMethod]
+        public void TryGetAbilityTest()
+        {
+            Unit unit = new Unit();
+            unit.AddAbility(new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId("pass1", "pass1"),
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+            unit.AddAbility(new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId(string.Empty, "pass2"),
+                AbilityType = AbilityType.Passive,
+                IsPassive = true,
+            });
+
+            Assert.IsTrue(unit.TryGetAbilities("pass1", out _));
         }
     }
 }
