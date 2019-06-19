@@ -13,6 +13,11 @@ namespace Heroes.Models.AbilityTalents
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the abilityTalent id.
+        /// </summary>
+        public AbilityTalentId AbilityTalentId { get; set; }
+
+        /// <summary>
         /// Gets or sets the icon file name.
         /// </summary>
         public string IconFileName { get; set; }
@@ -59,12 +64,12 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return $"{item.Name + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{Name + IconFileName + AbilityType}".ToUpper());
+            return (item.AbilityTalentId.Id + item.Name + item.IconFileName + item.AbilityType).ToUpper().Equals((AbilityTalentId.Id + Name + IconFileName + AbilityType).ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{Name + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>

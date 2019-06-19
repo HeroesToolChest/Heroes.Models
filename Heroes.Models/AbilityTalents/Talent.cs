@@ -17,16 +17,6 @@ namespace Heroes.Models.AbilityTalents
         }
 
         /// <summary>
-        /// Gets the talent id.
-        /// </summary>
-        public string TalentId { get; set; }
-
-        /// <summary>
-        /// Gets the button id.
-        /// </summary>
-        public string ButtonId { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier of the talent.
         /// </summary>
         public TalentTier Tier { get; set; }
@@ -117,19 +107,19 @@ namespace Heroes.Models.AbilityTalents
             AbilityTalentLinkIdList.Clear();
         }
 
-        public override string ToString() => $"{Tier.GetFriendlyName()} | {TalentId} | {ButtonId}";
+        public override string ToString() => $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
 
         public override bool Equals(object obj)
         {
             if (!(obj is Talent item))
                 return false;
 
-            return $"{item.TalentId + item.ButtonId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{TalentId + ButtonId + IconFileName + AbilityType}".ToUpper());
+            return (item.AbilityTalentId.Id + item.IconFileName + item.AbilityType).ToUpper().Equals((AbilityTalentId.Id + IconFileName + AbilityType).ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{TalentId + ButtonId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return (AbilityTalentId.Id + IconFileName + AbilityType).ToUpper().GetHashCode();
         }
     }
 }

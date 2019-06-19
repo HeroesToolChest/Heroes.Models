@@ -104,63 +104,63 @@ namespace Heroes.Models.Tests
         {
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil1", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil2", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil2", "abil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil3", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil3", "abil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil4", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil4", "abil1"),
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil5", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil5", "abil1"),
                 Tier = AbilityTier.Heroic,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil6", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil6", "abil1"),
                 Tier = AbilityTier.Trait,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("Abil7", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil7", "abil1"),
                 Tier = AbilityTier.Activable,
                 ParentLink = string.Empty,
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("SubAbil1", "subAbil1"),
+                AbilityTalentId = new AbilityTalentId("SubAbil1", "subAbil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });
 
             Unit.AddAbility(new Ability()
             {
-                AbilityId = new AbilityId("SubAbil2", "subAbil2"),
+                AbilityTalentId = new AbilityTalentId("SubAbil2", "subAbil2"),
                 Tier = AbilityTier.Basic,
                 ParentLink = "Abil7",
             });

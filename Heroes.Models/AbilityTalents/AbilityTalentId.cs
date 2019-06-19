@@ -1,13 +1,13 @@
 ﻿namespace Heroes.Models.AbilityTalents
 {
-    public class AbilityId
+    public class AbilityTalentId
     {
         /// <summary>
         /// Contructs an abilityTalentId.
         /// </summary>
         /// <param name="referenceId">The ability id.</param>
         /// <param name="buttonId">The button id.</param>
-        public AbilityId(string referenceId, string buttonId)
+        public AbilityTalentId(string referenceId, string buttonId)
         {
             ReferenceId = referenceId;
             ButtonId = buttonId;
@@ -28,7 +28,7 @@
         /// </summary>
         public string ButtonId { get; }
 
-        public static bool operator ==(AbilityId abilityTalentId1, AbilityId abilityTalentId2)
+        public static bool operator ==(AbilityTalentId abilityTalentId1, AbilityTalentId abilityTalentId2)
         {
             if (abilityTalentId1 is null)
             {
@@ -38,7 +38,7 @@
             return abilityTalentId1.Equals(abilityTalentId2);
         }
 
-        public static bool operator !=(AbilityId abilityTalentId1, AbilityId abilityTalentId2)
+        public static bool operator !=(AbilityTalentId abilityTalentId1, AbilityTalentId abilityTalentId2)
         {
             if (abilityTalentId1 is null)
             {
@@ -55,7 +55,7 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is AbilityId item))
+            if (!(obj is AbilityTalentId item))
                 return false;
 
             return item.Id.ToUpper().Equals(Id.ToUpper());

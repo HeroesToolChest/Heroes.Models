@@ -170,13 +170,13 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(talent));
             }
 
-            TalentsById[talent.TalentId] = talent;
+            TalentsById[talent.AbilityTalentId.ReferenceId] = talent;
         }
 
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="talentId">The reference id of the talent.</param>
         /// <returns></returns>
         public bool ContainsTalent(string talentId)
         {
@@ -191,7 +191,7 @@ namespace Heroes.Models
         /// <summary>
         /// Try to get the talent from the specified talent id.
         /// </summary>
-        /// <param name="talentId"></param>
+        /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent"></param>
         /// <returns></returns>
         public bool TryGetTalent(string talentId, out Talent talent)
@@ -207,7 +207,7 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a talent from the talent id.
         /// </summary>
-        /// <param name="talentId"></param>
+        /// <param name="talentId">The reference id of the talent.</param>
         /// <returns></returns>
         public Talent GetTalent(string talentId)
         {

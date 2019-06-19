@@ -9,8 +9,8 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void AbilityIdEqualsTest()
         {
-            AbilityId abilityId1 = new AbilityId("1", "1");
-            AbilityId abilityId2 = new AbilityId("1", "1");
+            AbilityTalentId abilityId1 = new AbilityTalentId("1", "1");
+            AbilityTalentId abilityId2 = new AbilityTalentId("1", "1");
 
             Assert.IsTrue(abilityId1 == abilityId2);
         }
@@ -18,8 +18,8 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void AbilityIdNotEqualsTest()
         {
-            AbilityId abilityId1 = new AbilityId("1", "1");
-            AbilityId abilityId2 = new AbilityId("2", "2");
+            AbilityTalentId abilityId1 = new AbilityTalentId("1", "1");
+            AbilityTalentId abilityId2 = new AbilityTalentId("2", "2");
 
             Assert.IsTrue(abilityId1 != abilityId2);
         }
@@ -27,8 +27,8 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void EqualsNullTest()
         {
-            AbilityId abilityId1 = null;
-            AbilityId abilityId2 = new AbilityId("1", "1");
+            AbilityTalentId abilityId1 = null;
+            AbilityTalentId abilityId2 = new AbilityTalentId("1", "1");
 
             Assert.IsFalse(abilityId1 == abilityId2);
         }
@@ -36,8 +36,8 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void NotEqualsNullTest()
         {
-            AbilityId abilityId1 = null;
-            AbilityId abilityId2 = new AbilityId("1", "1");
+            AbilityTalentId abilityId1 = null;
+            AbilityTalentId abilityId2 = new AbilityTalentId("1", "1");
 
             Assert.IsFalse(abilityId1 != abilityId2);
         }

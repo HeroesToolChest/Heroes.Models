@@ -17,11 +17,6 @@ namespace Heroes.Models.AbilityTalents
         }
 
         /// <summary>
-        /// Gets or sets the reference id.
-        /// </summary>
-        public AbilityId AbilityId { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier of the ability.
         /// </summary>
         public AbilityTier Tier { get; set; }
@@ -80,29 +75,17 @@ namespace Heroes.Models.AbilityTalents
             return TalentIdUpgradeList.Contains(value);
         }
 
-        public override string ToString()
-        {
-            if (string.IsNullOrEmpty(ParentLink) && !IsPassive)
-                return $"{Tier.GetFriendlyName()} | {AbilityId}";
-            else if (string.IsNullOrEmpty(ParentLink) && IsPassive)
-                return $"{Tier.GetFriendlyName()} | (Passive) | {AbilityId}";
-            else if (!string.IsNullOrEmpty(ParentLink) && !IsPassive)
-                return $"{Tier.GetFriendlyName()} | {AbilityId} -> sub-ability to {ParentLink}";
-            else
-                return $"{Tier.GetFriendlyName()} | (Passive) | {AbilityId} -> sub-ability to {ParentLink}";
-        }
-
         public override bool Equals(object obj)
         {
             if (!(obj is Ability item))
                 return false;
 
-            return $"{item.AbilityId + item.IconFileName + item.AbilityType}".ToUpper().Equals($"{AbilityId + IconFileName + AbilityType}".ToUpper());
+            return (item.AbilityTalentId.Id + item.IconFileName + item.AbilityType).ToUpper().Equals((AbilityTalentId.Id + IconFileName + AbilityType).ToUpper());
         }
 
         public override int GetHashCode()
         {
-            return $"{AbilityId + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return (AbilityTalentId.Id + IconFileName + AbilityType).ToUpper().GetHashCode();
         }
     }
 }
