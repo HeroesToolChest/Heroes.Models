@@ -504,7 +504,7 @@ namespace Heroes.Models
         /// <param name="referenceId"></param>
         /// <param name="ability"></param>
         /// <returns></returns>
-        public bool TryGetAbilities(string referenceId, out Ability ability)
+        public bool TryGetAbility(string referenceId, out Ability ability)
         {
             if (string.IsNullOrEmpty(referenceId))
             {

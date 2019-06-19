@@ -369,7 +369,7 @@ namespace Heroes.Models.Tests
             });
 
             Assert.IsTrue(unit.TryGetAbilities(new AbilityTalentId(string.Empty, "pass2"), out _));
-            Assert.IsFalse(unit.TryGetAbilities("pass2", out _));
+            Assert.IsFalse(unit.TryGetAbility("pass2", out _));
         }
 
         [TestMethod]
@@ -389,7 +389,7 @@ namespace Heroes.Models.Tests
                 IsPassive = true,
             });
 
-            Assert.IsTrue(unit.TryGetAbilities("pass1", out _));
+            Assert.IsTrue(unit.TryGetAbility("pass1", out _));
         }
     }
 }
