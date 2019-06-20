@@ -22,7 +22,7 @@ namespace Heroes.Models.Tests
         {
             List<Ability> abil = Hero.GetAbilities(new AbilityTalentId("Abil3", "Abil3")).ToList();
             Assert.AreEqual(AbilityTier.Basic, abil[0].Tier);
-            Assert.AreEqual(string.Empty, abil[0].ParentLink);
+            Assert.IsNull(abil[0].ParentLink);
 
             Assert.AreEqual(0, Hero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
 
@@ -60,14 +60,13 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
-                ParentLink = string.Empty,
+                ParentLink = null,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
-                ParentLink = string.Empty,
                 AbilityType = AbilityType.W,
             });
 
@@ -75,7 +74,6 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
-                ParentLink = string.Empty,
                 AbilityType = AbilityType.Q,
             });
 
@@ -83,56 +81,51 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Abil2", "abil2"),
                 Tier = AbilityTier.Basic,
-                ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil3", "abil3"),
                 Tier = AbilityTier.Basic,
-                ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil4", "abil4"),
                 Tier = AbilityTier.Heroic,
-                ParentLink = string.Empty,
+                ParentLink = null,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil5", "abil5"),
                 Tier = AbilityTier.Heroic,
-                ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil6", "abil6"),
                 Tier = AbilityTier.Trait,
-                ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil7", "abil7"),
                 Tier = AbilityTier.Activable,
-                ParentLink = string.Empty,
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil1", "subAbil1"),
                 Tier = AbilityTier.Basic,
-                ParentLink = "Abil7",
+                ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
 
             Hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil2", "subAbil2"),
                 Tier = AbilityTier.Basic,
-                ParentLink = "Abil7",
+                ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
         }
 

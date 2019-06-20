@@ -44,10 +44,10 @@ namespace Heroes.Models.AbilityTalents
         public bool IsPassive { get; set; }
 
         /// <summary>
-        /// Gets or sets the ability parent that is associated with this abilityTalent.
+        /// Gets or sets the parent that is associated with this abilityTalent.
         /// </summary>
         /// <remarks>Useful for abilities only.</remarks>
-        public string ParentLink { get; set; }
+        public AbilityTalentId ParentLink { get; set; }
 
         /// <summary>
         /// Gets or sets the AbilityTalentTooltip object.

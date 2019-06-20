@@ -150,7 +150,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities()
         {
-            return Abilities?.Where(x => string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.ParentLink == null).ToList();
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities(AbilityTier tier)
         {
-            return Abilities?.Where(x => x.Tier == tier && string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.Tier == tier && x.ParentLink == null).ToList();
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities()
         {
-            return Abilities?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.ParentLink != null).ToList();
         }
 
         /// <summary>
@@ -180,16 +180,16 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities(AbilityTier tier)
         {
-            return Abilities?.Where(x => x.Tier == tier && !string.IsNullOrEmpty(x.ParentLink)).ToList();
+            return Abilities?.Where(x => x.Tier == tier && x.ParentLink != null).ToList();
         }
 
         /// <summary>
         /// Returns a lookup of all the parent linked abilities.
         /// </summary>
         /// <returns></returns>
-        public ILookup<string, Ability> ParentLinkedAbilities()
+        public ILookup<AbilityTalentId, Ability> ParentLinkedAbilities()
         {
-           return Abilities?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+           return Abilities?.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
         }
 
         /// <summary>

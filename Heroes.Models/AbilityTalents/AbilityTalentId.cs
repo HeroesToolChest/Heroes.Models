@@ -42,7 +42,7 @@
         {
             if (abilityTalentId1 is null)
             {
-                return abilityTalentId2 is null;
+                return !(abilityTalentId2 is null);
             }
 
             return !abilityTalentId1.Equals(abilityTalentId2);
