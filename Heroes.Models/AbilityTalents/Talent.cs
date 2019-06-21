@@ -50,7 +50,7 @@ namespace Heroes.Models.AbilityTalents
         {
             if (talent1 is null)
             {
-                return talent2 is null;
+                return !(talent2 is null);
             }
 
             return !talent1.Equals(talent2);
