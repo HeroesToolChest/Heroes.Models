@@ -524,7 +524,7 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Returns a collection of abilities an <see cref="AbilityTalentId"/>.
+        /// Returns a collection of abilities from an <see cref="AbilityTalentId"/>.
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>

@@ -87,5 +87,7 @@ namespace Heroes.Models.AbilityTalents
         {
             return (AbilityTalentId.Id + IconFileName + AbilityType).ToUpper().GetHashCode();
         }
+
+        public override string ToString() => $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
     }
 }
