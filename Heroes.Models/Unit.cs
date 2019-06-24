@@ -255,7 +255,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the <see cref="UnitWeapon"/> exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="unitWeapon"></param>
         /// <returns></returns>
         public bool ContainsUnitWeapon(UnitWeapon unitWeapon)
         {
@@ -265,6 +265,16 @@ namespace Heroes.Models
             }
 
             return UnitWeaponList.Contains(unitWeapon);
+        }
+
+        /// <summary>
+        /// Removes the <see cref="UnitWeapon"/>.
+        /// </summary>
+        /// <param name="unitWeapon"></param>
+        /// <returns></returns>
+        public bool RemoveUnitWeapon(UnitWeapon unitWeapon)
+        {
+            return UnitWeaponList.Remove(unitWeapon);
         }
 
         /// <summary>
