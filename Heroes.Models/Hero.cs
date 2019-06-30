@@ -13,7 +13,7 @@ namespace Heroes.Models
 
         private readonly HashSet<string> RoleList = new HashSet<string>();
         private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>(StringComparer.OrdinalIgnoreCase);
-        private readonly HashSet<Unit> UnitList = new HashSet<Unit>();
+        private readonly HashSet<Hero> HeroUnitList = new HashSet<Hero>();
 
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
@@ -111,14 +111,14 @@ namespace Heroes.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets a collectin of <see cref="Unit"/>s.
+        /// Gets a collectin of <see cref="Hero"/>s.
         /// </summary>
-        public IEnumerable<Unit> Units => UnitList;
+        public IEnumerable<Hero> HeroUnits => HeroUnitList;
 
         /// <summary>
-        /// Gets the amount of <see cref="Unit"/>s.
+        /// Gets the amount of <see cref="Hero"/>s.
         /// </summary>
-        public int UnitCount => UnitList.Count;
+        public int HeroUnitCount => HeroUnitList.Count;
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
@@ -236,17 +236,17 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Adds a <see cref="Unit"/>. Replaces if object already exists in collection.
+        /// Adds a <see cref="Hero"/>. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="unit"></param>
-        public void AddUnit(Unit unit)
+        /// <param name="hero"></param>
+        public void AddHeroUnit(Hero hero)
         {
-            if (unit == null)
+            if (hero == null)
             {
-                throw new ArgumentNullException(nameof(unit));
+                throw new ArgumentNullException(nameof(hero));
             }
 
-            UnitList.Add(unit);
+            HeroUnitList.Add(hero);
         }
     }
 }
