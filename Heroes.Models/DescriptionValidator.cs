@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -7,14 +8,15 @@ namespace Heroes.Models
 {
     public class DescriptionValidator
     {
+        private static readonly Regex RegexWhitespace = new Regex(@"\s+");
+
         private readonly int SmallSize = 51;
         private readonly int LargeSize = 501;
         private readonly Localization Localization = Localization.ENUS;
-
-        private string GameString;
+        private readonly string GameString;
+        private readonly Stack<string> TextStack = new Stack<string>(101);
 
         private int Iterator = 0;
-        private Stack<string> TextStack = new Stack<string>(101);
 
         private DescriptionValidator(string gameString, Localization scaleLocale = Localization.ENUS)
         {
@@ -69,6 +71,11 @@ namespace Heroes.Models
         public static string GetColoredText(string gameString, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
             return new DescriptionValidator(gameString, scaleLocale).ParseColoredText(includeScaling);
+        }
+
+        private static string ReplaceWhitespace(string input, string replacement)
+        {
+            return RegexWhitespace.Replace(input, replacement);
         }
 
         private string Validate()
@@ -224,7 +231,7 @@ namespace Heroes.Models
                         sb = new StringBuilder(LargeSize);
                     }
 
-                    if (TryParseTag(out string tag, out bool isStartTag))
+                    if (TryParseTag(out string tag, out _))
                     {
                         if (tag == "<n/>")
                         {
@@ -283,7 +290,7 @@ namespace Heroes.Models
                         sb = new StringBuilder(SmallSize);
                     }
 
-                    if (TryParseTag(out string tag, out bool isStartTag))
+                    if (TryParseTag(out string tag, out _))
                     {
                         TextStack.Push(tag);
 
@@ -323,18 +330,15 @@ namespace Heroes.Models
         }
 
         // checks if the end tag matches the start tag
-        private bool MatchElement(string startTag, string endTag)
+        private bool MatchElement(ReadOnlySpan<char> startTag, ReadOnlySpan<char> endTag)
         {
-            if (string.IsNullOrEmpty(startTag))
+            if (startTag.IsEmpty)
                 return false;
 
-            string end = endTag.TrimEnd('>').TrimStart('<').TrimStart('/');
-            string[] parts = startTag.Split(new char[] { ' ' }, 2);
+            ReadOnlySpan<char> endTagSpan = endTag.TrimEnd('>').TrimStart('<').TrimStart('/');
+            ReadOnlySpan<char> firstPart = startTag.Slice(0, startTag.IndexOf(' ')).TrimStart('<');
 
-            if (parts[0].TrimStart('<') == end)
-                return true;
-            else
-                return false;
+            return firstPart.SequenceEqual(endTagSpan);
         }
 
         // get whole tag, determine if it's a start tag
@@ -360,27 +364,32 @@ namespace Heroes.Models
                     else
                         isStartTag = false;
 
-                    tag = Regex.Replace(tag, @"\s+", " ");
+                    tag = ReplaceWhitespace(tag, " ");
                     return true;
                 }
             }
 
             isStartTag = false;
             tag = sb.ToString().ToLower();
-            tag = Regex.Replace(tag, @"\s+", " ");
+            tag = ReplaceWhitespace(tag, " ");
 
             return false;
         }
 
-        private string CreateEndTag(string startTag)
+        private string CreateEndTag(ReadOnlySpan<char> startTag)
         {
-            string start = startTag.TrimStart('<');
-            string[] parts = start.Split(new char[] { ' ' }, 2);
+            startTag = startTag.TrimStart('<');
+            int spaceDelimeter = startTag.IndexOf(' ');
 
-            if (parts.Length > 1)
-                return "</" + parts[0].ToLower() + ">";
+            if (spaceDelimeter > 0)
+            {
+                ReadOnlySpan<char> firstPart = startTag.Slice(0, spaceDelimeter);
+                return "</" + firstPart.ToString().ToLower() + ">";
+            }
             else
-                return "</" + parts[0].ToLower();
+            {
+                return "</" + startTag.ToString().ToLower();
+            }
         }
 
         /// <summary>
