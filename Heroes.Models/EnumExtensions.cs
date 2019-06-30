@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 
 namespace Heroes.Models
 {
-    public static class Enumerations
+    public static class EnumExtensions
     {
         /// <summary>
         /// Returns the friendly name of the enum.
@@ -19,7 +19,7 @@ namespace Heroes.Models
             Type type = enumerationValue.GetType();
             if (!type.GetTypeInfo().IsEnum)
             {
-                throw new ArgumentException("EnumerationValue must be of Enum type", "enumerationValue");
+                throw new ArgumentException("EnumerationValue must be of Enum type", nameof(enumerationValue));
             }
 
             // Tries to find a DescriptionAttribute for a potential friendly name for the enum
@@ -49,7 +49,7 @@ namespace Heroes.Models
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
-            value = Regex.Replace(value, @"\s+", string.Empty);
+            value = new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray());
 
             if (Enum.TryParse(value, true, out T replayParseResultEnum))
                 return replayParseResultEnum;
@@ -70,7 +70,7 @@ namespace Heroes.Models
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
 
-            value = Regex.Replace(value, @"\s+", string.Empty);
+            value = new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray());
 
             if (Enum.TryParse(value, true, out result))
                 return true;

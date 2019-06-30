@@ -45,7 +45,7 @@ namespace Heroes.Models.Tests
             Assert.AreEqual(Levels.Level1, "Level 1".ConvertToEnum<Levels>());
             Assert.AreEqual(Levels.Level2, "Level 2".ConvertToEnum<Levels>());
             Assert.AreEqual(Levels.Level2, "Level2".ConvertToEnum<Levels>());
-            Assert.AreEqual(Levels.Level3, "Level 3".ConvertToEnum<Levels>());
+            Assert.AreEqual(Levels.Level3, "Level  3".ConvertToEnum<Levels>());
             Assert.AreEqual(Levels.Level3, "Level3".ConvertToEnum<Levels>());
 
             Assert.ThrowsException<ArgumentException>(() =>
