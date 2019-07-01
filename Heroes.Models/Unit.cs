@@ -597,5 +597,20 @@ namespace Heroes.Models
 
             return UnitIdList.Contains(value);
         }
+
+        /// <summary>
+        /// Removes a value.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool RemoveUnitId(string value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            return UnitIdList.Remove(value);
+        }
     }
 }

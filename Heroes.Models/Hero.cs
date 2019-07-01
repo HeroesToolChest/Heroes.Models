@@ -111,12 +111,12 @@ namespace Heroes.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets a collectin of <see cref="Hero"/>s.
+        /// Gets a collection of <see cref="Hero"/> objects.
         /// </summary>
         public IEnumerable<Hero> HeroUnits => HeroUnitList;
 
         /// <summary>
-        /// Gets the amount of <see cref="Hero"/>s.
+        /// Gets the amount of <see cref="Hero"/> objects.
         /// </summary>
         public int HeroUnitCount => HeroUnitList.Count;
 
