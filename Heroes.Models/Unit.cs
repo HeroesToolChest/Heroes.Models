@@ -150,6 +150,11 @@ namespace Heroes.Models
         public int KillXP { get; set; }
 
         /// <summary>
+        /// Gets or sets the unit portraits.
+        /// </summary>
+        public UnitPortrait HeroPortrait { get; set; } = new UnitPortrait();
+
+        /// <summary>
         /// Returns a collection of all the primary abilities (no parent linked abilities).
         /// </summary>
         /// <returns></returns>
