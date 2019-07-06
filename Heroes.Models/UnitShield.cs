@@ -25,13 +25,13 @@
         /// <summary>
         /// Gets or sets the shield regeneration rate scaling.
         /// </summary>
-        public double ShieldRegnerationRateScaling { get; set; }
+        public double ShieldRegenerationRateScaling { get; set; }
 
         public string ShieldType { get; set; }
 
         public override string ToString()
         {
-            return $"Life: {ShieldMax} (+{ShieldScaling * 100}% per level) - RegenRate: {ShieldRegenerationRate} (+{ShieldRegnerationRateScaling * 100}% per level)";
+            return $"Life: {ShieldMax} (+{ShieldScaling * 100}% per level) - RegenRate: {ShieldRegenerationRate} (+{ShieldRegenerationRateScaling * 100}% per level)";
         }
     }
 }
