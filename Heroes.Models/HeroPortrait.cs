@@ -2,7 +2,7 @@
 
 namespace Heroes.Models
 {
-    public class HeroPortrait : UnitPortrait
+    public class HeroPortrait
     {
         /// <summary>
         /// Gets or sets the hero select portrait file name.
