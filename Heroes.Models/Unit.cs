@@ -39,17 +39,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets the Life properties.
         /// </summary>
-        public UnitLife Life { get; private set; } = new UnitLife();
+        public UnitLife Life { get; set; } = new UnitLife();
 
         /// <summary>
         /// Gets the Energy properties.
         /// </summary>
-        public UnitEnergy Energy { get; private set; } = new UnitEnergy();
+        public UnitEnergy Energy { get; set; } = new UnitEnergy();
 
         /// <summary>
         /// Gets the Shield properties.
         /// </summary>
-        public UnitShield Shield { get; private set; } = new UnitShield();
+        public UnitShield Shield { get; set; } = new UnitShield();
 
         /// <summary>
         /// Gets a collection unit armor.
