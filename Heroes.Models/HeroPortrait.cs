@@ -35,11 +35,6 @@ namespace Heroes.Models
         public string DraftScreenFileName { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimap icon file name.
-        /// </summary>
-        public string MiniMapIconFileName { get; set; }
-
-        /// <summary>
         /// Gets or sets the party frame file name.
         /// </summary>
         public ICollection<string> PartyFrameFileName { get; set; } = new List<string>();
