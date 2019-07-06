@@ -125,11 +125,6 @@ namespace Heroes.Models
         public string DamageType { get; set; }
 
         /// <summary>
-        /// Gets or sets the target info panel image file name.
-        /// </summary>
-        public string TargetInfoPanelImageFileName { get; set; }
-
-        /// <summary>
         /// Gets whether this unit is unique to a map.
         /// </summary>
         public bool IsMapUnique => !string.IsNullOrEmpty(MapName);
