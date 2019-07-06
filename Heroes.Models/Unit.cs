@@ -152,7 +152,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unit portraits.
         /// </summary>
-        public UnitPortrait HeroPortrait { get; set; } = new UnitPortrait();
+        public UnitPortrait UnitPortrait { get; set; } = new UnitPortrait();
 
         /// <summary>
         /// Returns a collection of all the primary abilities (no parent linked abilities).
