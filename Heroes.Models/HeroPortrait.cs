@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Heroes.Models
+﻿namespace Heroes.Models
 {
-    public class HeroPortrait
+    public class HeroPortrait : UnitPortrait
     {
         /// <summary>
         /// Gets or sets the hero select portrait file name.
@@ -28,11 +26,6 @@ namespace Heroes.Models
         /// Gets or sets the target portrait file name.
         /// </summary>
         public string TargetPortraitFileName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the party frame file name.
-        /// </summary>
-        public ICollection<string> PartyFrameFileName { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the draft screen file name.

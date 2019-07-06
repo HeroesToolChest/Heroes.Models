@@ -37,14 +37,19 @@ namespace Heroes.Models
         public int HeroDescriptorsCount => HeroDescriptorsList.Count;
 
         /// <summary>
-        /// Gets or sets the Life properties.
+        /// Gets the Life properties.
         /// </summary>
-        public UnitLife Life { get; set; } = new UnitLife();
+        public UnitLife Life { get; private set; } = new UnitLife();
 
         /// <summary>
-        /// Gets or sets the Energy properties.
+        /// Gets the Energy properties.
         /// </summary>
-        public UnitEnergy Energy { get; set; } = new UnitEnergy();
+        public UnitEnergy Energy { get; private set; } = new UnitEnergy();
+
+        /// <summary>
+        /// Gets the Shield properties.
+        /// </summary>
+        public UnitShield Shield { get; private set; } = new UnitShield();
 
         /// <summary>
         /// Gets a collection unit armor.
