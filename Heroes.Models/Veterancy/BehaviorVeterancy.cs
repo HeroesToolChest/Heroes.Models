@@ -2,7 +2,7 @@
 
 namespace Heroes.Models.Veterancy
 {
-    public class BehaviorVeterancy
+    public class BehaviorVeterancy : ExtractableBase<BehaviorVeterancy>, IExtractable
     {
         /// <summary>
         /// Gets or sets the value.
