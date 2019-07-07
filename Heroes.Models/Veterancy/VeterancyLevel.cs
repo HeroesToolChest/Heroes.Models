@@ -8,7 +8,7 @@
         public int MinimumVeterancyXP { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of veterancy modifications.
+        /// Gets or sets the veterancy modification.
         /// </summary>
         public VeterancyModification VeterancyModification { get; set; } = new VeterancyModification();
     }
