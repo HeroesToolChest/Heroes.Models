@@ -11,5 +11,10 @@
         /// Gets or sets the veterancy modification.
         /// </summary>
         public VeterancyModification VeterancyModification { get; set; } = new VeterancyModification();
+
+        public override string ToString()
+        {
+            return $"{nameof(MinimumVeterancyXP)}: {MinimumVeterancyXP}";
+        }
     }
 }
