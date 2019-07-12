@@ -8,8 +8,6 @@ namespace Heroes.Models
 {
     public class DescriptionValidator
     {
-        private static readonly Regex RegexWhitespace = new Regex(@"\s+");
-
         private readonly int SmallSize = 51;
         private readonly int LargeSize = 501;
         private readonly Localization Localization = Localization.ENUS;
@@ -75,7 +73,7 @@ namespace Heroes.Models
 
         private static string ReplaceWhitespace(string input, string replacement)
         {
-            return RegexWhitespace.Replace(input, replacement);
+            return Regex.Replace(input, @"\s+", replacement);
         }
 
         private string Validate()
