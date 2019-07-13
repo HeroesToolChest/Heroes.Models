@@ -334,7 +334,14 @@ namespace Heroes.Models
                 return false;
 
             ReadOnlySpan<char> endTagSpan = endTag.TrimEnd('>').TrimStart('<').TrimStart('/');
-            ReadOnlySpan<char> firstPart = startTag.Slice(0, startTag.IndexOf(' ')).TrimStart('<');
+            ReadOnlySpan<char> firstPart;
+
+            int spaceIndex = startTag.IndexOf(' ');
+
+            if (spaceIndex > -1)
+                firstPart = startTag.Slice(0, spaceIndex).TrimStart('<');
+            else
+                firstPart = startTag.TrimStart('<');
 
             return firstPart.SequenceEqual(endTagSpan);
         }
