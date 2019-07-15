@@ -35,6 +35,11 @@ namespace Heroes.Models
         public bool IsAliasCaseSensitive { get; set; }
 
         /// <summary>
+        /// Gets or sets if the emoticon is hidden.
+        /// </summary>
+        public bool IsHidden { get; set; }
+
+        /// <summary>
         /// Gets or sets the hero id associated with the emoticon.
         /// </summary>
         public string HeroId { get; set; }
