@@ -28,7 +28,7 @@ namespace Heroes.Models.AbilityTalents
         public int Column { get; set; }
 
         /// <summary>
-        /// Gets the ability and talents that the talent affects or upgrades.
+        /// Gets a collection of ability and talent ids that the talent affects or upgrades.
         /// </summary>
         public IEnumerable<string> AbilityTalentLinkIds => AbilityTalentLinkIdList;
 
@@ -36,6 +36,16 @@ namespace Heroes.Models.AbilityTalents
         /// Gets the amount of abilityTalentLinkIds.
         /// </summary>
         public int AbilityTalentLinkIdsCount => AbilityTalentLinkIdList.Count;
+
+        /// <summary>
+        /// Gets a collection of prerequisite talent ids.
+        /// </summary>
+        public IEnumerable<string> PrerequisiteTalentIds => PrerequisiteTalentIdList;
+
+        /// <summary>
+        /// Gets the amount of prerequisiteTalentIds.
+        /// </summary>
+        public int PrerequisiteTalentIdCount => PrerequisiteTalentIdList.Count;
 
         public static bool operator ==(Talent talent1, Talent talent2)
         {
