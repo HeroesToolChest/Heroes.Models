@@ -6,6 +6,7 @@ namespace Heroes.Models.AbilityTalents
     public class Talent : AbilityTalentBase
     {
         private readonly HashSet<string> AbilityTalentLinkIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> PrerequisiteTalentIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public Talent() { }
 
@@ -105,6 +106,49 @@ namespace Heroes.Models.AbilityTalents
         public void ClearAbilityTalentLinkIds()
         {
             AbilityTalentLinkIdList.Clear();
+        }
+
+        /// <summary>
+        /// Adds a prerequisite talent id.
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddPrerequisiteTalentId(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
+            }
+
+            PrerequisiteTalentIdList.Add(value);
+        }
+
+        /// <summary>
+        /// Removes a prerequisite talent id.
+        /// </summary>
+        /// <param name="value"></param>
+        public bool RemovePrerequisiteTalentId(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
+            }
+
+            return PrerequisiteTalentIdList.Remove(value);
+        }
+
+        /// <summary>
+        /// Determines whether the value exists.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ContainsPrerequisiteTalentId(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
+            }
+
+            return PrerequisiteTalentIdList.Contains(value);
         }
 
         public override string ToString() => $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
