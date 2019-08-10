@@ -13,7 +13,7 @@ namespace Heroes.Models
         private readonly HashSet<string> AttributeList = new HashSet<string>();
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, HashSet<Ability>> AbilitiesByReferenceId = new Dictionary<string, HashSet<Ability>>();
+        private readonly Dictionary<string, List<Ability>> AbilitiesByReferenceId = new Dictionary<string, List<Ability>>();
         private readonly Dictionary<AbilityTalentId, HashSet<Ability>> AbilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
 
         /// <summary>
@@ -394,9 +394,9 @@ namespace Heroes.Models
             {
                 value.Add(ability);
 
-                if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out value))
+                if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability> referenceAbilities))
                 {
-                    value.Add(ability);
+                    referenceAbilities.Add(ability);
                 }
             }
             else
@@ -405,7 +405,7 @@ namespace Heroes.Models
 
                 if (!string.IsNullOrEmpty(ability.AbilityTalentId.ReferenceId))
                 {
-                    AbilitiesByReferenceId[ability.AbilityTalentId.ReferenceId] = new HashSet<Ability>() { ability };
+                    AbilitiesByReferenceId[ability.AbilityTalentId.ReferenceId] = new List<Ability>() { ability };
                 }
             }
         }
@@ -533,7 +533,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
             {
                 abilities = value;
                 return true;
@@ -558,7 +558,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
             {
                 ability = value.FirstOrDefault();
                 return true;
@@ -600,7 +600,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -618,7 +618,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
                 return value.FirstOrDefault();
             else
                 return null;
