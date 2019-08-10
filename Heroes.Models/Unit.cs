@@ -13,7 +13,7 @@ namespace Heroes.Models
         private readonly HashSet<string> AttributeList = new HashSet<string>();
         private readonly HashSet<string> UnitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, Ability> AbilitiesByReferenceId = new Dictionary<string, Ability>();
+        private readonly Dictionary<string, HashSet<Ability>> AbilitiesByReferenceId = new Dictionary<string, HashSet<Ability>>();
         private readonly Dictionary<AbilityTalentId, HashSet<Ability>> AbilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
 
         /// <summary>
@@ -393,13 +393,20 @@ namespace Heroes.Models
             if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability> value))
             {
                 value.Add(ability);
+
+                if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out value))
+                {
+                    value.Add(ability);
+                }
             }
             else
             {
                 AbilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
 
                 if (!string.IsNullOrEmpty(ability.AbilityTalentId.ReferenceId))
-                    AbilitiesByReferenceId[ability.AbilityTalentId.ReferenceId] = ability;
+                {
+                    AbilitiesByReferenceId[ability.AbilityTalentId.ReferenceId] = new HashSet<Ability>() { ability };
+                }
             }
         }
 
@@ -514,21 +521,21 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Try to get the ability from an <see cref="AbilityTalentId"/> <see cref="AbilityTalentId.ReferenceId"/>.
+        /// Try to get an ability from an <see cref="AbilityTalentId.ReferenceId"/>. If there is more than one, it will return the first.
         /// </summary>
         /// <param name="referenceId"></param>
         /// <param name="ability"></param>
         /// <returns></returns>
-        public bool TryGetAbility(string referenceId, out Ability ability)
+        public bool TryGetFirstAbility(string referenceId, out Ability ability)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out Ability value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
             {
-                ability = value;
+                ability = value.FirstOrDefault();
                 return true;
             }
             else
@@ -557,19 +564,37 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Returns an <see cref="Ability"/>.
+        /// Returns a collection of abilities from an <see cref="AbilityTalentId.ReferenceId"/>.
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public Ability GetAbility(string referenceId)
+        public IEnumerable<Ability> GetAbilities(string referenceId)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out Ability value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
                 return value;
+            else
+                return new HashSet<Ability>();
+        }
+
+        /// <summary>
+        /// Returns the first <see cref="Ability"/> from the given reference id.
+        /// </summary>
+        /// <param name="abilityId"></param>
+        /// <returns></returns>
+        public Ability GetFirstAbility(string referenceId)
+        {
+            if (string.IsNullOrEmpty(referenceId))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
+            }
+
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+                return value.FirstOrDefault();
             else
                 return null;
         }
