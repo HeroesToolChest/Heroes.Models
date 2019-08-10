@@ -521,6 +521,31 @@ namespace Heroes.Models
         }
 
         /// <summary>
+        /// Try to get the abilities from an <see cref="AbilityTalentId.ReferenceId"/>.
+        /// </summary>
+        /// <param name="abilityId"></param>
+        /// <param name="abilities"></param>
+        /// <returns></returns>
+        public bool TryGetAbilities(string referenceId, out IEnumerable<Ability> abilities)
+        {
+            if (string.IsNullOrEmpty(referenceId))
+            {
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
+            }
+
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out HashSet<Ability> value))
+            {
+                abilities = value;
+                return true;
+            }
+            else
+            {
+                abilities = new HashSet<Ability>();
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Try to get an ability from an <see cref="AbilityTalentId.ReferenceId"/>. If there is more than one, it will return the first.
         /// </summary>
         /// <param name="referenceId"></param>
