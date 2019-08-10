@@ -391,23 +391,14 @@ namespace Heroes.Models
             }
 
             if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability> value))
-            {
                 value.Add(ability);
-
-                if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability> referenceAbilities))
-                {
-                    referenceAbilities.Add(ability);
-                }
-            }
             else
-            {
                 AbilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
 
-                if (!string.IsNullOrEmpty(ability.AbilityTalentId.ReferenceId))
-                {
-                    AbilitiesByReferenceId[ability.AbilityTalentId.ReferenceId] = new List<Ability>() { ability };
-                }
-            }
+            if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability> referenceAbilities))
+                referenceAbilities.Add(ability);
+            else
+                AbilitiesByReferenceId.Add(ability.AbilityTalentId.ReferenceId, new List<Ability>() { ability });
         }
 
         /// <summary>
