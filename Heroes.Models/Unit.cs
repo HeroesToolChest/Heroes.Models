@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Heroes.Models
 {
-    public class Unit : ExtractableBase<Unit>, IExtractable
+    public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     {
         private readonly HashSet<string> HeroDescriptorsList = new HashSet<string>();
         private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
