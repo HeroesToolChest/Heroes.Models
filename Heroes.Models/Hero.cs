@@ -7,13 +7,13 @@ namespace Heroes.Models
 {
     public class Hero : Unit
     {
-        private readonly string NoPickName = "No Pick";
-        private readonly string NoPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
-        private readonly string UnknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
+        private readonly string _noPickName = "No Pick";
+        private readonly string _noPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
+        private readonly string _unknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
-        private readonly HashSet<string> RoleList = new HashSet<string>();
-        private readonly Dictionary<string, Talent> TalentsById = new Dictionary<string, Talent>(StringComparer.OrdinalIgnoreCase);
-        private readonly HashSet<Hero> HeroUnitList = new HashSet<Hero>();
+        private readonly HashSet<string> _roleList = new HashSet<string>();
+        private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<Hero> _heroUnitList = new HashSet<Hero>();
 
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
@@ -58,32 +58,32 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of talents.
         /// </summary>
-        public IEnumerable<Talent> Talents => TalentsById.Values;
+        public IEnumerable<Talent> Talents => _talentsById.Values;
 
         /// <summary>
         /// Gets the amount of talents.
         /// </summary>
-        public int TalentsCount => TalentsById.Values.Count;
+        public int TalentsCount => _talentsById.Values.Count;
 
         /// <summary>
         /// Gets a collection of talent ids.
         /// </summary>
-        public IEnumerable<string> TalentIds => TalentsById.Keys;
+        public IEnumerable<string> TalentIds => _talentsById.Keys;
 
         /// <summary>
         /// Gets the amount of talent ids.
         /// </summary>
-        public int TalentIdsCount => TalentsById.Keys.Count;
+        public int TalentIdsCount => _talentsById.Keys.Count;
 
         /// <summary>
         /// Gets a collection roles of the hero, multiclass will be first if hero has multiple roles.
         /// </summary>
-        public IEnumerable<string> Roles => RoleList;
+        public IEnumerable<string> Roles => _roleList;
 
         /// <summary>
         /// Gets the amount of roles.
         /// </summary>
-        public int RolesCount => RoleList.Count;
+        public int RolesCount => _roleList.Count;
 
         /// <summary>
         /// Gets or sets the expanded role of the hero.
@@ -113,12 +113,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of <see cref="Hero"/> objects.
         /// </summary>
-        public IEnumerable<Hero> HeroUnits => HeroUnitList;
+        public IEnumerable<Hero> HeroUnits => _heroUnitList;
 
         /// <summary>
         /// Gets the amount of <see cref="Hero"/> objects.
         /// </summary>
-        public int HeroUnitCount => HeroUnitList.Count;
+        public int HeroUnitCount => _heroUnitList.Count;
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
@@ -141,7 +141,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            RoleList.Add(value);
+            _roleList.Add(value);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return RoleList.Contains(value);
+            return _roleList.Contains(value);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Heroes.Models
             if (talent.AbilityTalentId is null)
                 throw new ArgumentException($"{nameof(talent.AbilityTalentId)} cannot be null", nameof(talent));
 
-            TalentsById[talent.AbilityTalentId.ReferenceId] = talent;
+            _talentsById[talent.AbilityTalentId.ReferenceId] = talent;
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(talentId));
             }
 
-            return TalentsById.ContainsKey(talentId);
+            return _talentsById.ContainsKey(talentId);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool TryGetTalent(string talentId, out Talent? talent)
         {
-            return TalentsById.TryGetValue(talentId, out talent);
+            return _talentsById.TryGetValue(talentId, out talent);
         }
 
         /// <summary>
@@ -209,12 +209,12 @@ namespace Heroes.Models
                 // no pick
                 return new Talent()
                 {
-                    Name = NoPickName,
-                    IconFileName = NoPickTalentIconFileName,
+                    Name = _noPickName,
+                    IconFileName = _noPickTalentIconFileName,
                 };
             }
 
-            if (TalentsById.TryGetValue(talentId, out Talent? talent))
+            if (_talentsById.TryGetValue(talentId, out Talent? talent))
             {
                 return talent;
             }
@@ -223,7 +223,7 @@ namespace Heroes.Models
                 return new Talent()
                 {
                     Name = talentId,
-                    IconFileName = UnknownTalentIconFileName,
+                    IconFileName = _unknownTalentIconFileName,
                 };
             }
         }
@@ -239,7 +239,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(hero));
             }
 
-            HeroUnitList.Add(hero);
+            _heroUnitList.Add(hero);
         }
     }
 }

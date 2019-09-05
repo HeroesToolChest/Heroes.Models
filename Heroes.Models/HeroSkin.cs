@@ -5,7 +5,7 @@ namespace Heroes.Models
 {
     public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     {
-        private readonly HashSet<string> FeaturesList = new HashSet<string>();
+        private readonly HashSet<string> _featuresList = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the sort name used for sorting the hero skins.
@@ -40,7 +40,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of features.
         /// </summary>
-        public IEnumerable<string> Features => FeaturesList;
+        public IEnumerable<string> Features => _featuresList;
 
         /// <summary>
         /// Adds a feature value. Replaces if value already exists in collection.
@@ -53,7 +53,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            FeaturesList.Add(value);
+            _featuresList.Add(value);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return FeaturesList.Contains(value);
+            return _featuresList.Contains(value);
         }
     }
 }

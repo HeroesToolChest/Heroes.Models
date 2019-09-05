@@ -5,8 +5,8 @@ namespace Heroes.Models.AbilityTalents
 {
     public class Talent : AbilityTalentBase
     {
-        private readonly HashSet<string> AbilityTalentLinkIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        private readonly HashSet<string> PrerequisiteTalentIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> _abilityTalentLinkIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> _prerequisiteTalentIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public Talent() { }
 
@@ -30,22 +30,22 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets a collection of ability and talent ids that the talent affects or upgrades.
         /// </summary>
-        public IEnumerable<string> AbilityTalentLinkIds => AbilityTalentLinkIdList;
+        public IEnumerable<string> AbilityTalentLinkIds => _abilityTalentLinkIdList;
 
         /// <summary>
         /// Gets the amount of abilityTalentLinkIds.
         /// </summary>
-        public int AbilityTalentLinkIdsCount => AbilityTalentLinkIdList.Count;
+        public int AbilityTalentLinkIdsCount => _abilityTalentLinkIdList.Count;
 
         /// <summary>
         /// Gets a collection of prerequisite talent ids.
         /// </summary>
-        public IEnumerable<string> PrerequisiteTalentIds => PrerequisiteTalentIdList;
+        public IEnumerable<string> PrerequisiteTalentIds => _prerequisiteTalentIdList;
 
         /// <summary>
         /// Gets the amount of prerequisiteTalentIds.
         /// </summary>
-        public int PrerequisiteTalentIdCount => PrerequisiteTalentIdList.Count;
+        public int PrerequisiteTalentIdCount => _prerequisiteTalentIdList.Count;
 
         public static bool operator ==(Talent talent1, Talent talent2)
         {
@@ -78,7 +78,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            AbilityTalentLinkIdList.Add(value);
+            _abilityTalentLinkIdList.Add(value);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            return AbilityTalentLinkIdList.Remove(value);
+            return _abilityTalentLinkIdList.Remove(value);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            return AbilityTalentLinkIdList.Contains(value);
+            return _abilityTalentLinkIdList.Contains(value);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public void ClearAbilityTalentLinkIds()
         {
-            AbilityTalentLinkIdList.Clear();
+            _abilityTalentLinkIdList.Clear();
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            PrerequisiteTalentIdList.Add(value);
+            _prerequisiteTalentIdList.Add(value);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            return PrerequisiteTalentIdList.Remove(value);
+            return _prerequisiteTalentIdList.Remove(value);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(value));
             }
 
-            return PrerequisiteTalentIdList.Contains(value);
+            return _prerequisiteTalentIdList.Contains(value);
         }
 
         public override string ToString()

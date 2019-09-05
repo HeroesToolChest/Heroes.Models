@@ -8,8 +8,8 @@ namespace Heroes.Models.Tests
     [TestClass]
     public class UnitTests
     {
-        private readonly Unit Unit = new Unit();
-        private readonly Unit NullUnit = new Unit();
+        private readonly Unit _unit = new Unit();
+        private readonly Unit _nullUnit = new Unit();
 
         public UnitTests()
         {
@@ -21,68 +21,68 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetPrimaryAbilitiesTests()
         {
-            IList<Ability> basicAbilities = Unit.PrimaryAbilities(AbilityTier.Basic).ToList();
+            IList<Ability> basicAbilities = _unit.PrimaryAbilities(AbilityTier.Basic).ToList();
             Assert.AreEqual(3, basicAbilities.Count);
 
-            IList<Ability> heroicAbilities = Unit.PrimaryAbilities(AbilityTier.Heroic).ToList();
+            IList<Ability> heroicAbilities = _unit.PrimaryAbilities(AbilityTier.Heroic).ToList();
             Assert.AreEqual(2, heroicAbilities.Count);
 
-            IList<Ability> hearthAbilities = Unit.PrimaryAbilities(AbilityTier.Hearth).ToList();
+            IList<Ability> hearthAbilities = _unit.PrimaryAbilities(AbilityTier.Hearth).ToList();
             Assert.AreEqual(0, hearthAbilities.Count);
 
-            IList<Ability> allPrimaryAbilities = Unit.PrimaryAbilities().ToList();
+            IList<Ability> allPrimaryAbilities = _unit.PrimaryAbilities().ToList();
             Assert.AreEqual(7, allPrimaryAbilities.Count);
 
-            Assert.IsNotNull(NullUnit.PrimaryAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(_nullUnit.PrimaryAbilities(AbilityTier.Mount));
         }
 
         [TestMethod]
         public void GetSubAbilitiesTests()
         {
-            IList<Ability> basicAbilities = Unit.SubAbilities(AbilityTier.Basic).ToList();
+            IList<Ability> basicAbilities = _unit.SubAbilities(AbilityTier.Basic).ToList();
             Assert.AreEqual(2, basicAbilities.Count);
 
-            IList<Ability> mountAbilities = Unit.SubAbilities(AbilityTier.Mount).ToList();
+            IList<Ability> mountAbilities = _unit.SubAbilities(AbilityTier.Mount).ToList();
             Assert.AreEqual(0, mountAbilities.Count);
 
-            Assert.IsNotNull(NullUnit.SubAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(_nullUnit.SubAbilities(AbilityTier.Mount));
         }
 
         [TestMethod]
         public void GetParentLinkedAbilitiesTests()
         {
-            ILookup<AbilityTalentId?, Ability> parentLinkedAbilities = Unit.ParentLinkedAbilities();
+            ILookup<AbilityTalentId?, Ability> parentLinkedAbilities = _unit.ParentLinkedAbilities();
             Assert.AreEqual(1, parentLinkedAbilities.Count);
             Assert.IsTrue(parentLinkedAbilities.Contains(new AbilityTalentId("Abil7", "abil7")));
             Assert.AreEqual(2, parentLinkedAbilities[new AbilityTalentId("Abil7", "abil7")].Count());
 
-            Assert.IsNotNull(NullUnit.ParentLinkedAbilities());
+            Assert.IsNotNull(_nullUnit.ParentLinkedAbilities());
         }
 
         [TestMethod]
         public void GetParentLinkedWeaponsTests()
         {
-            ILookup<string?, UnitWeapon> parentLinkedWeapons = Unit.ParentLinkedWeapons();
+            ILookup<string?, UnitWeapon> parentLinkedWeapons = _unit.ParentLinkedWeapons();
             Assert.AreEqual(1, parentLinkedWeapons.Count);
             Assert.IsTrue(parentLinkedWeapons.Contains("Weapon2"));
             Assert.AreEqual(2, parentLinkedWeapons["Weapon2"].Count());
 
-            Assert.IsNotNull(NullUnit.ParentLinkedWeapons());
+            Assert.IsNotNull(_nullUnit.ParentLinkedWeapons());
         }
 
         [TestMethod]
         public void IsMapUniqueTests()
         {
-            Assert.IsFalse(Unit.IsMapUnique);
+            Assert.IsFalse(_unit.IsMapUnique);
 
-            Unit.MapName = "map";
-            Assert.IsTrue(Unit.IsMapUnique);
+            _unit.MapName = "map";
+            Assert.IsTrue(_unit.IsMapUnique);
         }
 
         [TestMethod]
         public void UnitWeaponExistsTest()
         {
-            Assert.IsTrue(Unit.ContainsUnitWeapon(new UnitWeapon()
+            Assert.IsTrue(_unit.ContainsUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
@@ -92,7 +92,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void UnitArmorExistsTest()
         {
-            Assert.IsTrue(Unit.ContainsUnitArmor(new UnitArmor()
+            Assert.IsTrue(_unit.ContainsUnitArmor(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,
@@ -102,58 +102,58 @@ namespace Heroes.Models.Tests
 
         private void AddAbilities()
         {
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = null,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil2", "abil1"),
                 Tier = AbilityTier.Basic,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil3", "abil1"),
                 Tier = AbilityTier.Basic,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil4", "abil1"),
                 Tier = AbilityTier.Heroic,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil5", "abil1"),
                 Tier = AbilityTier.Heroic,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil6", "abil1"),
                 Tier = AbilityTier.Trait,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil7", "abil1"),
                 Tier = AbilityTier.Activable,
                 ParentLink = null,
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil1", "subAbil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
 
-            Unit.AddAbility(new Ability()
+            _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil2", "subAbil2"),
                 Tier = AbilityTier.Basic,
@@ -163,31 +163,31 @@ namespace Heroes.Models.Tests
 
         private void AddWeapons()
         {
-            Unit.AddUnitWeapon(new UnitWeapon()
+            _unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
             });
 
-            Unit.AddUnitWeapon(new UnitWeapon()
+            _unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon2",
                 ParentLink = string.Empty,
             });
 
-            Unit.AddUnitWeapon(new UnitWeapon()
+            _unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon3",
                 ParentLink = "Weapon2",
             });
 
-            Unit.AddUnitWeapon(new UnitWeapon()
+            _unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
             });
 
-            Unit.AddUnitWeapon(new UnitWeapon()
+            _unit.AddUnitWeapon(new UnitWeapon()
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
@@ -196,25 +196,25 @@ namespace Heroes.Models.Tests
 
         private void AddArmor()
         {
-            Unit.AddUnitArmor(new UnitArmor()
+            _unit.AddUnitArmor(new UnitArmor()
             {
                 Type = "Minion",
                 AbilityArmor = 5,
                 BasicArmor = 10,
                 SplashArmor = 15,
             });
-            Unit.AddUnitArmor(new UnitArmor()
+            _unit.AddUnitArmor(new UnitArmor()
             {
                 Type = "Heroic",
                 AbilityArmor = 5,
             });
-            Unit.AddUnitArmor(new UnitArmor()
+            _unit.AddUnitArmor(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,
                 SplashArmor = 15,
             });
-            Unit.AddUnitArmor(new UnitArmor()
+            _unit.AddUnitArmor(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,

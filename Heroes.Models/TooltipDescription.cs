@@ -2,7 +2,7 @@
 {
     public class TooltipDescription
     {
-        private readonly Localization ScaleLocale = Localization.ENUS;
+        private readonly Localization _scaleLocale = Localization.ENUS;
 
         /// <summary>
         /// Contructor.
@@ -15,15 +15,15 @@
                 description = string.Empty;
 
             RawDescription = description;
-            ScaleLocale = scaleLocale;
+            _scaleLocale = scaleLocale;
 
-            PlainText = DescriptionValidator.GetPlainText(description, false, false, ScaleLocale);
-            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false, ScaleLocale);
-            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true, ScaleLocale);
-            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true, ScaleLocale);
+            PlainText = DescriptionValidator.GetPlainText(description, false, false, _scaleLocale);
+            PlainTextWithNewlines = DescriptionValidator.GetPlainText(description, true, false, _scaleLocale);
+            PlainTextWithScaling = DescriptionValidator.GetPlainText(description, false, true, _scaleLocale);
+            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(description, true, true, _scaleLocale);
 
-            ColoredText = DescriptionValidator.GetColoredText(description, false, ScaleLocale);
-            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true, ScaleLocale);
+            ColoredText = DescriptionValidator.GetColoredText(description, false, _scaleLocale);
+            ColoredTextWithScaling = DescriptionValidator.GetColoredText(description, true, _scaleLocale);
         }
 
         /// <summary>

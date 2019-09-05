@@ -5,7 +5,7 @@ namespace Heroes.Models.AbilityTalents
 {
     public class AbilityTalentBase
     {
-        private readonly HashSet<string> CreatedUnitList = new HashSet<string>();
+        private readonly HashSet<string> _createdUnitList = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the real name.
@@ -57,7 +57,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets a collection of created units.
         /// </summary>
-        public IEnumerable<string> CreatedUnits => CreatedUnitList;
+        public IEnumerable<string> CreatedUnits => _createdUnitList;
 
         public override bool Equals(object? obj)
         {
@@ -98,7 +98,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
-            CreatedUnitList.Add(value);
+            _createdUnitList.Add(value);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
-            return CreatedUnitList.Contains(value);
+            return _createdUnitList.Contains(value);
         }
     }
 }

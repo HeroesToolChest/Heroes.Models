@@ -8,21 +8,21 @@ namespace Heroes.Models
 {
     public class DescriptionValidator
     {
-        private readonly int SmallSize = 51;
-        private readonly int LargeSize = 501;
-        private readonly Localization Localization = Localization.ENUS;
-        private readonly string GameString;
-        private readonly Stack<string> TextStack = new Stack<string>(101);
+        private readonly int _smallSize = 51;
+        private readonly int _largeSize = 501;
+        private readonly Localization _localization = Localization.ENUS;
+        private readonly string _gameString;
+        private readonly Stack<string> _textStack = new Stack<string>(101);
 
-        private int Iterator = 0;
+        private int _iterator = 0;
 
         private DescriptionValidator(string gameString, Localization scaleLocale = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(gameString))
                 gameString = string.Empty;
 
-            Localization = scaleLocale;
-            GameString = RemovedStartingRogueTags(gameString);
+            _localization = scaleLocale;
+            _gameString = RemovedStartingRogueTags(gameString);
         }
 
         /// <summary>
@@ -80,22 +80,22 @@ namespace Heroes.Models
         {
             ValidateGameString(string.Empty);
 
-            StringBuilder sb = new StringBuilder(LargeSize);
+            StringBuilder sb = new StringBuilder(_largeSize);
 
-            if (TextStack.Count < 1)
+            if (_textStack.Count < 1)
                 return string.Empty;
 
             string endTag = string.Empty;
-            string firstItem = TextStack.Peek();
+            string firstItem = _textStack.Peek();
 
             // remove unmatched start tag
             if (firstItem.StartsWith("<") && firstItem.EndsWith(">") && !firstItem.EndsWith("/>") && !firstItem.StartsWith("</"))
-                TextStack.Pop();
+                _textStack.Pop();
 
             // remove empty elements
-            while (TextStack.Count > 0)
+            while (_textStack.Count > 0)
             {
-                string item = TextStack.Pop();
+                string item = _textStack.Pop();
 
                 if (item.StartsWith("</") && item.EndsWith(">") && !item.EndsWith("/>")) // end tag
                 {
@@ -130,32 +130,32 @@ namespace Heroes.Models
         // modifies game string, remove unmatched tags, nested tags
         private void ValidateGameString(string startTag)
         {
-            StringBuilder sb = new StringBuilder(LargeSize);
-            for (; Iterator < GameString.Length; Iterator++)
+            StringBuilder sb = new StringBuilder(_largeSize);
+            for (; _iterator < _gameString.Length; _iterator++)
             {
-                if (GameString[Iterator] == '<' && GameString[Iterator + 1] != ' ')
+                if (_gameString[_iterator] == '<' && _gameString[_iterator + 1] != ' ')
                 {
                     if (sb.Length > 0)
                     {
-                        TextStack.Push(sb.ToString());
-                        sb = new StringBuilder(LargeSize);
+                        _textStack.Push(sb.ToString());
+                        sb = new StringBuilder(_largeSize);
                     }
 
                     if (TryParseTag(out string tag, out bool isStartTag))
                     {
                         if (isStartTag)
                         {
-                            Iterator++;
+                            _iterator++;
 
                             // nested
                             if (!string.IsNullOrEmpty(startTag))
-                                TextStack.Push(CreateEndTag(startTag));
+                                _textStack.Push(CreateEndTag(startTag));
 
-                            TextStack.Push(tag);
+                            _textStack.Push(tag);
                             ValidateGameString(tag);
 
                             if (!string.IsNullOrEmpty(startTag))
-                                TextStack.Push(startTag);
+                                _textStack.Push(startTag);
 
                             continue;
                         }
@@ -166,13 +166,13 @@ namespace Heroes.Models
                             // nested
                             if (!string.IsNullOrEmpty(startTag))
                             {
-                                TextStack.Push(CreateEndTag(startTag));
-                                TextStack.Push(tag);
-                                TextStack.Push(startTag);
+                                _textStack.Push(CreateEndTag(startTag));
+                                _textStack.Push(tag);
+                                _textStack.Push(startTag);
                             }
                             else
                             {
-                                TextStack.Push(tag);
+                                _textStack.Push(tag);
                             }
 
                             continue;
@@ -181,15 +181,15 @@ namespace Heroes.Models
                         {
                             if (MatchElement(startTag, tag))
                             {
-                                if (TextStack.Peek() != startTag)
-                                    TextStack.Push(tag);
+                                if (_textStack.Peek() != startTag)
+                                    _textStack.Push(tag);
                                 else
-                                    TextStack.Pop();
+                                    _textStack.Pop();
                                 return;
                             }
                             else if (tag.Length > 4 && tag.EndsWith("/>")) // self close tag
                             {
-                                TextStack.Push(tag);
+                                _textStack.Push(tag);
                                 continue;
                             }
                             else
@@ -200,33 +200,33 @@ namespace Heroes.Models
                     }
                 }
 
-                if (Iterator >= GameString.Length)
+                if (_iterator >= _gameString.Length)
                     break;
 
-                sb.Append(GameString[Iterator]);
+                sb.Append(_gameString[_iterator]);
             }
 
             if (sb.Length > 0)
             {
-                if (TextStack.Count > 0 && TextStack.Peek() == startTag)
-                    TextStack.Pop();
+                if (_textStack.Count > 0 && _textStack.Peek() == startTag)
+                    _textStack.Pop();
 
-                TextStack.Push(sb.ToString());
+                _textStack.Push(sb.ToString());
             }
         }
 
         // removes all tags
         private string ParsePlainText(bool includeNewlineTags, bool includeScaling)
         {
-            StringBuilder sb = new StringBuilder(LargeSize);
-            for (; Iterator < GameString.Length; Iterator++)
+            StringBuilder sb = new StringBuilder(_largeSize);
+            for (; _iterator < _gameString.Length; _iterator++)
             {
-                if (GameString[Iterator] == '<')
+                if (_gameString[_iterator] == '<')
                 {
                     if (sb.Length > 0)
                     {
-                        TextStack.Push(sb.ToString());
-                        sb = new StringBuilder(LargeSize);
+                        _textStack.Push(sb.ToString());
+                        sb = new StringBuilder(_largeSize);
                     }
 
                     if (TryParseTag(out string tag, out _))
@@ -234,41 +234,41 @@ namespace Heroes.Models
                         if (tag == "<n/>")
                         {
                             if (includeNewlineTags)
-                                TextStack.Push(tag);
+                                _textStack.Push(tag);
                             else
-                                TextStack.Push(" ");
+                                _textStack.Push(" ");
                         }
 
                         continue;
                     }
                 }
-                else if (GameString[Iterator] == '~' && Iterator + 1 < GameString.Length && GameString[Iterator + 1] == '~')
+                else if (_gameString[_iterator] == '~' && _iterator + 1 < _gameString.Length && _gameString[_iterator + 1] == '~')
                 {
-                    TextStack.Push(sb.ToString());
-                    sb = new StringBuilder(LargeSize);
+                    _textStack.Push(sb.ToString());
+                    sb = new StringBuilder(_largeSize);
 
                     if (ParseScalingTag(out string scaleText, includeScaling))
                     {
-                        TextStack.Push(scaleText);
+                        _textStack.Push(scaleText);
                     }
 
                     continue;
                 }
 
-                if (Iterator >= GameString.Length)
+                if (_iterator >= _gameString.Length)
                     break;
 
-                sb.Append(GameString[Iterator]);
+                sb.Append(_gameString[_iterator]);
             }
 
             if (sb.Length > 0)
-                TextStack.Push(sb.ToString());
+                _textStack.Push(sb.ToString());
 
-            sb = new StringBuilder(LargeSize);
+            sb = new StringBuilder(_largeSize);
 
-            while (TextStack.Count > 0)
+            while (_textStack.Count > 0)
             {
-                sb.Insert(0, TextStack.Pop());
+                sb.Insert(0, _textStack.Pop());
             }
 
             return sb.ToString().Trim();
@@ -277,51 +277,51 @@ namespace Heroes.Models
         // keeps colored tags and new lines
         private string ParseColoredText(bool includeScaling)
         {
-            StringBuilder sb = new StringBuilder(SmallSize);
-            for (; Iterator < GameString.Length; Iterator++)
+            StringBuilder sb = new StringBuilder(_smallSize);
+            for (; _iterator < _gameString.Length; _iterator++)
             {
-                if (GameString[Iterator] == '<')
+                if (_gameString[_iterator] == '<')
                 {
                     if (sb.Length > 0)
                     {
-                        TextStack.Push(sb.ToString());
-                        sb = new StringBuilder(SmallSize);
+                        _textStack.Push(sb.ToString());
+                        sb = new StringBuilder(_smallSize);
                     }
 
                     if (TryParseTag(out string tag, out _))
                     {
-                        TextStack.Push(tag);
+                        _textStack.Push(tag);
 
                         continue;
                     }
                 }
-                else if (GameString[Iterator] == '~' && Iterator + 1 < GameString.Length && GameString[Iterator + 1] == '~')
+                else if (_gameString[_iterator] == '~' && _iterator + 1 < _gameString.Length && _gameString[_iterator + 1] == '~')
                 {
-                    TextStack.Push(sb.ToString());
-                    sb = new StringBuilder(SmallSize);
+                    _textStack.Push(sb.ToString());
+                    sb = new StringBuilder(_smallSize);
 
                     if (ParseScalingTag(out string scaleText, includeScaling))
                     {
-                        TextStack.Push(scaleText);
+                        _textStack.Push(scaleText);
                     }
 
                     continue;
                 }
 
-                if (Iterator >= GameString.Length)
+                if (_iterator >= _gameString.Length)
                     break;
 
-                sb.Append(GameString[Iterator]);
+                sb.Append(_gameString[_iterator]);
             }
 
             if (sb.Length > 0)
-                TextStack.Push(sb.ToString());
+                _textStack.Push(sb.ToString());
 
-            sb = new StringBuilder(SmallSize);
+            sb = new StringBuilder(_smallSize);
 
-            while (TextStack.Count > 0)
+            while (_textStack.Count > 0)
             {
-                sb.Insert(0, TextStack.Pop());
+                sb.Insert(0, _textStack.Pop());
             }
 
             return sb.ToString().Trim();
@@ -349,11 +349,11 @@ namespace Heroes.Models
         // get whole tag, determine if it's a start tag
         private bool TryParseTag(out string tag, out bool isStartTag)
         {
-            StringBuilder sb = new StringBuilder(SmallSize);
-            for (; Iterator < GameString.Length; Iterator++)
+            StringBuilder sb = new StringBuilder(_smallSize);
+            for (; _iterator < _gameString.Length; _iterator++)
             {
-                sb.Append(GameString[Iterator]);
-                if (GameString[Iterator] == '>')
+                sb.Append(_gameString[_iterator]);
+                if (_gameString[_iterator] == '>')
                 {
                     string[] parts = sb.ToString().Split(new char[] { ' ' }, 2);
                     if (parts.Length > 1)
@@ -405,14 +405,14 @@ namespace Heroes.Models
         private bool ParseScalingTag(out string scaleText, bool replace)
         {
             int tagCount = 0;
-            StringBuilder sb = new StringBuilder(SmallSize);
+            StringBuilder sb = new StringBuilder(_smallSize);
 
-            for (; Iterator < GameString.Length; Iterator++)
+            for (; _iterator < _gameString.Length; _iterator++)
             {
-                if (GameString[Iterator] == '~')
+                if (_gameString[_iterator] == '~')
                     tagCount++;
                 else
-                    sb.Append(GameString[Iterator]);
+                    sb.Append(_gameString[_iterator]);
 
                 if (tagCount == 4)
                 {
@@ -443,29 +443,29 @@ namespace Heroes.Models
 
         private string GetPerLevelLocale(double value)
         {
-            if (Localization == Localization.DEDE)
+            if (_localization == Localization.DEDE)
                 return $"+{value:0.##}% pro Stufe";
-            else if (Localization == Localization.ENUS)
+            else if (_localization == Localization.ENUS)
                 return $"+{value:0.##}% per level";
-            else if (Localization == Localization.ESES)
+            else if (_localization == Localization.ESES)
                 return $"+{value:0.##}% por nivel";
-            else if (Localization == Localization.ESMX)
+            else if (_localization == Localization.ESMX)
                 return $"+{value:0.##}% por nivel";
-            else if (Localization == Localization.FRFR)
+            else if (_localization == Localization.FRFR)
                 return $"+{value:0.##}% par niveau";
-            else if (Localization == Localization.ITIT)
+            else if (_localization == Localization.ITIT)
                 return $"+{value:0.##}% per livello";
-            else if (Localization == Localization.KOKR)
+            else if (_localization == Localization.KOKR)
                 return $"레벨 당 +{value:0.##}%";
-            else if (Localization == Localization.PLPL)
+            else if (_localization == Localization.PLPL)
                 return $"+{value:0.##}% na poziom";
-            else if (Localization == Localization.PTBR)
+            else if (_localization == Localization.PTBR)
                 return $"+{value:0.##}% por nível";
-            else if (Localization == Localization.RURU)
+            else if (_localization == Localization.RURU)
                 return $"+{value:0.##}% за уровень";
-            else if (Localization == Localization.ZHCN)
+            else if (_localization == Localization.ZHCN)
                 return $"每级 +{value:0.##}%";
-            else if (Localization == Localization.ZHTW)
+            else if (_localization == Localization.ZHTW)
                 return $"每級 +{value:0.##}%";
             else
                 return $"{value:0.##}% per level";

@@ -5,7 +5,7 @@ namespace Heroes.Models
 {
     public class UnitWeapon
     {
-        private readonly HashSet<WeaponAttributeFactor> WeaponAttributeFactorList = new HashSet<WeaponAttributeFactor>();
+        private readonly HashSet<WeaponAttributeFactor> _weaponAttributeFactorList = new HashSet<WeaponAttributeFactor>();
 
         /// <summary>
         /// Gets or sets the unique id of the weapon.
@@ -25,7 +25,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets the collection of attribute factors.
         /// </summary>
-        public IEnumerable<WeaponAttributeFactor> AttributeFactors => WeaponAttributeFactorList;
+        public IEnumerable<WeaponAttributeFactor> AttributeFactors => _weaponAttributeFactorList;
 
         /// <summary>
         /// Gets or sets the time between attacks.
@@ -88,10 +88,10 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(weaponAttributeFactor));
             }
 
-            if (WeaponAttributeFactorList.Contains(weaponAttributeFactor))
-                WeaponAttributeFactorList.Remove(weaponAttributeFactor);
+            if (_weaponAttributeFactorList.Contains(weaponAttributeFactor))
+                _weaponAttributeFactorList.Remove(weaponAttributeFactor);
 
-            WeaponAttributeFactorList.Add(weaponAttributeFactor);
+            _weaponAttributeFactorList.Add(weaponAttributeFactor);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(weaponAttributeFactor));
             }
 
-            return WeaponAttributeFactorList.Contains(weaponAttributeFactor);
+            return _weaponAttributeFactorList.Contains(weaponAttributeFactor);
         }
     }
 }

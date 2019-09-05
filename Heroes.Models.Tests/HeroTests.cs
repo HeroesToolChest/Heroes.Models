@@ -8,8 +8,8 @@ namespace Heroes.Models.Tests
     [TestClass]
     public class HeroTests
     {
-        private readonly Hero Hero = new Hero();
-        private readonly Hero NullHero = new Hero();
+        private readonly Hero _hero = new Hero();
+        private readonly Hero _nullHero = new Hero();
 
         public HeroTests()
         {
@@ -20,108 +20,108 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetAbilityTests()
         {
-            List<Ability> abil = Hero.GetAbilities(new AbilityTalentId("Abil3", "Abil3")).ToList();
+            List<Ability> abil = _hero.GetAbilities(new AbilityTalentId("Abil3", "Abil3")).ToList();
             Assert.AreEqual(AbilityTier.Basic, abil[0].Tier);
             Assert.IsNull(abil[0].ParentLink);
 
-            Assert.AreEqual(0, Hero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
+            Assert.AreEqual(0, _hero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
 
-            Assert.AreEqual(0, NullHero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
+            Assert.AreEqual(0, _nullHero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
 
-            Assert.AreEqual(3, Hero.GetAbilities(new AbilityTalentId("Abil1", "Abil1")).ToList().Count);
+            Assert.AreEqual(3, _hero.GetAbilities(new AbilityTalentId("Abil1", "Abil1")).ToList().Count);
         }
 
         [TestMethod]
         public void GetTalentTests()
         {
-            Talent talent = Hero.GetTalent("Talent2");
+            Talent talent = _hero.GetTalent("Talent2");
             Assert.AreEqual("Talent 2", talent.Name);
             Assert.AreEqual("storm_ui.png", talent.IconFileName);
 
-            talent = Hero.GetTalent(string.Empty);
+            talent = _hero.GetTalent(string.Empty);
             Assert.AreEqual("No Pick", talent.Name);
 
-            talent = Hero.GetTalent("asdf");
+            talent = _hero.GetTalent("asdf");
             Assert.AreEqual("asdf", talent.Name);
 
-            Assert.IsNotNull(NullHero.GetTalent("asdf"));
+            Assert.IsNotNull(_nullHero.GetTalent("asdf"));
         }
 
         [TestMethod]
         public void GetTierTalentsTests()
         {
-            Assert.AreEqual(2, Hero.TierTalents(TalentTier.Level1).Count());
-            Assert.AreEqual(1, Hero.TierTalents(TalentTier.Level4).Count());
+            Assert.AreEqual(2, _hero.TierTalents(TalentTier.Level1).Count());
+            Assert.AreEqual(1, _hero.TierTalents(TalentTier.Level4).Count());
         }
 
         private void AddAbilities()
         {
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = null,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
                 AbilityType = AbilityType.W,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
                 Tier = AbilityTier.Basic,
                 AbilityType = AbilityType.Q,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil2", "abil2"),
                 Tier = AbilityTier.Basic,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil3", "abil3"),
                 Tier = AbilityTier.Basic,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil4", "abil4"),
                 Tier = AbilityTier.Heroic,
                 ParentLink = null,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil5", "abil5"),
                 Tier = AbilityTier.Heroic,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil6", "abil6"),
                 Tier = AbilityTier.Trait,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil7", "abil7"),
                 Tier = AbilityTier.Activable,
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil1", "subAbil1"),
                 Tier = AbilityTier.Basic,
                 ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
 
-            Hero.AddAbility(new Ability()
+            _hero.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil2", "subAbil2"),
                 Tier = AbilityTier.Basic,
@@ -131,7 +131,7 @@ namespace Heroes.Models.Tests
 
         private void AddTalents()
         {
-            Hero.AddTalent(new Talent()
+            _hero.AddTalent(new Talent()
             {
                 AbilityTalentId = new AbilityTalentId("Talent1", "tal1"),
                 Name = "Talent 1",
@@ -139,7 +139,7 @@ namespace Heroes.Models.Tests
                 Tier = TalentTier.Level1,
             });
 
-            Hero.AddTalent(new Talent()
+            _hero.AddTalent(new Talent()
             {
                 AbilityTalentId = new AbilityTalentId("Talent2", "tal2"),
                 Name = "Talent 2",
@@ -147,7 +147,7 @@ namespace Heroes.Models.Tests
                 Tier = TalentTier.Level1,
             });
 
-            Hero.AddTalent(new Talent()
+            _hero.AddTalent(new Talent()
             {
                 AbilityTalentId = new AbilityTalentId("Talent3", "tal3"),
                 Name = "Talent 3",

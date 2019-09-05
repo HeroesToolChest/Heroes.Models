@@ -7,14 +7,14 @@ namespace Heroes.Models
 {
     public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     {
-        private readonly HashSet<string> HeroDescriptorsList = new HashSet<string>();
-        private readonly HashSet<UnitWeapon> UnitWeaponList = new HashSet<UnitWeapon>();
-        private readonly HashSet<UnitArmor> UnitArmorList = new HashSet<UnitArmor>();
-        private readonly HashSet<string> AttributeList = new HashSet<string>();
-        private readonly HashSet<string> UnitIdList = new HashSet<string>();
+        private readonly HashSet<string> _heroDescriptorsList = new HashSet<string>();
+        private readonly HashSet<UnitWeapon> _unitWeaponList = new HashSet<UnitWeapon>();
+        private readonly HashSet<UnitArmor> _unitArmorList = new HashSet<UnitArmor>();
+        private readonly HashSet<string> _attributeList = new HashSet<string>();
+        private readonly HashSet<string> _unitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, List<Ability>> AbilitiesByReferenceId = new Dictionary<string, List<Ability>>();
-        private readonly Dictionary<AbilityTalentId, HashSet<Ability>> AbilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
+        private readonly Dictionary<string, List<Ability>> _abilitiesByReferenceId = new Dictionary<string, List<Ability>>();
+        private readonly Dictionary<AbilityTalentId, HashSet<Ability>> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -29,12 +29,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of the hero play styles.
         /// </summary>
-        public IEnumerable<string> HeroDescriptors => HeroDescriptorsList;
+        public IEnumerable<string> HeroDescriptors => _heroDescriptorsList;
 
         /// <summary>
         /// Gets the amount of hero play styles.
         /// </summary>
-        public int HeroDescriptorsCount => HeroDescriptorsList.Count;
+        public int HeroDescriptorsCount => _heroDescriptorsList.Count;
 
         /// <summary>
         /// Gets the Life properties.
@@ -54,12 +54,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection unit armor.
         /// </summary>
-        public IEnumerable<UnitArmor> Armor => UnitArmorList;
+        public IEnumerable<UnitArmor> Armor => _unitArmorList;
 
         /// <summary>
         /// Gets the amount of unit armors.
         /// </summary>
-        public int ArmorCount => UnitArmorList.Count;
+        public int ArmorCount => _unitArmorList.Count;
 
         public double Radius { get; set; }
 
@@ -77,42 +77,42 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of abilities.
         /// </summary>
-        public IEnumerable<Ability> Abilities => AbilitiesByAbilityTalentId.Values.SelectMany(x => x);
+        public IEnumerable<Ability> Abilities => _abilitiesByAbilityTalentId.Values.SelectMany(x => x);
 
         /// <summary>
         /// Gets the amount of abilities.
         /// </summary>
-        public int AbilitiesCount => AbilitiesByAbilityTalentId.Values.Sum(x => x.Count);
+        public int AbilitiesCount => _abilitiesByAbilityTalentId.Values.Sum(x => x.Count);
 
         /// <summary>
         /// Gets a collection of basic attack weapons.
         /// </summary>
-        public IEnumerable<UnitWeapon> Weapons => UnitWeaponList;
+        public IEnumerable<UnitWeapon> Weapons => _unitWeaponList;
 
         /// <summary>
         /// Gets the amount of weapons.
         /// </summary>
-        public int WeaponsCount => UnitWeaponList.Count;
+        public int WeaponsCount => _unitWeaponList.Count;
 
         /// <summary>
         /// Gets a collection of attributes.
         /// </summary>
-        public IEnumerable<string> Attributes => AttributeList;
+        public IEnumerable<string> Attributes => _attributeList;
 
         /// <summary>
         /// Gets the amount of attributes.
         /// </summary>
-        public int AttributesCount => AttributeList.Count;
+        public int AttributesCount => _attributeList.Count;
 
         /// <summary>
         /// Gets a collection of additional units associated with this unit.
         /// </summary>
-        public IEnumerable<string> UnitIds => UnitIdList;
+        public IEnumerable<string> UnitIds => _unitIdList;
 
         /// <summary>
         /// Gets the amount of units.
         /// </summary>
-        public int UnitIdsCount => UnitIdList.Count;
+        public int UnitIdsCount => _unitIdList.Count;
 
         /// <summary>
         /// Gets or sets the parent link of this unit.
@@ -203,7 +203,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public ILookup<string?, UnitWeapon> ParentLinkedWeapons()
         {
-            return UnitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+            return _unitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
         public override string ToString()
@@ -222,7 +222,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            HeroDescriptorsList.Add(value);
+            _heroDescriptorsList.Add(value);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return HeroDescriptorsList.Contains(value);
+            return _heroDescriptorsList.Contains(value);
         }
 
         /// <summary>
@@ -251,10 +251,10 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(unitWeapon));
             }
 
-            if (UnitWeaponList.Contains(unitWeapon))
-                UnitWeaponList.Remove(unitWeapon);
+            if (_unitWeaponList.Contains(unitWeapon))
+                _unitWeaponList.Remove(unitWeapon);
 
-            UnitWeaponList.Add(unitWeapon);
+            _unitWeaponList.Add(unitWeapon);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(unitWeapon));
             }
 
-            return UnitWeaponList.Contains(unitWeapon);
+            return _unitWeaponList.Contains(unitWeapon);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool RemoveUnitWeapon(UnitWeapon unitWeapon)
         {
-            return UnitWeaponList.Remove(unitWeapon);
+            return _unitWeaponList.Remove(unitWeapon);
         }
 
         /// <summary>
@@ -293,10 +293,10 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(unitArmor));
             }
 
-            if (UnitArmorList.Contains(unitArmor))
-                UnitArmorList.Remove(unitArmor);
+            if (_unitArmorList.Contains(unitArmor))
+                _unitArmorList.Remove(unitArmor);
 
-            UnitArmorList.Add(unitArmor);
+            _unitArmorList.Add(unitArmor);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(unitArmor));
             }
 
-            return UnitArmorList.Contains(unitArmor);
+            return _unitArmorList.Contains(unitArmor);
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            AttributeList.Add(value);
+            _attributeList.Add(value);
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace Heroes.Models
 
             foreach (string item in values)
             {
-                AttributeList.Add(item);
+                _attributeList.Add(item);
             }
         }
 
@@ -356,7 +356,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return AttributeList.Remove(value);
+            return _attributeList.Remove(value);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return AttributeList.Contains(value);
+            return _attributeList.Contains(value);
         }
 
         /// <summary>
@@ -385,15 +385,15 @@ namespace Heroes.Models
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
                 value.Add(ability);
             else
-                AbilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
+                _abilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
 
-            if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability>? referenceAbilities))
+            if (_abilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability>? referenceAbilities))
                 referenceAbilities.Add(ability);
             else
-                AbilitiesByReferenceId.Add(ability.AbilityTalentId.ReferenceId, new List<Ability>() { ability });
+                _abilitiesByReferenceId.Add(ability.AbilityTalentId.ReferenceId, new List<Ability>() { ability });
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Heroes.Models
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
                 return value.Contains(ability);
             else
                 return false;
@@ -426,7 +426,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
             {
                 return value.Any(x => x.AbilityTalentId == abilityId);
             }
@@ -446,7 +446,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
             }
 
-            return AbilitiesByReferenceId.ContainsKey(referenceId);
+            return _abilitiesByReferenceId.ContainsKey(referenceId);
         }
 
         /// <summary>
@@ -461,12 +461,12 @@ namespace Heroes.Models
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
             {
                 return value.Remove(ability);
             }
 
-            AbilitiesByReferenceId.Remove(ability.AbilityTalentId.ReferenceId);
+            _abilitiesByReferenceId.Remove(ability.AbilityTalentId.ReferenceId);
 
             return false;
         }
@@ -484,7 +484,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
             {
                 abilities = value;
                 return true;
@@ -509,7 +509,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
+            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
             {
                 abilities = value;
                 return true;
@@ -534,7 +534,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
+            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
             {
                 ability = value.FirstOrDefault();
                 return true;
@@ -558,7 +558,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
+            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -576,7 +576,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
+            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -594,7 +594,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
+            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
                 return value.FirstOrDefault();
             else
                 return null;
@@ -611,7 +611,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            UnitIdList.Add(value);
+            _unitIdList.Add(value);
         }
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return UnitIdList.Contains(value);
+            return _unitIdList.Contains(value);
         }
 
         /// <summary>
@@ -641,7 +641,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return UnitIdList.Remove(value);
+            return _unitIdList.Remove(value);
         }
     }
 }

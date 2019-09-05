@@ -5,7 +5,7 @@ namespace Heroes.Models.AbilityTalents
 {
     public class Ability : AbilityTalentBase
     {
-        private readonly HashSet<string> TalentIdUpgradeList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> _talentIdUpgradeList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public Ability() { }
 
@@ -24,7 +24,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets a collection of talent ids that are associated with the ability.
         /// </summary>
-        public IEnumerable<string> TalentIdUpgrades => TalentIdUpgradeList;
+        public IEnumerable<string> TalentIdUpgrades => _talentIdUpgradeList;
 
         public static bool operator ==(Ability ability1, Ability ability2)
         {
@@ -57,7 +57,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
-            TalentIdUpgradeList.Add(value);
+            _talentIdUpgradeList.Add(value);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Heroes.Models.AbilityTalents
                 throw new ArgumentException("Argument cannot be null or empty", nameof(value));
             }
 
-            return TalentIdUpgradeList.Contains(value);
+            return _talentIdUpgradeList.Contains(value);
         }
 
         public override string ToString()

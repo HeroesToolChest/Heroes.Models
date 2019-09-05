@@ -5,9 +5,9 @@ namespace Heroes.Models
 {
     public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     {
-        private readonly HashSet<string> UniversalAliasList = new HashSet<string>();
-        private readonly HashSet<string> LocalizedAliasList = new HashSet<string>();
-        private readonly HashSet<string> SearchTextList = new HashSet<string>();
+        private readonly HashSet<string> _universalAliasList = new HashSet<string>();
+        private readonly HashSet<string> _localizedAliasList = new HashSet<string>();
+        private readonly HashSet<string> _searchTextList = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the description text.
@@ -17,17 +17,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of universal aliases for the emoticon.
         /// </summary>
-        public IEnumerable<string> UniversalAliases => UniversalAliasList;
+        public IEnumerable<string> UniversalAliases => _universalAliasList;
 
         /// <summary>
         /// Gets a collection of localized aliases for the emoticon.
         /// </summary>
-        public IEnumerable<string> LocalizedAliases => LocalizedAliasList;
+        public IEnumerable<string> LocalizedAliases => _localizedAliasList;
 
         /// <summary>
         /// Gets a collection of search texts for the emoticon.
         /// </summary>
-        public IEnumerable<string> SearchTexts => SearchTextList;
+        public IEnumerable<string> SearchTexts => _searchTextList;
 
         /// <summary>
         /// Gets or sets if the aliases are case sensitive.
@@ -70,7 +70,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            UniversalAliasList.Add(value);
+            _universalAliasList.Add(value);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return UniversalAliasList.Contains(value);
+            return _universalAliasList.Contains(value);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            LocalizedAliasList.Add(value);
+            _localizedAliasList.Add(value);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return LocalizedAliasList.Contains(value);
+            return _localizedAliasList.Contains(value);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            SearchTextList.Add(value);
+            _searchTextList.Add(value);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return SearchTextList.Contains(value);
+            return _searchTextList.Contains(value);
         }
     }
 }
