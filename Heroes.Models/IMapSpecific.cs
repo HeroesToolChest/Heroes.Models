@@ -10,6 +10,6 @@
         /// <summary>
         /// Gets or sets the map name that is associated this object.
         /// </summary>
-        string MapName { get; set; }
+        string? MapName { get; set; }
     }
 }

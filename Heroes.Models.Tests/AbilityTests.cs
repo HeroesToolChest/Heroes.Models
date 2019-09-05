@@ -1,6 +1,5 @@
 ﻿using Heroes.Models.AbilityTalents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -245,13 +244,6 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void AddAbilityIsNullTest()
-        {
-            Unit unit = new Unit();
-            Assert.ThrowsException<ArgumentNullException>(() => { unit.AddAbility(null); });
-        }
-
-        [TestMethod]
         public void AddPassiveAbilityTest()
         {
             Unit unit = new Unit();
@@ -347,8 +339,8 @@ namespace Heroes.Models.Tests
             });
 
             Ability ability = unit.GetAbilities(new AbilityTalentId(string.Empty, "pass2")).ToList()[0];
-            Assert.AreEqual("pass2", ability.AbilityTalentId.ButtonId);
-            Assert.AreEqual(string.Empty, ability.AbilityTalentId.ReferenceId);
+            Assert.AreEqual("pass2", ability.AbilityTalentId?.ButtonId);
+            Assert.AreEqual(string.Empty, ability.AbilityTalentId?.ReferenceId);
         }
 
         [TestMethod]

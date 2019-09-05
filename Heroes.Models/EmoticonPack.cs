@@ -10,12 +10,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>
-        public TooltipDescription Description { get; set; }
+        public TooltipDescription? Description { get; set; }
 
         /// <summary>
         /// Gets or sets the sort name used for sorting the emoticon packs.
         /// </summary>
-        public string SortName { get; set; }
+        public string? SortName { get; set; }
 
         /// <summary>
         /// Gets or sets the release date.
@@ -25,12 +25,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the type of collection category.
         /// </summary>
-        public string CollectionCategory { get; set; }
+        public string? CollectionCategory { get; set; }
 
         /// <summary>
         /// Gets or sets the event name associated with this emoticon pack.
         /// </summary>
-        public string EventName { get; set; }
+        public string? EventName { get; set; }
 
         /// <summary>
         /// Gets a collection of emoticons ids in this emoticon pack.

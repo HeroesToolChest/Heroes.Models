@@ -27,7 +27,7 @@
         /// </summary>
         public double ShieldRegenerationRateScaling { get; set; }
 
-        public string ShieldType { get; set; }
+        public string ShieldType { get; set; } = string.Empty;
 
         public override string ToString()
         {

@@ -5,7 +5,7 @@
         /// <summary>
         /// Gets or sets the image.
         /// </summary>
-        public string Image { get; set; }
+        public string Image { get; set; } = string.Empty;
 
         /// <summary>
         /// Get or sets the number of rows in the texture sheet.

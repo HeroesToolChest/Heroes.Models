@@ -19,12 +19,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
         /// </summary>
-        public string CUnitId { get; set; }
+        public string CUnitId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the description of the unit.
         /// </summary>
-        public TooltipDescription Description { get; set; }
+        public TooltipDescription? Description { get; set; }
 
         /// <summary>
         /// Gets a collection of the hero play styles.
@@ -117,12 +117,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the parent link of this unit.
         /// </summary>
-        public string ParentLink { get; set; }
+        public string? ParentLink { get; set; }
 
         /// <summary>
         /// Gets or sets the damage type of this unit.
         /// </summary>
-        public string DamageType { get; set; }
+        public string DamageType { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets whether this unit is unique to a map.
@@ -132,12 +132,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the map name that is associated with this unit.
         /// </summary>
-        public string MapName { get; set; }
+        public string? MapName { get; set; }
 
         /// <summary>
         /// Gets or sets the scaling behavior link.
         /// </summary>
-        public string ScalingBehaviorLink { get; set; }
+        public string? ScalingBehaviorLink { get; set; }
 
         /// <summary>
         /// Gets or sets the kill xp.
@@ -155,7 +155,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities()
         {
-            return Abilities?.Where(x => x.ParentLink == null).ToList();
+            return Abilities.Where(x => x.ParentLink == null).ToList();
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities(AbilityTier tier)
         {
-            return Abilities?.Where(x => x.Tier == tier && x.ParentLink == null).ToList();
+            return Abilities.Where(x => x.Tier == tier && x.ParentLink == null).ToList();
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities()
         {
-            return Abilities?.Where(x => x.ParentLink != null).ToList();
+            return Abilities.Where(x => x.ParentLink != null).ToList();
         }
 
         /// <summary>
@@ -185,25 +185,25 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities(AbilityTier tier)
         {
-            return Abilities?.Where(x => x.Tier == tier && x.ParentLink != null).ToList();
+            return Abilities.Where(x => x.Tier == tier && x.ParentLink != null).ToList();
         }
 
         /// <summary>
         /// Returns a lookup of all the parent linked abilities.
         /// </summary>
         /// <returns></returns>
-        public ILookup<AbilityTalentId, Ability> ParentLinkedAbilities()
+        public ILookup<AbilityTalentId?, Ability> ParentLinkedAbilities()
         {
-           return Abilities?.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
+           return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
         }
 
         /// <summary>
         /// Returns a lookup of all the parent linked weapons.
         /// </summary>
         /// <returns></returns>
-        public ILookup<string, UnitWeapon> ParentLinkedWeapons()
+        public ILookup<string?, UnitWeapon> ParentLinkedWeapons()
         {
-            return UnitWeaponList?.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+            return UnitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
         public override string ToString()
@@ -380,22 +380,17 @@ namespace Heroes.Models
         /// <param name="ability"></param>
         public void AddAbility(Ability ability)
         {
-            if (ability == null)
-            {
-                throw new ArgumentNullException(nameof(ability));
-            }
-
             if (ability.AbilityTalentId == null)
             {
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
                 value.Add(ability);
             else
                 AbilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
 
-            if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability> referenceAbilities))
+            if (AbilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability>? referenceAbilities))
                 referenceAbilities.Add(ability);
             else
                 AbilitiesByReferenceId.Add(ability.AbilityTalentId.ReferenceId, new List<Ability>() { ability });
@@ -408,17 +403,12 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool ContainsAbility(Ability ability)
         {
-            if (ability == null)
-            {
-                throw new ArgumentNullException(nameof(ability));
-            }
-
             if (ability.AbilityTalentId == null)
             {
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
                 return value.Contains(ability);
             else
                 return false;
@@ -436,7 +426,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
             {
                 return value.Any(x => x.AbilityTalentId == abilityId);
             }
@@ -466,17 +456,12 @@ namespace Heroes.Models
         /// <returns></returns>
         public bool RemoveAbility(Ability ability)
         {
-            if (ability == null)
-            {
-                throw new ArgumentNullException(nameof(ability));
-            }
-
             if (ability.AbilityTalentId == null)
             {
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
             {
                 return value.Remove(ability);
             }
@@ -499,7 +484,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
             {
                 abilities = value;
                 return true;
@@ -524,7 +509,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
             {
                 abilities = value;
                 return true;
@@ -542,14 +527,14 @@ namespace Heroes.Models
         /// <param name="referenceId"></param>
         /// <param name="ability"></param>
         /// <returns></returns>
-        public bool TryGetFirstAbility(string referenceId, out Ability ability)
+        public bool TryGetFirstAbility(string referenceId, out Ability? ability)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
             {
                 ability = value.FirstOrDefault();
                 return true;
@@ -573,7 +558,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(abilityId));
             }
 
-            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability> value))
+            if (AbilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -591,7 +576,7 @@ namespace Heroes.Models
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
                 return value;
             else
                 return new HashSet<Ability>();
@@ -602,14 +587,14 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public Ability GetFirstAbility(string referenceId)
+        public Ability? GetFirstAbility(string referenceId)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability> value))
+            if (AbilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
                 return value.FirstOrDefault();
             else
                 return null;

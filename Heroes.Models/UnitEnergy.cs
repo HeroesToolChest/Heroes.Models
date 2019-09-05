@@ -15,7 +15,7 @@
         /// <summary>
         /// Gets or sets the energy type.
         /// </summary>
-        public string EnergyType { get; set; }
+        public string EnergyType { get; set; } = string.Empty;
 
         public override string ToString()
         {

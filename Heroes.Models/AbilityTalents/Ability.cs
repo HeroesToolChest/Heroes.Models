@@ -75,19 +75,22 @@ namespace Heroes.Models.AbilityTalents
             return TalentIdUpgradeList.Contains(value);
         }
 
-        public override bool Equals(object obj)
+        public override string ToString()
         {
-            if (!(obj is Ability item))
-                return false;
+            if (AbilityTalentId is null)
+                return $"{Tier.GetFriendlyName()}";
+            else
+                return $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
+        }
 
-            return (item.AbilityTalentId.Id + item.IconFileName + item.AbilityType).ToUpper().Equals((AbilityTalentId.Id + IconFileName + AbilityType).ToUpper());
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()
         {
-            return (AbilityTalentId.Id + IconFileName + AbilityType).ToUpper().GetHashCode();
+            return base.GetHashCode();
         }
-
-        public override string ToString() => $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
     }
 }

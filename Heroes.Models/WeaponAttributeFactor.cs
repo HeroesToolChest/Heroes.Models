@@ -7,14 +7,14 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the type (Minion, Structure, etc...)
         /// </summary>
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value of the bonus factor.
         /// </summary>
         public double Value { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is WeaponAttributeFactor item))
                 return false;

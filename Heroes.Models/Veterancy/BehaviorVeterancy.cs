@@ -27,6 +27,6 @@ namespace Heroes.Models.Veterancy
         /// <summary>
         /// Gets or sets the map name that is associated with this veterancy.
         /// </summary>
-        public string MapName { get; set; }
+        public string? MapName { get; set; }
     }
 }

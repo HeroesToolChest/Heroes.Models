@@ -19,11 +19,15 @@ namespace Heroes.Models
             Type type = enumerationValue.GetType();
             if (!type.GetTypeInfo().IsEnum)
             {
-                throw new ArgumentException("EnumerationValue must be of Enum type", nameof(enumerationValue));
+                throw new ArgumentException("Must be of Enum type", nameof(enumerationValue));
             }
 
             // Tries to find a DescriptionAttribute for a potential friendly name for the enum
-            MemberInfo[] memberInfo = type.GetMember(enumerationValue.ToString());
+            string? enumString = enumerationValue.ToString();
+            if (enumString is null)
+                throw new ArgumentException("Cannot be null", nameof(enumerationValue));
+
+            MemberInfo[] memberInfo = type.GetMember(enumString);
             if (memberInfo != null && memberInfo.Length > 0)
             {
                 object[] attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -34,7 +38,7 @@ namespace Heroes.Models
                 }
             }
 
-            return enumerationValue.ToString();
+            return enumString;
         }
 
         /// <summary>

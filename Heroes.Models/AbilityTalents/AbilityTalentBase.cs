@@ -10,17 +10,17 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the real name.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the abilityTalent id.
         /// </summary>
-        public AbilityTalentId AbilityTalentId { get; set; }
+        public AbilityTalentId? AbilityTalentId { get; set; }
 
         /// <summary>
         /// Gets or sets the icon file name.
         /// </summary>
-        public string IconFileName { get; set; }
+        public string IconFileName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the ability associated with this abilityTalent.
@@ -47,7 +47,7 @@ namespace Heroes.Models.AbilityTalents
         /// Gets or sets the parent that is associated with this abilityTalent.
         /// </summary>
         /// <remarks>Useful for abilities only.</remarks>
-        public AbilityTalentId ParentLink { get; set; }
+        public AbilityTalentId? ParentLink { get; set; }
 
         /// <summary>
         /// Gets or sets the AbilityTalentTooltip object.
@@ -59,17 +59,32 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public IEnumerable<string> CreatedUnits => CreatedUnitList;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return (item.AbilityTalentId.Id + item.Name + item.IconFileName + item.AbilityType).ToUpper().Equals((AbilityTalentId.Id + Name + IconFileName + AbilityType).ToUpper());
+            string firstPart = item.Name + item.IconFileName + item.AbilityType + item.IsPassive.ToString();
+            string secondPart = Name + IconFileName + AbilityType + IsPassive.ToString();
+
+            if (!(item.AbilityTalentId is null))
+                firstPart += item.AbilityTalentId.Id;
+
+            if (!(AbilityTalentId is null))
+                secondPart += AbilityTalentId.Id;
+
+            Span<char> spanFirst = stackalloc char[firstPart.Length];
+            Span<char> spanSecond = stackalloc char[secondPart.Length];
+
+            firstPart.AsSpan().ToUpperInvariant(spanFirst);
+            secondPart.AsSpan().ToUpperInvariant(spanSecond);
+
+            return spanFirst.SequenceEqual(spanSecond);
         }
 
         public override int GetHashCode()
         {
-            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityType}".ToUpper().GetHashCode();
+            return $"{AbilityTalentId?.Id + Name + IconFileName + AbilityType}".ToUpper().GetHashCode();
         }
 
         /// <summary>

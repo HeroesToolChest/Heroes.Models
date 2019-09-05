@@ -7,17 +7,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the sort name used for sorting the announcers.
         /// </summary>
-        public string SortName { get; set; }
+        public string? SortName { get; set; }
 
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>
-        public TooltipDescription Description { get; set; }
+        public TooltipDescription? Description { get; set; }
 
         /// <summary>
         /// Gets or sets the attribute id.
         /// </summary>
-        public string AttributeId { get; set; }
+        public string AttributeId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the release date of the announcer.
@@ -32,21 +32,21 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the type of collection category.
         /// </summary>
-        public string CollectionCategory { get; set; }
+        public string? CollectionCategory { get; set; }
 
         /// <summary>
         /// Gets or sets the image file name.
         /// </summary>
-        public string ImageFileName { get; set; }
+        public string ImageFileName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the gender of the announcer.
         /// </summary>
-        public string Gender { get; set; }
+        public string? Gender { get; set; }
 
         /// <summary>
         /// Gets or sets the hero associated with the announcer.
         /// </summary>
-        public string HeroId { get; set; }
+        public string HeroId { get; set; } = string.Empty;
     }
 }

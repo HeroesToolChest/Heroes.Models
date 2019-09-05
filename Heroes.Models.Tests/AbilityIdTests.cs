@@ -27,11 +27,11 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void EqualsNullTest()
         {
-            AbilityTalentId abilityId1 = null;
+            AbilityTalentId? abilityId1 = null;
             AbilityTalentId abilityId2 = new AbilityTalentId("1", "1");
 
-            AbilityTalentId abilityId3 = null;
-            AbilityTalentId abilityId4 = null;
+            AbilityTalentId? abilityId3 = null;
+            AbilityTalentId? abilityId4 = null;
 
             Assert.IsFalse(abilityId1 == abilityId2);
             Assert.IsTrue(abilityId3 == abilityId4);
@@ -40,7 +40,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void NotEqualsNullTest()
         {
-            AbilityTalentId abilityId1 = null;
+            AbilityTalentId? abilityId1 = null;
             AbilityTalentId abilityId2 = new AbilityTalentId("1", "1");
 
             Assert.IsTrue(abilityId1 != abilityId2);

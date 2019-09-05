@@ -38,7 +38,7 @@ namespace Heroes.Models.Tests
             Assert.AreEqual("Talent 2", talent.Name);
             Assert.AreEqual("storm_ui.png", talent.IconFileName);
 
-            talent = Hero.GetTalent(null);
+            talent = Hero.GetTalent(string.Empty);
             Assert.AreEqual("No Pick", talent.Name);
 
             talent = Hero.GetTalent("asdf");

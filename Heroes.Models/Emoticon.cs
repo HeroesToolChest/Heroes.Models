@@ -12,7 +12,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>
-        public TooltipDescription Description { get; set; }
+        public TooltipDescription? Description { get; set; }
 
         /// <summary>
         /// Gets a collection of universal aliases for the emoticon.
@@ -42,12 +42,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the hero id associated with the emoticon.
         /// </summary>
-        public string HeroId { get; set; }
+        public string HeroId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the hero skin id assoicated with the emoticon.
         /// </summary>
-        public string HeroSkinId { get; set; }
+        public string? HeroSkinId { get; set; }
 
         /// <summary>
         /// Get or sets the texture sheet associated with the emoticon.

@@ -35,8 +35,8 @@ namespace Heroes.Models.Tests
             if ("Level 3".ConvertToEnum(out result))
                 Assert.AreEqual(Levels.Level3, result);
 
-            Assert.IsTrue("Level 2".ConvertToEnum(out result));
-            Assert.IsTrue("Level3".ConvertToEnum(out result));
+            Assert.IsTrue("Level 2".ConvertToEnum(out Levels _));
+            Assert.IsTrue("Level3".ConvertToEnum(out Levels _));
         }
 
         [TestMethod]

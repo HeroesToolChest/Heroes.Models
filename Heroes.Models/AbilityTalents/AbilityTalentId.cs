@@ -28,7 +28,7 @@
         /// </summary>
         public string ButtonId { get; set; }
 
-        public static bool operator ==(AbilityTalentId abilityTalentId1, AbilityTalentId abilityTalentId2)
+        public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
             {
@@ -38,7 +38,7 @@
             return abilityTalentId1.Equals(abilityTalentId2);
         }
 
-        public static bool operator !=(AbilityTalentId abilityTalentId1, AbilityTalentId abilityTalentId2)
+        public static bool operator !=(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
             {
@@ -53,7 +53,7 @@
             return $"{ReferenceId}|{ButtonId}";
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is AbilityTalentId item))
                 return false;

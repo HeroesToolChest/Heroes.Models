@@ -5,16 +5,16 @@
         /// <summary>
         /// Gets or sets the cooldown text.
         /// </summary>
-        public TooltipDescription CooldownTooltip { get; set; }
+        public TooltipDescription? CooldownTooltip { get; set; }
 
         /// <summary>
         /// Gets or sets the toggle cooldown.
         /// </summary>
         public double? ToggleCooldown { get; set; }
 
-        public override string ToString()
+        public override string? ToString()
         {
-            return CooldownTooltip.RawDescription;
+            return CooldownTooltip?.RawDescription;
         }
     }
 }

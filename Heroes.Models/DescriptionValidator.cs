@@ -364,7 +364,7 @@ namespace Heroes.Models
                         tag = sb.ToString();
 
                     // check if its a start tag
-                    if (tag[1] != '/' && tag[tag.Length - 2] != '/')
+                    if (tag[1] != '/' && tag[^2] != '/')
                         isStartTag = true;
                     else
                         isStartTag = false;
@@ -444,31 +444,31 @@ namespace Heroes.Models
         private string GetPerLevelLocale(double value)
         {
             if (Localization == Localization.DEDE)
-                return $"+{value}% pro Stufe";
+                return $"+{value:0.##}% pro Stufe";
             else if (Localization == Localization.ENUS)
-                return $"+{value}% per level";
+                return $"+{value:0.##}% per level";
             else if (Localization == Localization.ESES)
-                return $"+{value}% por nivel";
+                return $"+{value:0.##}% por nivel";
             else if (Localization == Localization.ESMX)
-                return $"+{value}% por nivel";
+                return $"+{value:0.##}% por nivel";
             else if (Localization == Localization.FRFR)
-                return $"+{value}% par niveau";
+                return $"+{value:0.##}% par niveau";
             else if (Localization == Localization.ITIT)
-                return $"+{value}% per livello";
+                return $"+{value:0.##}% per livello";
             else if (Localization == Localization.KOKR)
-                return $"레벨 당 +{value}%";
+                return $"레벨 당 +{value:0.##}%";
             else if (Localization == Localization.PLPL)
-                return $"+{value}% na poziom";
+                return $"+{value:0.##}% na poziom";
             else if (Localization == Localization.PTBR)
-                return $"+{value}% por nível";
+                return $"+{value:0.##}% por nível";
             else if (Localization == Localization.RURU)
-                return $"+{value}% за уровень";
+                return $"+{value:0.##}% за уровень";
             else if (Localization == Localization.ZHCN)
-                return $"每级 +{value}%";
+                return $"每级 +{value:0.##}%";
             else if (Localization == Localization.ZHTW)
-                return $"每級 +{value}%";
+                return $"每級 +{value:0.##}%";
             else
-                return $"{value}% per level";
+                return $"{value:0.##}% per level";
         }
     }
 }

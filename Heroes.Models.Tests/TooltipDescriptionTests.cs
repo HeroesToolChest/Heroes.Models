@@ -50,20 +50,6 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void DescriptionNullTest()
-        {
-            TooltipDescription tooltipDescription = new TooltipDescription(null);
-
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.RawDescription));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainText));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithNewlines));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScaling));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainTextWithScalingWithNewlines));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredText));
-            Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.ColoredTextWithScaling));
-        }
-
-        [TestMethod]
         public void DescriptionLocaleTests()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(TestDescription, Localization.KOKR);

@@ -51,7 +51,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetParentLinkedAbilitiesTests()
         {
-            ILookup<AbilityTalentId, Ability> parentLinkedAbilities = Unit.ParentLinkedAbilities();
+            ILookup<AbilityTalentId?, Ability> parentLinkedAbilities = Unit.ParentLinkedAbilities();
             Assert.AreEqual(1, parentLinkedAbilities.Count);
             Assert.IsTrue(parentLinkedAbilities.Contains(new AbilityTalentId("Abil7", "abil7")));
             Assert.AreEqual(2, parentLinkedAbilities[new AbilityTalentId("Abil7", "abil7")].Count());
@@ -62,7 +62,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetParentLinkedWeaponsTests()
         {
-            ILookup<string, UnitWeapon> parentLinkedWeapons = Unit.ParentLinkedWeapons();
+            ILookup<string?, UnitWeapon> parentLinkedWeapons = Unit.ParentLinkedWeapons();
             Assert.AreEqual(1, parentLinkedWeapons.Count);
             Assert.IsTrue(parentLinkedWeapons.Contains("Weapon2"));
             Assert.AreEqual(2, parentLinkedWeapons["Weapon2"].Count());

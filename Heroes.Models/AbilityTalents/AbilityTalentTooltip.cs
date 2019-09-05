@@ -28,12 +28,12 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the short tooltip.
         /// </summary>
-        public TooltipDescription ShortTooltip { get; set; }
+        public TooltipDescription? ShortTooltip { get; set; }
 
         /// <summary>
         /// Gets or sets the full tooltip.
         /// </summary>
-        public TooltipDescription FullTooltip { get; set; }
+        public TooltipDescription? FullTooltip { get; set; }
 
         /// <summary>
         /// Returns a string of the ability/talent's cooldown, mana/life cost, and custom string.
@@ -69,7 +69,7 @@ namespace Heroes.Models.AbilityTalents
 
         public override string ToString()
         {
-            return ShortTooltip?.PlainTextWithScaling;
+            return ShortTooltip is null ? string.Empty : ShortTooltip.PlainTextWithScaling;
         }
     }
 }

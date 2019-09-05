@@ -5,7 +5,7 @@
         /// <summary>
         /// Gets or sets the energy text.
         /// </summary>
-        public TooltipDescription EnergyTooltip { get; set; }
+        public TooltipDescription? EnergyTooltip { get; set; }
 
         /// <summary>
         /// Gets or sets the energy value.
@@ -14,7 +14,7 @@
 
         public override string ToString()
         {
-            return EnergyTooltip.RawDescription;
+            return EnergyTooltip is null ? string.Empty : EnergyTooltip.RawDescription;
         }
     }
 }

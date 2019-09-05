@@ -10,12 +10,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unique id of the weapon.
         /// </summary>
-        public string WeaponNameId { get; set; }
+        public string WeaponNameId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the name of the weapon.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the amount of damage the attack deals.
@@ -45,7 +45,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unit that is associated with this weapon.
         /// </summary>
-        public string ParentLink { get; set; }
+        public string? ParentLink { get; set; }
 
         /// <summary>
         /// Gets the attacks per second.
@@ -59,7 +59,7 @@ namespace Heroes.Models
             return 1 / Period;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is UnitWeapon item))
                 return false;

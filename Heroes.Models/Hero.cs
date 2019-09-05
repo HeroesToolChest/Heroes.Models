@@ -18,17 +18,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
         /// </summary>
-        public string CHeroId { get; set; }
+        public string CHeroId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the four character code.
         /// </summary>
-        public string AttributeId { get; set; }
+        public string AttributeId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the difficulty of the hero.
         /// </summary>
-        public string Difficulty { get; set; }
+        public string Difficulty { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the franchise the hero belongs to.
@@ -88,27 +88,27 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the expanded role of the hero.
         /// </summary>
-        public string ExpandedRole { get; set; }
+        public string ExpandedRole { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the information text.
         /// </summary>
-        public string InfoText { get; set; }
+        public string InfoText { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the hero title.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the search text. Space delimited.
         /// </summary>
-        public string SearchText { get; set; }
+        public string SearchText { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the unit type: Melee or ranged.
         /// </summary>
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets a collection of <see cref="Hero"/> objects.
@@ -165,10 +165,8 @@ namespace Heroes.Models
         /// <param name="talent"></param>
         public void AddTalent(Talent talent)
         {
-            if (talent == null)
-            {
-                throw new ArgumentNullException(nameof(talent));
-            }
+            if (talent.AbilityTalentId is null)
+                throw new ArgumentException($"{nameof(talent.AbilityTalentId)} cannot be null", nameof(talent));
 
             TalentsById[talent.AbilityTalentId.ReferenceId] = talent;
         }
@@ -194,13 +192,8 @@ namespace Heroes.Models
         /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent"></param>
         /// <returns></returns>
-        public bool TryGetTalent(string talentId, out Talent talent)
+        public bool TryGetTalent(string talentId, out Talent? talent)
         {
-            if (talentId == null)
-            {
-                throw new ArgumentNullException(nameof(talentId));
-            }
-
             return TalentsById.TryGetValue(talentId, out talent);
         }
 
@@ -211,7 +204,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public Talent GetTalent(string talentId)
         {
-            if (string.IsNullOrEmpty(talentId))
+            if (string.IsNullOrWhiteSpace(talentId))
             {
                 // no pick
                 return new Talent()
@@ -221,7 +214,7 @@ namespace Heroes.Models
                 };
             }
 
-            if (TalentsById.TryGetValue(talentId, out Talent talent))
+            if (TalentsById.TryGetValue(talentId, out Talent? talent))
             {
                 return talent;
             }

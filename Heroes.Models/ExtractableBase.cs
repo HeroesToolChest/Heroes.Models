@@ -8,21 +8,24 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unique id.
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the hyperlink id.
         /// </summary>
-        public string HyperlinkId { get; set; }
+        public string HyperlinkId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the real in game name.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Id.Equals(((T)obj).Id, StringComparison.OrdinalIgnoreCase);
+            if (!(obj is T item))
+                return false;
+
+            return Id.Equals(item.Id, StringComparison.OrdinalIgnoreCase);
         }
 
         public override int GetHashCode()
