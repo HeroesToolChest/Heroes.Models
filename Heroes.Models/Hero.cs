@@ -241,5 +241,10 @@ namespace Heroes.Models
 
             _heroUnitList.Add(hero);
         }
+
+        public override string ToString()
+        {
+            return CHeroId;
+        }
     }
 }

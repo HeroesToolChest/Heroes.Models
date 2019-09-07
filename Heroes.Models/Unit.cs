@@ -206,11 +206,6 @@ namespace Heroes.Models
             return _unitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-
         /// <summary>
         /// Adds a descriptor value. Replaces if value already exists in collection.
         /// </summary>
@@ -642,6 +637,11 @@ namespace Heroes.Models
             }
 
             return _unitIdList.Remove(value);
+        }
+
+        public override string ToString()
+        {
+            return CUnitId;
         }
     }
 }
