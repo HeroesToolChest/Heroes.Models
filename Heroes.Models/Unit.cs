@@ -122,7 +122,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the damage type of this unit.
         /// </summary>
-        public string DamageType { get; set; } = string.Empty;
+        public string? DamageType { get; set; }
 
         /// <summary>
         /// Gets whether this unit is unique to a map.
