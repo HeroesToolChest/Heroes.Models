@@ -57,7 +57,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets a collection of created units.
         /// </summary>
-        public IEnumerable<string> CreatedUnits => _createdUnitList;
+        internal IEnumerable<string> CreatedUnits => _createdUnitList;
 
         public override bool Equals(object? obj)
         {
@@ -91,7 +91,7 @@ namespace Heroes.Models.AbilityTalents
         /// Adds a value. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="value"></param>
-        public void AddCreatedUnit(string value)
+        internal void AddCreatedUnit(string value)
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -106,7 +106,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool ContainsCreatedUnit(string value)
+        internal bool ContainsCreatedUnit(string value)
         {
             if (string.IsNullOrEmpty(value))
             {
