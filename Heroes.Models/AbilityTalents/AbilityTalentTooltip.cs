@@ -67,9 +67,14 @@ namespace Heroes.Models.AbilityTalents
             return text;
         }
 
-        public override string ToString()
+        public override string? ToString()
         {
-            return ShortTooltip is null ? string.Empty : ShortTooltip.PlainTextWithScaling;
+            if (ShortTooltip != null)
+                return ShortTooltip.PlainTextWithScaling;
+            else if (FullTooltip != null)
+                return FullTooltip.PlainTextWithScaling;
+            else
+                return base.ToString();
         }
     }
 }
