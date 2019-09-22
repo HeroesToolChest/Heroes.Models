@@ -28,6 +28,16 @@
         /// </summary>
         public string ButtonId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the abilityType.
+        /// </summary>
+        public AbilityType AbilityType { get; set; } = AbilityType.Unknown;
+
+        /// <summary>
+        /// Gets or sets the value wheter or not this is a passive ability.
+        /// </summary>
+        public bool IsPassive { get; set; } = false;
+
         public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
