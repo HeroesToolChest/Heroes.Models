@@ -14,9 +14,9 @@
         }
 
         /// <summary>
-        /// Gets the unique id. This is equalivant to <see cref="ToString"/>.
+        /// Gets the unique id.
         /// </summary>
-        public string Id => ToString();
+        public string Id => $"{ReferenceId}|{ButtonId}";
 
         /// <summary>
         /// Gets or sets the reference id. This is usually the ability id.
@@ -34,7 +34,7 @@
         public AbilityType AbilityType { get; set; } = AbilityType.Unknown;
 
         /// <summary>
-        /// Gets or sets the value wheter or not this is a passive ability.
+        /// Gets or sets the value whether or not this is a passive ability.
         /// </summary>
         public bool IsPassive { get; set; } = false;
 
@@ -60,7 +60,7 @@
 
         public override string ToString()
         {
-            return $"{ReferenceId}|{ButtonId}";
+            return $"{ReferenceId}|{ButtonId}|{AbilityType}|{IsPassive}";
         }
 
         public override bool Equals(object? obj)
