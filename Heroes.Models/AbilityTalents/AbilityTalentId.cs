@@ -14,9 +14,9 @@
         }
 
         /// <summary>
-        /// Gets the unique id.
+        /// Gets the unique id. Same <see cref="ToString()"/>.
         /// </summary>
-        public string Id => $"{ReferenceId}|{ButtonId}";
+        public string Id => ToString();
 
         /// <summary>
         /// Gets or sets the reference id. This is usually the ability id.

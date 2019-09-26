@@ -13,8 +13,10 @@ namespace Heroes.Models
         private readonly HashSet<string> _attributeList = new HashSet<string>();
         private readonly HashSet<string> _unitIdList = new HashSet<string>();
 
-        private readonly Dictionary<string, List<Ability>> _abilitiesByReferenceId = new Dictionary<string, List<Ability>>();
-        private readonly Dictionary<AbilityTalentId, HashSet<Ability>> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
+        private readonly Dictionary<AbilityTalentId, Ability> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, Ability>();
+
+        //private readonly Dictionary<string, List<Ability>> _abilitiesByReferenceId = new Dictionary<string, List<Ability>>();
+        //private readonly Dictionary<AbilityTalentId, HashSet<Ability>> _abilitiesHashSetByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
 
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -77,12 +79,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection of abilities.
         /// </summary>
-        public IEnumerable<Ability> Abilities => _abilitiesByAbilityTalentId.Values.SelectMany(x => x);
+        public IEnumerable<Ability> Abilities => _abilitiesByAbilityTalentId.Values;
 
         /// <summary>
         /// Gets the amount of abilities.
         /// </summary>
-        public int AbilitiesCount => _abilitiesByAbilityTalentId.Values.Sum(x => x.Count);
+        public int AbilitiesCount => _abilitiesByAbilityTalentId.Count;
 
         /// <summary>
         /// Gets a collection of basic attack weapons.
@@ -370,25 +372,18 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Adds an <see cref="Ability"/>.
+        /// Adds an <see cref="Ability"/>. Returns a value indicating the result.
         /// </summary>
         /// <param name="ability"></param>
-        public void AddAbility(Ability ability)
+        /// <returns>True if added successfully.</returns>
+        public bool AddAbility(Ability ability)
         {
             if (ability.AbilityTalentId == null)
             {
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
-                value.Add(ability);
-            else
-                _abilitiesByAbilityTalentId.Add(ability.AbilityTalentId, new HashSet<Ability>() { ability });
-
-            if (_abilitiesByReferenceId.TryGetValue(ability.AbilityTalentId.ReferenceId, out List<Ability>? referenceAbilities))
-                referenceAbilities.Add(ability);
-            else
-                _abilitiesByReferenceId.Add(ability.AbilityTalentId.ReferenceId, new List<Ability>() { ability });
+            return _abilitiesByAbilityTalentId.TryAdd(ability.AbilityTalentId, ability);
         }
 
         /// <summary>
@@ -403,10 +398,7 @@ namespace Heroes.Models
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
-                return value.Contains(ability);
-            else
-                return false;
+            return _abilitiesByAbilityTalentId.ContainsKey(ability.AbilityTalentId);
         }
 
         /// <summary>
@@ -414,34 +406,30 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityId"></param>
         /// <returns></returns>
-        public bool ContainsAbility(AbilityTalentId abilityId)
+        public bool ContainsAbility(AbilityTalentId abilityTalentId)
         {
-            if (abilityId == null)
+            if (abilityTalentId == null)
             {
-                throw new ArgumentNullException(nameof(abilityId));
+                throw new ArgumentNullException(nameof(abilityTalentId));
             }
 
-            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
-            {
-                return value.Any(x => x.AbilityTalentId == abilityId);
-            }
-
-            return false;
+            return _abilitiesByAbilityTalentId.ContainsKey(abilityTalentId);
         }
 
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="referenceId"></param>
+        /// <param name="referenceId">The reference id of the <see cref="AbilityTalentId"/>.</param>
+        /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
         /// <returns></returns>
-        public bool ContainsAbility(string referenceId)
+        public bool ContainsAbility(string referenceId, StringComparison comparisonType)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
             }
 
-            return _abilitiesByReferenceId.ContainsKey(referenceId);
+            return _abilitiesByAbilityTalentId.Any(x => x.Key.ReferenceId.Equals(referenceId, comparisonType));
         }
 
         /// <summary>
@@ -456,143 +444,53 @@ namespace Heroes.Models
                 throw new NullReferenceException(nameof(ability.AbilityTalentId));
             }
 
-            if (_abilitiesByAbilityTalentId.TryGetValue(ability.AbilityTalentId, out HashSet<Ability>? value))
-            {
-                return value.Remove(ability);
-            }
-
-            _abilitiesByReferenceId.Remove(ability.AbilityTalentId.ReferenceId);
-
-            return false;
+            return _abilitiesByAbilityTalentId.Remove(ability.AbilityTalentId);
         }
 
         /// <summary>
-        /// Try to get the abilities from an <see cref="AbilityTalentId"/>.
+        /// Gets the ability from the <paramref name="abilityId"/>.
         /// </summary>
-        /// <param name="abilityId"></param>
-        /// <param name="abilities"></param>
+        /// <param name="abilityTalentId"></param>
         /// <returns></returns>
-        public bool TryGetAbilities(AbilityTalentId abilityId, out IEnumerable<Ability> abilities)
+        public Ability GetAbility(AbilityTalentId abilityTalentId)
         {
-            if (abilityId == null)
+            if (abilityTalentId == null)
             {
-                throw new ArgumentNullException(nameof(abilityId));
+                throw new ArgumentNullException(nameof(abilityTalentId));
             }
 
-            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
-            {
-                abilities = value;
-                return true;
-            }
-            else
-            {
-                abilities = new HashSet<Ability>();
-                return false;
-            }
+            return _abilitiesByAbilityTalentId[abilityTalentId];
         }
 
         /// <summary>
-        /// Try to get the abilities from an <see cref="AbilityTalentId.ReferenceId"/>.
+        /// Gets the ability from the <paramref name="abilityTalentId"/>.
         /// </summary>
-        /// <param name="abilityId"></param>
-        /// <param name="abilities"></param>
+        /// <param name="abilityTalentId"></param>
         /// <returns></returns>
-        public bool TryGetAbilities(string referenceId, out IEnumerable<Ability> abilities)
+        public bool TryGetAbility(AbilityTalentId abilityTalentId, out Ability? ability)
         {
-            if (string.IsNullOrEmpty(referenceId))
+            if (abilityTalentId == null)
             {
-                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
+                throw new ArgumentNullException(nameof(abilityTalentId));
             }
 
-            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
-            {
-                abilities = value;
-                return true;
-            }
-            else
-            {
-                abilities = new HashSet<Ability>();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Try to get an ability from an <see cref="AbilityTalentId.ReferenceId"/>. If there is more than one, it will return the first.
-        /// </summary>
-        /// <param name="referenceId"></param>
-        /// <param name="ability"></param>
-        /// <returns></returns>
-        public bool TryGetFirstAbility(string referenceId, out Ability? ability)
-        {
-            if (string.IsNullOrEmpty(referenceId))
-            {
-                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
-            }
-
-            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
-            {
-                ability = value.FirstOrDefault();
-                return true;
-            }
-            else
-            {
-                ability = null;
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Returns a collection of abilities from an <see cref="AbilityTalentId"/>.
-        /// </summary>
-        /// <param name="abilityId"></param>
-        /// <returns></returns>
-        public IEnumerable<Ability> GetAbilities(AbilityTalentId abilityId)
-        {
-            if (abilityId == null)
-            {
-                throw new ArgumentNullException(nameof(abilityId));
-            }
-
-            if (_abilitiesByAbilityTalentId.TryGetValue(abilityId, out HashSet<Ability>? value))
-                return value;
-            else
-                return new HashSet<Ability>();
+            return _abilitiesByAbilityTalentId.TryGetValue(abilityTalentId, out ability);
         }
 
         /// <summary>
         /// Returns a collection of abilities from an <see cref="AbilityTalentId.ReferenceId"/>.
         /// </summary>
-        /// <param name="abilityId"></param>
+        /// <param name="referenceId"></param>
+        /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
         /// <returns></returns>
-        public IEnumerable<Ability> GetAbilities(string referenceId)
+        public IEnumerable<Ability> GetAbilities(string referenceId, StringComparison comparisonType)
         {
             if (string.IsNullOrEmpty(referenceId))
             {
                 throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
             }
 
-            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
-                return value;
-            else
-                return new HashSet<Ability>();
-        }
-
-        /// <summary>
-        /// Returns the first <see cref="Ability"/> from the given reference id.
-        /// </summary>
-        /// <param name="abilityId"></param>
-        /// <returns></returns>
-        public Ability? GetFirstAbility(string referenceId)
-        {
-            if (string.IsNullOrEmpty(referenceId))
-            {
-                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
-            }
-
-            if (_abilitiesByReferenceId.TryGetValue(referenceId, out List<Ability>? value))
-                return value.FirstOrDefault();
-            else
-                return null;
+            return _abilitiesByAbilityTalentId.Where(x => x.Key.ReferenceId.Equals(referenceId, comparisonType)).Select(x => x.Value);
         }
 
         /// <summary>

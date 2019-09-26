@@ -20,15 +20,9 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetAbilityTests()
         {
-            List<Ability> abil = _hero.GetAbilities(new AbilityTalentId("Abil3", "Abil3")).ToList();
-            Assert.AreEqual(AbilityTier.Basic, abil[0].Tier);
-            Assert.IsNull(abil[0].ParentLink);
-
-            Assert.AreEqual(0, _hero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
-
-            Assert.AreEqual(0, _nullHero.GetAbilities(new AbilityTalentId("Asdf", "Asdf")).ToList().Count);
-
-            Assert.AreEqual(3, _hero.GetAbilities(new AbilityTalentId("Abil1", "Abil1")).ToList().Count);
+            Ability abil = _hero.GetAbility(new AbilityTalentId("Abil3", "Abil3"));
+            Assert.AreEqual(AbilityTier.Basic, abil.Tier);
+            Assert.IsNull(abil.ParentLink);
         }
 
         [TestMethod]
@@ -65,16 +59,20 @@ namespace Heroes.Models.Tests
 
             _hero.AddAbility(new Ability()
             {
-                AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil1", "abil1")
+                {
+                    AbilityType = AbilityType.W,
+                },
                 Tier = AbilityTier.Basic,
-                AbilityType = AbilityType.W,
             });
 
             _hero.AddAbility(new Ability()
             {
-                AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
+                AbilityTalentId = new AbilityTalentId("Abil1", "abil1")
+                {
+                    AbilityType = AbilityType.Q,
+                },
                 Tier = AbilityTier.Basic,
-                AbilityType = AbilityType.Q,
             });
 
             _hero.AddAbility(new Ability()
