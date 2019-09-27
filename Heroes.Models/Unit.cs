@@ -15,9 +15,6 @@ namespace Heroes.Models
 
         private readonly Dictionary<AbilityTalentId, Ability> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, Ability>();
 
-        //private readonly Dictionary<string, List<Ability>> _abilitiesByReferenceId = new Dictionary<string, List<Ability>>();
-        //private readonly Dictionary<AbilityTalentId, HashSet<Ability>> _abilitiesHashSetByAbilityTalentId = new Dictionary<AbilityTalentId, HashSet<Ability>>();
-
         /// <summary>
         /// Gets or sets the id of CUnit element stored in blizzard xml file.
         /// </summary>
@@ -196,7 +193,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public ILookup<AbilityTalentId?, Ability> ParentLinkedAbilities()
         {
-           return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
+            return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
         }
 
         /// <summary>

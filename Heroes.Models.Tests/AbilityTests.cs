@@ -16,7 +16,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                     AbilityType = AbilityType.Active,
+                    AbilityType = AbilityType.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -460,10 +460,10 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.TryGetAbility(
                 new AbilityTalentId(string.Empty, "pass1")
-            {
-                AbilityType = AbilityType.Passive,
-                IsPassive = true,
-            }, out Ability? ability));
+                {
+                    AbilityType = AbilityType.Passive,
+                    IsPassive = true,
+                }, out Ability? ability));
 
             Assert.AreEqual("pass1", ability?.AbilityTalentId.ButtonId);
 
