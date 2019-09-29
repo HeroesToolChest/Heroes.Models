@@ -26,7 +26,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public IEnumerable<string> TalentIdUpgrades => _talentIdUpgradeList;
 
-        public static bool operator ==(Ability ability1, Ability ability2)
+        public static bool operator ==(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
             {
@@ -36,7 +36,7 @@ namespace Heroes.Models.AbilityTalents
             return ability1.Equals(ability2);
         }
 
-        public static bool operator !=(Ability ability1, Ability ability2)
+        public static bool operator !=(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
             {

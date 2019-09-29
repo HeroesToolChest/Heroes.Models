@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models
 {
@@ -191,18 +192,18 @@ namespace Heroes.Models
         /// Returns a lookup of all the parent linked abilities.
         /// </summary>
         /// <returns></returns>
-        public ILookup<AbilityTalentId?, Ability> ParentLinkedAbilities()
+        public ILookup<AbilityTalentId, Ability> ParentLinkedAbilities()
         {
-            return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink);
+            return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink)!;
         }
 
         /// <summary>
         /// Returns a lookup of all the parent linked weapons.
         /// </summary>
         /// <returns></returns>
-        public ILookup<string?, UnitWeapon> ParentLinkedWeapons()
+        public ILookup<string, UnitWeapon> ParentLinkedWeapons()
         {
-            return _unitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink);
+            return _unitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink)!;
         }
 
         /// <summary>
@@ -464,7 +465,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityTalentId"></param>
         /// <returns></returns>
-        public bool TryGetAbility(AbilityTalentId abilityTalentId, out Ability? ability)
+        public bool TryGetAbility(AbilityTalentId abilityTalentId, [NotNullWhen(true)] out Ability? ability)
         {
             if (abilityTalentId == null)
             {

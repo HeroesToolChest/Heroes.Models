@@ -1,6 +1,7 @@
 ﻿using Heroes.Models.AbilityTalents;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Heroes.Models
@@ -192,7 +193,7 @@ namespace Heroes.Models
         /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent"></param>
         /// <returns></returns>
-        public bool TryGetTalent(string talentId, out Talent? talent)
+        public bool TryGetTalent(string talentId, [NotNullWhen(true)] out Talent? talent)
         {
             return _talentsById.TryGetValue(talentId, out talent);
         }

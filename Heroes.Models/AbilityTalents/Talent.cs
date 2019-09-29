@@ -47,7 +47,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public int PrerequisiteTalentIdCount => _prerequisiteTalentIdList.Count;
 
-        public static bool operator ==(Talent talent1, Talent talent2)
+        public static bool operator ==(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
             {
@@ -57,7 +57,7 @@ namespace Heroes.Models.AbilityTalents
             return talent1.Equals(talent2);
         }
 
-        public static bool operator !=(Talent talent1, Talent talent2)
+        public static bool operator !=(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
             {
