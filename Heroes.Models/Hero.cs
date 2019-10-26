@@ -12,8 +12,8 @@ namespace Heroes.Models
         private readonly string _noPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
         private readonly string _unknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
-        private readonly HashSet<string> _roleList = new HashSet<string>();
-        private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> _roleList = new HashSet<string>(StringComparer.Ordinal);
+        private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.Ordinal);
         private readonly HashSet<Hero> _heroUnitList = new HashSet<Hero>();
 
         /// <summary>

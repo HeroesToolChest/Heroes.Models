@@ -5,8 +5,8 @@ namespace Heroes.Models.AbilityTalents
 {
     public class Talent : AbilityTalentBase
     {
-        private readonly HashSet<string> _abilityTalentLinkIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        private readonly HashSet<string> _prerequisiteTalentIdList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private readonly HashSet<string> _abilityTalentLinkIdList = new HashSet<string>(StringComparer.Ordinal);
+        private readonly HashSet<string> _prerequisiteTalentIdList = new HashSet<string>(StringComparer.Ordinal);
 
         public Talent() { }
 

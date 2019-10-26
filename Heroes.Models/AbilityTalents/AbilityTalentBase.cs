@@ -7,7 +7,7 @@ namespace Heroes.Models.AbilityTalents
 {
     public abstract class AbilityTalentBase
     {
-        private readonly HashSet<string> _createdUnitList = new HashSet<string>();
+        private readonly HashSet<string> _createdUnitList = new HashSet<string>(StringComparer.Ordinal);
 
         /// <summary>
         /// Gets or sets the real name.
