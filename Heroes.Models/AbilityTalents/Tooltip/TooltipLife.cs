@@ -10,7 +10,7 @@
         /// <summary>
         /// Gets or sets the life value.
         /// </summary>
-        public double? LifeValue { get; set; }
+        internal double? LifeValue { get; set; }
 
         public override string? ToString()
         {

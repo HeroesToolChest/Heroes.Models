@@ -10,7 +10,7 @@
         /// <summary>
         /// Gets or sets the energy value.
         /// </summary>
-        public double? EnergyValue { get; set; }
+        internal double? EnergyValue { get; set; }
 
         public override string ToString()
         {
