@@ -7,7 +7,10 @@ namespace Heroes.Models.AbilityTalents
     {
         private readonly HashSet<string> _talentIdUpgradeList = new HashSet<string>(StringComparer.Ordinal);
 
-        public Ability() { }
+        public Ability()
+        {
+            IsActive = true;
+        }
 
         public Ability(AbilityTalentBase talentBase)
         {
