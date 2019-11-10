@@ -2,6 +2,9 @@
 
 namespace Heroes.Models.Veterancy
 {
+    /// <summary>
+    /// Contains the informatino related to the modications for veterancies.
+    /// </summary>
     public class VeterancyModification
     {
         /// <summary>

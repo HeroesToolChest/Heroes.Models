@@ -1,6 +1,9 @@
 ﻿namespace Heroes.Models
 {
-    public class TypeValue
+    /// <summary>
+    /// Represents the base class for type value pairs data.
+    /// </summary>
+    public abstract class TypeValue
     {
         /// <summary>
         /// Gets or sets the type.

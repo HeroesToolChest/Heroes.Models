@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models.AbilityTalents.Tooltip
 {
+    /// <summary>
+    /// Contains the information releated to the life tooltip.
+    /// </summary>
     public class TooltipLife
     {
         /// <summary>
@@ -12,6 +15,7 @@
         /// </summary>
         internal double? LifeValue { get; set; }
 
+        /// <inheritdoc/>
         public override string? ToString()
         {
             return LifeCostTooltip?.RawDescription;

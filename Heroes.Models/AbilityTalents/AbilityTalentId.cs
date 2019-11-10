@@ -1,9 +1,12 @@
 ﻿namespace Heroes.Models.AbilityTalents
 {
+    /// <summary>
+    /// Contains the neccessary properties for a unique identifier for abilites and talents.
+    /// </summary>
     public class AbilityTalentId
     {
         /// <summary>
-        /// Contructs an abilityTalentId.
+        /// Initializes a new instance of the <see cref="AbilityTalentId"/> class.
         /// </summary>
         /// <param name="referenceId">The ability id.</param>
         /// <param name="buttonId">The button id.</param>
@@ -38,6 +41,12 @@
         /// </summary>
         public bool IsPassive { get; set; } = false;
 
+        /// <summary>
+        /// Determines if both objects are equal.
+        /// </summary>
+        /// <param name="abilityTalentId1"></param>
+        /// <param name="abilityTalentId2"></param>
+        /// <returns></returns>
         public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
@@ -48,6 +57,12 @@
             return abilityTalentId1.Equals(abilityTalentId2);
         }
 
+        /// <summary>
+        /// Determines if both objects are not equal.
+        /// </summary>
+        /// <param name="abilityTalentId1"></param>
+        /// <param name="abilityTalentId2"></param>
+        /// <returns></returns>
         public static bool operator !=(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
@@ -58,11 +73,13 @@
             return !abilityTalentId1.Equals(abilityTalentId2);
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"{ReferenceId}|{ButtonId}|{AbilityType}|{IsPassive}";
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is AbilityTalentId item))
@@ -71,6 +88,7 @@
             return item.Id.ToUpper().Equals(Id.ToUpper());
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return ToString().ToUpper().GetHashCode();

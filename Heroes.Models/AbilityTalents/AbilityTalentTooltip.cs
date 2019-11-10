@@ -3,6 +3,9 @@ using System;
 
 namespace Heroes.Models.AbilityTalents
 {
+    /// <summary>
+    /// Contains the all information for ability and talent tooltips.
+    /// </summary>
     public class AbilityTalentTooltip
     {
         /// <summary>
@@ -67,6 +70,7 @@ namespace Heroes.Models.AbilityTalents
             return text;
         }
 
+        /// <inheritdoc/>
         public override string? ToString()
         {
             if (ShortTooltip != null)

@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("HeroesData.Parser")]
 namespace Heroes.Models.AbilityTalents
 {
+    /// <summary>
+    /// Abtract class that contains informations related to both abilites and talents.
+    /// </summary>
     public abstract class AbilityTalentBase
     {
         private readonly HashSet<string> _createdUnitList = new HashSet<string>(StringComparer.Ordinal);
@@ -50,6 +53,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         internal IEnumerable<string> CreatedUnits => _createdUnitList;
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is AbilityTalentBase item))
@@ -58,6 +62,7 @@ namespace Heroes.Models.AbilityTalents
             return item.AbilityTalentId.Id.Equals(AbilityTalentId.Id);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpper().GetHashCode();

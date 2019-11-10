@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information related to unit armor.
+    /// </summary>
     public class UnitArmor
     {
         /// <summary>
@@ -24,6 +27,7 @@ namespace Heroes.Models
         /// </summary>
         public int SplashArmor { get; set; }
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is UnitArmor item))
@@ -32,11 +36,13 @@ namespace Heroes.Models
             return Type.Equals(item.Type, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return Type.GetHashCode();
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Type: {Type}, Basic: {BasicArmor}, Ability: {AbilityArmor}, Splash: {SplashArmor}";

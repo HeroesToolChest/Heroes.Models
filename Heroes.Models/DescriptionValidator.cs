@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Provides methods to validate a gamestring.
+    /// </summary>
     public class DescriptionValidator
     {
         private readonly int _smallSize = 51;

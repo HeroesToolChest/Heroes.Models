@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models.AbilityTalents.Tooltip
 {
+    /// <summary>
+    /// Contains the information releated to the energy tooltip.
+    /// </summary>
     public class TooltipEnergy
     {
         /// <summary>
@@ -12,6 +15,7 @@
         /// </summary>
         internal double? EnergyValue { get; set; }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return EnergyTooltip is null ? string.Empty : EnergyTooltip.RawDescription;

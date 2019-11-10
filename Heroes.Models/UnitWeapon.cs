@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information related to unit weapon.
+    /// </summary>
     public class UnitWeapon
     {
         private readonly HashSet<WeaponAttributeFactor> _weaponAttributeFactorList = new HashSet<WeaponAttributeFactor>();
@@ -59,6 +62,7 @@ namespace Heroes.Models
             return 1 / Period;
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is UnitWeapon item))
@@ -67,11 +71,13 @@ namespace Heroes.Models
             return WeaponNameId.Equals(item.WeaponNameId, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return WeaponNameId.GetHashCode();
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return WeaponNameId;

@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Provides the properties that are associated with map specific models.
+    /// </summary>
     public interface IMapSpecific
     {
         /// <summary>

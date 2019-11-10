@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for portrait data.
+    /// </summary>
     public class Portrait : ExtractableBase<Portrait>, IExtractable
     {
         /// <summary>

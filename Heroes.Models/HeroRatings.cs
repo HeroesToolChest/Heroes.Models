@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the properties for hero ratings.
+    /// </summary>
     public class HeroRatings
     {
         /// <summary>
@@ -22,6 +25,7 @@
         /// </summary>
         public double Complexity { get; set; }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"{nameof(Damage)}: {Damage} - {nameof(Utility)}: {Utility} - {nameof(Survivability)}: {Survivability} - {nameof(Complexity)}: {Complexity}";

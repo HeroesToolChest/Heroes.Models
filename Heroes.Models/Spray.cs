@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for spray data.
+    /// </summary>
     public class Spray : ExtractableBase<Spray>, IExtractable
     {
         /// <summary>

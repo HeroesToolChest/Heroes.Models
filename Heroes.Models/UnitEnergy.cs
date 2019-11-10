@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information related to unit energy.
+    /// </summary>
     public class UnitEnergy
     {
         /// <summary>
@@ -17,6 +20,7 @@
         /// </summary>
         public string EnergyType { get; set; } = string.Empty;
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Energy: {EnergyMax} - RegenRate: {EnergyRegenerationRate}";

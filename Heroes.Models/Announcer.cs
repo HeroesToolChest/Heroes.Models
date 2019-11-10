@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for announcer data.
+    /// </summary>
     public class Announcer : ExtractableBase<Announcer>, IExtractable
     {
         /// <summary>

@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the properties for a texture sheet.
+    /// </summary>
     public class TextureSheet
     {
         /// <summary>

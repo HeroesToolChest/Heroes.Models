@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information related to a unit shield.
+    /// </summary>
     public class UnitShield
     {
         /// <summary>
@@ -27,8 +30,12 @@
         /// </summary>
         public double ShieldRegenerationRateScaling { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of shield.
+        /// </summary>
         public string ShieldType { get; set; } = string.Empty;
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Life: {ShieldMax} (+{ShieldScaling * 100}% per level) - RegenRate: {ShieldRegenerationRate} (+{ShieldRegenerationRateScaling * 100}% per level)";

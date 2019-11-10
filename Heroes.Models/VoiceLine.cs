@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for voice line data.
+    /// </summary>
     public class VoiceLine : ExtractableBase<VoiceLine>, IExtractable
     {
         /// <summary>

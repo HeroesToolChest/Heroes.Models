@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models.AbilityTalents.Tooltip
 {
+    /// <summary>
+    /// Contains the information releated to cooldown tooltip.
+    /// </summary>
     public class TooltipCooldown
     {
         /// <summary>
@@ -12,6 +15,7 @@
         /// </summary>
         public double? ToggleCooldown { get; set; }
 
+        /// <inheritdoc/>
         public override string? ToString()
         {
             return CooldownTooltip?.RawDescription;

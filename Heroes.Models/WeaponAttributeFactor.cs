@@ -2,18 +2,12 @@
 
 namespace Heroes.Models
 {
-    public class WeaponAttributeFactor
+    /// <summary>
+    /// Represents a type value pair for the attribute factor of a weapon.
+    /// </summary>
+    public class WeaponAttributeFactor : TypeValue
     {
-        /// <summary>
-        /// Gets or sets the type (Minion, Structure, etc...)
-        /// </summary>
-        public string Type { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the value of the bonus factor.
-        /// </summary>
-        public double Value { get; set; }
-
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is WeaponAttributeFactor item))
@@ -22,11 +16,13 @@ namespace Heroes.Models
             return Type.Equals(item.Type, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return Type.GetHashCode();
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Type: {Type}, Value: {Value}";

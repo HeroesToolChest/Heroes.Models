@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Provides basic properties that are used across all extractable model types from the game data.
+    /// </summary>
     public interface IExtractable
     {
         /// <summary>

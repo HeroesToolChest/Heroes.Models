@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models.AbilityTalents.Tooltip
 {
+    /// <summary>
+    /// Contains the information related to the charges.
+    /// </summary>
     public class TooltipCharges
     {
         /// <summary>
@@ -32,6 +35,7 @@
         /// </summary>
         public bool HasCharges => CountMax.HasValue || (CountMax.HasValue && CountMax.Value > 0);
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             if (HasCharges)

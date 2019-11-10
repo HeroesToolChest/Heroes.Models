@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for hero skin data.
+    /// </summary>
     public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     {
         private readonly HashSet<string> _featuresList = new HashSet<string>();
@@ -60,7 +63,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating <paramref name="value"/> exists.</returns>
         public bool FeatureExists(string value)
         {
             if (value == null)

@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for hero data.
+    /// </summary>
     public class Hero : Unit
     {
         private readonly string _noPickName = "No Pick";
@@ -149,7 +152,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <paramref name="value"/> exists.</returns>
         public bool ContainsRole(string value)
         {
             if (value == null)
@@ -176,7 +179,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <paramref name="talentId"/> exists.</returns>
         public bool ContainsTalent(string talentId)
         {
             if (talentId == null)
@@ -188,7 +191,7 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Try to get the talent from the specified talent id.
+        /// Looks for a talent with the given <paramref name="talentId"/>, returning a value that indicates whether such value exists.
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent"></param>
@@ -243,6 +246,7 @@ namespace Heroes.Models
             _heroUnitList.Add(hero);
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return CHeroId;

@@ -3,13 +3,23 @@ using System.Collections.Generic;
 
 namespace Heroes.Models.AbilityTalents
 {
+    /// <summary>
+    /// Contains the information for talent data.
+    /// </summary>
     public class Talent : AbilityTalentBase
     {
         private readonly HashSet<string> _abilityTalentLinkIdList = new HashSet<string>(StringComparer.Ordinal);
         private readonly HashSet<string> _prerequisiteTalentIdList = new HashSet<string>(StringComparer.Ordinal);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Talent"/> class.
+        /// </summary>
         public Talent() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Talent"/> class.
+        /// </summary>
+        /// <param name="talentBase"></param>
         public Talent(AbilityTalentBase talentBase)
         {
             Name = talentBase.Name;
@@ -47,6 +57,12 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         public int PrerequisiteTalentIdCount => _prerequisiteTalentIdList.Count;
 
+        /// <summary>
+        /// Determines if both objects are equal.
+        /// </summary>
+        /// <param name="talent1"></param>
+        /// <param name="talent2"></param>
+        /// <returns></returns>
         public static bool operator ==(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
@@ -57,6 +73,12 @@ namespace Heroes.Models.AbilityTalents
             return talent1.Equals(talent2);
         }
 
+        /// <summary>
+        /// Determines if both objects are not equal.
+        /// </summary>
+        /// <param name="talent1"></param>
+        /// <param name="talent2"></param>
+        /// <returns></returns>
         public static bool operator !=(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
@@ -161,6 +183,7 @@ namespace Heroes.Models.AbilityTalents
             return _prerequisiteTalentIdList.Contains(value);
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             if (AbilityTalentId is null)
@@ -169,11 +192,13 @@ namespace Heroes.Models.AbilityTalents
                 return $"{Tier.GetFriendlyName()} | {AbilityTalentId.Id}";
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             return base.Equals(obj);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return base.GetHashCode();

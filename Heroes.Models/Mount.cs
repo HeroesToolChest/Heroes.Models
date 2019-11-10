@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for mount data.
+    /// </summary>
     public class Mount : ExtractableBase<Mount>, IExtractable
     {
         /// <summary>

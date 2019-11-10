@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for unit data.
+    /// </summary>
     public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     {
         private readonly HashSet<string> _heroDescriptorsList = new HashSet<string>();
@@ -61,12 +64,24 @@ namespace Heroes.Models
         /// </summary>
         public int ArmorCount => _unitArmorList.Count;
 
+        /// <summary>
+        /// Gets or sets the size of the radius.
+        /// </summary>
         public double Radius { get; set; }
 
+        /// <summary>
+        /// Gets or sets the size of the inner radius.
+        /// </summary>
         public double InnerRadius { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the speed.
+        /// </summary>
         public double Speed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the distance of the sight.
+        /// </summary>
         public double Sight { get; set; }
 
         /// <summary>
@@ -171,7 +186,6 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a collection of all the sub abilities.
         /// </summary>
-        /// <param name="tier">The ability tier.</param>
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities()
         {
@@ -224,7 +238,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the values exists.</returns>
         public bool ContainsHeroDescriptor(string value)
         {
             if (value == null)
@@ -256,7 +270,7 @@ namespace Heroes.Models
         /// Determines whether the <see cref="UnitWeapon"/> exists.
         /// </summary>
         /// <param name="unitWeapon"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <see cref="UnitWeapon"/> was found.</returns>
         public bool ContainsUnitWeapon(UnitWeapon unitWeapon)
         {
             if (unitWeapon == null)
@@ -271,7 +285,7 @@ namespace Heroes.Models
         /// Removes the <see cref="UnitWeapon"/>.
         /// </summary>
         /// <param name="unitWeapon"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating removal was successful.</returns>
         public bool RemoveUnitWeapon(UnitWeapon unitWeapon)
         {
             return _unitWeaponList.Remove(unitWeapon);
@@ -298,7 +312,7 @@ namespace Heroes.Models
         /// Determines whether the <see cref="UnitArmor"/> exists.
         /// </summary>
         /// <param name="unitArmor"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating <see cref="UnitArmor"/> exists.</returns>
         public bool ContainsUnitArmor(UnitArmor unitArmor)
         {
             if (unitArmor == null)
@@ -326,7 +340,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a range of attribute values. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="values"></param>
         public void AddRangeAttribute(IEnumerable<string> values)
         {
             if (values == null)
@@ -344,6 +358,7 @@ namespace Heroes.Models
         /// Removes an attribute value.
         /// </summary>
         /// <param name="value"></param>
+        /// <returns>Value indicating the removal was successful.</returns>
         public bool RemoveAttribute(string value)
         {
             if (value == null)
@@ -358,7 +373,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the value exists.</returns>
         public bool ContainsAttribute(string value)
         {
             if (value == null)
@@ -373,7 +388,7 @@ namespace Heroes.Models
         /// Adds an <see cref="Ability"/>. Returns a value indicating the result.
         /// </summary>
         /// <param name="ability"></param>
-        /// <returns>True if added successfully.</returns>
+        /// <returns>Value indicating adding was successful.</returns>
         public bool AddAbility(Ability ability)
         {
             if (ability.AbilityTalentId == null)
@@ -388,7 +403,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="ability"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <paramref name="ability"/> exists.</returns>
         public bool ContainsAbility(Ability ability)
         {
             if (ability.AbilityTalentId == null)
@@ -402,8 +417,8 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="abilityId"></param>
-        /// <returns></returns>
+        /// <param name="abilityTalentId"></param>
+        /// <returns>Value indicating <paramref name="abilityTalentId"/> exists.</returns>
         public bool ContainsAbility(AbilityTalentId abilityTalentId)
         {
             if (abilityTalentId == null)
@@ -419,7 +434,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="referenceId">The reference id of the <see cref="AbilityTalentId"/>.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
-        /// <returns></returns>
+        /// <returns>Value indicating <paramref name="referenceId"/> exists.</returns>
         public bool ContainsAbility(string referenceId, StringComparison comparisonType)
         {
             if (string.IsNullOrEmpty(referenceId))
@@ -434,7 +449,7 @@ namespace Heroes.Models
         /// Removes an <see cref="Ability"/>.
         /// </summary>
         /// <param name="ability"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating <paramref name="ability"/> was removed.</returns>
         public bool RemoveAbility(Ability ability)
         {
             if (ability.AbilityTalentId == null)
@@ -446,7 +461,7 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Gets the ability from the <paramref name="abilityId"/>.
+        /// Gets the ability from the <paramref name="abilityTalentId"/>.
         /// </summary>
         /// <param name="abilityTalentId"></param>
         /// <returns></returns>
@@ -461,9 +476,10 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Gets the ability from the <paramref name="abilityTalentId"/>.
+        /// Looks for an ability from the given <paramref name="abilityTalentId"/>, returning a value that indicates whether such value exists.
         /// </summary>
         /// <param name="abilityTalentId"></param>
+        /// <param name="ability"></param>
         /// <returns></returns>
         public bool TryGetAbility(AbilityTalentId abilityTalentId, [NotNullWhen(true)] out Ability? ability)
         {
@@ -509,7 +525,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <paramref name="value"/> exists.</returns>
         public bool ContainsUnitId(string value)
         {
             if (value == null)
@@ -524,7 +540,7 @@ namespace Heroes.Models
         /// Removes a value.
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>Value indicating the <paramref name="value"/> was removed.</returns>
         public bool RemoveUnitId(string value)
         {
             if (value == null)
@@ -535,6 +551,7 @@ namespace Heroes.Models
             return _unitIdList.Remove(value);
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return CUnitId;

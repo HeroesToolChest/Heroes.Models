@@ -2,6 +2,9 @@
 
 namespace Heroes.Models.Veterancy
 {
+    /// <summary>
+    /// Contains the information for behavior veterancy data.
+    /// </summary>
     public class BehaviorVeterancy : ExtractableBase<BehaviorVeterancy>, IExtractable, IMapSpecific
     {
         /// <summary>

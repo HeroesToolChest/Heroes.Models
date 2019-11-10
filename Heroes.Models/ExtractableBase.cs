@@ -2,7 +2,11 @@
 
 namespace Heroes.Models
 {
-    public class ExtractableBase<T>
+    /// <summary>
+    /// Base class that provides basic information for extractable game data.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class ExtractableBase<T>
         where T : IExtractable
     {
         /// <summary>
@@ -20,6 +24,7 @@ namespace Heroes.Models
         /// </summary>
         public string Name { get; set; } = string.Empty;
 
+        /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
             if (!(obj is T item))
@@ -28,6 +33,7 @@ namespace Heroes.Models
             return Id.Equals(item.Id, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return Id.GetHashCode() * 13;

@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for match award data.
+    /// </summary>
     public class MatchAward : ExtractableBase<MatchAward>, IExtractable
     {
         /// <summary>

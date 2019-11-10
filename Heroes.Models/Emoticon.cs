@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for emoticon data.
+    /// </summary>
     public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     {
         private readonly HashSet<string> _universalAliasList = new HashSet<string>();

@@ -1,11 +1,14 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for tooltip descriptions.
+    /// </summary>
     public class TooltipDescription
     {
         private readonly Localization _scaleLocale = Localization.ENUS;
 
         /// <summary>
-        /// Contructor.
+        /// Initializes a new instance of the <see cref="TooltipDescription"/> class.
         /// </summary>
         /// <param name="description">A parsed description that has yet to be validated.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
@@ -68,6 +71,7 @@
         /// </summary>
         public string ColoredTextWithScaling { get; }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return PlainTextWithScaling;

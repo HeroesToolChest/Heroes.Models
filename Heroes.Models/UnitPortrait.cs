@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the properties for a unit's portrait.
+    /// </summary>
     public class UnitPortrait
     {
         /// <summary>

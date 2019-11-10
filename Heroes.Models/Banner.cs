@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the information for banner data.
+    /// </summary>
     public class Banner : ExtractableBase<Banner>, IExtractable
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains the properties for hero portraits.
+    /// </summary>
     public class HeroPortrait
     {
         /// <summary>

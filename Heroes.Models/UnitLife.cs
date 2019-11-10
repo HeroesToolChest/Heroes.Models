@@ -1,5 +1,8 @@
 ﻿namespace Heroes.Models
 {
+    /// <summary>
+    /// Contains information related to unit life.
+    /// </summary>
     public class UnitLife
     {
         /// <summary>
@@ -27,6 +30,7 @@
         /// </summary>
         public string LifeType { get; set; } = string.Empty;
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Life: {LifeMax} (+{LifeScaling * 100}% per level) - RegenRate: {LifeRegenerationRate} (+{LifeRegenerationRateScaling * 100}% per level)";

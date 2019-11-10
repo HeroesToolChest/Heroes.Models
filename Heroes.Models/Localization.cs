@@ -2,76 +2,79 @@
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Specifies the localization.
+    /// </summary>
     public enum Localization
     {
         /// <summary>
-        /// English
+        /// Indicates English locale
         /// </summary>
         [Description("enus.stormdata")]
         ENUS,
 
         /// <summary>
-        /// German
+        /// Indicates German locale
         /// </summary>
         [Description("dede.stormdata")]
         DEDE,
 
         /// <summary>
-        /// Spanish (EU)
+        /// Indicates Spanish (EU) locale
         /// </summary>
         [Description("eses.stormdata")]
         ESES,
 
         /// <summary>
-        /// Spanish (AL)
+        /// Indicates Spanish (AL) locale
         /// </summary>
         [Description("esmx.stormdata")]
         ESMX,
 
         /// <summary>
-        /// French
+        /// Indicates French locale
         /// </summary>
         [Description("frfr.stormdata")]
         FRFR,
 
         /// <summary>
-        /// Italian
+        /// Indicates Italian locale
         /// </summary>
         [Description("itit.stormdata")]
         ITIT,
 
         /// <summary>
-        /// Korean
+        /// Indicates Korean locale
         /// </summary>
         [Description("kokr.stormdata")]
         KOKR,
 
         /// <summary>
-        /// Polish
+        /// Indicates Polish locale
         /// </summary>
         [Description("plpl.stormdata")]
         PLPL,
 
         /// <summary>
-        /// Portuguese
+        /// Indicates Portuguese locale
         /// </summary>
         [Description("ptbr.stormdata")]
         PTBR,
 
         /// <summary>
-        /// Russian
+        /// Indicates Russian locale
         /// </summary>
         [Description("ruru.stormdata")]
         RURU,
 
         /// <summary>
-        /// Chinese
+        /// Indicates Chinese locale
         /// </summary>
         [Description("zhcn.stormdata")]
         ZHCN,
 
         /// <summary>
-        /// Chinese (TW)
+        /// Indicates Chinese (TW) locale
         /// </summary>
         [Description("zhtw.stormdata")]
         ZHTW,

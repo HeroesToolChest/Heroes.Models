@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace Heroes.Models
 {
+    /// <summary>
+    /// Static class for enum extension.
+    /// </summary>
     public static class EnumExtensions
     {
         /// <summary>
