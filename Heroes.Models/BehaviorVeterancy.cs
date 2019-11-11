@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Heroes.Models.Veterancy;
+using System.Collections.Generic;
 
-namespace Heroes.Models.Veterancy
+namespace Heroes.Models
 {
     /// <summary>
     /// Contains the information for behavior veterancy data.
