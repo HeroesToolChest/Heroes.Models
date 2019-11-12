@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Heroes.Models
+namespace Heroes.Models.Extensions
 {
     /// <summary>
     /// Static class for enum extension.

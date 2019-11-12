@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Heroes.Models.Extensions;
+using System;
 using System.Collections.Generic;
 
 namespace Heroes.Models.AbilityTalents
