@@ -17,7 +17,7 @@ namespace Heroes.Models.Extensions
         /// <param name="enumerationValue"></param>
         /// <returns></returns>
         public static string GetFriendlyName<T>(this T enumerationValue)
-            where T : struct
+            where T : Enum
         {
             Type type = enumerationValue.GetType();
             if (!type.GetTypeInfo().IsEnum)
@@ -48,10 +48,10 @@ namespace Heroes.Models.Extensions
         /// Convert the string to an Enumeration type.
         /// </summary>
         /// <typeparam name="T">The Enumeration type to be converted to.</typeparam>
-        /// <param name="value">The stirng to be converted.</param>
+        /// <param name="value">The string to be converted.</param>
         /// <returns></returns>
         public static T ConvertToEnum<T>(this string value)
-            where T : struct
+            where T : struct, Enum
         {
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
@@ -68,11 +68,11 @@ namespace Heroes.Models.Extensions
         /// Convert the string to an Enumeration type.
         /// </summary>
         /// <typeparam name="T">The Enumeration type to be converted to.</typeparam>
-        /// <param name="value">The stirng to be converted.</param>
+        /// <param name="value">The string to be converted.</param>
         /// <param name="result">The enumeration result.</param>
         /// <returns></returns>
         public static bool ConvertToEnum<T>(this string value, out T result)
-            where T : struct
+            where T : struct, Enum
         {
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));
