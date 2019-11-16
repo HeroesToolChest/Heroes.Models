@@ -250,9 +250,21 @@ namespace Heroes.Models
                     _textStack.Push(sb.ToString());
                     sb = new StringBuilder(_largeSize);
 
-                    if (ParseScalingTag(out string scaleText, includeScaling))
+                    if (TryParseScalingTag(out string scaleText, includeScaling))
                     {
                         _textStack.Push(scaleText);
+                    }
+
+                    continue;
+                }
+                else if (_gameString[_iterator] == '#' && _iterator + 1 < _gameString.Length && _gameString[_iterator + 1] == '#')
+                {
+                    _textStack.Push(sb.ToString());
+                    sb = new StringBuilder(_largeSize);
+
+                    if (TryParseErrorTag(out string value))
+                    {
+                        _textStack.Push(value);
                     }
 
                     continue;
@@ -303,9 +315,21 @@ namespace Heroes.Models
                     _textStack.Push(sb.ToString());
                     sb = new StringBuilder(_smallSize);
 
-                    if (ParseScalingTag(out string scaleText, includeScaling))
+                    if (TryParseScalingTag(out string scaleText, includeScaling))
                     {
                         _textStack.Push(scaleText);
+                    }
+
+                    continue;
+                }
+                else if (_gameString[_iterator] == '#' && _iterator + 1 < _gameString.Length && _gameString[_iterator + 1] == '#')
+                {
+                    _textStack.Push(sb.ToString());
+                    sb = new StringBuilder(_largeSize);
+
+                    if (TryParseErrorTag(out string value))
+                    {
+                        _textStack.Push(value);
                     }
 
                     continue;
@@ -405,7 +429,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="scaleText"></param>
         /// <param name="replace">If true, replace the tag, else return an empty string.</param>
-        private bool ParseScalingTag(out string scaleText, bool replace)
+        private bool TryParseScalingTag(out string scaleText, bool replace)
         {
             int tagCount = 0;
             StringBuilder sb = new StringBuilder(_smallSize);
@@ -433,6 +457,32 @@ namespace Heroes.Models
             }
 
             scaleText = string.Empty;
+            return false;
+        }
+
+        /// <summary>
+        /// Parses the error tag by removing  it.
+        /// </summary>
+        private bool TryParseErrorTag(out string value)
+        {
+            int tagCount = 0;
+            StringBuilder sb = new StringBuilder(_smallSize);
+
+            for (; _iterator < _gameString.Length; _iterator++)
+            {
+                if (_gameString[_iterator] == '#')
+                    tagCount++;
+                else
+                    sb.Append(_gameString[_iterator]);
+
+                if (tagCount == 4)
+                {
+                    value = string.Empty;
+                    return true;
+                }
+            }
+
+            value = string.Empty;
             return false;
         }
 

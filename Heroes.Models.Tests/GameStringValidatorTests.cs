@@ -112,6 +112,14 @@ namespace Heroes.Models.Tests
         private readonly string _coloredTextScaling2 = "<c val=\"#TooltipNumbers\">100~~0.04~~</c> damage per second ~~0.05~~";
         private readonly string _coloredTextScaling2Corrected = "<c val=\"#TooltipNumbers\">100 (+4% per level)</c> damage per second  (+5% per level)";
 
+        // text with error tag
+        private readonly string _errorText1 = "<c val=\"#TooltipNumbers\">100##ERROR##~~0.04~~</c> damage per second<n/>";
+        private readonly string _errorText1Corrected = "<c val=\"#TooltipNumbers\">100 (+4% per level)</c> damage per second<n/>";
+        private readonly string _errorText2 = "<c val=\"FF8000\">Gain <c val=\"#TooltipNumbers\">30##ERROR##%</c> points</c>";
+        private readonly string _errorText2Corrected = "Gain 30% points";
+        private readonly string _errorText3 = "100##ERROR##<n/> damage per second<n/>";
+        private readonly string _errorText3Corrected = "100<n/> damage per second<n/>";
+
         [TestMethod]
         public void ValidateTests()
         {
@@ -232,6 +240,14 @@ namespace Heroes.Models.Tests
         {
             Assert.AreEqual(_coloredTextScaling1Corrected, DescriptionValidator.GetColoredText(_coloredTextScaling1, true));
             Assert.AreEqual(_coloredTextScaling2Corrected, DescriptionValidator.GetColoredText(_coloredTextScaling2, true));
+        }
+
+        [TestMethod]
+        public void ValidateErrorTextTest()
+        {
+            Assert.AreEqual(_errorText1Corrected, DescriptionValidator.GetColoredText(_errorText1, true));
+            Assert.AreEqual(_errorText2Corrected, DescriptionValidator.GetPlainText(_errorText2, false, false));
+            Assert.AreEqual(_errorText3Corrected, DescriptionValidator.GetPlainText(_errorText3, true, false));
         }
     }
 }
