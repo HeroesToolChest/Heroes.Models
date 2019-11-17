@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models
+﻿using System;
+
+namespace Heroes.Models
 {
     /// <summary>
     /// Contains the information for tooltip descriptions.
@@ -10,7 +12,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="TooltipDescription"/> class.
         /// </summary>
-        /// <param name="description">A parsed description that has yet to be validated.</param>
+        /// <param name="description">A parsed description that has yet to be validated. Recommend to use <see cref="DescriptionValidator"/> to validate the string first.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
         public TooltipDescription(string description, Localization scaleLocale = Localization.ENUS)
         {
@@ -70,6 +72,11 @@
         /// Gets the description with colored tags, newlines, and scaling info.
         /// </summary>
         public string ColoredTextWithScaling { get; }
+
+        /// <summary>
+        /// Gets the value that determines if the raw description contains an error tag.
+        /// </summary>
+        public bool HasErrorTag => RawDescription.Contains("##ERROR##", StringComparison.Ordinal);
 
         /// <inheritdoc/>
         public override string ToString()
