@@ -6,6 +6,7 @@ namespace Heroes.Models.Tests
     public class TooltipDescriptionTests
     {
         private readonly string _testDescription = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second";
+        private readonly string _errorDescription = "Deal <c val=\"#TooltipNumbers\">500##ERROR##~~0.035~~</c> damage";
 
         private readonly string _plainText = "Deal 500 damage Deal an additional 200 damage per second";
         private readonly string _plainTextWithNewlines = "Deal 500 damage<n/>Deal an additional 200 damage per second";
@@ -50,7 +51,7 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void DescriptionLocaleTests()
+        public void DescriptionLocaleTest()
         {
             TooltipDescription tooltipDescription = new TooltipDescription(_testDescription, Localization.KOKR);
 
@@ -60,6 +61,14 @@ namespace Heroes.Models.Tests
             Assert.AreEqual(_localePlainTextWithScalingWithNewlines, tooltipDescription.PlainTextWithScalingWithNewlines);
             Assert.AreEqual(_localeColoredText, tooltipDescription.ColoredText);
             Assert.AreEqual(_localeColoredTextWithScaling, tooltipDescription.ColoredTextWithScaling);
+        }
+
+        [TestMethod]
+        public void DescriptionErrorTagTest()
+        {
+            TooltipDescription tooltipDescription = new TooltipDescription(_errorDescription, Localization.ENUS);
+
+            Assert.IsTrue(tooltipDescription.HasErrorTag);
         }
     }
 }
