@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/HeroesToolChest/Heroes.Models</RepositoryUrl>
     <PackageTags>C# dotnet core</PackageTags>
     <PackageReleaseNotes>https://github.com/HeroesToolChest/Heroes.Models/releases</PackageReleaseNotes>
-    <Description>Model classes for other repos for the game Heroes of the Storm</Description>
+    <Description>Heroes of the Storm base models library for other Heroes Tool Chest repositories.</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
