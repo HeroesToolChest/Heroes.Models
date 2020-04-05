@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace Heroes.Models
 {
     /// <summary>
-    /// Provides methods to validate a gamestring.
+    /// Provides methods to validate gamestrings and modify them into different verbiage.
     /// </summary>
     public class DescriptionValidator
     {
@@ -29,24 +29,13 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Takes a game string and removes unmatched and nested tags.
+        /// Takes a game string and removes unmatched and modifies nested tags into unnested tags.
         /// </summary>
         /// <param name="gameString">The game string text.</param>
         /// <returns></returns>
         public static string Validate(string gameString)
         {
             return new DescriptionValidator(gameString).Validate();
-        }
-
-        /// <summary>
-        /// Takes a game string and removes unmatched and nested tags.
-        /// </summary>
-        /// <param name="gameString">The game string text.</param>
-        /// <param name="scaleLocale">Locale for the per level string.</param>
-        /// <returns></returns>
-        public static string Validate(string gameString, Localization scaleLocale)
-        {
-            return new DescriptionValidator(gameString, scaleLocale).Validate();
         }
 
         /// <summary>
