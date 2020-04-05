@@ -7,7 +7,10 @@ namespace Heroes.Models
     /// </summary>
     public class TooltipDescription
     {
-        private const string _errorTag = "##ERROR##";
+        /// <summary>
+        /// The error tag string.
+        /// </summary>
+        public const string ErrorTag = "##ERROR##";
 
         private readonly Localization _scaleLocale = Localization.ENUS;
 
@@ -42,7 +45,7 @@ namespace Heroes.Models
             _coloredText = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, false, _scaleLocale));
             _coloredTextWithScaling = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, true, _scaleLocale));
 
-            _hasErrorTag = new Lazy<bool>(value: RawDescription.Contains(_errorTag, StringComparison.Ordinal));
+            _hasErrorTag = new Lazy<bool>(value: RawDescription.Contains(ErrorTag, StringComparison.Ordinal));
         }
 
         /// <summary>
