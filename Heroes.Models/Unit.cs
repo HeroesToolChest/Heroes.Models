@@ -139,7 +139,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities()
         {
-            return Abilities.Where(x => x.ParentLink == null).ToList();
+            return Abilities.Where(x => x.ParentLink == null);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> PrimaryAbilities(AbilityTiers tier)
         {
-            return Abilities.Where(x => x.Tier == tier && x.ParentLink == null).ToList();
+            return Abilities.Where(x => x.Tier == tier && x.ParentLink == null);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities()
         {
-            return Abilities.Where(x => x.ParentLink != null).ToList();
+            return Abilities.Where(x => x.ParentLink != null);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public IEnumerable<Ability> SubAbilities(AbilityTiers tier)
         {
-            return Abilities.Where(x => x.Tier == tier && x.ParentLink != null).ToList();
+            return Abilities.Where(x => x.Tier == tier && x.ParentLink != null);
         }
 
         /// <summary>
