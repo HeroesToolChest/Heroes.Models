@@ -7,7 +7,18 @@ namespace Heroes.Models
     /// </summary>
     public class TooltipDescription
     {
+        private const string _errorTag = "##ERROR##";
+
         private readonly Localization _scaleLocale = Localization.ENUS;
+
+        private readonly Lazy<string> _plainText;
+        private readonly Lazy<string> _plainTextWithNewlines;
+        private readonly Lazy<string> _plainTextWithScaling;
+        private readonly Lazy<string> _plainTextWithScalingWithNewlines;
+        private readonly Lazy<string> _coloredText;
+        private readonly Lazy<string> _coloredTextWithScaling;
+
+        private readonly Lazy<bool> _hasErrorTag;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TooltipDescription"/> class.
@@ -23,13 +34,15 @@ namespace Heroes.Models
 
             RawDescription = DescriptionValidator.Validate(description);
 
-            PlainText = DescriptionValidator.GetPlainText(RawDescription, false, false, _scaleLocale);
-            PlainTextWithNewlines = DescriptionValidator.GetPlainText(RawDescription, true, false, _scaleLocale);
-            PlainTextWithScaling = DescriptionValidator.GetPlainText(RawDescription, false, true, _scaleLocale);
-            PlainTextWithScalingWithNewlines = DescriptionValidator.GetPlainText(RawDescription, true, true, _scaleLocale);
+            _plainText = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, false, _scaleLocale));
+            _plainTextWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, false, _scaleLocale));
+            _plainTextWithScaling = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, true, _scaleLocale));
+            _plainTextWithScalingWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, true, _scaleLocale));
 
-            ColoredText = DescriptionValidator.GetColoredText(RawDescription, false, _scaleLocale);
-            ColoredTextWithScaling = DescriptionValidator.GetColoredText(RawDescription, true, _scaleLocale);
+            _coloredText = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, false, _scaleLocale));
+            _coloredTextWithScaling = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, true, _scaleLocale));
+
+            _hasErrorTag = new Lazy<bool>(value: RawDescription.Contains(_errorTag, StringComparison.Ordinal));
         }
 
         /// <summary>
@@ -50,7 +63,7 @@ namespace Heroes.Models
         /// Fires a laser that deals 200 damage.  Does not affect minions.
         /// </para>
         /// </summary>
-        public string PlainText { get; }
+        public string PlainText => _plainText.Value;
 
         /// <summary>
         /// <para>Gets the validated description with text only.</para>
@@ -60,7 +73,7 @@ namespace Heroes.Models
         /// Fires a laser that deals 200 damage.&lt;n/&gt;Does not affect minions.
         /// </para>
         /// </summary>
-        public string PlainTextWithNewlines { get; }
+        public string PlainTextWithNewlines => _plainTextWithNewlines.Value;
 
         /// <summary>
         /// <para>Gets the validated description with text only.</para>
@@ -70,7 +83,7 @@ namespace Heroes.Models
         /// Fires a laser that deals 200 (+4% per level) damage.  Does not affect minions.
         /// </para>
         /// </summary>
-        public string PlainTextWithScaling { get; }
+        public string PlainTextWithScaling => _plainTextWithScaling.Value;
 
         /// <summary>
         /// <para>Gets the validated description with text only.</para>
@@ -80,7 +93,7 @@ namespace Heroes.Models
         /// Fires a laser that deals 200 (+4% per level) damage.&lt;n/&gt;Does not affect minions.
         /// </para>
         /// </summary>
-        public string PlainTextWithScalingWithNewlines { get; }
+        public string PlainTextWithScalingWithNewlines => _plainTextWithScalingWithNewlines.Value;
 
         /// <summary>
         /// <para>Gets the validated description with colored tags and new lines, when parsed this is what appears ingame for tooltip.</para>
@@ -89,7 +102,7 @@ namespace Heroes.Models
         /// Fires a laser that deals &lt;c val=\"#TooltipNumbers\"&gt;200&lt;/c&gt; damage.&lt;n/&gt;Does not affect minions.
         /// </para>
         /// </summary>
-        public string ColoredText { get; }
+        public string ColoredText => _coloredText.Value;
 
         /// <summary>
         /// <para>Gets the validated description with colored tags, newlines, and scaling info.</para>
@@ -99,12 +112,12 @@ namespace Heroes.Models
         /// Fires a laser that deals &lt;c val=\"#TooltipNumbers\"&gt;200 (+4% per level)&lt;/c&gt; damage.&lt;n/&gt;Does not affect minions.
         /// </para>
         /// </summary>
-        public string ColoredTextWithScaling { get; }
+        public string ColoredTextWithScaling => _coloredTextWithScaling.Value;
 
         /// <summary>
         /// Gets a value indicating whether the raw description contains an error tag.
         /// </summary>
-        public bool HasErrorTag => RawDescription.Contains("##ERROR##", StringComparison.Ordinal);
+        public bool HasErrorTag => _hasErrorTag.Value;
 
         /// <inheritdoc/>
         public override string ToString()
