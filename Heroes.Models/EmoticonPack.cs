@@ -8,8 +8,6 @@ namespace Heroes.Models
     /// </summary>
     public class EmoticonPack : ExtractableBase<EmoticonPack>, IExtractable
     {
-        private readonly HashSet<string> _emoticonIdList = new HashSet<string>();
-
         /// <summary>
         /// Gets or sets the description text.
         /// </summary>
@@ -36,37 +34,8 @@ namespace Heroes.Models
         public string? EventName { get; set; }
 
         /// <summary>
-        /// Gets a collection of emoticons ids in this emoticon pack.
+        /// Gets a unique collection of emoticons ids in this emoticon pack.
         /// </summary>
-        public IEnumerable<string> EmoticonIds => _emoticonIdList;
-
-        /// <summary>
-        /// Adds an emoticon id value. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="value">A emoticon value.</param>
-        public void AddEmoticonId(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _emoticonIdList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A emoticon value.</param>
-        /// <returns></returns>
-        public bool ContainsEmoticonId(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _emoticonIdList.Contains(value);
-        }
+        public HashSet<string> EmoticonIds { get; } = new HashSet<string>();
     }
 }

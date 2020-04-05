@@ -8,8 +8,6 @@ namespace Heroes.Models
     /// </summary>
     public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     {
-        private readonly HashSet<string> _featuresList = new HashSet<string>();
-
         /// <summary>
         /// Gets or sets the sort name used for sorting the hero skins.
         /// </summary>
@@ -41,37 +39,8 @@ namespace Heroes.Models
         public Rarity Rarity { get; set; }
 
         /// <summary>
-        /// Gets a collection of features.
+        /// Gets a unique collection of features.
         /// </summary>
-        public IEnumerable<string> Features => _featuresList;
-
-        /// <summary>
-        /// Adds a feature value. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="value">A feature value.</param>
-        public void AddFeature(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _featuresList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A feature value.</param>
-        /// <returns>Value indicating <paramref name="value"/> exists.</returns>
-        public bool FeatureExists(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _featuresList.Contains(value);
-        }
+        public HashSet<string> Features { get; } = new HashSet<string>();
     }
 }

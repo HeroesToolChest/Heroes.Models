@@ -11,8 +11,6 @@ namespace Heroes.Models.AbilityTalents
     /// </summary>
     public abstract class AbilityTalentBase
     {
-        private readonly HashSet<string> _createdUnitList = new HashSet<string>(StringComparer.Ordinal);
-
         /// <summary>
         /// Gets or sets the real name.
         /// </summary>
@@ -50,9 +48,9 @@ namespace Heroes.Models.AbilityTalents
         public AbilityTalentTooltip Tooltip { get; set; } = new AbilityTalentTooltip();
 
         /// <summary>
-        /// Gets a collection of created units.
+        /// Gets a unique collection of created units.
         /// </summary>
-        internal IEnumerable<string> CreatedUnits => _createdUnitList;
+        internal HashSet<string> CreatedUnits { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <inheritdoc/>
         public override bool Equals(object? obj)
@@ -67,35 +65,6 @@ namespace Heroes.Models.AbilityTalents
         public override int GetHashCode()
         {
             return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpper(CultureInfo.InvariantCulture).GetHashCode();
-        }
-
-        /// <summary>
-        /// Adds a value. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="value">A unit name value.</param>
-        internal void AddCreatedUnit(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
-            }
-
-            _createdUnitList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A unit name value.</param>
-        /// <returns></returns>
-        internal bool ContainsCreatedUnit(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Argument cannot be null or empty", nameof(value));
-            }
-
-            return _createdUnitList.Contains(value);
         }
     }
 }

@@ -82,7 +82,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void UnitWeaponExistsTest()
         {
-            Assert.IsTrue(_unit.ContainsUnitWeapon(new UnitWeapon()
+            Assert.IsTrue(_unit.Weapons.Contains(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
@@ -92,7 +92,7 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void UnitArmorExistsTest()
         {
-            Assert.IsTrue(_unit.ContainsUnitArmor(new UnitArmor()
+            Assert.IsTrue(_unit.Armor.Contains(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,
@@ -163,31 +163,31 @@ namespace Heroes.Models.Tests
 
         private void AddWeapons()
         {
-            _unit.AddUnitWeapon(new UnitWeapon()
+            _unit.Weapons.Add(new UnitWeapon()
             {
                 WeaponNameId = "Weapon1",
                 ParentLink = string.Empty,
             });
 
-            _unit.AddUnitWeapon(new UnitWeapon()
+            _unit.Weapons.Add(new UnitWeapon()
             {
                 WeaponNameId = "Weapon2",
                 ParentLink = string.Empty,
             });
 
-            _unit.AddUnitWeapon(new UnitWeapon()
+            _unit.Weapons.Add(new UnitWeapon()
             {
                 WeaponNameId = "Weapon3",
                 ParentLink = "Weapon2",
             });
 
-            _unit.AddUnitWeapon(new UnitWeapon()
+            _unit.Weapons.Add(new UnitWeapon()
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
             });
 
-            _unit.AddUnitWeapon(new UnitWeapon()
+            _unit.Weapons.Add(new UnitWeapon()
             {
                 WeaponNameId = "Weapon4",
                 ParentLink = "Weapon2",
@@ -196,25 +196,25 @@ namespace Heroes.Models.Tests
 
         private void AddArmor()
         {
-            _unit.AddUnitArmor(new UnitArmor()
+            _unit.Armor.Add(new UnitArmor()
             {
                 Type = "Minion",
                 AbilityArmor = 5,
                 BasicArmor = 10,
                 SplashArmor = 15,
             });
-            _unit.AddUnitArmor(new UnitArmor()
+            _unit.Armor.Add(new UnitArmor()
             {
                 Type = "Heroic",
                 AbilityArmor = 5,
             });
-            _unit.AddUnitArmor(new UnitArmor()
+            _unit.Armor.Add(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,
                 SplashArmor = 15,
             });
-            _unit.AddUnitArmor(new UnitArmor()
+            _unit.Armor.Add(new UnitArmor()
             {
                 Type = "Structure",
                 AbilityArmor = 5,

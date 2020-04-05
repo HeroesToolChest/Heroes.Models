@@ -8,8 +8,6 @@ namespace Heroes.Models
     /// </summary>
     public class UnitWeapon
     {
-        private readonly HashSet<WeaponAttributeFactor> _weaponAttributeFactorList = new HashSet<WeaponAttributeFactor>();
-
         /// <summary>
         /// Gets or sets the unique id of the weapon.
         /// </summary>
@@ -28,7 +26,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets the collection of attribute factors.
         /// </summary>
-        public IEnumerable<WeaponAttributeFactor> AttributeFactors => _weaponAttributeFactorList;
+        public HashSet<WeaponAttributeFactor> AttributeFactors { get; } = new HashSet<WeaponAttributeFactor>();
 
         /// <summary>
         /// Gets or sets the time between attacks.
@@ -81,38 +79,6 @@ namespace Heroes.Models
         public override string ToString()
         {
             return WeaponNameId;
-        }
-
-        /// <summary>
-        /// Adds a <see cref="WeaponAttributeFactor"/>. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="weaponAttributeFactor">A <see cref="WeaponAttributeFactor"/>.</param>
-        public void AddAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
-        {
-            if (weaponAttributeFactor == null)
-            {
-                throw new ArgumentNullException(nameof(weaponAttributeFactor));
-            }
-
-            if (_weaponAttributeFactorList.Contains(weaponAttributeFactor))
-                _weaponAttributeFactorList.Remove(weaponAttributeFactor);
-
-            _weaponAttributeFactorList.Add(weaponAttributeFactor);
-        }
-
-        /// <summary>
-        /// Determines whether the <see cref="WeaponAttributeFactor"/> exists.
-        /// </summary>
-        /// <param name="weaponAttributeFactor">A <see cref="WeaponAttributeFactor"/>.</param>
-        /// <returns></returns>
-        public bool ContainsAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
-        {
-            if (weaponAttributeFactor == null)
-            {
-                throw new ArgumentNullException(nameof(weaponAttributeFactor));
-            }
-
-            return _weaponAttributeFactorList.Contains(weaponAttributeFactor);
         }
     }
 }

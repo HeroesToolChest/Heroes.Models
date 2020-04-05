@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
 
 namespace Heroes.Models.Tests
 {
@@ -35,9 +34,9 @@ namespace Heroes.Models.Tests
                 Value = 5,
             };
 
-            unitWeapon.AddAttributeFactor(weaponAttributeFactor);
+            unitWeapon.AttributeFactors.Add(weaponAttributeFactor);
 
-            Assert.IsTrue(unitWeapon.ContainsAttributeFactor(weaponAttributeFactor));
+            Assert.IsTrue(unitWeapon.AttributeFactors.Contains(weaponAttributeFactor));
 
             WeaponAttributeFactor weaponAttributeFactor2 = new WeaponAttributeFactor()
             {
@@ -45,10 +44,10 @@ namespace Heroes.Models.Tests
                 Value = 7,
             };
 
-            unitWeapon.AddAttributeFactor(weaponAttributeFactor2);
+            unitWeapon.AttributeFactors.Add(weaponAttributeFactor2);
 
-            Assert.AreEqual(1, unitWeapon.AttributeFactors.Count());
-            Assert.AreEqual(7, unitWeapon.AttributeFactors.ToList()[0].Value);
+            Assert.AreEqual(1, unitWeapon.AttributeFactors.Count);
+            Assert.IsTrue(unitWeapon.AttributeFactors.Contains(weaponAttributeFactor2));
         }
 
         [TestMethod]
@@ -56,7 +55,7 @@ namespace Heroes.Models.Tests
         {
             UnitWeapon unitWeapon = new UnitWeapon();
 
-            Assert.IsFalse(unitWeapon.ContainsAttributeFactor(new WeaponAttributeFactor()));
+            Assert.IsFalse(unitWeapon.AttributeFactors.Contains(new WeaponAttributeFactor()));
         }
     }
 }

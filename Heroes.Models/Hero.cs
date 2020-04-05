@@ -15,9 +15,7 @@ namespace Heroes.Models
         private readonly string _noPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
         private readonly string _unknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
 
-        private readonly HashSet<string> _roleList = new HashSet<string>(StringComparer.Ordinal);
         private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.Ordinal);
-        private readonly HashSet<Hero> _heroUnitList = new HashSet<Hero>();
 
         /// <summary>
         /// Gets or sets the id of CHero element stored in blizzard xml file.
@@ -80,14 +78,9 @@ namespace Heroes.Models
         public int TalentIdsCount => _talentsById.Keys.Count;
 
         /// <summary>
-        /// Gets a collection roles of the hero, multiclass will be first if hero has multiple roles.
+        /// Gets a unique collection roles of the hero, multiclass will be first if hero has multiple roles.
         /// </summary>
-        public IEnumerable<string> Roles => _roleList;
-
-        /// <summary>
-        /// Gets the amount of roles.
-        /// </summary>
-        public int RolesCount => _roleList.Count;
+        public HashSet<string> Roles { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <summary>
         /// Gets or sets the expanded role of the hero.
@@ -115,14 +108,9 @@ namespace Heroes.Models
         public string Type { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets a collection of <see cref="Hero"/> objects.
+        /// Gets a unique collection of <see cref="Hero"/> objects.
         /// </summary>
-        public IEnumerable<Hero> HeroUnits => _heroUnitList;
-
-        /// <summary>
-        /// Gets the amount of <see cref="Hero"/> objects.
-        /// </summary>
-        public int HeroUnitCount => _heroUnitList.Count;
+        public HashSet<Hero> HeroUnits { get; } = new HashSet<Hero>();
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.
@@ -132,35 +120,6 @@ namespace Heroes.Models
         public IEnumerable<Talent> TierTalents(TalentTiers tier)
         {
             return Talents.Where(x => x.Tier == tier);
-        }
-
-        /// <summary>
-        /// Adds a role value. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="value">A role value.</param>
-        public void AddRole(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _roleList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A role value.</param>
-        /// <returns>Value indicating the <paramref name="value"/> exists.</returns>
-        public bool ContainsRole(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _roleList.Contains(value);
         }
 
         /// <summary>
@@ -233,20 +192,6 @@ namespace Heroes.Models
                     IconFileName = _unknownTalentIconFileName,
                 };
             }
-        }
-
-        /// <summary>
-        /// Adds a <see cref="Hero"/>. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="hero">A <see cref="Hero"/> unit.</param>
-        public void AddHeroUnit(Hero hero)
-        {
-            if (hero == null)
-            {
-                throw new ArgumentNullException(nameof(hero));
-            }
-
-            _heroUnitList.Add(hero);
         }
 
         /// <inheritdoc/>

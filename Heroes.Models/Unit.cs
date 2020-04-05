@@ -11,12 +11,6 @@ namespace Heroes.Models
     /// </summary>
     public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     {
-        private readonly HashSet<string> _heroDescriptorsList = new HashSet<string>();
-        private readonly HashSet<UnitWeapon> _unitWeaponList = new HashSet<UnitWeapon>();
-        private readonly HashSet<UnitArmor> _unitArmorList = new HashSet<UnitArmor>();
-        private readonly HashSet<string> _attributeList = new HashSet<string>();
-        private readonly HashSet<string> _unitIdList = new HashSet<string>();
-
         private readonly Dictionary<AbilityTalentId, Ability> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, Ability>();
 
         /// <summary>
@@ -30,14 +24,9 @@ namespace Heroes.Models
         public TooltipDescription? Description { get; set; }
 
         /// <summary>
-        /// Gets a collection of the hero play styles.
+        /// Gets a unique collection of the hero play styles.
         /// </summary>
-        public IEnumerable<string> HeroDescriptors => _heroDescriptorsList;
-
-        /// <summary>
-        /// Gets the amount of hero play styles.
-        /// </summary>
-        public int HeroDescriptorsCount => _heroDescriptorsList.Count;
+        public HashSet<string> HeroDescriptors { get; } = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the Life properties.
@@ -57,12 +46,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets a collection unit armor.
         /// </summary>
-        public IEnumerable<UnitArmor> Armor => _unitArmorList;
-
-        /// <summary>
-        /// Gets the amount of unit armors.
-        /// </summary>
-        public int ArmorCount => _unitArmorList.Count;
+        public HashSet<UnitArmor> Armor { get; } = new HashSet<UnitArmor>();
 
         /// <summary>
         /// Gets or sets the size of the radius.
@@ -100,34 +84,19 @@ namespace Heroes.Models
         public int AbilitiesCount => _abilitiesByAbilityTalentId.Count;
 
         /// <summary>
-        /// Gets a collection of basic attack weapons.
+        /// Gets a unique collection of basic attack weapons.
         /// </summary>
-        public IEnumerable<UnitWeapon> Weapons => _unitWeaponList;
+        public HashSet<UnitWeapon> Weapons { get; } = new HashSet<UnitWeapon>();
 
         /// <summary>
-        /// Gets the amount of weapons.
+        /// Gets a unique collection of attributes.
         /// </summary>
-        public int WeaponsCount => _unitWeaponList.Count;
+        public HashSet<string> Attributes { get; } = new HashSet<string>();
 
         /// <summary>
-        /// Gets a collection of attributes.
+        /// Gets a unique collection of additional units associated with this unit.
         /// </summary>
-        public IEnumerable<string> Attributes => _attributeList;
-
-        /// <summary>
-        /// Gets the amount of attributes.
-        /// </summary>
-        public int AttributesCount => _attributeList.Count;
-
-        /// <summary>
-        /// Gets a collection of additional units associated with this unit.
-        /// </summary>
-        public IEnumerable<string> UnitIds => _unitIdList;
-
-        /// <summary>
-        /// Gets the amount of units.
-        /// </summary>
-        public int UnitIdsCount => _unitIdList.Count;
+        public HashSet<string> UnitIds { get; } = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the parent link of this unit.
@@ -217,171 +186,7 @@ namespace Heroes.Models
         /// <returns></returns>
         public ILookup<string, UnitWeapon> ParentLinkedWeapons()
         {
-            return _unitWeaponList.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink)!;
-        }
-
-        /// <summary>
-        /// Adds a descriptor value. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="value">A hero descriptor value.</param>
-        public void AddHeroDescriptor(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _heroDescriptorsList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A hero descriptor value.</param>
-        /// <returns>Value indicating the values exists.</returns>
-        public bool ContainsHeroDescriptor(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _heroDescriptorsList.Contains(value);
-        }
-
-        /// <summary>
-        /// Adds a <see cref="UnitWeapon"/>. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="unitWeapon">A <see cref="UnitWeapon"/> object.</param>
-        public void AddUnitWeapon(UnitWeapon unitWeapon)
-        {
-            if (unitWeapon == null)
-            {
-                throw new ArgumentNullException(nameof(unitWeapon));
-            }
-
-            if (_unitWeaponList.Contains(unitWeapon))
-                _unitWeaponList.Remove(unitWeapon);
-
-            _unitWeaponList.Add(unitWeapon);
-        }
-
-        /// <summary>
-        /// Determines whether the <see cref="UnitWeapon"/> exists.
-        /// </summary>
-        /// <param name="unitWeapon">A <see cref="UnitWeapon"/>.</param>
-        /// <returns>Value indicating the <see cref="UnitWeapon"/> was found.</returns>
-        public bool ContainsUnitWeapon(UnitWeapon unitWeapon)
-        {
-            if (unitWeapon == null)
-            {
-                throw new ArgumentNullException(nameof(unitWeapon));
-            }
-
-            return _unitWeaponList.Contains(unitWeapon);
-        }
-
-        /// <summary>
-        /// Removes the <see cref="UnitWeapon"/>.
-        /// </summary>
-        /// <param name="unitWeapon">A <see cref="UnitWeapon"/>.</param>
-        /// <returns>Value indicating removal was successful.</returns>
-        public bool RemoveUnitWeapon(UnitWeapon unitWeapon)
-        {
-            return _unitWeaponList.Remove(unitWeapon);
-        }
-
-        /// <summary>
-        /// Adds a <see cref="UnitArmor"/>. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="unitArmor">A <see cref="UnitArmor"/>.</param>
-        public void AddUnitArmor(UnitArmor unitArmor)
-        {
-            if (unitArmor == null)
-            {
-                throw new ArgumentNullException(nameof(unitArmor));
-            }
-
-            if (_unitArmorList.Contains(unitArmor))
-                _unitArmorList.Remove(unitArmor);
-
-            _unitArmorList.Add(unitArmor);
-        }
-
-        /// <summary>
-        /// Determines whether the <see cref="UnitArmor"/> exists.
-        /// </summary>
-        /// <param name="unitArmor">A <see cref="UnitArmor"/>.</param>
-        /// <returns>Value indicating <see cref="UnitArmor"/> exists.</returns>
-        public bool ContainsUnitArmor(UnitArmor unitArmor)
-        {
-            if (unitArmor == null)
-            {
-                throw new ArgumentNullException(nameof(unitArmor));
-            }
-
-            return _unitArmorList.Contains(unitArmor);
-        }
-
-        /// <summary>
-        /// Adds an attribute value. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="value">A attribute value.</param>
-        public void AddAttribute(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _attributeList.Add(value);
-        }
-
-        /// <summary>
-        /// Adds a range of attribute values. Replaces if value already exists in collection.
-        /// </summary>
-        /// <param name="values">A attribute value.</param>
-        public void AddRangeAttribute(IEnumerable<string> values)
-        {
-            if (values == null)
-            {
-                throw new ArgumentNullException(nameof(values));
-            }
-
-            foreach (string item in values)
-            {
-                _attributeList.Add(item);
-            }
-        }
-
-        /// <summary>
-        /// Removes an attribute value.
-        /// </summary>
-        /// <param name="value">A attribute value.</param>
-        /// <returns>Value indicating the removal was successful.</returns>
-        public bool RemoveAttribute(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _attributeList.Remove(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">A attribute value.</param>
-        /// <returns>Value indicating the value exists.</returns>
-        public bool ContainsAttribute(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _attributeList.Contains(value);
+            return Weapons.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink)!;
         }
 
         /// <summary>
@@ -508,50 +313,6 @@ namespace Heroes.Models
             }
 
             return _abilitiesByAbilityTalentId.Where(x => x.Key.ReferenceId.Equals(referenceId, comparisonType)).Select(x => x.Value);
-        }
-
-        /// <summary>
-        /// Adds a value. Replaces if object already exists in collection.
-        /// </summary>
-        /// <param name="value">A unit id value.</param>
-        public void AddUnitId(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            _unitIdList.Add(value);
-        }
-
-        /// <summary>
-        /// Determines whether the value exists.
-        /// </summary>
-        /// <param name="value">>A unit id value.</param>
-        /// <returns>Value indicating the <paramref name="value"/> exists.</returns>
-        public bool ContainsUnitId(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _unitIdList.Contains(value);
-        }
-
-        /// <summary>
-        /// Removes a value.
-        /// </summary>
-        /// <param name="value">>A unit id value.</param>
-        /// <returns>Value indicating the <paramref name="value"/> was removed.</returns>
-        public bool RemoveUnitId(string value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            return _unitIdList.Remove(value);
         }
 
         /// <inheritdoc/>
