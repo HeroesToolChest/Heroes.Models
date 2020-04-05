@@ -39,7 +39,7 @@ namespace Heroes.Models
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return Type.GetHashCode();
+            return HashCode.Combine(Type);
         }
 
         /// <inheritdoc/>

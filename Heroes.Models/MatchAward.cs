@@ -31,7 +31,7 @@
         public TooltipDescription? Description { get; set; }
 
         /// <summary>
-        /// Gets or set the unique tag.
+        /// Gets or sets the unique tag.
         /// </summary>
         public string Tag { get; set; } = string.Empty;
     }

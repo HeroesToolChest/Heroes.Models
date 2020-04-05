@@ -16,7 +16,7 @@
         public int Index { get; set; }
 
         /// <summary>
-        /// Get or sets the width of the image.
+        /// Gets or sets the width of the image.
         /// </summary>
         public int Width { get; set; }
 

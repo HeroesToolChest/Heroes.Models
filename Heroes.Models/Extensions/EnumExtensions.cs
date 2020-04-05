@@ -13,8 +13,8 @@ namespace Heroes.Models.Extensions
         /// <summary>
         /// Returns the friendly name of the enum.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerationValue"></param>
+        /// <typeparam name="T">The type of the enumeration.</typeparam>
+        /// <param name="enumerationValue">An enumeration value.</param>
         /// <returns></returns>
         public static string GetFriendlyName<T>(this T enumerationValue)
             where T : Enum
@@ -45,9 +45,9 @@ namespace Heroes.Models.Extensions
         }
 
         /// <summary>
-        /// Convert the string to an Enumeration type.
+        /// Convert the string to an enumeration type.
         /// </summary>
-        /// <typeparam name="T">The Enumeration type to be converted to.</typeparam>
+        /// <typeparam name="T">The enumeration type to be converted to.</typeparam>
         /// <param name="value">The string to be converted.</param>
         /// <returns></returns>
         public static T ConvertToEnum<T>(this string value)
@@ -65,9 +65,9 @@ namespace Heroes.Models.Extensions
         }
 
         /// <summary>
-        /// Convert the string to an Enumeration type.
+        /// Convert the string to an enumeration type.
         /// </summary>
-        /// <typeparam name="T">The Enumeration type to be converted to.</typeparam>
+        /// <typeparam name="T">The enumeration type to be converted to.</typeparam>
         /// <param name="value">The string to be converted.</param>
         /// <param name="result">The enumeration result.</param>
         /// <returns></returns>

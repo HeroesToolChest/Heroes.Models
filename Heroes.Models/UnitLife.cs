@@ -26,7 +26,7 @@
         public double LifeRegenerationRateScaling { get; set; }
 
         /// <summary>
-        /// Get or sets the life type.
+        /// Gets or sets the life type.
         /// </summary>
         public string LifeType { get; set; } = string.Empty;
 

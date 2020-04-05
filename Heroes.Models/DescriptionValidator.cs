@@ -79,6 +79,41 @@ namespace Heroes.Models
             return Regex.Replace(input, @"\s+", replacement);
         }
 
+        // checks if the end tag matches the start tag
+        private static bool MatchElement(ReadOnlySpan<char> startTag, ReadOnlySpan<char> endTag)
+        {
+            if (startTag.IsEmpty)
+                return false;
+
+            ReadOnlySpan<char> endTagSpan = endTag.TrimEnd('>').TrimStart('<').TrimStart('/');
+            ReadOnlySpan<char> firstPart;
+
+            int spaceIndex = startTag.IndexOf(' ');
+
+            if (spaceIndex > -1)
+                firstPart = startTag.Slice(0, spaceIndex).TrimStart('<');
+            else
+                firstPart = startTag.TrimStart('<');
+
+            return firstPart.SequenceEqual(endTagSpan);
+        }
+
+        private static string CreateEndTag(ReadOnlySpan<char> startTag)
+        {
+            startTag = startTag.TrimStart('<');
+            int spaceDelimeter = startTag.IndexOf(' ');
+
+            if (spaceDelimeter > 0)
+            {
+                ReadOnlySpan<char> firstPart = startTag.Slice(0, spaceDelimeter);
+                return "</" + firstPart.ToString().ToLower(CultureInfo.CurrentCulture) + ">";
+            }
+            else
+            {
+                return "</" + startTag.ToString().ToLower(CultureInfo.CurrentCulture);
+            }
+        }
+
         private string Validate()
         {
             ValidateGameString(string.Empty);
@@ -354,25 +389,6 @@ namespace Heroes.Models
             return sb.ToString().Trim();
         }
 
-        // checks if the end tag matches the start tag
-        private bool MatchElement(ReadOnlySpan<char> startTag, ReadOnlySpan<char> endTag)
-        {
-            if (startTag.IsEmpty)
-                return false;
-
-            ReadOnlySpan<char> endTagSpan = endTag.TrimEnd('>').TrimStart('<').TrimStart('/');
-            ReadOnlySpan<char> firstPart;
-
-            int spaceIndex = startTag.IndexOf(' ');
-
-            if (spaceIndex > -1)
-                firstPart = startTag.Slice(0, spaceIndex).TrimStart('<');
-            else
-                firstPart = startTag.TrimStart('<');
-
-            return firstPart.SequenceEqual(endTagSpan);
-        }
-
         // get whole tag, determine if it's a start tag
         private bool TryParseTag(out string tag, out bool isStartTag)
         {
@@ -384,9 +400,9 @@ namespace Heroes.Models
                 {
                     string[] parts = sb.ToString().Split(new char[] { ' ' }, 2);
                     if (parts.Length > 1)
-                        tag = $"{parts[0].ToLower()} {parts[1]}";
+                        tag = $"{parts[0].ToLower(CultureInfo.CurrentCulture)} {parts[1]}";
                     else if (parts.Length == 1)
-                        tag = parts[0].ToLower();
+                        tag = parts[0].ToLower(CultureInfo.CurrentCulture);
                     else
                         tag = sb.ToString();
 
@@ -402,32 +418,16 @@ namespace Heroes.Models
             }
 
             isStartTag = false;
-            tag = sb.ToString().ToLower();
+            tag = sb.ToString().ToLower(CultureInfo.CurrentCulture);
             tag = ReplaceWhitespace(tag, " ");
 
             return false;
         }
 
-        private string CreateEndTag(ReadOnlySpan<char> startTag)
-        {
-            startTag = startTag.TrimStart('<');
-            int spaceDelimeter = startTag.IndexOf(' ');
-
-            if (spaceDelimeter > 0)
-            {
-                ReadOnlySpan<char> firstPart = startTag.Slice(0, spaceDelimeter);
-                return "</" + firstPart.ToString().ToLower() + ">";
-            }
-            else
-            {
-                return "</" + startTag.ToString().ToLower();
-            }
-        }
-
         /// <summary>
         /// Parse the scaling tag, removes the tag or replaces it.
         /// </summary>
-        /// <param name="scaleText"></param>
+        /// <param name="scaleText">The scale text.</param>
         /// <param name="replace">If true, replace the tag, else return an empty string.</param>
         private bool TryParseScalingTag(out string scaleText, bool replace)
         {

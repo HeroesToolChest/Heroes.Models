@@ -6,7 +6,7 @@
     public interface IMapSpecific
     {
         /// <summary>
-        /// Gets whether this object unique to a map.
+        /// Gets a value indicating whether this object unique is to a map.
         /// </summary>
         bool IsMapUnique { get; }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("HeroesData.Parser")]
@@ -28,12 +29,12 @@ namespace Heroes.Models.AbilityTalents
         public string IconFileName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets if the abilityTalent is a quest.
+        /// Gets or sets a value indicating whether the abilityTalent is a quest.
         /// </summary>
         public bool IsQuest { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets if the abilityTalent is activable through a hotkey.
+        /// Gets or sets a value indicating whether the abilityTalent is activable through a hotkey.
         /// </summary>
         public bool IsActive { get; set; } = false;
 
@@ -65,13 +66,13 @@ namespace Heroes.Models.AbilityTalents
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpper().GetHashCode();
+            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpper(CultureInfo.InvariantCulture).GetHashCode();
         }
 
         /// <summary>
         /// Adds a value. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A unit name value.</param>
         internal void AddCreatedUnit(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -85,7 +86,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A unit name value.</param>
         /// <returns></returns>
         internal bool ContainsCreatedUnit(string value)
         {

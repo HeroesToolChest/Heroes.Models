@@ -38,8 +38,8 @@ namespace Heroes.Models
         public string DraftScreenFileName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the party frame file name.
+        /// Gets the party frame file name.
         /// </summary>
-        public ICollection<string> PartyFrameFileName { get; set; } = new List<string>();
+        public ICollection<string> PartyFrameFileName { get; } = new List<string>();
     }
 }

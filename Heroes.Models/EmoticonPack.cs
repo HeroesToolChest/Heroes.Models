@@ -43,7 +43,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds an emoticon id value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A emoticon value.</param>
         public void AddEmoticonId(string value)
         {
             if (value == null)
@@ -57,7 +57,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A emoticon value.</param>
         /// <returns></returns>
         public bool ContainsEmoticonId(string value)
         {

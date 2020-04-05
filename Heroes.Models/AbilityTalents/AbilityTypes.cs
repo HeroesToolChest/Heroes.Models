@@ -6,7 +6,7 @@ namespace Heroes.Models.AbilityTalents
     /// Specifices the type of an ability.
     /// </summary>
     [Flags]
-    public enum AbilityType
+    public enum AbilityTypes
     {
         /// <summary>
         /// Indicates an unknown type.

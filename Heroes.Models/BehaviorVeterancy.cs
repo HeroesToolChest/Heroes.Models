@@ -9,22 +9,22 @@ namespace Heroes.Models
     public class BehaviorVeterancy : ExtractableBase<BehaviorVeterancy>, IExtractable, IMapSpecific
     {
         /// <summary>
-        /// Gets or sets the value.
+        /// Gets or sets a value indicating whether this is a combine modification type.
         /// </summary>
         public bool CombineModifications { get; set; }
 
         /// <summary>
-        /// Gets or sets the value.
+        /// Gets or sets a value indicating whether this is a combine xp type.
         /// </summary>
         public bool CombineXP { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of veterancy levels.
+        /// Gets the collection of veterancy levels.
         /// </summary>
-        public ICollection<VeterancyLevel> VeterancyLevels { get; set; } = new List<VeterancyLevel>();
+        public ICollection<VeterancyLevel> VeterancyLevels { get; } = new List<VeterancyLevel>();
 
         /// <summary>
-        /// Gets whether this veterancy is unique to a map.
+        /// Gets a value indicating whether this is unique to a map.
         /// </summary>
         public bool IsMapUnique => !string.IsNullOrEmpty(MapName);
 

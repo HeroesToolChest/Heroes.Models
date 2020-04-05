@@ -74,7 +74,7 @@ namespace Heroes.Models
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return WeaponNameId.GetHashCode();
+            return HashCode.Combine(WeaponNameId);
         }
 
         /// <inheritdoc/>
@@ -86,7 +86,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a <see cref="WeaponAttributeFactor"/>. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="weaponAttributeFactor"></param>
+        /// <param name="weaponAttributeFactor">A <see cref="WeaponAttributeFactor"/>.</param>
         public void AddAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
         {
             if (weaponAttributeFactor == null)
@@ -103,7 +103,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the <see cref="WeaponAttributeFactor"/> exists.
         /// </summary>
-        /// <param name="weaponAttributeFactor"></param>
+        /// <param name="weaponAttributeFactor">A <see cref="WeaponAttributeFactor"/>.</param>
         /// <returns></returns>
         public bool ContainsAttributeFactor(WeaponAttributeFactor weaponAttributeFactor)
         {

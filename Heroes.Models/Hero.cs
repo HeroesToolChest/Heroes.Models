@@ -129,7 +129,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="tier"> The talent tier.</param>
         /// <returns></returns>
-        public IEnumerable<Talent> TierTalents(TalentTier tier)
+        public IEnumerable<Talent> TierTalents(TalentTiers tier)
         {
             return Talents.Where(x => x.Tier == tier);
         }
@@ -137,7 +137,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a role value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A role value.</param>
         public void AddRole(string value)
         {
             if (value == null)
@@ -151,7 +151,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A role value.</param>
         /// <returns>Value indicating the <paramref name="value"/> exists.</returns>
         public bool ContainsRole(string value)
         {
@@ -166,9 +166,12 @@ namespace Heroes.Models
         /// <summary>
         /// Adds an <see cref="Talent"/>. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="talent"></param>
+        /// <param name="talent">A <see cref="Talent"/> object.</param>
         public void AddTalent(Talent talent)
         {
+            if (talent is null)
+                throw new ArgumentNullException(nameof(talent));
+
             if (talent.AbilityTalentId is null)
                 throw new ArgumentException($"{nameof(talent.AbilityTalentId)} cannot be null", nameof(talent));
 
@@ -194,8 +197,8 @@ namespace Heroes.Models
         /// Looks for a talent with the given <paramref name="talentId"/>, returning a value that indicates whether such value exists.
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
-        /// <param name="talent"></param>
-        /// <returns></returns>
+        /// <param name="talent">The <see cref="Talent"/> object of the <paramref name="talentId"/>.</param>
+        /// <returns>Returns true if the <see cref="Talent"/> exists.</returns>
         public bool TryGetTalent(string talentId, [NotNullWhen(true)] out Talent? talent)
         {
             return _talentsById.TryGetValue(talentId, out talent);
@@ -235,7 +238,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a <see cref="Hero"/>. Replaces if object already exists in collection.
         /// </summary>
-        /// <param name="hero"></param>
+        /// <param name="hero">A <see cref="Hero"/> unit.</param>
         public void AddHeroUnit(Hero hero)
         {
             if (hero == null)

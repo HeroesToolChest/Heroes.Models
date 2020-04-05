@@ -11,7 +11,7 @@
         public string Image { get; set; } = string.Empty;
 
         /// <summary>
-        /// Get or sets the number of rows in the texture sheet.
+        /// Gets or sets the number of rows in the texture sheet.
         /// </summary>
         public int Rows { get; set; }
 

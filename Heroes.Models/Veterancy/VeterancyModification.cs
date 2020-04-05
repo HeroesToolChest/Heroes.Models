@@ -13,33 +13,33 @@ namespace Heroes.Models.Veterancy
         public double KillXpBonus { get; set; }
 
         /// <summary>
-        /// Gets or sets the collection of vital max modifications.
+        /// Gets the collection of vital max modifications.
         /// </summary>
-        public ICollection<VeterancyVitalMax> VitalMaxCollection { get; set; } = new List<VeterancyVitalMax>();
+        public ICollection<VeterancyVitalMax> VitalMaxCollection { get; } = new List<VeterancyVitalMax>();
 
         /// <summary>
-        /// Gets or sets the collection of vital max fraction modifications.
+        /// Gets the collection of vital max fraction modifications.
         /// </summary>
-        public ICollection<VeterancyVitalMaxFraction> VitalMaxFractionCollection { get; set; } = new List<VeterancyVitalMaxFraction>();
+        public ICollection<VeterancyVitalMaxFraction> VitalMaxFractionCollection { get; } = new List<VeterancyVitalMaxFraction>();
 
         /// <summary>
-        /// Gets or sets the collection of vital regen modifications.
+        /// Gets the collection of vital regen modifications.
         /// </summary>
-        public ICollection<VeterancyVitalRegen> VitalRegenCollection { get; set; } = new List<VeterancyVitalRegen>();
+        public ICollection<VeterancyVitalRegen> VitalRegenCollection { get; } = new List<VeterancyVitalRegen>();
 
         /// <summary>
-        /// Gets or sets the collection of vital regen fraction modifications.
+        /// Gets the collection of vital regen fraction modifications.
         /// </summary>
-        public ICollection<VeterancyVitalRegenFraction> VitalRegenFractionCollection { get; set; } = new List<VeterancyVitalRegenFraction>();
+        public ICollection<VeterancyVitalRegenFraction> VitalRegenFractionCollection { get; } = new List<VeterancyVitalRegenFraction>();
 
         /// <summary>
-        /// Gets or sets the collection of damage dealt scaled modifications.
+        /// Gets the collection of damage dealt scaled modifications.
         /// </summary>
-        public ICollection<VeterancyDamageDealtScaled> DamageDealtScaledCollection { get; set; } = new List<VeterancyDamageDealtScaled>();
+        public ICollection<VeterancyDamageDealtScaled> DamageDealtScaledCollection { get; } = new List<VeterancyDamageDealtScaled>();
 
         /// <summary>
-        /// Gets or sets the collection of damage dealt fraction modifications.
+        /// Gets the collection of damage dealt fraction modifications.
         /// </summary>
-        public ICollection<VeterancyDamageDealtFraction> DamageDealtFractionCollection { get; set; } = new List<VeterancyDamageDealtFraction>();
+        public ICollection<VeterancyDamageDealtFraction> DamageDealtFractionCollection { get; } = new List<VeterancyDamageDealtFraction>();
     }
 }

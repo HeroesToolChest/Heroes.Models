@@ -21,31 +21,31 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void GetPrimaryAbilitiesTests()
         {
-            IList<Ability> basicAbilities = _unit.PrimaryAbilities(AbilityTier.Basic).ToList();
+            IList<Ability> basicAbilities = _unit.PrimaryAbilities(AbilityTiers.Basic).ToList();
             Assert.AreEqual(3, basicAbilities.Count);
 
-            IList<Ability> heroicAbilities = _unit.PrimaryAbilities(AbilityTier.Heroic).ToList();
+            IList<Ability> heroicAbilities = _unit.PrimaryAbilities(AbilityTiers.Heroic).ToList();
             Assert.AreEqual(2, heroicAbilities.Count);
 
-            IList<Ability> hearthAbilities = _unit.PrimaryAbilities(AbilityTier.Hearth).ToList();
+            IList<Ability> hearthAbilities = _unit.PrimaryAbilities(AbilityTiers.Hearth).ToList();
             Assert.AreEqual(0, hearthAbilities.Count);
 
             IList<Ability> allPrimaryAbilities = _unit.PrimaryAbilities().ToList();
             Assert.AreEqual(7, allPrimaryAbilities.Count);
 
-            Assert.IsNotNull(_nullUnit.PrimaryAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(_nullUnit.PrimaryAbilities(AbilityTiers.Mount));
         }
 
         [TestMethod]
         public void GetSubAbilitiesTests()
         {
-            IList<Ability> basicAbilities = _unit.SubAbilities(AbilityTier.Basic).ToList();
+            IList<Ability> basicAbilities = _unit.SubAbilities(AbilityTiers.Basic).ToList();
             Assert.AreEqual(2, basicAbilities.Count);
 
-            IList<Ability> mountAbilities = _unit.SubAbilities(AbilityTier.Mount).ToList();
+            IList<Ability> mountAbilities = _unit.SubAbilities(AbilityTiers.Mount).ToList();
             Assert.AreEqual(0, mountAbilities.Count);
 
-            Assert.IsNotNull(_nullUnit.SubAbilities(AbilityTier.Mount));
+            Assert.IsNotNull(_nullUnit.SubAbilities(AbilityTiers.Mount));
         }
 
         [TestMethod]
@@ -105,58 +105,58 @@ namespace Heroes.Models.Tests
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil1", "abil1"),
-                Tier = AbilityTier.Basic,
+                Tier = AbilityTiers.Basic,
                 ParentLink = null,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil2", "abil1"),
-                Tier = AbilityTier.Basic,
+                Tier = AbilityTiers.Basic,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil3", "abil1"),
-                Tier = AbilityTier.Basic,
+                Tier = AbilityTiers.Basic,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil4", "abil1"),
-                Tier = AbilityTier.Heroic,
+                Tier = AbilityTiers.Heroic,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil5", "abil1"),
-                Tier = AbilityTier.Heroic,
+                Tier = AbilityTiers.Heroic,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil6", "abil1"),
-                Tier = AbilityTier.Trait,
+                Tier = AbilityTiers.Trait,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("Abil7", "abil1"),
-                Tier = AbilityTier.Activable,
+                Tier = AbilityTiers.Activable,
                 ParentLink = null,
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil1", "subAbil1"),
-                Tier = AbilityTier.Basic,
+                Tier = AbilityTiers.Basic,
                 ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
 
             _unit.AddAbility(new Ability()
             {
                 AbilityTalentId = new AbilityTalentId("SubAbil2", "subAbil2"),
-                Tier = AbilityTier.Basic,
+                Tier = AbilityTiers.Basic,
                 ParentLink = new AbilityTalentId("Abil7", "abil7"),
             });
         }

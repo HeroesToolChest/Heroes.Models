@@ -74,7 +74,7 @@ namespace Heroes.Models
         public string ColoredTextWithScaling { get; }
 
         /// <summary>
-        /// Gets the value that determines if the raw description contains an error tag.
+        /// Gets a value indicating whether the raw description contains an error tag.
         /// </summary>
         public bool HasErrorTag => RawDescription.Contains("##ERROR##", StringComparison.Ordinal);
 

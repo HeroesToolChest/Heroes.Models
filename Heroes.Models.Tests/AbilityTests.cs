@@ -16,7 +16,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -25,7 +25,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -40,7 +40,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -49,7 +49,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "Ability")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -64,7 +64,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -73,7 +73,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("AbilitY1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -90,7 +90,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -99,7 +99,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -116,7 +116,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -125,7 +125,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -134,7 +134,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -154,7 +154,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -163,7 +163,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -172,7 +172,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -186,7 +186,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             }));
@@ -194,7 +194,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Hidden,
+                    AbilityType = AbilityTypes.Hidden,
                 },
                 IconFileName = "test.png",
             }));
@@ -202,7 +202,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability4", "abil4")
                 {
-                    AbilityType = AbilityType.Hidden,
+                    AbilityType = AbilityTypes.Hidden,
                 },
                 IconFileName = "test.png",
             }));
@@ -211,7 +211,7 @@ namespace Heroes.Models.Tests
 
             Assert.IsTrue(unit.ContainsAbility(new AbilityTalentId("Ability1", "abil1")
             {
-                AbilityType = AbilityType.Heroic,
+                AbilityType = AbilityTypes.Heroic,
             }));
             Assert.IsFalse(unit.ContainsAbility(new AbilityTalentId("Ability1", "abil1")));
             Assert.IsFalse(unit.ContainsAbility(new AbilityTalentId("Ability5", string.Empty)));
@@ -224,7 +224,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             };
@@ -233,7 +233,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             };
@@ -242,7 +242,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
             };
 
@@ -257,7 +257,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             }));
@@ -267,7 +267,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Active,
+                    AbilityType = AbilityTypes.Active,
                 },
                 IconFileName = "test.png",
             }));
@@ -276,7 +276,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability3", "abil3")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             }));
@@ -288,7 +288,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
                 {
-                    AbilityType = AbilityType.Heroic,
+                    AbilityType = AbilityTypes.Heroic,
                 },
                 IconFileName = "test.png",
             }));
@@ -304,7 +304,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -312,7 +312,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -326,7 +326,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -334,7 +334,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -343,7 +343,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             }));
@@ -352,7 +352,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass3")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             }));
@@ -361,7 +361,7 @@ namespace Heroes.Models.Tests
             Assert.IsFalse(unit.ContainsAbility(new AbilityTalentId(string.Empty, "pass2")));
             Assert.IsTrue(unit.ContainsAbility(new AbilityTalentId(string.Empty, "pass2")
             {
-                AbilityType = AbilityType.Passive,
+                AbilityType = AbilityTypes.Passive,
                 IsPassive = true,
             }));
         }
@@ -374,7 +374,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -382,7 +382,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -391,7 +391,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             }));
@@ -405,7 +405,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -413,14 +413,14 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
 
             Ability ability = unit.GetAbility(new AbilityTalentId(string.Empty, "pass1")
             {
-                AbilityType = AbilityType.Passive,
+                AbilityType = AbilityTypes.Passive,
                 IsPassive = true,
             });
 
@@ -445,7 +445,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -453,7 +453,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId(string.Empty, "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -461,7 +461,7 @@ namespace Heroes.Models.Tests
             Assert.IsTrue(unit.TryGetAbility(
                 new AbilityTalentId(string.Empty, "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 }, out Ability? ability));
 
@@ -483,7 +483,7 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("hello", "pass1")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
@@ -491,19 +491,19 @@ namespace Heroes.Models.Tests
             {
                 AbilityTalentId = new AbilityTalentId("hello", "pass2")
                 {
-                    AbilityType = AbilityType.Passive,
+                    AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
                 },
             });
 
-            List<Ability> list = unit.GetAbilities("hello", StringComparison.OrdinalIgnoreCase).ToList();
+            List<Ability> list = unit.GetAbilitiesFromReferenceId("hello", StringComparison.OrdinalIgnoreCase).ToList();
             Assert.AreEqual(2, list.Count);
 
-            Assert.AreEqual(0, unit.GetAbilities("empty", StringComparison.OrdinalIgnoreCase).ToList().Count);
+            Assert.AreEqual(0, unit.GetAbilitiesFromReferenceId("empty", StringComparison.OrdinalIgnoreCase).ToList().Count);
 
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                unit.GetAbilities(null!, StringComparison.OrdinalIgnoreCase);
+                unit.GetAbilitiesFromReferenceId(null!, StringComparison.OrdinalIgnoreCase);
             });
         }
     }

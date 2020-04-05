@@ -1,4 +1,6 @@
-﻿namespace Heroes.Models.AbilityTalents
+﻿using System.Globalization;
+
+namespace Heroes.Models.AbilityTalents
 {
     /// <summary>
     /// Contains the neccessary properties for a unique identifier for abilites and talents.
@@ -34,19 +36,19 @@
         /// <summary>
         /// Gets or sets the abilityType.
         /// </summary>
-        public AbilityType AbilityType { get; set; } = AbilityType.Unknown;
+        public AbilityTypes AbilityType { get; set; } = AbilityTypes.Unknown;
 
         /// <summary>
-        /// Gets or sets the value whether or not this is a passive ability.
+        /// Gets or sets a value indicating whether this is a passive ability.
         /// </summary>
         public bool IsPassive { get; set; } = false;
 
         /// <summary>
         /// Determines if both objects are equal.
         /// </summary>
-        /// <param name="abilityTalentId1"></param>
-        /// <param name="abilityTalentId2"></param>
-        /// <returns></returns>
+        /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
+        /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
@@ -60,9 +62,9 @@
         /// <summary>
         /// Determines if both objects are not equal.
         /// </summary>
-        /// <param name="abilityTalentId1"></param>
-        /// <param name="abilityTalentId2"></param>
-        /// <returns></returns>
+        /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
+        /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator !=(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
@@ -85,13 +87,13 @@
             if (!(obj is AbilityTalentId item))
                 return false;
 
-            return item.Id.ToUpper().Equals(Id.ToUpper());
+            return item.Id.ToUpper(CultureInfo.InvariantCulture).Equals(Id.ToUpper(CultureInfo.InvariantCulture));
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return ToString().ToUpper().GetHashCode();
+            return ToString().ToUpper(CultureInfo.InvariantCulture).GetHashCode();
         }
     }
 }

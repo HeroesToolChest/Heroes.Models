@@ -48,7 +48,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a feature value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A feature value.</param>
         public void AddFeature(string value)
         {
             if (value == null)
@@ -62,7 +62,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A feature value.</param>
         /// <returns>Value indicating <paramref name="value"/> exists.</returns>
         public bool FeatureExists(string value)
         {

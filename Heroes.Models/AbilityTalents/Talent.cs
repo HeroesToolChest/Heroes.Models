@@ -15,14 +15,19 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Initializes a new instance of the <see cref="Talent"/> class.
         /// </summary>
-        public Talent() { }
+        public Talent()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Talent"/> class.
         /// </summary>
-        /// <param name="talentBase"></param>
+        /// <param name="talentBase">A <see cref="AbilityTalentBase"/> object.</param>
         public Talent(AbilityTalentBase talentBase)
         {
+            if (talentBase is null)
+                throw new ArgumentNullException(nameof(talentBase));
+
             Name = talentBase.Name;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
@@ -31,7 +36,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the tier of the talent.
         /// </summary>
-        public TalentTier Tier { get; set; }
+        public TalentTiers Tier { get; set; }
 
         /// <summary>
         /// Gets or sets the column number, also known as the sort index number.
@@ -61,9 +66,9 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines if both objects are equal.
         /// </summary>
-        /// <param name="talent1"></param>
-        /// <param name="talent2"></param>
-        /// <returns></returns>
+        /// <param name="talent1">The object to the left hand side of the operator.</param>
+        /// <param name="talent2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator ==(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
@@ -77,9 +82,9 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines if both objects are not equal.
         /// </summary>
-        /// <param name="talent1"></param>
-        /// <param name="talent2"></param>
-        /// <returns></returns>
+        /// <param name="talent1">The object to the left hand side of the operator.</param>
+        /// <param name="talent2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator !=(Talent? talent1, Talent? talent2)
         {
             if (talent1 is null)
@@ -93,7 +98,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Adds an abilityTalentLinkId.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A ability talent link id value.</param>
         public void AddAbilityTalentLinkId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -107,7 +112,8 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Removes an abilityTalentLinkId.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A ability talent link id value.</param>
+        /// <returns>Returns true if the value was removed.</returns>
         public bool RemoveAbilityTalentLinkId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -121,8 +127,8 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">A ability talent link id value.</param>
+        /// <returns>Returns true if the value exists.</returns>
         public bool ContainsAbilityTalentLinkId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -144,7 +150,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Adds a prerequisite talent id.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A prerequisite talent id value.</param>
         public void AddPrerequisiteTalentId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -158,7 +164,8 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Removes a prerequisite talent id.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A prerequisite talent id value.</param>
+        /// <returns>Returns true if the value was removed.</returns>
         public bool RemovePrerequisiteTalentId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -172,8 +179,8 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">A prerequisite talent id value.</param>
+        /// <returns>Returns true if the value exists.</returns>
         public bool ContainsPrerequisiteTalentId(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -202,7 +209,7 @@ namespace Heroes.Models.AbilityTalents
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode.Combine(base.GetHashCode());
         }
     }
 }

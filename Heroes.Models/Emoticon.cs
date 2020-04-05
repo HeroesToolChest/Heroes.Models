@@ -33,12 +33,12 @@ namespace Heroes.Models
         public IEnumerable<string> SearchTexts => _searchTextList;
 
         /// <summary>
-        /// Gets or sets if the aliases are case sensitive.
+        /// Gets or sets a value indicating whether the aliases are case sensitive.
         /// </summary>
         public bool IsAliasCaseSensitive { get; set; }
 
         /// <summary>
-        /// Gets or sets if the emoticon is hidden.
+        /// Gets or sets a value indicating whether the emoticon is hidden.
         /// </summary>
         public bool IsHidden { get; set; }
 
@@ -53,7 +53,7 @@ namespace Heroes.Models
         public string? HeroSkinId { get; set; }
 
         /// <summary>
-        /// Get or sets the texture sheet associated with the emoticon.
+        /// Gets or sets the texture sheet associated with the emoticon.
         /// </summary>
         public TextureSheet TextureSheet { get; set; } = new TextureSheet();
 
@@ -65,7 +65,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a universal aliase value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A universal alias value.</param>
         public void AddUniversalAlias(string value)
         {
             if (value == null)
@@ -79,7 +79,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A universal alias value.</param>
         /// <returns></returns>
         public bool ContainsUniversalAlias(string value)
         {
@@ -94,7 +94,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a localized aliase value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A localized alias value.</param>
         public void AddLocalizedAlias(string value)
         {
             if (value == null)
@@ -108,7 +108,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A localized alias value.</param>
         /// <returns></returns>
         public bool ContainsLocalizedAlias(string value)
         {
@@ -123,7 +123,7 @@ namespace Heroes.Models
         /// <summary>
         /// Adds a search text value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A search text value.</param>
         public void AddSearchText(string value)
         {
             if (value == null)
@@ -137,7 +137,7 @@ namespace Heroes.Models
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A search text value.</param>
         /// <returns></returns>
         public bool ContainsSearchText(string value)
         {

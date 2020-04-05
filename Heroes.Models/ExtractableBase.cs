@@ -5,7 +5,7 @@ namespace Heroes.Models
     /// <summary>
     /// Base class that provides basic information for extractable game data.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">A type of <see cref="IExtractable"/>.</typeparam>
     public abstract class ExtractableBase<T>
         where T : IExtractable
     {

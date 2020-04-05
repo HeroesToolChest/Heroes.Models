@@ -7,7 +7,7 @@ namespace Heroes.Models.AbilityTalents
     /// Specifices the tier of an ability.
     /// </summary>
     [Flags]
-    public enum AbilityTier
+    public enum AbilityTiers
     {
         /// <summary>
         /// Indicates an unknown tier.

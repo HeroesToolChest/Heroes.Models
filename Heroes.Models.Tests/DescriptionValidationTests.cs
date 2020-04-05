@@ -69,7 +69,7 @@ namespace Heroes.Models.Tests
         private readonly string _dvaMechSelfDestruct = "Eject from the Mech, setting it to self-destruct after <c val=\"#TooltipNumbers\">4</c> seconds. Deals <c val=\"#TooltipNumbers\">400</c> to <c val=\"#TooltipNumbers\">1200</c> damage in a large area, depending on distance from center. Only deals <c val=\"#TooltipNumbers\">50%</c> damage against Structures.</n></n><c val=\"FF8000\">Gain <c val=\"#TooltipNumbers\">1%</c> Charge for every <c val=\"#TooltipNumbers\">2</c> seconds spent Basic Attacking, and <c val=\"#TooltipNumbers\">30%</c> Charge per <c val=\"#TooltipNumbers\">100%</c> of Mech Health lost.</c>";
         private readonly string _dvaMechSelfDestructCorrected = "Eject from the Mech, setting it to self-destruct after <c val=\"#TooltipNumbers\">4</c> seconds. Deals <c val=\"#TooltipNumbers\">400</c> to <c val=\"#TooltipNumbers\">1200</c> damage in a large area, depending on distance from center. Only deals <c val=\"#TooltipNumbers\">50%</c> damage against Structures.<n/><n/><c val=\"FF8000\">Gain </c><c val=\"#TooltipNumbers\">1%</c><c val=\"FF8000\"> Charge for every </c><c val=\"#TooltipNumbers\">2</c><c val=\"FF8000\"> seconds spent Basic Attacking, and </c><c val=\"#TooltipNumbers\">30%</c><c val=\"FF8000\"> Charge per </c><c val=\"#TooltipNumbers\">100%</c><c val=\"FF8000\"> of Mech Health lost.</c>";
         private readonly string _valeeraCheapShot = "Deal <c val=\"#TooltipNumbers\">30</c> damage to an enemy, Stun them for <c val=\"#TooltipNumbers\">0.75</c> seconds, and Blind them for <c val=\"#TooltipNumbers\">2</c> seconds once Cheap Shot's Stun expires.<n/><n/><c val=\"#GlowColorRed\">Awards 1 Combo Point.</c><n/><n/><c val=\"#ColorViolet\">Unstealth: Blade Flurry<n/></c>Deal damage in an area around Valeera.";
-        private readonly string _ValeeraCheapShotCorrected = "Deal <c val=\"#TooltipNumbers\">30</c> damage to an enemy, Stun them for <c val=\"#TooltipNumbers\">0.75</c> seconds, and Blind them for <c val=\"#TooltipNumbers\">2</c> seconds once Cheap Shot's Stun expires.<n/><n/><c val=\"#GlowColorRed\">Awards 1 Combo Point.</c><n/><n/><c val=\"#ColorViolet\">Unstealth: Blade Flurry</c><n/>Deal damage in an area around Valeera.";
+        private readonly string _valeeraCheapShotCorrected = "Deal <c val=\"#TooltipNumbers\">30</c> damage to an enemy, Stun them for <c val=\"#TooltipNumbers\">0.75</c> seconds, and Blind them for <c val=\"#TooltipNumbers\">2</c> seconds once Cheap Shot's Stun expires.<n/><n/><c val=\"#GlowColorRed\">Awards 1 Combo Point.</c><n/><n/><c val=\"#ColorViolet\">Unstealth: Blade Flurry</c><n/>Deal damage in an area around Valeera.";
         private readonly string _crusaderPunish = "Step forward dealing <c val=\"#TooltipNumbers\">113</c> damage and Slowing enemies by <c val=\"#TooltipNumbers\">60%</c> decaying over <c val=\"#TooltipNumbers\">2</c> seconds.";
         private readonly string _crusaderPunishSame = "Step forward dealing <c val=\"#TooltipNumbers\">113</c> damage and Slowing enemies by <c val=\"#TooltipNumbers\">60%</c> decaying over <c val=\"#TooltipNumbers\">2</c> seconds.";
 
@@ -192,7 +192,7 @@ namespace Heroes.Models.Tests
         {
             Assert.AreEqual(_diabloBlackSoulstoneCorrected, DescriptionValidator.Validate(_diabloBlackSoulstone));
             Assert.AreEqual(_dvaMechSelfDestructCorrected, DescriptionValidator.Validate(_dvaMechSelfDestruct));
-            Assert.AreEqual(_ValeeraCheapShotCorrected, DescriptionValidator.Validate(_valeeraCheapShot));
+            Assert.AreEqual(_valeeraCheapShotCorrected, DescriptionValidator.Validate(_valeeraCheapShot));
             Assert.AreEqual(_crusaderPunishSame, DescriptionValidator.Validate(_crusaderPunish));
         }
 
@@ -201,7 +201,7 @@ namespace Heroes.Models.Tests
         {
             Assert.AreEqual(_plainText1, DescriptionValidator.GetPlainText(_nestedTagDescription1, false, false));
             Assert.AreEqual(_plainText2, DescriptionValidator.GetPlainText(_nestedNewLineTagDescription2Corrected, false, false));
-            Assert.AreEqual(_plainText3, DescriptionValidator.GetPlainText(_ValeeraCheapShotCorrected, false, false));
+            Assert.AreEqual(_plainText3, DescriptionValidator.GetPlainText(_valeeraCheapShotCorrected, false, false));
             Assert.AreEqual(_plainText4Corrected, DescriptionValidator.GetPlainText(_plainText4, false, false));
             Assert.AreEqual(_plainText5Corrected, DescriptionValidator.GetPlainText(_plainText5, false, false));
         }
@@ -210,7 +210,7 @@ namespace Heroes.Models.Tests
         public void ValidatePlainTextNewlineTests()
         {
             Assert.AreEqual(_plainTextNewline1, DescriptionValidator.GetPlainText(_nestedNewLineTagDescription1Corrected, true, false));
-            Assert.AreEqual(_plainTextNewline2, DescriptionValidator.GetPlainText(_ValeeraCheapShotCorrected, true, false));
+            Assert.AreEqual(_plainTextNewline2, DescriptionValidator.GetPlainText(_valeeraCheapShotCorrected, true, false));
             Assert.AreEqual(_plainTextNewline3Corrected, DescriptionValidator.GetPlainText(_plainTextNewline3, true, false));
         }
 

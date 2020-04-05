@@ -22,9 +22,12 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Initializes a new instance of the <see cref="Ability"/> class.
         /// </summary>
-        /// <param name="talentBase"></param>
+        /// <param name="talentBase">An <see cref="AbilityTalentBase"/> object.</param>
         public Ability(AbilityTalentBase talentBase)
         {
+            if (talentBase is null)
+                throw new ArgumentNullException(nameof(talentBase));
+
             Name = talentBase.Name;
             IconFileName = talentBase.IconFileName;
             Tooltip = talentBase.Tooltip;
@@ -33,7 +36,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the tier of the ability.
         /// </summary>
-        public AbilityTier Tier { get; set; }
+        public AbilityTiers Tier { get; set; }
 
         /// <summary>
         /// Gets a collection of talent ids that are associated with the ability.
@@ -43,9 +46,9 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines if both objects are equal.
         /// </summary>
-        /// <param name="ability1"></param>
-        /// <param name="ability2"></param>
-        /// <returns></returns>
+        /// <param name="ability1">The object to the left hand side of the operator.</param>
+        /// <param name="ability2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator ==(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
@@ -59,9 +62,9 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines if both objects are not equal.
         /// </summary>
-        /// <param name="ability1"></param>
-        /// <param name="ability2"></param>
-        /// <returns></returns>
+        /// <param name="ability1">The object to the left hand side of the operator.</param>
+        /// <param name="ability2">The object to the right hand side of the operator.</param>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator !=(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
@@ -75,7 +78,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Adds a talent id upgrade value. Replaces if value already exists in collection.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A talent id upgrade value.</param>
         public void AddTalentIdUpgrade(string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -89,7 +92,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Determines whether the value exists.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">A talent id upgrade value.</param>
         /// <returns></returns>
         public bool ContainsTalentIdUpgrade(string value)
         {
@@ -119,7 +122,7 @@ namespace Heroes.Models.AbilityTalents
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode.Combine(base.GetHashCode());
         }
     }
 }

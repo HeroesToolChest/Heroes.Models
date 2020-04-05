@@ -7,7 +7,7 @@ namespace Heroes.Models.AbilityTalents
     /// Specifies the tier of a talent.
     /// </summary>
     [Flags]
-    public enum TalentTier
+    public enum TalentTiers
     {
         /// <summary>
         /// Indicates the tier does not exist, is unknown, or has no tier.
