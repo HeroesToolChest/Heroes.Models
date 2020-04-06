@@ -26,7 +26,7 @@ namespace Heroes.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="TooltipDescription"/> class.
         /// </summary>
-        /// <param name="description">A parsed description that not modified into a readable verbiage. Description does not have to be pre-validated.</param>
+        /// <param name="description">A parsed description that has not been modified into a readable verbiage. Description does not have to be pre-validated.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
         public TooltipDescription(string description, Localization scaleLocale = Localization.ENUS)
         {
