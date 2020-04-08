@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+﻿using System;
 
 namespace Heroes.Models.AbilityTalents
 {
@@ -87,13 +87,13 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentId item))
                 return false;
 
-            return item.Id.ToUpper(CultureInfo.InvariantCulture).Equals(Id.ToUpper(CultureInfo.InvariantCulture));
+            return item.Id.ToUpperInvariant().Equals(Id.ToUpperInvariant(), StringComparison.Ordinal);
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return ToString().ToUpper(CultureInfo.InvariantCulture).GetHashCode();
+            return ToString().ToUpperInvariant().GetHashCode(StringComparison.Ordinal);
         }
     }
 }

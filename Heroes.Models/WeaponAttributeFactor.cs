@@ -19,7 +19,7 @@ namespace Heroes.Models
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return Type.GetHashCode();
+            return Type.GetHashCode(StringComparison.Ordinal);
         }
 
         /// <inheritdoc/>

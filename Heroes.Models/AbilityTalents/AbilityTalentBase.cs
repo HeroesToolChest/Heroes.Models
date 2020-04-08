@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("HeroesData.Parser")]
@@ -58,13 +57,13 @@ namespace Heroes.Models.AbilityTalents
             if (!(obj is AbilityTalentBase item))
                 return false;
 
-            return item.AbilityTalentId.Id.Equals(AbilityTalentId.Id);
+            return item.AbilityTalentId.Id.Equals(AbilityTalentId.Id, StringComparison.Ordinal);
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpper(CultureInfo.InvariantCulture).GetHashCode();
+            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpperInvariant().GetHashCode(StringComparison.Ordinal);
         }
     }
 }

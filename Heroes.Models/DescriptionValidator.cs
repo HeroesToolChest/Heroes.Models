@@ -95,11 +95,11 @@ namespace Heroes.Models
             if (spaceDelimeter > 0)
             {
                 ReadOnlySpan<char> firstPart = startTag.Slice(0, spaceDelimeter);
-                return "</" + firstPart.ToString().ToLower(CultureInfo.CurrentCulture) + ">";
+                return "</" + firstPart.ToString().ToLowerInvariant() + ">";
             }
             else
             {
-                return "</" + startTag.ToString().ToLower(CultureInfo.CurrentCulture);
+                return "</" + startTag.ToString().ToLowerInvariant();
             }
         }
 
@@ -116,7 +116,8 @@ namespace Heroes.Models
             string firstItem = _textStack.Peek();
 
             // remove unmatched start tag
-            if (firstItem.StartsWith("<") && firstItem.EndsWith(">") && !firstItem.EndsWith("/>") && !firstItem.StartsWith("</"))
+            if (firstItem.StartsWith("<", StringComparison.OrdinalIgnoreCase) && firstItem.EndsWith(">", StringComparison.OrdinalIgnoreCase) &&
+                !firstItem.EndsWith("/>", StringComparison.OrdinalIgnoreCase) && !firstItem.StartsWith("</", StringComparison.OrdinalIgnoreCase))
                 _textStack.Pop();
 
             // remove empty elements
@@ -124,12 +125,12 @@ namespace Heroes.Models
             {
                 string item = _textStack.Pop();
 
-                if (item.StartsWith("</") && item.EndsWith(">") && !item.EndsWith("/>")) // end tag
+                if (item.StartsWith("</", StringComparison.OrdinalIgnoreCase) && item.EndsWith(">", StringComparison.OrdinalIgnoreCase) && !item.EndsWith("/>", StringComparison.OrdinalIgnoreCase)) // end tag
                 {
                     endTag = item;
                     continue;
                 }
-                else if (item.StartsWith("<") && item.EndsWith(">") && !item.EndsWith("/>")) // check if start tag
+                else if (item.StartsWith("<", StringComparison.OrdinalIgnoreCase) && item.EndsWith(">", StringComparison.OrdinalIgnoreCase) && !item.EndsWith("/>", StringComparison.OrdinalIgnoreCase)) // check if start tag
                 {
                     if (string.IsNullOrEmpty(endTag))
                     {
@@ -186,7 +187,7 @@ namespace Heroes.Models
 
                             continue;
                         }
-                        else if (tag == "<n/>" || tag == "</n>") // line breakers
+                        else if (tag.Equals("<n/>", StringComparison.OrdinalIgnoreCase) || tag.Equals("</n>", StringComparison.OrdinalIgnoreCase)) // line breakers
                         {
                             tag = "<n/>";
 
@@ -214,7 +215,7 @@ namespace Heroes.Models
                                     _textStack.Pop();
                                 return;
                             }
-                            else if (tag.Length > 4 && tag.EndsWith("/>")) // self close tag
+                            else if (tag.Length > 4 && tag.EndsWith("/>", StringComparison.OrdinalIgnoreCase)) // self close tag
                             {
                                 _textStack.Push(tag);
                                 continue;
@@ -258,7 +259,7 @@ namespace Heroes.Models
 
                     if (TryParseTag(out string tag, out _))
                     {
-                        if (tag == "<n/>")
+                        if (tag.Equals("<n/>", StringComparison.OrdinalIgnoreCase))
                         {
                             if (includeNewlineTags)
                                 _textStack.Push(tag);
@@ -477,7 +478,7 @@ namespace Heroes.Models
 
         private string RemovedStartingRogueTags(string gameString)
         {
-            if (gameString.StartsWith("<li/>"))
+            if (gameString.StartsWith("<li/>", StringComparison.OrdinalIgnoreCase))
                 gameString = gameString.Remove(0, 5);
 
             return gameString;

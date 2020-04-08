@@ -36,7 +36,7 @@ namespace Heroes.Models
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return Id.GetHashCode() * 13;
+            return Id.GetHashCode(StringComparison.Ordinal) * 13;
         }
     }
 }
