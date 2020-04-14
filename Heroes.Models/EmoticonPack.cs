@@ -34,6 +34,11 @@ namespace Heroes.Models
         public string? EventName { get; set; }
 
         /// <summary>
+        /// Gets or sets the rarity.
+        /// </summary>
+        public Rarity Rarity { get; set; }
+
+        /// <summary>
         /// Gets a unique collection of emoticons ids in this emoticon pack.
         /// </summary>
         public HashSet<string> EmoticonIds { get; } = new HashSet<string>();
