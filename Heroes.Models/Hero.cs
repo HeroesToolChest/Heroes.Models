@@ -50,7 +50,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the rarity of the hero.
         /// </summary>
-        public Rarity? Rarity { get; set; }
+        public Rarity Rarity { get; set; } = Rarity.Common;
 
         /// <summary>
         /// Gets or sets the ratings of the hero.

@@ -25,6 +25,6 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the rarity.
         /// </summary>
-        public Rarity Rarity { get; set; } = Rarity.None;
+        public Rarity Rarity { get; set; } = Rarity.Common;
     }
 }
