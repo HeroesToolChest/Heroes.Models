@@ -36,5 +36,10 @@ namespace Heroes.Models
         /// Gets or sets the hero id associated with the voiceline.
         /// </summary>
         public string HeroId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the rarity.
+        /// </summary>
+        public Rarity Rarity { get; set; } = Rarity.Common;
     }
 }
