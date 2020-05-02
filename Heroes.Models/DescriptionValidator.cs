@@ -103,6 +103,14 @@ namespace Heroes.Models
             }
         }
 
+        private static string RemovedStartingRogueTags(string gameString)
+        {
+            if (gameString.StartsWith("<li/>", StringComparison.OrdinalIgnoreCase))
+                gameString = gameString.Remove(0, 5);
+
+            return gameString;
+        }
+
         private string Validate()
         {
             ValidateGameString(string.Empty);
@@ -474,14 +482,6 @@ namespace Heroes.Models
 
             value = string.Empty;
             return false;
-        }
-
-        private string RemovedStartingRogueTags(string gameString)
-        {
-            if (gameString.StartsWith("<li/>", StringComparison.OrdinalIgnoreCase))
-                gameString = gameString.Remove(0, 5);
-
-            return gameString;
         }
 
         private string GetPerLevelLocale(double value)
