@@ -6,7 +6,7 @@
     public interface IExtractable
     {
         /// <summary>
-        /// Gets or sets the unqiue id.
+        /// Gets or sets the unique id.
         /// </summary>
         string Id { get; set; }
 

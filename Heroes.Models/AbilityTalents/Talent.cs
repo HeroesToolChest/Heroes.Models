@@ -46,7 +46,7 @@ namespace Heroes.Models.AbilityTalents
         public HashSet<string> AbilityTalentLinkIds { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <summary>
-        /// Gets a unqiue collection of prerequisite talent ids.
+        /// Gets a unique collection of prerequisite talent ids.
         /// </summary>
         public HashSet<string> PrerequisiteTalentIds { get; } = new HashSet<string>(StringComparer.Ordinal);
 

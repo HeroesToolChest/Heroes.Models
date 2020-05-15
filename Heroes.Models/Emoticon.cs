@@ -13,17 +13,17 @@ namespace Heroes.Models
         public TooltipDescription? Description { get; set; }
 
         /// <summary>
-        /// Gets a unqiue collection of universal aliases for the emoticon.
+        /// Gets a unique collection of universal aliases for the emoticon.
         /// </summary>
         public HashSet<string> UniversalAliases { get; } = new HashSet<string>();
 
         /// <summary>
-        /// Gets a unqiue collection of localized aliases for the emoticon.
+        /// Gets a unique collection of localized aliases for the emoticon.
         /// </summary>
         public HashSet<string> LocalizedAliases { get; } = new HashSet<string>();
 
         /// <summary>
-        /// Gets a unqiue collection of search texts for the emoticon.
+        /// Gets a unique collection of search texts for the emoticon.
         /// </summary>
         public HashSet<string> SearchTexts { get; } = new HashSet<string>();
 
