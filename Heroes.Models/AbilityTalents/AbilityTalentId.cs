@@ -19,7 +19,9 @@ namespace Heroes.Models.AbilityTalents
         }
 
         /// <summary>
-        /// Gets the unique id. Same <see cref="ToString()"/>.
+        /// Gets the unique id. Same as <see cref="ToString()"/>.
+        /// <br/>
+        /// Id is as follows: <see cref="ReferenceId"/>|<see cref="ButtonId"/>|<see cref="AbilityType"/>|<see cref="IsPassive"/>.
         /// </summary>
         public string Id => ToString();
 
@@ -48,7 +50,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
         /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
+        /// <returns>the value indicating the result of the comparison.</returns>
         public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)
@@ -64,7 +66,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
         /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
+        /// <returns>the value indicating the result of the comparison.</returns>
         public static bool operator !=(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
         {
             if (abilityTalentId1 is null)

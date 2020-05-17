@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,6 +10,7 @@ namespace Heroes.Models
     /// <summary>
     /// Provides methods to validate gamestrings and modify them into different verbiage.
     /// </summary>
+    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Purposely require lower")]
     public class DescriptionValidator
     {
         private readonly int _smallSize = 51;
@@ -29,10 +31,10 @@ namespace Heroes.Models
         }
 
         /// <summary>
-        /// Takes a game string and removes unmatched and modifies nested tags into unnested tags.
+        /// Takes a gamestring and removes unmatched and modifies nested tags into unnested tags.
         /// </summary>
-        /// <param name="gameString">The game string text.</param>
-        /// <returns></returns>
+        /// <param name="gameString">The gamestring text.</param>
+        /// <returns>a modified gamestring.</returns>
         public static string Validate(string gameString)
         {
             return new DescriptionValidator(gameString).Validate();
@@ -41,11 +43,11 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a plain text string without any tags.
         /// </summary>
-        /// <param name="gameString">The game string text.</param>
+        /// <param name="gameString">The gamestring text.</param>
         /// <param name="includeNewLineTags">If true, includes the newline tags.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
-        /// <returns></returns>
+        /// <returns>a modified gamestring.</returns>
         public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
             return new DescriptionValidator(gameString, scaleLocale).ParsePlainText(includeNewLineTags, includeScaling);
@@ -54,10 +56,10 @@ namespace Heroes.Models
         /// <summary>
         /// Returns the string with all tags.
         /// </summary>
-        /// <param name="gameString">The game string text.</param>
+        /// <param name="gameString">The gamestring text.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
-        /// <returns></returns>
+        /// <returns>a modified gamestring.</returns>
         public static string GetColoredText(string gameString, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
             return new DescriptionValidator(gameString, scaleLocale).ParseColoredText(includeScaling);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("HeroesData.Parser")]
+
 namespace Heroes.Models.AbilityTalents
 {
     /// <summary>

@@ -46,7 +46,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="ability1">The object to the left hand side of the operator.</param>
         /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
+        /// <returns>the value indicating the result of the comparison.</returns>
         public static bool operator ==(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
@@ -62,7 +62,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="ability1">The object to the left hand side of the operator.</param>
         /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
+        /// <returns>the value indicating the result of the comparison.</returns>
         public static bool operator !=(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)

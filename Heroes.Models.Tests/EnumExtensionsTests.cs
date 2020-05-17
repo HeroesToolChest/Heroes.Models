@@ -30,17 +30,17 @@ namespace Heroes.Models.Tests
         [TestMethod]
         public void ConvertFriendlyNameToEnumResultTest()
         {
-            if ("Level 1".ConvertToEnum(out Level result))
+            if ("Level 1".TryConvertToEnum(out Level result))
                 Assert.AreEqual(Level.Level1, result);
 
-            if ("Level2".ConvertToEnum(out result))
+            if ("Level2".TryConvertToEnum(out result))
                 Assert.AreEqual(Level.Level2, result);
 
-            if ("Level 3".ConvertToEnum(out result))
+            if ("Level 3".TryConvertToEnum(out result))
                 Assert.AreEqual(Level.Level3, result);
 
-            Assert.IsTrue("Level 2".ConvertToEnum(out Level _));
-            Assert.IsTrue("Level3".ConvertToEnum(out Level _));
+            Assert.IsTrue("Level 2".TryConvertToEnum(out Level _));
+            Assert.IsTrue("Level3".TryConvertToEnum(out Level _));
         }
 
         [TestMethod]
