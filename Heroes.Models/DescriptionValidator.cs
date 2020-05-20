@@ -34,7 +34,7 @@ namespace Heroes.Models
         /// Takes a gamestring and removes unmatched and modifies nested tags into unnested tags.
         /// </summary>
         /// <param name="gameString">The gamestring text.</param>
-        /// <returns>a modified gamestring.</returns>
+        /// <returns>A modified gamestring.</returns>
         public static string Validate(string gameString)
         {
             return new DescriptionValidator(gameString).Validate();
@@ -47,7 +47,7 @@ namespace Heroes.Models
         /// <param name="includeNewLineTags">If true, includes the newline tags.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
-        /// <returns>a modified gamestring.</returns>
+        /// <returns>A modified gamestring.</returns>
         public static string GetPlainText(string gameString, bool includeNewLineTags, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
             return new DescriptionValidator(gameString, scaleLocale).ParsePlainText(includeNewLineTags, includeScaling);
@@ -59,7 +59,7 @@ namespace Heroes.Models
         /// <param name="gameString">The gamestring text.</param>
         /// <param name="includeScaling">If true, includes the scaling info.</param>
         /// <param name="scaleLocale">Locale for the per level string.</param>
-        /// <returns>a modified gamestring.</returns>
+        /// <returns>A modified gamestring.</returns>
         public static string GetColoredText(string gameString, bool includeScaling, Localization scaleLocale = Localization.ENUS)
         {
             return new DescriptionValidator(gameString, scaleLocale).ParseColoredText(includeScaling);

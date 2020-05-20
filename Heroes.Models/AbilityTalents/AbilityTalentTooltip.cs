@@ -41,7 +41,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Returns a string of the ability or talent's cooldown, mana or life cost, and custom string.
         /// </summary>
-        /// <returns>a string containing the talent sub information.</returns>
+        /// <returns>A string containing the talent sub information.</returns>
         public string GetTalentSubInfo()
         {
             string text = string.Empty;

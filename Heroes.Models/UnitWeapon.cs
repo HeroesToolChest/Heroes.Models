@@ -51,7 +51,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets the attacks per second.
         /// </summary>
-        /// <returns>a value indicating the number of attacks per second.</returns>
+        /// <returns>A value indicating the number of attacks per second.</returns>
         public double GetAttacksPerSecond()
         {
             if (Period == 0)

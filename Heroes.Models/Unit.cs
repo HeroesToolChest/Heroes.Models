@@ -136,7 +136,7 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a collection of all the primary abilities (no parent linked abilities).
         /// </summary>
-        /// <returns>a collection of abilities.</returns>
+        /// <returns>A collection of abilities.</returns>
         public IEnumerable<Ability> PrimaryAbilities()
         {
             return Abilities.Where(x => x.ParentLink == null);
@@ -146,7 +146,7 @@ namespace Heroes.Models
         /// Returns a collection of all the primary abilities in the selected tier (no parent linked abilities).
         /// </summary>
         /// <param name="tier">The ability tier.</param>
-        /// <returns>a collection of abilities.</returns>
+        /// <returns>A collection of abilities.</returns>
         public IEnumerable<Ability> PrimaryAbilities(AbilityTiers tier)
         {
             return Abilities.Where(x => x.Tier == tier && x.ParentLink == null);
@@ -155,7 +155,7 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a collection of all the sub abilities.
         /// </summary>
-        /// <returns>a collection of abilities.</returns>
+        /// <returns>A collection of abilities.</returns>
         public IEnumerable<Ability> SubAbilities()
         {
             return Abilities.Where(x => x.ParentLink != null);
@@ -165,7 +165,7 @@ namespace Heroes.Models
         /// Returns a collection of all the sub abilities in the selected tier.
         /// </summary>
         /// <param name="tier">The ability tier.</param>
-        /// <returns>a collection of abilities.</returns>
+        /// <returns>A collection of abilities.</returns>
         public IEnumerable<Ability> SubAbilities(AbilityTiers tier)
         {
             return Abilities.Where(x => x.Tier == tier && x.ParentLink != null);
@@ -174,7 +174,7 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a lookup of all the parent linked abilities.
         /// </summary>
-        /// <returns>a lookup of the parent linked abilities.</returns>
+        /// <returns>A lookup of the parent linked abilities.</returns>
         public ILookup<AbilityTalentId, Ability> ParentLinkedAbilities()
         {
             return Abilities.Where(x => x.ParentLink != null).ToLookup(x => x.ParentLink)!;
@@ -183,7 +183,7 @@ namespace Heroes.Models
         /// <summary>
         /// Returns a lookup of all the parent linked weapons.
         /// </summary>
-        /// <returns>a lookup of the parent linked weapons.</returns>
+        /// <returns>A lookup of the parent linked weapons.</returns>
         public ILookup<string, UnitWeapon> ParentLinkedWeapons()
         {
             return Weapons.Where(x => !string.IsNullOrEmpty(x.ParentLink)).ToLookup(x => x.ParentLink)!;
@@ -193,14 +193,16 @@ namespace Heroes.Models
         /// Adds an <see cref="Ability"/>. Returns a value indicating the result.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>a value indicating whether adding the <paramref name="ability"/> was successful.</returns>
+        /// <returns>A value indicating whether adding the <paramref name="ability"/> was successful.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool AddAbility(Ability ability)
         {
             if (ability is null)
                 throw new ArgumentNullException(nameof(ability));
 
             if (ability.AbilityTalentId == null)
-                throw new NullReferenceException(nameof(ability.AbilityTalentId));
+                throw new ArgumentException(nameof(ability.AbilityTalentId));
 
             return _abilitiesByAbilityTalentId.TryAdd(ability.AbilityTalentId, ability);
         }
@@ -209,14 +211,16 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>a value indicating whether <paramref name="ability"/> exists.</returns>
+        /// <returns>A value indicating whether <paramref name="ability"/> exists.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool ContainsAbility(Ability ability)
         {
             if (ability is null)
                 throw new ArgumentNullException(nameof(ability));
 
             if (ability.AbilityTalentId == null)
-                throw new NullReferenceException(nameof(ability.AbilityTalentId));
+                throw new ArgumentException(nameof(ability.AbilityTalentId));
 
             return _abilitiesByAbilityTalentId.ContainsKey(ability.AbilityTalentId);
         }
@@ -225,7 +229,8 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="abilityTalentId">An <see cref="AbilityTalentId"/>.</param>
-        /// <returns>a value indicating whether <paramref name="abilityTalentId"/> exists.</returns>
+        /// <returns>A value indicating whether <paramref name="abilityTalentId"/> exists.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
         public bool ContainsAbility(AbilityTalentId abilityTalentId)
         {
             if (abilityTalentId == null)
@@ -241,13 +246,12 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="referenceId">The reference id of the <see cref="AbilityTalentId"/>.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
-        /// <returns>a value indicating whether <paramref name="referenceId"/> exists.</returns>
+        /// <returns>A value indicating whether <paramref name="referenceId"/> exists.</returns>
+        /// <exception cref="ArgumentException"><paramref name="referenceId"/> is null or empty.</exception>
         public bool ContainsAbility(string referenceId, StringComparison comparisonType)
         {
-            if (string.IsNullOrEmpty(referenceId))
-            {
+            if (string.IsNullOrWhiteSpace(referenceId))
                 throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
-            }
 
             return _abilitiesByAbilityTalentId.Any(x => x.Key.ReferenceId.Equals(referenceId, comparisonType));
         }
@@ -256,7 +260,9 @@ namespace Heroes.Models
         /// Removes an <see cref="Ability"/>.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>a value indicating whether removing <paramref name="ability"/> was successful.</returns>
+        /// <returns>A value indicating whether removing <paramref name="ability"/> was successful.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool RemoveAbility(Ability ability)
         {
             if (ability is null)
@@ -273,6 +279,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityTalentId">An <see cref="AbilityTalentId"/>.</param>
         /// <returns>an <see cref="Ability"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
         public Ability GetAbility(AbilityTalentId abilityTalentId)
         {
             if (abilityTalentId == null)
@@ -288,7 +295,8 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="abilityTalentId">The <see cref="AbilityTalentId"/> to look for.</param>
         /// <param name="ability">The <see cref="Ability"/> that is found.</param>
-        /// <returns>true if the value was found; otherwise false.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
         public bool TryGetAbility(AbilityTalentId abilityTalentId, [NotNullWhen(true)] out Ability? ability)
         {
             if (abilityTalentId == null)
@@ -304,13 +312,12 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="referenceId">The reference id value to look for.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
-        /// <returns>a collection of <see cref="Ability"/>.</returns>
+        /// <returns>A collection of <see cref="Ability"/>.</returns>
+        /// <exception cref="ArgumentException"><paramref name="referenceId"/> is null or empty.</exception>
         public IEnumerable<Ability> GetAbilitiesFromReferenceId(string referenceId, StringComparison comparisonType)
         {
-            if (string.IsNullOrEmpty(referenceId))
-            {
-                throw new ArgumentException("Argument cannot be null or empty.", nameof(referenceId));
-            }
+            if (string.IsNullOrWhiteSpace(referenceId))
+                throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
 
             return _abilitiesByAbilityTalentId.Where(x => x.Key.ReferenceId.Equals(referenceId, comparisonType)).Select(x => x.Value);
         }

@@ -20,6 +20,7 @@ namespace Heroes.Models.AbilityTalents
         /// Initializes a new instance of the <see cref="Talent"/> class.
         /// </summary>
         /// <param name="talentBase">A <see cref="AbilityTalentBase"/> object.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="talentBase"/> is <see langword="null"/>.</exception>
         public Talent(AbilityTalentBase talentBase)
         {
             if (talentBase is null)

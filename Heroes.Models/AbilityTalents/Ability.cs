@@ -21,6 +21,7 @@ namespace Heroes.Models.AbilityTalents
         /// Initializes a new instance of the <see cref="Ability"/> class.
         /// </summary>
         /// <param name="talentBase">An <see cref="AbilityTalentBase"/> object.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="talentBase"/> is <see langword="null"/>.</exception>
         public Ability(AbilityTalentBase talentBase)
         {
             if (talentBase is null)
@@ -46,7 +47,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="ability1">The object to the left hand side of the operator.</param>
         /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>the value indicating the result of the comparison.</returns>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator ==(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)
@@ -62,7 +63,7 @@ namespace Heroes.Models.AbilityTalents
         /// </summary>
         /// <param name="ability1">The object to the left hand side of the operator.</param>
         /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>the value indicating the result of the comparison.</returns>
+        /// <returns>The value indicating the result of the comparison.</returns>
         public static bool operator !=(Ability? ability1, Ability? ability2)
         {
             if (ability1 is null)

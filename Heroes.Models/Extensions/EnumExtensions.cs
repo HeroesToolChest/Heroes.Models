@@ -15,7 +15,8 @@ namespace Heroes.Models.Extensions
         /// </summary>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <param name="enumerationValue">An enumeration value.</param>
-        /// <returns>the value of the <see cref="DescriptionAttribute"/>.</returns>
+        /// <returns>The value of the <see cref="DescriptionAttribute"/>.</returns>
+        /// <exception cref="ArgumentException"><paramref name="enumerationValue"/> is not of <typeparamref name="T"/> type or is <see langword="null"/>.</exception>
         public static string GetFriendlyName<T>(this T enumerationValue)
             where T : Enum
         {
@@ -26,7 +27,7 @@ namespace Heroes.Models.Extensions
             }
 
             // Tries to find a DescriptionAttribute for a potential friendly name for the enum
-            string? enumString = enumerationValue.ToString();
+            string enumString = enumerationValue.ToString();
             if (enumString is null)
                 throw new ArgumentException("Cannot be null", nameof(enumerationValue));
 
@@ -49,7 +50,8 @@ namespace Heroes.Models.Extensions
         /// </summary>
         /// <typeparam name="T">The enumeration type to be converted to.</typeparam>
         /// <param name="value">The string to be converted.</param>
-        /// <returns>the <typeparamref name="T"/>.</returns>
+        /// <returns>The <typeparamref name="T"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
         public static T ConvertToEnum<T>(this string value)
             where T : struct, Enum
         {
@@ -70,7 +72,8 @@ namespace Heroes.Models.Extensions
         /// <typeparam name="T">The enumeration type to be converted to.</typeparam>
         /// <param name="value">The string to be converted.</param>
         /// <param name="result">When this method returns, contains the <typeparamref name="T"/>.</param>
-        /// <returns>true if the value was found; otherwise false.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
         public static bool TryConvertToEnum<T>(this string value, out T result)
             where T : struct, Enum
         {

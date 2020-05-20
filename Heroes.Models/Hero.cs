@@ -116,7 +116,7 @@ namespace Heroes.Models
         /// Returns a collection of all the talents in the selected tier.
         /// </summary>
         /// <param name="tier"> The talent tier.</param>
-        /// <returns>a collectin of <see cref="Talent"/>s.</returns>
+        /// <returns>A collectin of <see cref="Talent"/>s.</returns>
         public IEnumerable<Talent> TierTalents(TalentTiers tier)
         {
             return Talents.Where(x => x.Tier == tier);
@@ -126,6 +126,8 @@ namespace Heroes.Models
         /// Adds an <see cref="Talent"/>. Replaces if object already exists in collection.
         /// </summary>
         /// <param name="talent">A <see cref="Talent"/> object.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="talent"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentException">The <paramref name="talent"/> <see cref="AbilityTalentId"/> is null.</exception>
         public void AddTalent(Talent talent)
         {
             if (talent is null)
@@ -141,7 +143,8 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
-        /// <returns>a value indicating whether <paramref name="talentId"/> exists.</returns>
+        /// <returns>A value indicating whether <paramref name="talentId"/> exists.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="talentId"/> is <see langword="null"/>.</exception>
         public bool ContainsTalent(string talentId)
         {
             if (talentId == null)
@@ -157,7 +160,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent">The <see cref="Talent"/> object of the <paramref name="talentId"/>.</param>
-        /// <returns>true if the value was found; otherwise false.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
         public bool TryGetTalent(string talentId, [NotNullWhen(true)] out Talent? talent)
         {
             return _talentsById.TryGetValue(talentId, out talent);
@@ -167,7 +170,7 @@ namespace Heroes.Models
         /// Returns a talent from the talent id.
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
-        /// <returns>a <see cref="Talent"/>.</returns>
+        /// <returns>A <see cref="Talent"/>.</returns>
         public Talent GetTalent(string talentId)
         {
             if (string.IsNullOrWhiteSpace(talentId))
