@@ -1,4 +1,10 @@
-﻿namespace Heroes.Models
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("HeroesData")]
+[assembly: InternalsVisibleTo("HeroesData.Parser")]
+[assembly: InternalsVisibleTo("HeroesData.Parser.Tests")]
+
+namespace Heroes.Models
 {
     /// <summary>
     /// Contains the information for match award data.
@@ -11,19 +17,9 @@
         public string MVPScreenImageFileName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the MVP screen image original file name.
-        /// </summary>
-        public string MVPScreenImageFileNameOriginal { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the score screen image file name.
         /// </summary>
         public string ScoreScreenImageFileName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets or sets the score screen image original file name.
-        /// </summary>
-        public string ScoreScreenImageFileNameOriginal { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the award description.
@@ -34,5 +30,15 @@
         /// Gets or sets the unique tag.
         /// </summary>
         public string Tag { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the MVP screen image original file name.
+        /// </summary>
+        internal string MVPScreenImageFileNameOriginal { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the score screen image original file name.
+        /// </summary>
+        internal string ScoreScreenImageFileNameOriginal { get; set; } = string.Empty;
     }
 }
