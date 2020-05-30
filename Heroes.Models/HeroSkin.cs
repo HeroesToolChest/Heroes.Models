@@ -14,9 +14,9 @@ namespace Heroes.Models
         public string? SortName { get; set; }
 
         /// <summary>
-        /// Gets or sets the description text.
+        /// Gets or sets the info text.
         /// </summary>
-        public TooltipDescription? Description { get; set; }
+        public TooltipDescription? InfoText { get; set; }
 
         /// <summary>
         /// Gets or sets the search text. Space delimited.

@@ -24,6 +24,11 @@ namespace Heroes.Models
         public TooltipDescription? Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the info text of the unit.
+        /// </summary>
+        public TooltipDescription? InfoText { get; set; }
+
+        /// <summary>
         /// Gets a unique collection of the hero play styles.
         /// </summary>
         public HashSet<string> HeroDescriptors { get; } = new HashSet<string>();
