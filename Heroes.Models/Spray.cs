@@ -53,6 +53,11 @@ namespace Heroes.Models
         public string ImageFileName { get; set; } = string.Empty;
 
         /// <summary>
+        /// Gets or sets the original texture sheet image name.
+        /// </summary>
+        public string OriginalTextureSheet { get; set; } = string.Empty;
+
+        /// <summary>
         /// Gets or sets the animation count.
         /// </summary>
         public int AnimationCount { get; set; }
