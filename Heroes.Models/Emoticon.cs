@@ -13,6 +13,11 @@ namespace Heroes.Models
         public TooltipDescription? Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the description locked text.
+        /// </summary>
+        public TooltipDescription? DescriptionLocked { get; set; }
+
+        /// <summary>
         /// Gets a unique collection of universal aliases for the emoticon.
         /// </summary>
         public HashSet<string> UniversalAliases { get; } = new HashSet<string>();
