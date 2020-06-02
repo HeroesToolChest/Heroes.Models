@@ -53,9 +53,9 @@ namespace Heroes.Models
         public string ImageFileName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the original texture sheet image name.
+        /// Gets or sets the texture sheet associated with the spray.
         /// </summary>
-        public string TextureSheet { get; set; } = string.Empty;
+        public TextureSheet TextureSheet { get; set; } = new TextureSheet();
 
         /// <summary>
         /// Gets or sets the animation count.
