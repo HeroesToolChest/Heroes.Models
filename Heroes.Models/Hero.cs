@@ -88,11 +88,6 @@ namespace Heroes.Models
         public string ExpandedRole { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the information text.
-        /// </summary>
-        public string InfoText { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the hero title.
         /// </summary>
         public string Title { get; set; } = string.Empty;
