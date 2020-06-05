@@ -276,6 +276,10 @@ namespace Heroes.Models
                             else
                                 _textStack.Push(" ");
                         }
+                        else if (tag.Equals("<sp/>", StringComparison.OrdinalIgnoreCase))
+                        {
+                            _textStack.Push(" ");
+                        }
 
                         continue;
                     }

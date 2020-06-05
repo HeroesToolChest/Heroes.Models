@@ -105,7 +105,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unit type: Melee or ranged.
         /// </summary>
-        public string Type { get; set; } = string.Empty;
+        public TooltipDescription? Type { get; set; }
 
         /// <summary>
         /// Gets a unique collection of <see cref="Hero"/> objects.

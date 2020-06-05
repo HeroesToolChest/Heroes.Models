@@ -22,6 +22,12 @@ namespace Heroes.Models.Tests
         private readonly string _selfCloseTagDescription4 = "previous<c val=\"#TooltipQuest\"> Repeatable Quest:</c><img path=\"sdf\"/>";
         private readonly string _duplicateTagsDescription1 = "<c val=\"#TooltipQuest\"> Repeatable Quest:</c> Gain<c val=\"#TooltipNumbers\">10</c></c>";
         private readonly string _duplicateTagsDescription2 = "<c val=\"#TooltipQuest\"> Repeatable Quest:</c></c> Gain<c val=\"#TooltipNumbers\">10</c></c>";
+        private readonly string _spaceTagNormalDescription1 = "Temps de recharge : 20 secondes";
+        private readonly string _spaceTagNormalDescription2 = "À distance";
+        private readonly string _spaceTagNormalDescription3 = "À distance";
+        private readonly string _spaceTagDescription1 = "Temps de recharge :<sp/>20 secondes";
+        private readonly string _spaceTagDescription2 = "À distance<sp/>";
+        private readonly string _spaceTagDescription3 = "<sp/>À distance";
 
         // Convert newline tags </n> to <n/>
         private readonly string _convertNewLineTagDescription1 = "Max Health Bonus: <c val=\"#TooltipNumbers\">0%</c></n>Health Per Second Bonus: <c val=\"#TooltipNumbers\">0</c>";
@@ -121,7 +127,7 @@ namespace Heroes.Models.Tests
         private readonly string _errorText3Corrected = "100<n/> damage per second<n/>";
 
         [TestMethod]
-        public void ValidateTests()
+        public void ValidateTest()
         {
             Assert.AreEqual(_noTagsDescription, DescriptionValidator.Validate(_noTagsDescription)); // no changes
             Assert.AreEqual(_normalTagsDescription1, DescriptionValidator.Validate(_normalTagsDescription1)); // no changes
@@ -140,10 +146,12 @@ namespace Heroes.Models.Tests
             Assert.AreEqual(_selfCloseTagDescription4, DescriptionValidator.Validate(_selfCloseTagDescription4)); // no changes
             Assert.AreEqual(_normalTagsDescription2, DescriptionValidator.Validate(_duplicateTagsDescription1));
             Assert.AreEqual(_normalTagsDescription2, DescriptionValidator.Validate(_duplicateTagsDescription2));
+            Assert.AreEqual(_spaceTagDescription1, DescriptionValidator.Validate(_spaceTagDescription1)); // no changes
+            Assert.AreEqual(_spaceTagDescription2, DescriptionValidator.Validate(_spaceTagDescription2)); // no changes
         }
 
         [TestMethod]
-        public void ValidateConvertedNewlineTagsTests()
+        public void ValidateConvertedNewlineTagsTest()
         {
             Assert.AreEqual(_convertNewLineTagDescription1Corrected, DescriptionValidator.Validate(_convertNewLineTagDescription1));
             Assert.AreEqual(_convertNewLineTagDescription2Corrected, DescriptionValidator.Validate(_convertNewLineTagDescription2));
@@ -151,20 +159,20 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidateCaseTagsTests()
+        public void ValidateCaseTagsTest()
         {
             Assert.AreEqual(_upperCaseTagDescription1Corrected, DescriptionValidator.Validate(_upperCaseTagDescription1));
         }
 
         [TestMethod]
-        public void ValidateSpaceTagsTests()
+        public void ValidateExtraSpaceInTagsTest()
         {
             Assert.AreEqual(_normalTagsDescription2, DescriptionValidator.Validate(_extraSpacesTagDescription1));
             Assert.AreEqual(_normalTagsDescription2, DescriptionValidator.Validate(_extraSpacesTagDescription2));
         }
 
         [TestMethod]
-        public void ValidateEmptyTagsTests()
+        public void ValidateEmptyTagsTest()
         {
             Assert.AreEqual(_emptyTagsDescription1Corrected, DescriptionValidator.Validate(_emptyTagsDescription1));
             Assert.AreEqual(_emptyTagsDescription2Corrected, DescriptionValidator.Validate(_emptyTagsDescription2));
@@ -172,7 +180,7 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidateNestedTagsTests()
+        public void ValidateNestedTagsTest()
         {
             Assert.AreEqual(_nestedTagDescription1Corrected, DescriptionValidator.Validate(_nestedTagDescription1));
             Assert.AreEqual(_nestedTagDescription2Corrected, DescriptionValidator.Validate(_nestedTagDescription2));
@@ -181,14 +189,14 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidateNestedNewLineTagsTests()
+        public void ValidateNestedNewLineTagsTest()
         {
             Assert.AreEqual(_nestedNewLineTagDescription1Corrected, DescriptionValidator.Validate(_nestedNewLineTagDescription1));
             Assert.AreEqual(_nestedNewLineTagDescription2Corrected, DescriptionValidator.Validate(_nestedNewLineTagDescription2));
         }
 
         [TestMethod]
-        public void ValidateRealDescriptionTests()
+        public void ValidateRealDescriptionTest()
         {
             Assert.AreEqual(_diabloBlackSoulstoneCorrected, DescriptionValidator.Validate(_diabloBlackSoulstone));
             Assert.AreEqual(_dvaMechSelfDestructCorrected, DescriptionValidator.Validate(_dvaMechSelfDestruct));
@@ -197,7 +205,7 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidatePlainTextTests()
+        public void ValidatePlainTextTest()
         {
             Assert.AreEqual(_plainText1, DescriptionValidator.GetPlainText(_nestedTagDescription1, false, false));
             Assert.AreEqual(_plainText2, DescriptionValidator.GetPlainText(_nestedNewLineTagDescription2Corrected, false, false));
@@ -207,7 +215,7 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidatePlainTextNewlineTests()
+        public void ValidatePlainTextNewlineTest()
         {
             Assert.AreEqual(_plainTextNewline1, DescriptionValidator.GetPlainText(_nestedNewLineTagDescription1Corrected, true, false));
             Assert.AreEqual(_plainTextNewline2, DescriptionValidator.GetPlainText(_valeeraCheapShotCorrected, true, false));
@@ -215,28 +223,28 @@ namespace Heroes.Models.Tests
         }
 
         [TestMethod]
-        public void ValidatePlainTextScalingTests()
+        public void ValidatePlainTextScalingTest()
         {
             Assert.AreEqual(_plainTextScaling1Corrected, DescriptionValidator.GetPlainText(_plainTextScaling1, false, true));
             Assert.AreEqual(_plainTextScaling2Corrected, DescriptionValidator.GetPlainText(_plainTextScaling2, false, true));
         }
 
         [TestMethod]
-        public void ValidatePlainTextScalingNewlineTests()
+        public void ValidatePlainTextScalingNewlineTest()
         {
             Assert.AreEqual(_plainTextScalingNewline1Corrected, DescriptionValidator.GetPlainText(_plainTextScalingNewline1, true, true));
             Assert.AreEqual(_plainTextScalingNewline2Corrected, DescriptionValidator.GetPlainText(_plainTextScalingNewline2, true, true));
         }
 
         [TestMethod]
-        public void ValidateColoredTextTests()
+        public void ValidateColoredTextTest()
         {
             Assert.AreEqual(_coloredText1Corrected, DescriptionValidator.GetColoredText(_coloredText1, false));
             Assert.AreEqual(_coloredText2Corrected, DescriptionValidator.GetColoredText(_coloredText2, false));
         }
 
         [TestMethod]
-        public void ValidateColoredTextScalingTests()
+        public void ValidateColoredTextScalingTest()
         {
             Assert.AreEqual(_coloredTextScaling1Corrected, DescriptionValidator.GetColoredText(_coloredTextScaling1, true));
             Assert.AreEqual(_coloredTextScaling2Corrected, DescriptionValidator.GetColoredText(_coloredTextScaling2, true));
@@ -248,6 +256,17 @@ namespace Heroes.Models.Tests
             Assert.AreEqual(_errorText1Corrected, DescriptionValidator.GetColoredText(_errorText1, true));
             Assert.AreEqual(_errorText2Corrected, DescriptionValidator.GetPlainText(_errorText2, false, false));
             Assert.AreEqual(_errorText3Corrected, DescriptionValidator.GetPlainText(_errorText3, true, false));
+        }
+
+        [TestMethod]
+        public void ValidateSpaceTagsTest()
+        {
+            Assert.AreEqual(_spaceTagDescription1, DescriptionValidator.GetColoredText(_spaceTagDescription1, true));
+            Assert.AreEqual(_spaceTagDescription2, DescriptionValidator.GetColoredText(_spaceTagDescription2, true));
+            Assert.AreEqual(_spaceTagDescription3, DescriptionValidator.GetColoredText(_spaceTagDescription3, true));
+            Assert.AreEqual(_spaceTagNormalDescription1, DescriptionValidator.GetPlainText(_spaceTagDescription1, false, true));
+            Assert.AreEqual(_spaceTagNormalDescription2, DescriptionValidator.GetPlainText(_spaceTagDescription2, true, true));
+            Assert.AreEqual(_spaceTagNormalDescription3, DescriptionValidator.GetPlainText(_spaceTagDescription3, true, true));
         }
     }
 }
