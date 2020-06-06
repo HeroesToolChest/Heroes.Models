@@ -198,7 +198,7 @@ namespace Heroes.Models
         /// Adds an <see cref="Ability"/>. Returns a value indicating the result.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>A value indicating whether adding the <paramref name="ability"/> was successful.</returns>
+        /// <returns><see langword="true"/> if the value was added; otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
         /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool AddAbility(Ability ability)
@@ -216,7 +216,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>A value indicating whether <paramref name="ability"/> exists.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
         /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool ContainsAbility(Ability ability)
@@ -234,7 +234,7 @@ namespace Heroes.Models
         /// Determines whether the value exists.
         /// </summary>
         /// <param name="abilityTalentId">An <see cref="AbilityTalentId"/>.</param>
-        /// <returns>A value indicating whether <paramref name="abilityTalentId"/> exists.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
         public bool ContainsAbility(AbilityTalentId abilityTalentId)
         {
@@ -251,7 +251,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="referenceId">The reference id of the <see cref="AbilityTalentId"/>.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies how the strings will be compared.</param>
-        /// <returns>A value indicating whether <paramref name="referenceId"/> exists.</returns>
+        /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentException"><paramref name="referenceId"/> is null or empty.</exception>
         public bool ContainsAbility(string referenceId, StringComparison comparisonType)
         {
@@ -265,7 +265,7 @@ namespace Heroes.Models
         /// Removes an <see cref="Ability"/>.
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
-        /// <returns>A value indicating whether removing <paramref name="ability"/> was successful.</returns>
+        /// <returns><see langword="true"/> if the value was removed; otherwise <see langword="false"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
         /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool RemoveAbility(Ability ability)
@@ -283,7 +283,7 @@ namespace Heroes.Models
         /// Gets the ability from the <paramref name="abilityTalentId"/>.
         /// </summary>
         /// <param name="abilityTalentId">An <see cref="AbilityTalentId"/>.</param>
-        /// <returns>an <see cref="Ability"/>.</returns>
+        /// <returns>An <see cref="Ability"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
         public Ability GetAbility(AbilityTalentId abilityTalentId)
         {
