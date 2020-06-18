@@ -69,7 +69,7 @@ jobs:
         includeNuGetOrg: true
       displayName: 'Restore'
       
-    - powershell: dotnet publish $env:MAIN_PROJECT -c release -no-restore -o $env:PUBLISH_ANY_PATH
+    - powershell: dotnet publish $env:MAIN_PROJECT -c release --no-restore -o $env:PUBLISH_ANY_PATH
       displayName: Publish release
 
     - powershell: dotnet pack $env:MAIN_PROJECT -c release --no-build -o $env:NUPKG_PATH       
