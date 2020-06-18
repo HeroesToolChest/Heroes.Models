@@ -38,5 +38,11 @@ namespace Heroes.Models
         {
             return Id.GetHashCode(StringComparison.Ordinal) * 13;
         }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}";
+        }
     }
 }

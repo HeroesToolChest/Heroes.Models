@@ -14,5 +14,11 @@
         /// Gets or sets the value.
         /// </summary>
         public double Value { get; set; }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"Type: {Type}, Value: {Value}";
+        }
     }
 }
