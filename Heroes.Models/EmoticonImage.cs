@@ -1,7 +1,7 @@
 ﻿namespace Heroes.Models
 {
     /// <summary>
-    /// Contains the information for banner image.
+    /// Contains the information for emoticon image.
     /// </summary>
     public class EmoticonImage
     {
