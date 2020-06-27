@@ -53,18 +53,9 @@ namespace Heroes.Models.AbilityTalents
         internal HashSet<string> CreatedUnits { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <inheritdoc/>
-        public override bool Equals(object? obj)
-        {
-            if (!(obj is AbilityTalentBase item))
-                return false;
-
-            return item.AbilityTalentId.Id.Equals(AbilityTalentId.Id, StringComparison.Ordinal);
-        }
-
-        /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return $"{AbilityTalentId.Id + Name + IconFileName + AbilityTalentId.AbilityType}".ToUpperInvariant().GetHashCode(StringComparison.Ordinal);
+            return HashCode.Combine(AbilityTalentId);
         }
     }
 }

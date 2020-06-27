@@ -1,18 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models
 {
     /// <summary>
     /// Contains the information for tooltip descriptions which are automatically validated and provide multiple verbiage.
     /// </summary>
-    public class TooltipDescription
+    public class TooltipDescription : IEquatable<TooltipDescription>
     {
         /// <summary>
         /// The error tag string.
         /// </summary>
         public const string ErrorTag = "##ERROR##";
-
-        private readonly Localization _scaleLocale = Localization.ENUS;
 
         private readonly Lazy<string> _plainText;
         private readonly Lazy<string> _plainTextWithNewlines;
@@ -27,23 +26,23 @@ namespace Heroes.Models
         /// Initializes a new instance of the <see cref="TooltipDescription"/> class.
         /// </summary>
         /// <param name="description">A parsed description that has not been modified into a readable verbiage. Description does not have to be pre-validated.</param>
-        /// <param name="scaleLocale">Locale for the per level string.</param>
+        /// <param name="scaleLocale">The <see cref="Localization"/> for the scale text.</param>
         public TooltipDescription(string description, Localization scaleLocale = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(description))
                 description = string.Empty;
 
-            _scaleLocale = scaleLocale;
+            ScaleLocale = scaleLocale;
 
             RawDescription = DescriptionValidator.Validate(description);
 
-            _plainText = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, false, _scaleLocale));
-            _plainTextWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, false, _scaleLocale));
-            _plainTextWithScaling = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, true, _scaleLocale));
-            _plainTextWithScalingWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, true, _scaleLocale));
+            _plainText = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, false, ScaleLocale));
+            _plainTextWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, false, ScaleLocale));
+            _plainTextWithScaling = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, false, true, ScaleLocale));
+            _plainTextWithScalingWithNewlines = new Lazy<string>(DescriptionValidator.GetPlainText(RawDescription, true, true, ScaleLocale));
 
-            _coloredText = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, false, _scaleLocale));
-            _coloredTextWithScaling = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, true, _scaleLocale));
+            _coloredText = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, false, ScaleLocale));
+            _coloredTextWithScaling = new Lazy<string>(DescriptionValidator.GetColoredText(RawDescription, true, ScaleLocale));
 
             _hasErrorTag = new Lazy<bool>(value: RawDescription.Contains(ErrorTag, StringComparison.Ordinal));
         }
@@ -121,6 +120,64 @@ namespace Heroes.Models
         /// Gets a value indicating whether the raw description contains an error tag.
         /// </summary>
         public bool HasErrorTag => _hasErrorTag.Value;
+
+        /// <summary>
+        /// Gets the <see cref="Localization"/> used for the scale text.
+        /// </summary>
+        public Localization ScaleLocale { get; } = Localization.ENUS;
+
+        /// <summary>
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.
+        /// </summary>
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator ==(TooltipDescription? left, TooltipDescription? right)
+        {
+            if (left is null)
+                return right is null;
+            return left.Equals(right);
+        }
+
+        /// <summary>
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are not equal.
+        /// </summary>
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is not equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator !=(TooltipDescription? left, TooltipDescription? right)
+        {
+            return !(left == right);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (obj is null)
+                return false;
+
+            if (!(obj is TooltipDescription tooltipDescription))
+                return false;
+            else
+                return Equals(tooltipDescription);
+        }
+
+        /// <inheritdoc/>
+        public bool Equals([AllowNull] TooltipDescription other)
+        {
+            if (other is null)
+                return false;
+
+            return other.RawDescription.Equals(RawDescription, StringComparison.Ordinal) && other.ScaleLocale == ScaleLocale;
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(RawDescription, ScaleLocale);
+        }
 
         /// <inheritdoc/>
         public override string ToString()

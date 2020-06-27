@@ -1,34 +1,20 @@
 ﻿using Heroes.Models.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models.AbilityTalents
 {
     /// <summary>
     /// Contains the information for talent data.
     /// </summary>
-    public class Talent : AbilityTalentBase
+    public class Talent : AbilityTalentBase, IEquatable<Talent>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Talent"/> class.
         /// </summary>
         public Talent()
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Talent"/> class.
-        /// </summary>
-        /// <param name="talentBase">A <see cref="AbilityTalentBase"/> object.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="talentBase"/> is <see langword="null"/>.</exception>
-        public Talent(AbilityTalentBase talentBase)
-        {
-            if (talentBase is null)
-                throw new ArgumentNullException(nameof(talentBase));
-
-            Name = talentBase.Name;
-            IconFileName = talentBase.IconFileName;
-            Tooltip = talentBase.Tooltip;
         }
 
         /// <summary>
@@ -52,35 +38,27 @@ namespace Heroes.Models.AbilityTalents
         public HashSet<string> PrerequisiteTalentIds { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <summary>
-        /// Determines if both objects are equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.
         /// </summary>
-        /// <param name="talent1">The object to the left hand side of the operator.</param>
-        /// <param name="talent2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator ==(Talent? talent1, Talent? talent2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator ==(Talent? left, Talent? right)
         {
-            if (talent1 is null)
-            {
-                return talent2 is null;
-            }
-
-            return talent1.Equals(talent2);
+            if (left is null)
+                return right is null;
+            return left.Equals(right);
         }
 
         /// <summary>
-        /// Determines if both objects are not equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are not equal.
         /// </summary>
-        /// <param name="talent1">The object to the left hand side of the operator.</param>
-        /// <param name="talent2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator !=(Talent? talent1, Talent? talent2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is not equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator !=(Talent? left, Talent? right)
         {
-            if (talent1 is null)
-            {
-                return !(talent2 is null);
-            }
-
-            return !talent1.Equals(talent2);
+            return !(left == right);
         }
 
         /// <inheritdoc/>
@@ -95,13 +73,30 @@ namespace Heroes.Models.AbilityTalents
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (obj is null)
+                return false;
+
+            if (!(obj is Talent talent))
+                return false;
+            else
+                return Equals(talent);
+        }
+
+        /// <inheritdoc/>
+        public bool Equals([AllowNull] Talent other)
+        {
+            if (other is null)
+                return false;
+
+            return other.AbilityTalentId.Id.Equals(AbilityTalentId.Id, StringComparison.OrdinalIgnoreCase) && other.Tier == Tier;
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return HashCode.Combine(base.GetHashCode());
+            return HashCode.Combine(base.GetHashCode(), Tier, Column);
         }
     }
 }

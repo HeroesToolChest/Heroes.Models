@@ -39,7 +39,7 @@ namespace Heroes.Models.AbilityTalents
         public TooltipDescription? FullTooltip { get; set; }
 
         /// <summary>
-        /// Returns a string of the ability or talent's cooldown, mana or life cost, and custom string.
+        /// Returns a string of the ability or talent's cooldown and mana or life cost.
         /// </summary>
         /// <returns>A string containing the talent sub information.</returns>
         public string GetTalentSubInfo()

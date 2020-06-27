@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models.AbilityTalents
 {
     /// <summary>
     /// Contains the neccessary properties for a unique identifier for abilites and talents.
     /// </summary>
-    public class AbilityTalentId
+    public class AbilityTalentId : IEquatable<AbilityTalentId>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AbilityTalentId"/> class.
@@ -46,35 +47,27 @@ namespace Heroes.Models.AbilityTalents
         public bool IsPassive { get; set; } = false;
 
         /// <summary>
-        /// Determines if both objects are equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.
         /// </summary>
-        /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
-        /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator ==(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator ==(AbilityTalentId? left, AbilityTalentId? right)
         {
-            if (abilityTalentId1 is null)
-            {
-                return abilityTalentId2 is null;
-            }
-
-            return abilityTalentId1.Equals(abilityTalentId2);
+            if (left is null)
+                return right is null;
+            return left.Equals(right);
         }
 
         /// <summary>
-        /// Determines if both objects are not equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are not equal.
         /// </summary>
-        /// <param name="abilityTalentId1">The object to the left hand side of the operator.</param>
-        /// <param name="abilityTalentId2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator !=(AbilityTalentId? abilityTalentId1, AbilityTalentId? abilityTalentId2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is not equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator !=(AbilityTalentId? left, AbilityTalentId? right)
         {
-            if (abilityTalentId1 is null)
-            {
-                return !(abilityTalentId2 is null);
-            }
-
-            return !abilityTalentId1.Equals(abilityTalentId2);
+            return !(left == right);
         }
 
         /// <inheritdoc/>
@@ -84,18 +77,32 @@ namespace Heroes.Models.AbilityTalents
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object? obj)
+        public bool Equals([AllowNull] AbilityTalentId other)
         {
-            if (!(obj is AbilityTalentId item))
+            if (other is null)
                 return false;
 
-            return item.Id.ToUpperInvariant().Equals(Id.ToUpperInvariant(), StringComparison.Ordinal);
+            return other.Id.Equals(Id, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (obj is null)
+                return false;
+
+            if (!(obj is AbilityTalentId abilityTalentId))
+                return false;
+            else
+                return Equals(abilityTalentId);
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return ToString().ToUpperInvariant().GetHashCode(StringComparison.Ordinal);
+            return HashCode.Combine(ReferenceId.ToUpperInvariant(), ButtonId.ToUpperInvariant(), AbilityType, IsPassive);
         }
     }
 }

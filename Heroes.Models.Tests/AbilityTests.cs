@@ -9,52 +9,203 @@ namespace Heroes.Models.Tests
     [TestClass]
     public class AbilityTests
     {
-        [TestMethod]
-        public void AbilitiesAreEqualTest()
+        [DataTestMethod]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, true, AbilityTiers.Heroic)]
+        [DataRow("abil1", "abil1", AbilityTypes.W, true, AbilityTiers.Activable)]
+        [DataRow("abil1", "Abil1", AbilityTypes.W, true, AbilityTiers.Basic)]
+        [DataRow("abil1", "abilbutton", AbilityTypes.W, true, AbilityTiers.Basic)]
+        public void EqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier)
         {
-            Ability ability1 = new Ability()
+            Ability ability = new Ability()
             {
-                AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
+                AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
                 {
-                    AbilityType = AbilityTypes.Active,
+                    AbilityType = abilityTypes,
+                    IsPassive = isPassive,
                 },
-                IconFileName = "test.png",
+                Tier = tier,
             };
 
-            Ability ability2 = new Ability()
-            {
-                AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
-                {
-                    AbilityType = AbilityTypes.Active,
-                },
-                IconFileName = "test.png",
-            };
-
-            Assert.AreEqual(ability1, ability2);
+            Assert.AreEqual(ability, ability);
         }
 
         [TestMethod]
-        public void AbilitiesAreNotEqualTest()
+        public void EqualsMethodTests()
         {
-            Ability ability1 = new Ability()
+            Ability ability = new Ability()
             {
-                AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
+                AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
                 {
-                    AbilityType = AbilityTypes.Active,
+                    AbilityType = AbilityTypes.W,
+                    IsPassive = true,
                 },
-                IconFileName = "test.png",
+                Tier = AbilityTiers.Basic,
             };
 
+            Talent talent = new Talent()
+            {
+                AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
+                {
+                    AbilityType = AbilityTypes.W,
+                    IsPassive = true,
+                },
+                Tier = TalentTiers.Level1,
+            };
+
+            Assert.IsFalse(ability.Equals((int?)null));
+            Assert.IsFalse(ability.Equals(5));
+
+            Assert.IsTrue(ability.Equals(obj: ability));
+            Assert.IsTrue(ability.Equals(ability));
+            Assert.IsFalse(ability.Equals(talent));
+        }
+
+        [DataTestMethod]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false)]
+        [DataRow("abil1", "abil77", AbilityTypes.Q, true)]
+        [DataRow("abil1", "abil77", AbilityTypes.W, false)]
+        [DataRow("abil1", "abil77", AbilityTypes.Unknown, false)]
+        [DataRow("abil11", "abil77", AbilityTypes.Q, false)]
+        public void NotEqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive)
+        {
+            Ability ability = new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId("abil1", "abil77")
+                {
+                    AbilityType = AbilityTypes.Q,
+                    IsPassive = false,
+                },
+            };
+
+            Assert.AreNotEqual(ability, new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
+                {
+                    AbilityType = abilityTypes,
+                    IsPassive = isPassive,
+                },
+            });
+        }
+
+        [TestMethod]
+        public void NotSameObjectTest()
+        {
+            Ability ability = new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId("abil1", "abil77")
+                {
+                    AbilityType = AbilityTypes.Q,
+                    IsPassive = false,
+                },
+            };
+
+            Talent talent = new Talent()
+            {
+                AbilityTalentId = new AbilityTalentId("abil1", "abil77")
+                {
+                    AbilityType = AbilityTypes.Q,
+                    IsPassive = false,
+                },
+                Tier = TalentTiers.Level1,
+            };
+
+            Assert.AreNotEqual(new List<string>() { "asdf" }, ability);
+            Assert.AreNotEqual(talent, ability);
+        }
+
+        [DataTestMethod]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "Abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abiL1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "ABil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "ABIL1", "ABIL1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("ABIL1", "ABIL1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Heroic, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Heroic)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic)]
+        public void OperatorEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, AbilityTiers tier2)
+        {
             Ability ability2 = new Ability()
             {
-                AbilityTalentId = new AbilityTalentId("Ability1", "Ability")
+                AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
                 {
-                    AbilityType = AbilityTypes.Heroic,
+                    AbilityType = abilityTypes2,
+                    IsPassive = isPassive2,
                 },
-                IconFileName = "test.png",
+                Tier = tier2,
             };
 
-            Assert.AreNotEqual(ability1, ability2);
+            Ability ability = new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
+                {
+                    AbilityType = abilityTypes,
+                    IsPassive = isPassive,
+                },
+                Tier = tier,
+            };
+
+#pragma warning disable SA1131 // Use readable conditions
+            Assert.IsFalse(null! == ability2);
+#pragma warning restore SA1131 // Use readable conditions
+            Assert.IsFalse(ability2 == null!);
+
+            Assert.IsTrue(null! == (AbilityTalentId)null!);
+            Assert.IsTrue(ability == ability2);
+
+            Assert.AreEqual(ability.GetHashCode(), ability2!.GetHashCode());
+        }
+
+        [DataTestMethod]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, true, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil2", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil2", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.W, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "ab1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic)]
+        [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Heroic)]
+        public void OperatorNotEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, AbilityTiers tier2)
+        {
+            Ability ability2 = new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
+                {
+                    AbilityType = abilityTypes2,
+                    IsPassive = isPassive2,
+                },
+                Tier = tier2,
+            };
+
+            Ability ability = new Ability()
+            {
+                AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
+                {
+                    AbilityType = abilityTypes,
+                    IsPassive = isPassive,
+                },
+                Tier = tier,
+            };
+
+            Talent talent = new Talent()
+            {
+                AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
+                {
+                    AbilityType = abilityTypes,
+                    IsPassive = isPassive,
+                },
+                Tier = TalentTiers.Level1,
+            };
+
+#pragma warning disable SA1131 // Use readable conditions
+            Assert.IsTrue(null! != ability2);
+#pragma warning restore SA1131 // Use readable conditions
+            Assert.IsTrue(ability2 != null!);
+
+            Assert.IsFalse(null! != (AbilityTalentId)null!);
+            Assert.IsTrue(ability != ability2);
+
+            Assert.AreNotEqual(ability.GetHashCode(), ability2!.GetHashCode());
+            Assert.AreNotEqual(talent.GetHashCode(), ability2!.GetHashCode());
         }
 
         [TestMethod]

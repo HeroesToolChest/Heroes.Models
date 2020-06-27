@@ -1,13 +1,14 @@
 ﻿using Heroes.Models.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models.AbilityTalents
 {
     /// <summary>
     /// Contains the information for ability data.
     /// </summary>
-    public class Ability : AbilityTalentBase
+    public class Ability : AbilityTalentBase, IEquatable<Ability>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Ability"/> class.
@@ -43,35 +44,27 @@ namespace Heroes.Models.AbilityTalents
         public HashSet<string> TalentIdUpgrades { get; } = new HashSet<string>(StringComparer.Ordinal);
 
         /// <summary>
-        /// Determines if both objects are equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.
         /// </summary>
-        /// <param name="ability1">The object to the left hand side of the operator.</param>
-        /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator ==(Ability? ability1, Ability? ability2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator ==(Ability? left, Ability? right)
         {
-            if (ability1 is null)
-            {
-                return ability2 is null;
-            }
-
-            return ability1.Equals(ability2);
+            if (left is null)
+                return right is null;
+            return left.Equals(right);
         }
 
         /// <summary>
-        /// Determines if both objects are not equal.
+        /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are not equal.
         /// </summary>
-        /// <param name="ability1">The object to the left hand side of the operator.</param>
-        /// <param name="ability2">The object to the right hand side of the operator.</param>
-        /// <returns>The value indicating the result of the comparison.</returns>
-        public static bool operator !=(Ability? ability1, Ability? ability2)
+        /// <param name="left">The left hand side of the operator.</param>
+        /// <param name="right">The right hand side of the operator.</param>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> value is not equal to the <paramref name="right"/> value; otherwise <see langword="false"/>.</returns>
+        public static bool operator !=(Ability? left, Ability? right)
         {
-            if (ability1 is null)
-            {
-                return !(ability2 is null);
-            }
-
-            return !ability1.Equals(ability2);
+            return !(left == right);
         }
 
         /// <inheritdoc/>
@@ -86,13 +79,30 @@ namespace Heroes.Models.AbilityTalents
         /// <inheritdoc/>
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (obj is null)
+                return false;
+
+            if (!(obj is Ability ability))
+                return false;
+            else
+                return Equals(ability);
+        }
+
+        /// <inheritdoc/>
+        public bool Equals([AllowNull] Ability other)
+        {
+            if (other is null)
+                return false;
+
+            return other.AbilityTalentId.Id.Equals(AbilityTalentId.Id, StringComparison.OrdinalIgnoreCase) && other.Tier == Tier;
         }
 
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return HashCode.Combine(base.GetHashCode());
+            return HashCode.Combine(base.GetHashCode(), Tier);
         }
     }
 }
