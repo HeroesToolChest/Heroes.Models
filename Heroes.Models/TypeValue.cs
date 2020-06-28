@@ -18,7 +18,7 @@
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"Type: {Type}, Value: {Value}";
+            return $"{nameof(Type)}: {Type}, {nameof(Value)}: {Value}";
         }
     }
 }

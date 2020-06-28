@@ -30,12 +30,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the image file name.
         /// </summary>
-        public string ImageFileName { get; set; } = string.Empty;
+        public string? ImageFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the hero id associated with the voiceline.
         /// </summary>
-        public string HeroId { get; set; } = string.Empty;
+        public string? HeroId { get; set; }
 
         /// <summary>
         /// Gets or sets the rarity.

@@ -50,7 +50,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the image file name.
         /// </summary>
-        public string ImageFileName { get; set; } = string.Empty;
+        public string? ImageFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the texture sheet associated with the spray.

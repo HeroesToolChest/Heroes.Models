@@ -29,5 +29,11 @@
         /// Gets or sets the duration per frame.
         /// </summary>
         public int? DurationPerFrame { get; set; }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"{FileName}, {nameof(Index)}: {Index}, {nameof(Width)}: {Width}";
+        }
     }
 }

@@ -84,7 +84,7 @@ namespace Heroes.Models
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"Type: {Type}, Basic: {BasicArmor}, Ability: {AbilityArmor}, Splash: {SplashArmor}";
+            return $"{nameof(Type)}: {Type}, Basic: {BasicArmor}, Ability: {AbilityArmor}, Splash: {SplashArmor}";
         }
     }
 }
