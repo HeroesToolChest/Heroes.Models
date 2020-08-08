@@ -72,7 +72,7 @@ jobs:
     - powershell: dotnet publish $env:MAIN_PROJECT -c release --no-restore -o $env:PUBLISH_ANY_PATH
       displayName: Publish release
 
-    - powershell: dotnet pack $env:MAIN_PROJECT -c release --no-build -o $env:NUPKG_PATH       
+    - powershell: dotnet pack $env:MAIN_PROJECT -c release --no-build -o $env:NUPKG_PATH -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg   
       displayName: Nuget pack
 
     - task: NuGetCommand@2
@@ -80,6 +80,12 @@ jobs:
       inputs:
         command: 'custom'
         arguments: 'sign $(nupkg_path)Heroes.Models.*.nupkg -CertificatePath $(Agent.TempDirectory)\certificate -CertificatePassword $(cert_password) -Timestamper http://timestamp.digicert.com'
+
+    - task: NuGetCommand@2
+      displayName: Sign symbol pack
+      inputs:
+        command: 'custom'
+        arguments: 'sign $(nupkg_path)Heroes.Models.*.snupkg -CertificatePath $(Agent.TempDirectory)\certificate -CertificatePassword $(cert_password) -Timestamper http://timestamp.digicert.com'
 
     - powershell: |
         $s = get-content $env:MAIN_PROJECT | select-string -pattern "<Version>"
