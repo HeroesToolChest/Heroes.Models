@@ -29,12 +29,12 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets a value indicating whether the abilityTalent is a quest.
         /// </summary>
-        public bool IsQuest { get; set; } = false;
+        public bool IsQuest { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the abilityTalent is activable through a hotkey.
         /// </summary>
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets the parent that is associated with this abilityTalent.

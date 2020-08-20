@@ -28,7 +28,7 @@
         /// <summary>
         /// Gets or sets the icon slot number.
         /// </summary>
-        public int IconSlot { get; set; } = 0;
+        public int IconSlot { get; set; }
 
         /// <summary>
         /// Gets or sets the hero id associated with the reward portrait.

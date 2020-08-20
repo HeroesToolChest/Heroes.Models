@@ -17,7 +17,7 @@ namespace Heroes.Models
 
         private readonly Stack<string> _textStack = new Stack<string>(101);
 
-        private int _iterator = 0;
+        private int _iterator;
 
         private DescriptionValidator(string gameString, Localization scaleLocale = Localization.ENUS)
         {

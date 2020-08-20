@@ -100,17 +100,17 @@ namespace Heroes.Models.AbilityTalents
         Hidden = 1 << 13,
 
         /// <summary>
-        /// Indicates a standard tier
+        /// Indicates a standard tier.
         /// </summary>
         Standard = Basic | Heroic | Trait | Mount | Activable,
 
         /// <summary>
-        /// Indicates a special tier
+        /// Indicates a special tier.
         /// </summary>
         Special = Hearth | Taunt | Dance | Spray | Voice | MapMechanic,
 
         /// <summary>
-        /// Indicates a misc tier
+        /// Indicates a misc tier.
         /// </summary>
         Misc = Interact | Activable,
     }

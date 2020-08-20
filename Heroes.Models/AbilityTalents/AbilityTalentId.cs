@@ -44,7 +44,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets a value indicating whether this is a passive ability.
         /// </summary>
-        public bool IsPassive { get; set; } = false;
+        public bool IsPassive { get; set; }
 
         /// <summary>
         /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.

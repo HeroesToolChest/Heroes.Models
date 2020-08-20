@@ -8,27 +8,27 @@
         /// <summary>
         /// Gets or sets the maximum amount of charges, null if no charges available.
         /// </summary>
-        public int? CountMax { get; set; } = null;
+        public int? CountMax { get; set; }
 
         /// <summary>
         /// Gets or sets the starting amount of charges, null if no charges available.
         /// </summary>
-        public int? CountStart { get; set; } = null;
+        public int? CountStart { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of charges consumed on use.
         /// </summary>
-        public int? CountUse { get; set; } = null;
+        public int? CountUse { get; set; }
 
         /// <summary>
         /// Gets or sets the cooldown between charge casts.
         /// </summary>
-        public double? RecastCooldown { get; set; } = null;
+        public double? RecastCooldown { get; set; }
 
         /// <summary>
         /// Gets or sets if charges are hidden.
         /// </summary>
-        public bool? IsHideCount { get; set; } = null;
+        public bool? IsHideCount { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether charges exists.

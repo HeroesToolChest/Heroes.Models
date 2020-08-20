@@ -8,73 +8,73 @@ namespace Heroes.Models
     public enum Localization
     {
         /// <summary>
-        /// Indicates English locale
+        /// Indicates English locale.
         /// </summary>
         [Description("enus.stormdata")]
         ENUS,
 
         /// <summary>
-        /// Indicates German locale
+        /// Indicates German locale.
         /// </summary>
         [Description("dede.stormdata")]
         DEDE,
 
         /// <summary>
-        /// Indicates Spanish (EU) locale
+        /// Indicates Spanish (EU) locale.
         /// </summary>
         [Description("eses.stormdata")]
         ESES,
 
         /// <summary>
-        /// Indicates Spanish (AL) locale
+        /// Indicates Spanish (AL) locale.
         /// </summary>
         [Description("esmx.stormdata")]
         ESMX,
 
         /// <summary>
-        /// Indicates French locale
+        /// Indicates French locale.
         /// </summary>
         [Description("frfr.stormdata")]
         FRFR,
 
         /// <summary>
-        /// Indicates Italian locale
+        /// Indicates Italian locale.
         /// </summary>
         [Description("itit.stormdata")]
         ITIT,
 
         /// <summary>
-        /// Indicates Korean locale
+        /// Indicates Korean locale.
         /// </summary>
         [Description("kokr.stormdata")]
         KOKR,
 
         /// <summary>
-        /// Indicates Polish locale
+        /// Indicates Polish locale.
         /// </summary>
         [Description("plpl.stormdata")]
         PLPL,
 
         /// <summary>
-        /// Indicates Portuguese locale
+        /// Indicates Portuguese locale.
         /// </summary>
         [Description("ptbr.stormdata")]
         PTBR,
 
         /// <summary>
-        /// Indicates Russian locale
+        /// Indicates Russian locale.
         /// </summary>
         [Description("ruru.stormdata")]
         RURU,
 
         /// <summary>
-        /// Indicates Chinese locale
+        /// Indicates Chinese locale.
         /// </summary>
         [Description("zhcn.stormdata")]
         ZHCN,
 
         /// <summary>
-        /// Indicates Chinese (TW) locale
+        /// Indicates Chinese (TW) locale.
         /// </summary>
         [Description("zhtw.stormdata")]
         ZHTW,
