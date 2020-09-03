@@ -39,11 +39,6 @@ namespace Heroes.Models.AbilityTalents
         public TooltipDescription? FullTooltip { get; set; }
 
         /// <summary>
-        /// Gets or sets the requirement tooltip.
-        /// </summary>
-        public TooltipDescription? RequirementTooltip { get; set; }
-
-        /// <summary>
         /// Returns a string of the ability or talent's cooldown and mana or life cost.
         /// </summary>
         /// <returns>A string containing the talent sub information.</returns>
