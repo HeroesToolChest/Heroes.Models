@@ -93,7 +93,7 @@ namespace Heroes.Models.AbilityTalents
             if (obj is null)
                 return false;
 
-            if (!(obj is AbilityTalentId abilityTalentId))
+            if (obj is not AbilityTalentId abilityTalentId)
                 return false;
             else
                 return Equals(abilityTalentId);

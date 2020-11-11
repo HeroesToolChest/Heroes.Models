@@ -40,7 +40,7 @@ namespace Heroes.Models
             if (obj is null)
                 return false;
 
-            if (!(obj is WeaponAttributeFactor weaponAttributeFactor))
+            if (obj is not WeaponAttributeFactor weaponAttributeFactor)
                 return false;
             else
                 return Equals(weaponAttributeFactor);

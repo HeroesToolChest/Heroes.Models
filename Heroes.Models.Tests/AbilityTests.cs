@@ -614,7 +614,8 @@ namespace Heroes.Models.Tests
                 {
                     AbilityType = AbilityTypes.Passive,
                     IsPassive = true,
-                }, out Ability? ability));
+                },
+                out Ability? ability));
 
             Assert.AreEqual("pass1", ability?.AbilityTalentId.ButtonId);
 

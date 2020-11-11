@@ -78,7 +78,7 @@ namespace Heroes.Models.AbilityTalents
             if (obj is null)
                 return false;
 
-            if (!(obj is Talent talent))
+            if (obj is not Talent talent)
                 return false;
             else
                 return Equals(talent);

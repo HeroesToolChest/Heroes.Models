@@ -93,7 +93,7 @@ namespace Heroes.Models
             if (obj is null)
                 return false;
 
-            if (!(obj is UnitWeapon unitWeapon))
+            if (obj is not UnitWeapon unitWeapon)
                 return false;
             else
                 return Equals(unitWeapon);

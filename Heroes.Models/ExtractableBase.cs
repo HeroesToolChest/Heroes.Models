@@ -57,7 +57,7 @@ namespace Heroes.Models
             if (obj is null)
                 return false;
 
-            if (!(obj is ExtractableBase<T> extractableBase))
+            if (obj is not ExtractableBase<T> extractableBase)
                 return false;
             else
                 return Equals(extractableBase);

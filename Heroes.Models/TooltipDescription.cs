@@ -158,7 +158,7 @@ namespace Heroes.Models
             if (obj is null)
                 return false;
 
-            if (!(obj is TooltipDescription tooltipDescription))
+            if (obj is not TooltipDescription tooltipDescription)
                 return false;
             else
                 return Equals(tooltipDescription);

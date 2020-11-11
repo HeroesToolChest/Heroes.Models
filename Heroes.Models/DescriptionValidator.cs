@@ -444,7 +444,7 @@ namespace Heroes.Models
         private bool TryParseTag(out Span<char> tag, out bool isStartTag)
         {
             ReadOnlySpan<char> gameStringSpan = _gameStringMemory.Span;
-            ReadOnlySpan<char> currentIterationSpan = gameStringSpan.Slice(_iterator);
+            ReadOnlySpan<char> currentIterationSpan = gameStringSpan[_iterator..];
 
             int startTagIndex = currentIterationSpan.IndexOf('<');
             int endTagIndex = currentIterationSpan.IndexOf('>');
