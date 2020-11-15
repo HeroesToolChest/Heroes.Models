@@ -18,12 +18,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the hyperlink id.
         /// </summary>
-        public string HyperlinkId { get; set; } = string.Empty;
+        public string? HyperlinkId { get; set; }
 
         /// <summary>
         /// Gets or sets the real in game name.
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
         /// <summary>
         /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.

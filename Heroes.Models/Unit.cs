@@ -131,7 +131,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the kill xp.
         /// </summary>
-        public int KillXP { get; set; }
+        public int? KillXP { get; set; }
 
         /// <summary>
         /// Gets or sets the unit portraits.

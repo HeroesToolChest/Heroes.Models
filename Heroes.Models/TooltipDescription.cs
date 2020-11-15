@@ -27,7 +27,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="description">A parsed description that has not been modified into a readable verbiage. Description does not have to be pre-validated.</param>
         /// <param name="scaleLocale">The <see cref="Localization"/> for the scale text.</param>
-        public TooltipDescription(string description, Localization scaleLocale = Localization.ENUS)
+        public TooltipDescription(string? description, Localization scaleLocale = Localization.ENUS)
         {
             if (string.IsNullOrEmpty(description))
                 description = string.Empty;

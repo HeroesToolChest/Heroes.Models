@@ -10,32 +10,32 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the hero select portrait file name.
         /// </summary>
-        public string HeroSelectPortraitFileName { get; set; } = string.Empty;
+        public string? HeroSelectPortraitFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the score screen portrait file name.
         /// </summary>
-        public string LeaderboardPortraitFileName { get; set; } = string.Empty;
+        public string? LeaderboardPortraitFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the loading screen portrait file name.
         /// </summary>
-        public string LoadingScreenPortraitFileName { get; set; } = string.Empty;
+        public string? LoadingScreenPortraitFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the part panel portrait file name.
         /// </summary>
-        public string PartyPanelPortraitFileName { get; set; } = string.Empty;
+        public string? PartyPanelPortraitFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the target portrait file name.
         /// </summary>
-        public string TargetPortraitFileName { get; set; } = string.Empty;
+        public string? TargetPortraitFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the draft screen file name.
         /// </summary>
-        public string DraftScreenFileName { get; set; } = string.Empty;
+        public string? DraftScreenFileName { get; set; }
 
         /// <summary>
         /// Gets the party frame file name.

@@ -10,7 +10,7 @@ namespace Heroes.Models.Veterancy
         /// <summary>
         /// Gets or sets the kill xp bonus.
         /// </summary>
-        public double KillXpBonus { get; set; }
+        public double? KillXpBonus { get; set; }
 
         /// <summary>
         /// Gets the collection of vital max modifications.

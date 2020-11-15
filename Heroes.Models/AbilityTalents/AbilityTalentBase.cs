@@ -7,14 +7,14 @@ using System.Runtime.CompilerServices;
 namespace Heroes.Models.AbilityTalents
 {
     /// <summary>
-    /// Abtract class that contains informations related to both abilites and talents.
+    /// Abtract class that contains informations related to both abilities and talents.
     /// </summary>
     public abstract class AbilityTalentBase
     {
         /// <summary>
         /// Gets or sets the real name.
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or sets the abilityTalent id.
@@ -24,7 +24,7 @@ namespace Heroes.Models.AbilityTalents
         /// <summary>
         /// Gets or sets the icon file name.
         /// </summary>
-        public string IconFileName { get; set; } = string.Empty;
+        public string? IconFileName { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the abilityTalent is a quest.

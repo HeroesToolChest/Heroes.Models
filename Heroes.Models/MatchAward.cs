@@ -14,12 +14,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the MVP screen image file name.
         /// </summary>
-        public string MVPScreenImageFileName { get; set; } = string.Empty;
+        public string? MVPScreenImageFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the score screen image file name.
         /// </summary>
-        public string ScoreScreenImageFileName { get; set; } = string.Empty;
+        public string? ScoreScreenImageFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the award description.
@@ -29,7 +29,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the unique tag.
         /// </summary>
-        public string Tag { get; set; } = string.Empty;
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the MVP screen image original file name.

@@ -17,7 +17,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the name of the weapon.
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the amount of damage the attack deals.

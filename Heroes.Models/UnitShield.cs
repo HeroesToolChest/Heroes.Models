@@ -33,7 +33,7 @@
         /// <summary>
         /// Gets or sets the type of shield.
         /// </summary>
-        public string ShieldType { get; set; } = string.Empty;
+        public string? ShieldType { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

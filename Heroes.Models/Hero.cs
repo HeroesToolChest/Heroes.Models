@@ -25,12 +25,12 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the four character code.
         /// </summary>
-        public string AttributeId { get; set; } = string.Empty;
+        public string? AttributeId { get; set; }
 
         /// <summary>
         /// Gets or sets the difficulty of the hero.
         /// </summary>
-        public string Difficulty { get; set; } = string.Empty;
+        public string? Difficulty { get; set; }
 
         /// <summary>
         /// Gets or sets the franchise the hero belongs to.
@@ -85,17 +85,17 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the expanded role of the hero.
         /// </summary>
-        public string ExpandedRole { get; set; } = string.Empty;
+        public string? ExpandedRole { get; set; }
 
         /// <summary>
         /// Gets or sets the hero title.
         /// </summary>
-        public string Title { get; set; } = string.Empty;
+        public string? Title { get; set; }
 
         /// <summary>
         /// Gets or sets the search text. Space delimited.
         /// </summary>
-        public string SearchText { get; set; } = string.Empty;
+        public string? SearchText { get; set; }
 
         /// <summary>
         /// Gets or sets the unit type: Melee or ranged.

@@ -28,7 +28,7 @@
         /// <summary>
         /// Gets or sets the life type.
         /// </summary>
-        public string LifeType { get; set; } = string.Empty;
+        public string? LifeType { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

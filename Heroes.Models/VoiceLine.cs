@@ -20,7 +20,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the attribute id.
         /// </summary>
-        public string AttributeId { get; set; } = string.Empty;
+        public string? AttributeId { get; set; }
 
         /// <summary>
         /// Gets or sets the release date.
