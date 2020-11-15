@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -9,7 +8,6 @@ namespace Heroes.Models
     /// <summary>
     /// Provides methods to validate gamestrings and modify them into different verbiage.
     /// </summary>
-    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Purposely require lower")]
     public class DescriptionValidator
     {
         private readonly Localization _localization = Localization.ENUS;
