@@ -34,11 +34,11 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the MVP screen image original file name.
         /// </summary>
-        internal string MVPScreenImageFileNameOriginal { get; set; } = string.Empty;
+        internal string? MVPScreenImageFileNameOriginal { get; set; }
 
         /// <summary>
         /// Gets or sets the score screen image original file name.
         /// </summary>
-        internal string ScoreScreenImageFileNameOriginal { get; set; } = string.Empty;
+        internal string? ScoreScreenImageFileNameOriginal { get; set; }
     }
 }
