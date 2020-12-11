@@ -39,5 +39,10 @@
         /// Indicates a Nexus franchise.
         /// </summary>
         Nexus = 5,
+
+        /// <summary>
+        /// Indicates a Heroes franchise.
+        /// </summary>
+        Heroes = 6,
     }
 }

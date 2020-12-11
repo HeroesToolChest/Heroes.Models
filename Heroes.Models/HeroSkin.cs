@@ -47,5 +47,10 @@ namespace Heroes.Models
         /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just color variations of the same model.
         /// </summary>
         public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets or sets the franchise the hero skin belongs to.
+        /// </summary>
+        public HeroFranchise Franchise { get; set; }
     }
 }

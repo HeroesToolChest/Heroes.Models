@@ -57,5 +57,10 @@ namespace Heroes.Models
         /// Gets a unique collection of <see cref="Mount"/> ids. This are usually just color variations of the same model.
         /// </summary>
         public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets or sets the franchise the mount belongs to.
+        /// </summary>
+        public HeroFranchise Franchise { get; set; }
     }
 }
