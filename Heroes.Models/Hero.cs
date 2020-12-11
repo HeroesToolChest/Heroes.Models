@@ -103,11 +103,6 @@ namespace Heroes.Models
         public TooltipDescription? Type { get; set; }
 
         /// <summary>
-        /// Gets a unique collection of <see cref="Hero"/> objects.
-        /// </summary>
-        public HashSet<Hero> HeroUnits { get; } = new HashSet<Hero>();
-
-        /// <summary>
         /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually a different model.
         /// </summary>
         public HashSet<string> SkinIds { get; } = new HashSet<string>();
@@ -116,6 +111,26 @@ namespace Heroes.Models
         /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just color variations of the same model.
         /// </summary>
         public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets a value indicating whether this hero uses a mount.
+        /// </summary>
+        public bool UsesMount => DefaultMountId is not null;
+
+        /// <summary>
+        /// Gets or sets the default mount id of this hero.
+        /// </summary>
+        public string? DefaultMountId { get; set; }
+
+        /// <summary>
+        /// Gets a unique collection of <see cref="Mount.MountCategory"/> ids that this hero is allowed to use.
+        /// </summary>
+        public HashSet<string> AllowedMountCategoryIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets a unique collection of <see cref="Hero"/> objects.
+        /// </summary>
+        public HashSet<Hero> HeroUnits { get; } = new HashSet<Hero>();
 
         /// <summary>
         /// Returns a collection of all the talents in the selected tier.

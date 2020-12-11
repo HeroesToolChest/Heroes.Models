@@ -47,6 +47,19 @@ namespace Heroes.Models.Tests
             Assert.AreEqual(1, _hero.TierTalents(TalentTiers.Level4).Count());
         }
 
+        [TestMethod]
+        public void UsesMountTest()
+        {
+            Assert.IsFalse(new Hero().UsesMount);
+
+            Hero hasMountHero = new()
+            {
+                DefaultMountId = "flames of war",
+            };
+
+            Assert.IsTrue(hasMountHero.UsesMount);
+        }
+
         private void AddAbilities()
         {
             _hero.AddAbility(new Ability()
