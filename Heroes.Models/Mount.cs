@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Heroes.Models
 {
@@ -51,5 +52,10 @@ namespace Heroes.Models
         /// Gets or sets the event name associated with this mount.
         /// </summary>
         public string? EventName { get; set; }
+
+        /// <summary>
+        /// Gets a unique collection of <see cref="Mount"/> ids. This are usually just color variations of the same model.
+        /// </summary>
+        public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
     }
 }

@@ -108,6 +108,16 @@ namespace Heroes.Models
         public HashSet<Hero> HeroUnits { get; } = new HashSet<Hero>();
 
         /// <summary>
+        /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually a different model.
+        /// </summary>
+        public HashSet<string> SkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just color variations of the same model.
+        /// </summary>
+        public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
         /// Returns a collection of all the talents in the selected tier.
         /// </summary>
         /// <param name="tier"> The talent tier.</param>

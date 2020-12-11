@@ -42,5 +42,10 @@ namespace Heroes.Models
         /// Gets a unique collection of features.
         /// </summary>
         public HashSet<string> Features { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just color variations of the same model.
+        /// </summary>
+        public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
     }
 }
