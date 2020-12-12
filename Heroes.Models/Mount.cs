@@ -54,9 +54,9 @@ namespace Heroes.Models
         public string? EventName { get; set; }
 
         /// <summary>
-        /// Gets a unique collection of <see cref="Mount"/> ids. This are usually just color variations of the same model.
+        /// Gets a unique collection of <see cref="Mount"/> ids. This are usually just texture variations of the same model.
         /// </summary>
-        public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+        public HashSet<string> VariationMountIds { get; } = new HashSet<string>();
 
         /// <summary>
         /// Gets or sets the franchise the mount belongs to.
