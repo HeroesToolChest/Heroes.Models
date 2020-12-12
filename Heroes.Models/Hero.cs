@@ -103,14 +103,19 @@ namespace Heroes.Models
         public TooltipDescription? Type { get; set; }
 
         /// <summary>
-        /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually a different model.
+        /// Gets a unique collection of <see cref="HeroSkin"/> ids that are associated with this hero. This are usually a different model.
         /// </summary>
         public HashSet<string> SkinIds { get; } = new HashSet<string>();
 
         /// <summary>
-        /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just color variations of the same model.
+        /// Gets a unique collection of <see cref="HeroSkin"/> ids that are associated with this hero. This are usually just texture variations of the same model.
         /// </summary>
         public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+
+        /// <summary>
+        /// Gets a unique colection of <see cref="VoiceLine"/> ids that are associated with this hero.
+        /// </summary>
+        public HashSet<string> VoiceLineIds { get; } = new HashSet<string>();
 
         /// <summary>
         /// Gets a value indicating whether this hero uses a mount.
