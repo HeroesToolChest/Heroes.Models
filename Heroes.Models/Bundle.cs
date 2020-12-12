@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Heroes.Models
 {
@@ -27,7 +26,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the bundle image.
         /// </summary>
-        public string? Image { get; set; }
+        public string? ImageFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the event name associated with this bundle.
@@ -53,5 +52,10 @@ namespace Heroes.Models
         /// Gets or sets the boost id that is in this bundle.
         /// </summary>
         public string? BoostBonusId { get; set; } = null;
+
+        /// <summary>
+        /// Gets or sets the amount of gold in this bundle.
+        /// </summary>
+        public int? GoldBonus { get; set; } = null;
     }
 }
