@@ -3,7 +3,7 @@
     /// <summary>
     /// Specifies the type of hero franchise.
     /// </summary>
-    public enum HeroFranchise
+    public enum Franchise
     {
         /// <summary>
         /// Indicates a unknown franchise.

@@ -26,7 +26,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the franchise the bundle belongs to.
         /// </summary>
-        public HeroFranchise? Franchise { get; set; }
+        public Franchise? Franchise { get; set; }
 
         /// <summary>
         /// Gets or sets the bundle image.
