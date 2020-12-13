@@ -41,7 +41,7 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets a value indicating whether this is dynamic content.
         /// </summary>
-        public bool IsDynamicContext { get; set; }
+        public bool IsDynamicContent { get; set; }
 
         /// <summary>
         /// Gets a unique collection of hero ids that are in this bundle.
