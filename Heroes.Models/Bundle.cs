@@ -49,11 +49,6 @@ namespace Heroes.Models
         public HashSet<string> HeroIds { get; } = new HashSet<string>();
 
         /// <summary>
-        /// Gets or a unique collection of hero skin ids, along with the assoicated hero id, that are in this bundle.
-        /// </summary>
-        public HashSet<(string HeroId, string SkinId)> HeroSkinIds { get; } = new HashSet<(string HeroId, string SkinId)>();
-
-        /// <summary>
         /// Gets a unique collection of mount ids that are in this bundle.
         /// </summary>
         public HashSet<string> MountIds { get; } = new HashSet<string>();
