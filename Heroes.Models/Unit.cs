@@ -285,12 +285,11 @@ namespace Heroes.Models
         /// <param name="abilityTalentId">An <see cref="AbilityTalentId"/>.</param>
         /// <returns>An <see cref="Ability"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
+        /// <exception cref="KeyNotFoundException"><paramref name="abilityTalentId"/> was not found.</exception>
         public Ability GetAbility(AbilityTalentId abilityTalentId)
         {
             if (abilityTalentId == null)
-            {
                 throw new ArgumentNullException(nameof(abilityTalentId));
-            }
 
             return _abilitiesByAbilityTalentId[abilityTalentId];
         }

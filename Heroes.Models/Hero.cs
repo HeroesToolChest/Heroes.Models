@@ -11,10 +11,6 @@ namespace Heroes.Models
     /// </summary>
     public class Hero : Unit
     {
-        private readonly string _noPickName = "No Pick";
-        private readonly string _noPickTalentIconFileName = "storm_ui_ingame_leader_talent_unselected.png";
-        private readonly string _unknownTalentIconFileName = "storm_ui_icon_monk_trait1.png";
-
         private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.Ordinal);
 
         /// <summary>
@@ -186,8 +182,12 @@ namespace Heroes.Models
         /// <param name="talentId">The reference id of the talent.</param>
         /// <param name="talent">The <see cref="Talent"/> object of the <paramref name="talentId"/>.</param>
         /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="talentId"/> is <see langword="null"/>.</exception>
         public bool TryGetTalent(string talentId, [NotNullWhen(true)] out Talent? talent)
         {
+            if (talentId is null)
+                throw new ArgumentNullException(nameof(talentId));
+
             return _talentsById.TryGetValue(talentId, out talent);
         }
 
@@ -196,30 +196,14 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="talentId">The reference id of the talent.</param>
         /// <returns>A <see cref="Talent"/>.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="talentId"/> is <see langword="null"/>.</exception>
+        /// <exception cref="KeyNotFoundException"><paramref name="talentId"/> was not found.</exception>
         public Talent GetTalent(string talentId)
         {
-            if (string.IsNullOrWhiteSpace(talentId))
-            {
-                // no pick
-                return new Talent()
-                {
-                    Name = _noPickName,
-                    IconFileName = _noPickTalentIconFileName,
-                };
-            }
+            if (talentId is null)
+                throw new ArgumentNullException(nameof(talentId));
 
-            if (_talentsById.TryGetValue(talentId, out Talent? talent))
-            {
-                return talent;
-            }
-            else
-            {
-                return new Talent()
-                {
-                    Name = talentId,
-                    IconFileName = _unknownTalentIconFileName,
-                };
-            }
+            return _talentsById[talentId];
         }
 
         /// <inheritdoc/>

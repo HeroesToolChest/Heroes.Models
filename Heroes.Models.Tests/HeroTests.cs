@@ -1,5 +1,6 @@
 ﻿using Heroes.Models.AbilityTalents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Heroes.Models.Tests
@@ -31,13 +32,8 @@ namespace Heroes.Models.Tests
             Assert.AreEqual("Talent 2", talent.Name);
             Assert.AreEqual("storm_ui.png", talent.IconFileName);
 
-            talent = _hero.GetTalent(string.Empty);
-            Assert.AreEqual("No Pick", talent.Name);
-
-            talent = _hero.GetTalent("asdf");
-            Assert.AreEqual("asdf", talent.Name);
-
-            Assert.IsNotNull(_nullHero.GetTalent("asdf"));
+            Assert.ThrowsException<KeyNotFoundException>(() => _hero.GetTalent(string.Empty));
+            Assert.ThrowsException<KeyNotFoundException>(() => _hero.GetTalent("asdf"));
         }
 
         [TestMethod]
