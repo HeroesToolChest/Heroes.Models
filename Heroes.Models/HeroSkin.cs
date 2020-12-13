@@ -49,6 +49,11 @@ namespace Heroes.Models
         public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
 
         /// <summary>
+        /// Gets a unique colection of <see cref="VoiceLine"/> ids that are associated with this hero skin.
+        /// </summary>
+        public HashSet<string> VoiceLineIds { get; } = new HashSet<string>();
+
+        /// <summary>
         /// Gets or sets the franchise the hero skin belongs to.
         /// </summary>
         public HeroFranchise Franchise { get; set; }
