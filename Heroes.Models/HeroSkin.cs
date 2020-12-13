@@ -56,6 +56,6 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the franchise the hero skin belongs to.
         /// </summary>
-        public Franchise Franchise { get; set; }
+        public Franchise? Franchise { get; set; }
     }
 }
