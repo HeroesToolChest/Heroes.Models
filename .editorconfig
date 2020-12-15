@@ -233,3 +233,9 @@ dotnet_diagnostic.IDE0005.severity = warning
 
 # SA1108: Block statements should not contain embedded comments
 dotnet_diagnostic.SA1108.severity = none
+
+# CA1008: Enums should have zero value
+dotnet_diagnostic.CA1008.severity = none
+
+# CA1014: Mark assemblies with CLSCompliant
+dotnet_diagnostic.CA1014.severity = none
