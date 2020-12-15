@@ -56,17 +56,22 @@ namespace Heroes.Models
         /// <summary>
         /// Gets or sets the boost id that is in this bundle.
         /// </summary>
-        public string? BoostBonusId { get; set; } = null;
+        public string? BoostBonusId { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of gold in this bundle.
         /// </summary>
-        public int? GoldBonus { get; set; } = null;
+        public int? GoldBonus { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of gems in this bundle.
         /// </summary>
-        public int? GemsBonus { get; set; } = null;
+        public int? GemsBonus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the loot chest id that is in this bundle.
+        /// </summary>
+        public string? LootChestBonus { get; set; }
 
         /// <summary>
         /// Gets a collection of hero skin ids.
