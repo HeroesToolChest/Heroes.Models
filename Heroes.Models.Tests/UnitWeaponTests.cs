@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models.Tests
 {
     [TestClass]
+    [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
     public class UnitWeaponTests
     {
         [DataTestMethod]

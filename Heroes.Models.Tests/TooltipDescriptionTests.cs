@@ -1,9 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Heroes.Models.Tests
 {
     [TestClass]
+    [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
     public class TooltipDescriptionTests
     {
         private readonly string _testDescription = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second";
