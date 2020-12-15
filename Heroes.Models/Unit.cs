@@ -266,7 +266,7 @@ namespace Heroes.Models
         /// </summary>
         /// <param name="ability">An <see cref="Ability"/>.</param>
         /// <returns><see langword="true"/> if the value was removed; otherwise <see langword="false"/>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="ability"/> is <see langword="null"/>.</exception>
+        /// <exception cref="InvalidOperationException"><paramref name="ability"/> is <see langword="null"/>.</exception>
         /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
         public bool RemoveAbility(Ability ability)
         {
@@ -274,7 +274,7 @@ namespace Heroes.Models
                 throw new ArgumentNullException(nameof(ability));
 
             if (ability.AbilityTalentId == null)
-                throw new NullReferenceException(nameof(ability.AbilityTalentId));
+                throw new InvalidOperationException(nameof(ability.AbilityTalentId));
 
             return _abilitiesByAbilityTalentId.Remove(ability.AbilityTalentId);
         }

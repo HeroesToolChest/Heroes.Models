@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -86,6 +87,7 @@ namespace Heroes.Models
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "to lower needed")]
         private static string CreateEndTag(ReadOnlySpan<char> startTag)
         {
             startTag = startTag.TrimStart('<');

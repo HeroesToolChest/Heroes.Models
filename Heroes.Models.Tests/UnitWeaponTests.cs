@@ -129,7 +129,7 @@ namespace Heroes.Models.Tests
                 Period = period,
             };
 
-            Assert.AreEqual(attackPerSecond, weapon.GetAttacksPerSecond());
+            Assert.AreEqual(attackPerSecond, weapon.AttacksPerSecond);
         }
 
         [TestMethod]

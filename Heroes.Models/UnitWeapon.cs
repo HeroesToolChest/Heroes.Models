@@ -50,6 +50,21 @@ namespace Heroes.Models
         public string? ParentLink { get; set; }
 
         /// <summary>
+        /// Gets the attacks per second.
+        /// </summary>
+        /// <returns>A value indicating the number of attacks per second.</returns>
+        public double AttacksPerSecond
+        {
+            get
+            {
+                if (Period <= 0)
+                    return 0;
+
+                return 1 / Period;
+            }
+        }
+
+        /// <summary>
         /// Compares the <paramref name="left"/> value to the <paramref name="right"/> value and determines if they are equal.
         /// </summary>
         /// <param name="left">The left hand side of the operator.</param>
@@ -71,18 +86,6 @@ namespace Heroes.Models
         public static bool operator !=(UnitWeapon? left, UnitWeapon? right)
         {
             return !(left == right);
-        }
-
-        /// <summary>
-        /// Gets the attacks per second.
-        /// </summary>
-        /// <returns>A value indicating the number of attacks per second.</returns>
-        public double GetAttacksPerSecond()
-        {
-            if (Period <= 0)
-                return 0;
-
-            return 1 / Period;
         }
 
         /// <inheritdoc/>

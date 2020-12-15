@@ -9,7 +9,6 @@ namespace Heroes.Models.Tests
     public class HeroTests
     {
         private readonly Hero _hero = new Hero();
-        private readonly Hero _nullHero = new Hero();
 
         public HeroTests()
         {
