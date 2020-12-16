@@ -16,5 +16,10 @@ namespace Heroes.Models
         /// Gets or sets the release date of the boost.
         /// </summary>
         public DateTime? ReleaseDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event name associated with this boost.
+        /// </summary>
+        public string? EventName { get; set; }
     }
 }
