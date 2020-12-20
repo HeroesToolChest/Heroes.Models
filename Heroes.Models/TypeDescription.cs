@@ -11,8 +11,8 @@
         public TextureSheet TextureSheet { get; set; } = new TextureSheet();
 
         /// <summary>
-        /// Gets or sets the index of the icon on the textsheet.
+        /// Gets or sets the icon slot number on the <see cref="TextureSheet"/>. Zero index based.
         /// </summary>
-        public int IconIndex { get; set; }
+        public int IconSlot { get; set; }
     }
 }
