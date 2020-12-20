@@ -18,7 +18,7 @@
         /// <summary>
         /// Gets or sets the type description id.
         /// </summary>
-        public string TypeDescription { get; set; } = string.Empty;
+        public string? TypeDescription { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the event name associated with this loot chest.
@@ -29,15 +29,5 @@
         /// Gets or sets the rarity.
         /// </summary>
         public Rarity Rarity { get; set; } = Rarity.Common;
-
-        /// <summary>
-        /// Gets or sets the texture sheet associated with the loot chest.
-        /// </summary>
-        public TextureSheet TextureSheet { get; set; } = new TextureSheet();
-
-        /// <summary>
-        /// Gets or sets the index of the icon in the <see cref="TextureSheet"/>.
-        /// </summary>
-        public int IconIndex { get; set; }
     }
 }
