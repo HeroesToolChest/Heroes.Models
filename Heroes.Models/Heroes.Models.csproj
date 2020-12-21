@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>4.3.0</Version>
+    <Version>5.0.0</Version>
     <Authors>Kevin Oliva</Authors>
     <Company>Kevin Oliva</Company>
-    <Copyright>Copyright © 2018 - 2020 Kevin Oliva</Copyright>
+    <Copyright>Copyright © 2018 - 2021 Kevin Oliva</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/HeroesToolChest/Heroes.Models</PackageProjectUrl>
     <RepositoryUrl>https://github.com/HeroesToolChest/Heroes.Models</RepositoryUrl>
