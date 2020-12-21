@@ -34,5 +34,10 @@
         /// Gets or sets the hero id associated with the reward portrait.
         /// </summary>
         public string? HeroId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image file name.
+        /// </summary>
+        public string? ImageFileName { get; set; }
     }
 }
