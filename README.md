@@ -6,15 +6,19 @@ This library contains the model classes for [Heroes Data Parser](https://github.
 The main classes are:
 - Announcer
 - Banner
+- Boost
+- Bundle
 - BehaviorVeterancy
 - Emoticon
 - EmoticonPack
 - Hero
 - HeroSkin
+- LootChest
 - MatchAward
 - Mount
 - PortraitPack
 - RewardPortrait
 - Spray
+- TypeDescription
 - Unit
 - VoiceLine
