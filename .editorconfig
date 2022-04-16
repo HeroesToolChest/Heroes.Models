@@ -239,3 +239,6 @@ dotnet_diagnostic.CA1008.severity = none
 
 # CA1014: Mark assemblies with CLSCompliant
 dotnet_diagnostic.CA1014.severity = none
+
+# SA1518: Use line endings correctly at end of file
+dotnet_diagnostic.SA1518.severity = none
