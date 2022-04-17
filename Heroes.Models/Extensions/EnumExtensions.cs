@@ -55,12 +55,12 @@ internal static class EnumExtensions
     /// <typeparam name="T">The enumeration type to be converted to.</typeparam>
     /// <param name="value">The string to be converted.</param>
     /// <returns>The <typeparamref name="T"/>.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException"><paramref name="value"/> is <see langword="null"/> or whitespace.</exception>
     public static T ConvertToEnum<T>(this string value)
         where T : struct, Enum
     {
-        if (string.IsNullOrEmpty(value))
-            throw new ArgumentNullException(nameof(value));
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException($"'{nameof(value)}' cannot be null or whitespace.", nameof(value));
 
         value = new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray());
 
@@ -77,12 +77,12 @@ internal static class EnumExtensions
     /// <param name="value">The string to be converted.</param>
     /// <param name="result">When this method returns, contains the <typeparamref name="T"/>.</param>
     /// <returns><see langword="true"/> if the value was found; otherwise <see langword="false"/>.</returns>
-    /// <exception cref="ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentException"><paramref name="value"/> is <see langword="null"/> or whitespace.</exception>
     public static bool TryConvertToEnum<T>(this string value, out T result)
         where T : struct, Enum
     {
-        if (string.IsNullOrEmpty(value))
-            throw new ArgumentNullException(nameof(value));
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException($"'{nameof(value)}' cannot be null or whitespace.", nameof(value));
 
         value = new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray());
 

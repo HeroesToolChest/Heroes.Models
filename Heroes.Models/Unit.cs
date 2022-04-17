@@ -203,8 +203,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
     public bool AddAbility(Ability ability)
     {
-        if (ability is null)
-            throw new ArgumentNullException(nameof(ability));
+        ArgumentNullException.ThrowIfNull(ability, nameof(ability));
 
         if (ability.AbilityTalentId == null)
             throw new ArgumentException(nameof(ability.AbilityTalentId));
@@ -221,8 +220,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
     public bool ContainsAbility(Ability ability)
     {
-        if (ability is null)
-            throw new ArgumentNullException(nameof(ability));
+        ArgumentNullException.ThrowIfNull(ability, nameof(ability));
 
         if (ability.AbilityTalentId == null)
             throw new ArgumentException(nameof(ability.AbilityTalentId));
@@ -238,10 +236,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
     public bool ContainsAbility(AbilityTalentId abilityTalentId)
     {
-        if (abilityTalentId == null)
-        {
-            throw new ArgumentNullException(nameof(abilityTalentId));
-        }
+        ArgumentNullException.ThrowIfNull(abilityTalentId, nameof(abilityTalentId));
 
         return _abilitiesByAbilityTalentId.ContainsKey(abilityTalentId);
     }
@@ -256,7 +251,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     public bool ContainsAbility(string referenceId, StringComparison comparisonType)
     {
         if (string.IsNullOrWhiteSpace(referenceId))
-            throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
+            throw new ArgumentException($"'{nameof(referenceId)}' cannot be null or whitespace.", nameof(referenceId));
 
         return _abilitiesByAbilityTalentId.Any(x => x.Key.ReferenceId.Equals(referenceId, comparisonType));
     }
@@ -270,11 +265,10 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="ArgumentException">The <paramref name="ability"/> <see cref="AbilityTalentId"/> is <see langword="null"/>.</exception>
     public bool RemoveAbility(Ability ability)
     {
-        if (ability is null)
-            throw new ArgumentNullException(nameof(ability));
+        ArgumentNullException.ThrowIfNull(ability, nameof(ability));
 
         if (ability.AbilityTalentId == null)
-            throw new InvalidOperationException(nameof(ability.AbilityTalentId));
+            throw new InvalidOperationException($"{nameof(ability.AbilityTalentId)} cannot be null");
 
         return _abilitiesByAbilityTalentId.Remove(ability.AbilityTalentId);
     }
@@ -288,8 +282,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="KeyNotFoundException"><paramref name="abilityTalentId"/> was not found.</exception>
     public Ability GetAbility(AbilityTalentId abilityTalentId)
     {
-        if (abilityTalentId == null)
-            throw new ArgumentNullException(nameof(abilityTalentId));
+        ArgumentNullException.ThrowIfNull(abilityTalentId, nameof(abilityTalentId));
 
         return _abilitiesByAbilityTalentId[abilityTalentId];
     }
@@ -303,10 +296,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <exception cref="ArgumentNullException"><paramref name="abilityTalentId"/> is <see langword="null"/>.</exception>
     public bool TryGetAbility(AbilityTalentId abilityTalentId, [NotNullWhen(true)] out Ability? ability)
     {
-        if (abilityTalentId == null)
-        {
-            throw new ArgumentNullException(nameof(abilityTalentId));
-        }
+        ArgumentNullException.ThrowIfNull(abilityTalentId, nameof(abilityTalentId));
 
         return _abilitiesByAbilityTalentId.TryGetValue(abilityTalentId, out ability);
     }
@@ -321,7 +311,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     public IEnumerable<Ability> GetAbilitiesFromReferenceId(string referenceId, StringComparison comparisonType)
     {
         if (string.IsNullOrWhiteSpace(referenceId))
-            throw new ArgumentException("Argument cannot be null or emtpy.", nameof(referenceId));
+            throw new ArgumentException($"'{nameof(referenceId)}' cannot be null or whitespace.", nameof(referenceId));
 
         return _abilitiesByAbilityTalentId.Where(x => x.Key.ReferenceId.Equals(referenceId, comparisonType)).Select(x => x.Value);
     }

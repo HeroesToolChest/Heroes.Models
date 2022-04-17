@@ -151,8 +151,7 @@ public class Hero : Unit
     /// <exception cref="ArgumentException">The <paramref name="talent"/> <see cref="AbilityTalentId"/> is null.</exception>
     public void AddTalent(Talent talent)
     {
-        if (talent is null)
-            throw new ArgumentNullException(nameof(talent));
+        ArgumentNullException.ThrowIfNull(talent, nameof(talent));
 
         if (talent.AbilityTalentId is null)
             throw new ArgumentException($"{nameof(talent.AbilityTalentId)} cannot be null", nameof(talent));
@@ -168,10 +167,7 @@ public class Hero : Unit
     /// <exception cref="ArgumentNullException"><paramref name="talentId"/> is <see langword="null"/>.</exception>
     public bool ContainsTalent(string talentId)
     {
-        if (talentId == null)
-        {
-            throw new ArgumentNullException(nameof(talentId));
-        }
+        ArgumentNullException.ThrowIfNull(talentId, nameof(talentId));
 
         return _talentsById.ContainsKey(talentId);
     }
@@ -185,8 +181,7 @@ public class Hero : Unit
     /// <exception cref="ArgumentNullException"><paramref name="talentId"/> is <see langword="null"/>.</exception>
     public bool TryGetTalent(string talentId, [NotNullWhen(true)] out Talent? talent)
     {
-        if (talentId is null)
-            throw new ArgumentNullException(nameof(talentId));
+        ArgumentNullException.ThrowIfNull(talentId, nameof(talentId));
 
         return _talentsById.TryGetValue(talentId, out talent);
     }
@@ -200,8 +195,7 @@ public class Hero : Unit
     /// <exception cref="KeyNotFoundException"><paramref name="talentId"/> was not found.</exception>
     public Talent GetTalent(string talentId)
     {
-        if (talentId is null)
-            throw new ArgumentNullException(nameof(talentId));
+        ArgumentNullException.ThrowIfNull(talentId, nameof(talentId));
 
         return _talentsById[talentId];
     }

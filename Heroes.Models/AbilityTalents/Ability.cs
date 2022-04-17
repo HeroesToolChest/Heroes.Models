@@ -25,8 +25,7 @@ public class Ability : AbilityTalentBase, IEquatable<Ability>
     /// <exception cref="ArgumentNullException"><paramref name="talentBase"/> is <see langword="null"/>.</exception>
     public Ability(AbilityTalentBase talentBase)
     {
-        if (talentBase is null)
-            throw new ArgumentNullException(nameof(talentBase));
+        ArgumentNullException.ThrowIfNull(talentBase, nameof(talentBase));
 
         Name = talentBase.Name;
         IconFileName = talentBase.IconFileName;

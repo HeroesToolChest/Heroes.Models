@@ -127,8 +127,7 @@ public class Bundle : ExtractableBase<Bundle>, IExtractable
     /// <exception cref="ArgumentNullException"><paramref name="heroSkinId"/> is <see langword="null"/>.</exception>
     public bool ContainsHeroSkinId(string heroSkinId)
     {
-        if (heroSkinId is null)
-            throw new ArgumentNullException(nameof(heroSkinId));
+        ArgumentNullException.ThrowIfNull(heroSkinId, nameof(heroSkinId));
 
         return _heroSkins.Contains(heroSkinId);
     }
@@ -142,8 +141,7 @@ public class Bundle : ExtractableBase<Bundle>, IExtractable
     /// <exception cref="KeyNotFoundException"><paramref name="heroId"/> was not found.</exception>
     public IEnumerable<string> GetSkinIdsByHeroId(string heroId)
     {
-        if (heroId is null)
-            throw new ArgumentNullException(nameof(heroId));
+        ArgumentNullException.ThrowIfNull(heroId, nameof(heroId));
 
         return _heroSkinsByHeroId[heroId].ToList();
     }
@@ -157,8 +155,7 @@ public class Bundle : ExtractableBase<Bundle>, IExtractable
     /// <exception cref="ArgumentNullException"><paramref name="heroId"/> is <see langword="null"/>.</exception>
     public bool TryGetSkinIdsByHeroId(string heroId, [NotNullWhen(true)] out IEnumerable<string>? heroSkinIds)
     {
-        if (heroId is null)
-            throw new ArgumentNullException(nameof(heroId));
+        ArgumentNullException.ThrowIfNull(heroId, nameof(heroId));
 
         heroSkinIds = null;
 
