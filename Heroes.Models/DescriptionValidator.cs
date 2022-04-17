@@ -73,7 +73,7 @@ public class DescriptionValidator
         int spaceIndex = startTag.IndexOf(' ');
 
         if (spaceIndex > -1)
-            firstPart = startTag.Slice(0, spaceIndex).TrimStart('<');
+            firstPart = startTag[..spaceIndex].TrimStart('<');
         else
             firstPart = startTag.TrimStart('<');
 
@@ -81,7 +81,6 @@ public class DescriptionValidator
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "to lower needed")]
     private static string CreateEndTag(ReadOnlySpan<char> startTag)
     {
         startTag = startTag.TrimStart('<');
@@ -89,12 +88,26 @@ public class DescriptionValidator
 
         if (spaceDelimeter > 0)
         {
-            ReadOnlySpan<char> firstPart = startTag.Slice(0, spaceDelimeter);
-            return "</" + firstPart.ToString().ToLowerInvariant() + ">";
+            ReadOnlySpan<char> firstPart = startTag[..spaceDelimeter];
+
+            Span<char> buffer = stackalloc char[2 + firstPart.Length + 1];
+            buffer[0] = '<';
+            buffer[1] = '/';
+
+            firstPart.ToLowerInvariant(buffer[2..]);
+            buffer[^1] = '>';
+
+            return buffer.ToString();
         }
         else
         {
-            return "</" + startTag.ToString().ToLowerInvariant();
+            Span<char> buffer = stackalloc char[2 + startTag.Length];
+            buffer[0] = '<';
+            buffer[1] = '/';
+
+            startTag.ToLowerInvariant(buffer[2..]);
+
+            return buffer.ToString();
         }
     }
 
@@ -114,7 +127,7 @@ public class DescriptionValidator
             span[i] = span[position];
         }
 
-        span = span.Slice(0, position - (position - i));
+        span = span[..(position - (position - i))];
     }
 
     // replaces double space or more into single space and lowers the char
@@ -133,7 +146,7 @@ public class DescriptionValidator
             span[i] = char.ToLowerInvariant(span[position]);
         }
 
-        span = span.Slice(0, position - (position - i));
+        span = span[..(position - (position - i))];
     }
 
     // lowers all the chars
@@ -459,7 +472,7 @@ public class DescriptionValidator
                 int spaceIndex = tag.IndexOf(' ');
                 if (spaceIndex > -1)
                 {
-                    Span<char> tagType = tag.Slice(0, spaceIndex);
+                    Span<char> tagType = tag[..spaceIndex];
                     LowerSpan(ref tagType);
                 }
                 else
