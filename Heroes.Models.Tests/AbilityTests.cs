@@ -11,7 +11,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class AbilityTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, true, AbilityTiers.Heroic)]
     [DataRow("abil1", "abil1", AbilityTypes.W, true, AbilityTiers.Activable)]
@@ -63,7 +63,7 @@ public class AbilityTests
         Assert.IsFalse(ability.Equals(talent));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil77", AbilityTypes.Q, true)]
     [DataRow("abil1", "abil77", AbilityTypes.W, false)]
@@ -116,7 +116,7 @@ public class AbilityTests
         Assert.AreNotEqual(talent, ability);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "Abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abiL1", AbilityTypes.Q, false, AbilityTiers.Hearth)]
@@ -158,7 +158,7 @@ public class AbilityTests
         Assert.AreEqual(ability.GetHashCode(), ability2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, true, AbilityTiers.Hearth)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil2", AbilityTypes.Q, false, AbilityTiers.Hearth)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil2", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth)]

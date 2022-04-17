@@ -8,7 +8,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class UnitArmorTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("Hero")]
     [DataRow("Merc")]
     public void EqualsTest(string type)
@@ -35,7 +35,7 @@ public class UnitArmorTests
         Assert.IsTrue(unitArmor.Equals(obj: unitArmor));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("Hero")]
     [DataRow("hero")]
     public void NotEqualsTest(string type)
@@ -62,7 +62,7 @@ public class UnitArmorTests
         Assert.AreNotEqual(new List<string>() { "asdf" }, unitArmor);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("hero", "hero")]
     [DataRow("hero", "Hero")]
     [DataRow("hero", "HERO")]
@@ -91,7 +91,7 @@ public class UnitArmorTests
         Assert.AreEqual(unitArmor.GetHashCode(), unitArmor2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("hero", "hero1")]
     [DataRow("hero", "merc")]
     [DataRow("hero", "")]

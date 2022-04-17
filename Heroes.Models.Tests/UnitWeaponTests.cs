@@ -8,7 +8,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class UnitWeaponTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("weaponId1")]
     [DataRow("weaponId2")]
     public void EqualsTest(string id)
@@ -35,7 +35,7 @@ public class UnitWeaponTests
         Assert.IsTrue(unitWeapon.Equals(obj: unitWeapon));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("weaponId1")]
     [DataRow("weaponId2")]
     public void NotEqualsTest(string id)
@@ -62,7 +62,7 @@ public class UnitWeaponTests
         Assert.AreNotEqual(new List<string>() { "asdf" }, unitWeapon);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("weaponId1", "weaponId1")]
     [DataRow("weaponId1", "WeaponId1")]
     [DataRow("weaponId1", "WEAPONID1")]
@@ -91,7 +91,7 @@ public class UnitWeaponTests
         Assert.AreEqual(unitWeapon.GetHashCode(), unitWeapon2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("weaponId1", "weaponId11")]
     [DataRow("weaponId1", "WeaponId11")]
     [DataRow("weaponId1", "WEAPONID11")]
@@ -120,7 +120,7 @@ public class UnitWeaponTests
         Assert.AreNotEqual(unitWeapon.GetHashCode(), unitWeapon2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(4, 0.25)]
     [DataRow(0, 0)]
     [DataRow(-1, 0)]

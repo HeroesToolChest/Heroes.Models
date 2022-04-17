@@ -26,7 +26,7 @@ public class TooltipDescriptionTests
     private readonly string _localeColoredText = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 </c>damage per second";
     private readonly string _localeColoredTextWithScaling = "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500 (레벨 당 +3.5%)</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200 (레벨 당 +4%) </c>damage per second";
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("")]
     [DataRow("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second")]
     public void EqualsTest(string text)
@@ -47,7 +47,7 @@ public class TooltipDescriptionTests
         Assert.IsTrue(tooltipDescription.Equals(obj: tooltipDescription));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("Deal 500 damage Deal an additional 200 damage per second")]
     [DataRow("Deal 500 damage<n/>Deal an additional 200 damage per second")]
     [DataRow("Deal 500 (+3.5% per level) damage Deal an additional 200 (+4% per level) damage per second")]
@@ -66,7 +66,7 @@ public class TooltipDescriptionTests
         Assert.AreNotEqual(new List<string>() { "asdf" }, tooltipDescription);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(
         "<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second",
         Localization.ENUS,
@@ -90,7 +90,7 @@ public class TooltipDescriptionTests
         Assert.AreEqual(tooltipDescription.GetHashCode(), tooltipDescription2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(
         "<img path=\"QuestIcon\"/>DEAL <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second",
         Localization.ENUS,

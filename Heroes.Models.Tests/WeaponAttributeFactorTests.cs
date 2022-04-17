@@ -8,7 +8,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class WeaponAttributeFactorTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("type1", 5.0)]
     [DataRow("type2", 1.0)]
     public void EqualsTest(string type, double value)
@@ -37,7 +37,7 @@ public class WeaponAttributeFactorTests
         Assert.IsTrue(weaponAttributeFactor.Equals(obj: weaponAttributeFactor));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("type1", 5.0)]
     [DataRow("type2", 1.0)]
     public void NotEqualsTest(string type, double value)
@@ -67,7 +67,7 @@ public class WeaponAttributeFactorTests
         Assert.AreNotEqual(new List<string>() { "asdf" }, weaponAttributeFactor);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("type", 5.0, "type", 5.0)]
     [DataRow("type", 5.0, "type", 10.0)]
     [DataRow("type", 5.0, "Type", 6.0)]
@@ -99,7 +99,7 @@ public class WeaponAttributeFactorTests
         Assert.AreEqual(weaponAttributeFactor.GetHashCode(), weaponAttributeFactor2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("type", 5.0, "type1", 5.0)]
     [DataRow("type", 5.0, "Type1", 6.0)]
     [DataRow("type", 7.0, "TYPE1", 5.0)]

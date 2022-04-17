@@ -8,7 +8,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class AnnouncerTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("ann1")]
     [DataRow("ann2")]
     [DataRow("ANN2")]
@@ -36,7 +36,7 @@ public class AnnouncerTests
         Assert.IsTrue(announcer.Equals(obj: announcer));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("ann1")]
     [DataRow("ann2")]
     public void NotEqualsTest(string id)
@@ -75,7 +75,7 @@ public class AnnouncerTests
         Assert.AreNotEqual(bannerSameId, announcer);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("ann1", "ann1")]
     [DataRow("ann1", "Ann1")]
     [DataRow("ann1", "ANN1")]
@@ -104,7 +104,7 @@ public class AnnouncerTests
         Assert.AreEqual(announcer.GetHashCode(), announcer2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("ann1", "ann2")]
     [DataRow("ann1", "Ann12")]
     [DataRow("ann1", "ANNouncer1")]

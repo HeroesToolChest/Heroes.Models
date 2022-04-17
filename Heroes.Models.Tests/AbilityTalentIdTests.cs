@@ -9,7 +9,7 @@ namespace Heroes.Models.Tests;
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]
 public class AbilityTalentIdTests
 {
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, true)]
     [DataRow("abil1", "abil1", AbilityTypes.W, true)]
@@ -41,7 +41,7 @@ public class AbilityTalentIdTests
         Assert.IsTrue(abilityTalentId.Equals(obj: abilityTalentId));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil77", AbilityTypes.Q, true)]
     [DataRow("abil1", "abil77", AbilityTypes.W, false)]
@@ -74,7 +74,7 @@ public class AbilityTalentIdTests
         Assert.AreNotEqual(new List<string>() { "asdf" }, abilityTalentId);
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil1", "abil1", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil1", "Abil1", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil1", "abiL1", AbilityTypes.Q, false)]
@@ -106,7 +106,7 @@ public class AbilityTalentIdTests
         Assert.AreEqual(abilityTalentId.GetHashCode(), abilityTalentId2!.GetHashCode());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil1", "abil1", AbilityTypes.Q, true)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil1", "abil2", AbilityTypes.Q, false)]
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, "abil2", "abil1", AbilityTypes.Q, false)]
