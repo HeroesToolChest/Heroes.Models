@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
-	<ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <NoWarn>$(NoWarn);CA1014</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +24,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Heroes.Models\Heroes.Models.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <NoWarn>$(NoWarn);CA1014</NoWarn>
-  </PropertyGroup>
 
 </Project>
