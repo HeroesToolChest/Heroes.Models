@@ -10,7 +10,7 @@ public class BundleTests
     [TestMethod]
     public void GetSkinIdsByHeroIdTest()
     {
-        Bundle bundle = new Bundle();
+        Bundle bundle = new();
 
         bundle.AddHeroSkin("hero1", "heroSkinId1");
         bundle.AddHeroSkin("hero1", "heroSkinId2");
@@ -27,7 +27,7 @@ public class BundleTests
     [TestMethod]
     public void TryGetSkinIdsByHeroIdTest()
     {
-        Bundle bundle = new Bundle();
+        Bundle bundle = new();
 
         bundle.AddHeroSkin("hero1", "heroSkinId1");
         bundle.AddHeroSkin("hero1", "heroSkinId2");

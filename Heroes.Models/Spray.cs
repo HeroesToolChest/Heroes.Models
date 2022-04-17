@@ -55,7 +55,7 @@ public class Spray : ExtractableBase<Spray>, IExtractable
     /// <summary>
     /// Gets or sets the texture sheet associated with the spray.
     /// </summary>
-    public TextureSheet TextureSheet { get; set; } = new TextureSheet();
+    public TextureSheet TextureSheet { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the animation count.

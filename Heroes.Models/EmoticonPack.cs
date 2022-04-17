@@ -41,5 +41,5 @@ public class EmoticonPack : ExtractableBase<EmoticonPack>, IExtractable
     /// <summary>
     /// Gets a unique collection of emoticons ids in this emoticon pack.
     /// </summary>
-    public HashSet<string> EmoticonIds { get; } = new HashSet<string>();
+    public HashSet<string> EmoticonIds { get; } = new();
 }

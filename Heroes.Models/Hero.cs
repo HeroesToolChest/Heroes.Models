@@ -11,7 +11,7 @@ namespace Heroes.Models;
 /// </summary>
 public class Hero : Unit
 {
-    private readonly Dictionary<string, Talent> _talentsById = new Dictionary<string, Talent>(StringComparer.Ordinal);
+    private readonly Dictionary<string, Talent> _talentsById = new(StringComparer.Ordinal);
 
     /// <summary>
     /// Gets or sets the id of CHero element stored in blizzard xml file.
@@ -36,7 +36,7 @@ public class Hero : Unit
     /// <summary>
     /// Gets or sets the hero portraits.
     /// </summary>
-    public HeroPortrait HeroPortrait { get; set; } = new HeroPortrait();
+    public HeroPortrait HeroPortrait { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the date the hero was release.
@@ -76,7 +76,7 @@ public class Hero : Unit
     /// <summary>
     /// Gets a unique collection roles of the hero, multiclass will be first if hero has multiple roles.
     /// </summary>
-    public HashSet<string> Roles { get; } = new HashSet<string>(StringComparer.Ordinal);
+    public HashSet<string> Roles { get; } = new(StringComparer.Ordinal);
 
     /// <summary>
     /// Gets or sets the expanded role of the hero.
@@ -101,17 +101,17 @@ public class Hero : Unit
     /// <summary>
     /// Gets a unique collection of <see cref="HeroSkin"/> ids that are associated with this hero. This are usually a different model.
     /// </summary>
-    public HashSet<string> SkinIds { get; } = new HashSet<string>();
+    public HashSet<string> SkinIds { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of <see cref="HeroSkin"/> ids that are associated with this hero. This are usually just texture variations of the same model.
     /// </summary>
-    public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+    public HashSet<string> VariationSkinIds { get; } = new();
 
     /// <summary>
     /// Gets a unique colection of <see cref="VoiceLine"/> ids that are associated with this hero.
     /// </summary>
-    public HashSet<string> VoiceLineIds { get; } = new HashSet<string>();
+    public HashSet<string> VoiceLineIds { get; } = new();
 
     /// <summary>
     /// Gets a value indicating whether this hero uses a mount.
@@ -126,12 +126,12 @@ public class Hero : Unit
     /// <summary>
     /// Gets a unique collection of <see cref="Mount.MountCategory"/> ids that this hero is allowed to use.
     /// </summary>
-    public HashSet<string> AllowedMountCategoryIds { get; } = new HashSet<string>();
+    public HashSet<string> AllowedMountCategoryIds { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of <see cref="Hero"/> objects.
     /// </summary>
-    public HashSet<Hero> HeroUnits { get; } = new HashSet<Hero>();
+    public HashSet<Hero> HeroUnits { get; } = new();
 
     /// <summary>
     /// Returns a collection of all the talents in the selected tier.

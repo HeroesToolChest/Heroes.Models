@@ -13,7 +13,7 @@ public class WeaponAttributeFactorTests
     [DataRow("type2", 1.0)]
     public void EqualsTest(string type, double value)
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = type,
             Value = value,
@@ -25,7 +25,7 @@ public class WeaponAttributeFactorTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = "type1",
             Value = 12.0,
@@ -42,7 +42,7 @@ public class WeaponAttributeFactorTests
     [DataRow("type2", 1.0)]
     public void NotEqualsTest(string type, double value)
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = "type1333",
             Value = 12.0,
@@ -58,7 +58,7 @@ public class WeaponAttributeFactorTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = "type1333",
             Value = 12.0,
@@ -76,13 +76,13 @@ public class WeaponAttributeFactorTests
     [DataRow("TYPE", -1.0, "TYPE", 5.0)]
     public void OperatorEqualTest(string type, double value, string type2, double value2)
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = type,
             Value = value,
         };
 
-        WeaponAttributeFactor weaponAttributeFactor2 = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor2 = new()
         {
             Type = type2,
             Value = value2,
@@ -107,13 +107,13 @@ public class WeaponAttributeFactorTests
     [DataRow("TYPE", -1.0, "TYPE1", 5.0)]
     public void OperatorNotEqualTest(string type, double value, string type2, double value2)
     {
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = type,
             Value = value,
         };
 
-        WeaponAttributeFactor weaponAttributeFactor2 = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor2 = new()
         {
             Type = type2,
             Value = value2,

@@ -8,7 +8,7 @@ public class RewardPortrait : RewardBase, IExtractable
     /// <summary>
     /// Gets or sets the texture sheet associated with the portrait.
     /// </summary>
-    public TextureSheet TextureSheet { get; set; } = new TextureSheet();
+    public TextureSheet TextureSheet { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the type of collection category.

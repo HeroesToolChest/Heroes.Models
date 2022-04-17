@@ -20,17 +20,17 @@ public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     /// <summary>
     /// Gets a unique collection of universal aliases for the emoticon.
     /// </summary>
-    public HashSet<string> UniversalAliases { get; } = new HashSet<string>();
+    public HashSet<string> UniversalAliases { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of localized aliases for the emoticon.
     /// </summary>
-    public HashSet<string> LocalizedAliases { get; } = new HashSet<string>();
+    public HashSet<string> LocalizedAliases { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of search texts for the emoticon.
     /// </summary>
-    public HashSet<string> SearchTexts { get; } = new HashSet<string>();
+    public HashSet<string> SearchTexts { get; } = new();
 
     /// <summary>
     /// Gets or sets a value indicating whether the aliases are case sensitive.
@@ -55,10 +55,10 @@ public class Emoticon : ExtractableBase<Emoticon>, IExtractable
     /// <summary>
     /// Gets or sets the texture sheet associated with the emoticon.
     /// </summary>
-    public TextureSheet TextureSheet { get; set; } = new TextureSheet();
+    public TextureSheet TextureSheet { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the image properties of the emoticon.
     /// </summary>
-    public EmoticonImage Image { get; set; } = new EmoticonImage();
+    public EmoticonImage Image { get; set; } = new();
 }

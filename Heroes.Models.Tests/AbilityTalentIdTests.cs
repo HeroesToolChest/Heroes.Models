@@ -17,7 +17,7 @@ public class AbilityTalentIdTests
     [DataRow("abil1", "abilbutton", AbilityTypes.W, true)]
     public void EqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive)
     {
-        AbilityTalentId abilityTalentId = new AbilityTalentId(referenceId, buttonId)
+        AbilityTalentId abilityTalentId = new(referenceId, buttonId)
         {
             AbilityType = abilityTypes,
             IsPassive = isPassive,
@@ -29,7 +29,7 @@ public class AbilityTalentIdTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        AbilityTalentId abilityTalentId = new AbilityTalentId("abil1", "abilbutton")
+        AbilityTalentId abilityTalentId = new("abil1", "abilbutton")
         {
             AbilityType = AbilityTypes.W,
             IsPassive = true,
@@ -49,13 +49,13 @@ public class AbilityTalentIdTests
     [DataRow("abil11", "abil77", AbilityTypes.Q, false)]
     public void NotEqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive)
     {
-        AbilityTalentId abilityTalentId = new AbilityTalentId("abil1", "abil77")
+        AbilityTalentId abilityTalentId = new("abil1", "abil77")
         {
             AbilityType = AbilityTypes.Q,
             IsPassive = false,
         };
 
-        Assert.AreNotEqual(abilityTalentId, new AbilityTalentId(referenceId, buttonId)
+        Assert.AreNotEqual(abilityTalentId, new(referenceId, buttonId)
         {
             AbilityType = abilityTypes,
             IsPassive = isPassive,
@@ -65,7 +65,7 @@ public class AbilityTalentIdTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        AbilityTalentId abilityTalentId = new AbilityTalentId("abil1", "abil77")
+        AbilityTalentId abilityTalentId = new("abil1", "abil77")
         {
             AbilityType = AbilityTypes.Q,
             IsPassive = false,
@@ -83,13 +83,13 @@ public class AbilityTalentIdTests
     [DataRow("ABIL1", "ABIL1", AbilityTypes.Q, false, "abil1", "abil1", AbilityTypes.Q, false)]
     public void OperatorEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2)
     {
-        AbilityTalentId abilityTalentId2 = new AbilityTalentId(referenceId2, buttonId2)
+        AbilityTalentId abilityTalentId2 = new(referenceId2, buttonId2)
         {
             AbilityType = abilityTypes2,
             IsPassive = isPassive2,
         };
 
-        AbilityTalentId abilityTalentId = new AbilityTalentId(referenceId, buttonId)
+        AbilityTalentId abilityTalentId = new(referenceId, buttonId)
         {
             AbilityType = abilityTypes,
             IsPassive = isPassive,
@@ -114,13 +114,13 @@ public class AbilityTalentIdTests
     [DataRow("abil1", "ab1", AbilityTypes.Q, false, "abil1", "abil1", AbilityTypes.Q, false)]
     public void OperatorNotEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2)
     {
-        AbilityTalentId abilityTalentId2 = new AbilityTalentId(referenceId2, buttonId2)
+        AbilityTalentId abilityTalentId2 = new(referenceId2, buttonId2)
         {
             AbilityType = abilityTypes2,
             IsPassive = isPassive2,
         };
 
-        AbilityTalentId abilityTalentId = new AbilityTalentId(referenceId, buttonId)
+        AbilityTalentId abilityTalentId = new(referenceId, buttonId)
         {
             AbilityType = abilityTypes,
             IsPassive = isPassive,

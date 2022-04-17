@@ -31,7 +31,7 @@ public class TooltipDescriptionTests
     [DataRow("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second")]
     public void EqualsTest(string text)
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(text);
+        TooltipDescription tooltipDescription = new(text);
 
         Assert.AreEqual(tooltipDescription, tooltipDescription);
     }
@@ -39,7 +39,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
+        TooltipDescription tooltipDescription = new("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
 
         Assert.IsFalse(tooltipDescription.Equals((int?)null));
         Assert.IsFalse(tooltipDescription.Equals(5));
@@ -53,7 +53,7 @@ public class TooltipDescriptionTests
     [DataRow("Deal 500 (+3.5% per level) damage Deal an additional 200 (+4% per level) damage per second")]
     public void NotEqualsTest(string text)
     {
-        TooltipDescription tooltipDescription = new TooltipDescription("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
+        TooltipDescription tooltipDescription = new("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
 
         Assert.AreNotEqual(tooltipDescription, new TooltipDescription(text));
     }
@@ -61,7 +61,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
+        TooltipDescription tooltipDescription = new("<img path=\"QuestIcon\"/>Deal <c val=\"#TooltipNumbers\">500~~0.035~~</c> damage<n/>Deal an additional <c val=\"#TooltipNumbers\">200~~0.04~~ </c>damage per second");
 
         Assert.AreNotEqual(new List<string>() { "asdf" }, tooltipDescription);
     }
@@ -75,9 +75,9 @@ public class TooltipDescriptionTests
 
     public void OperatorEqualTest(string text, Localization localization, string text2, Localization localization2)
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(text, localization);
+        TooltipDescription tooltipDescription = new(text, localization);
 
-        TooltipDescription tooltipDescription2 = new TooltipDescription(text2, localization2);
+        TooltipDescription tooltipDescription2 = new(text2, localization2);
 
 #pragma warning disable SA1131 // Use readable conditions
         Assert.IsFalse(null! == tooltipDescription2);
@@ -108,9 +108,9 @@ public class TooltipDescriptionTests
         Localization.ENUS)]
     public void OperatorNotEqualTest(string text, Localization localization, string text2, Localization localization2)
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(text, localization);
+        TooltipDescription tooltipDescription = new(text, localization);
 
-        TooltipDescription tooltipDescription2 = new TooltipDescription(text2, localization2);
+        TooltipDescription tooltipDescription2 = new(text2, localization2);
 
 #pragma warning disable SA1131 // Use readable conditions
         Assert.IsTrue(null! != tooltipDescription2);
@@ -126,7 +126,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void DescriptionTest()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(_testDescription);
+        TooltipDescription tooltipDescription = new(_testDescription);
 
         Assert.AreEqual(_plainText, tooltipDescription.PlainText);
         Assert.AreEqual(_plainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
@@ -139,7 +139,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void DescriptionEmptyTest()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(string.Empty);
+        TooltipDescription tooltipDescription = new(string.Empty);
 
         Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.RawDescription));
         Assert.IsTrue(string.IsNullOrEmpty(tooltipDescription.PlainText));
@@ -153,7 +153,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void DescriptionLocaleTest()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(_testDescription, Localization.KOKR);
+        TooltipDescription tooltipDescription = new(_testDescription, Localization.KOKR);
 
         Assert.AreEqual(_localePlainText, tooltipDescription.PlainText);
         Assert.AreEqual(_localePlainTextWithNewlines, tooltipDescription.PlainTextWithNewlines);
@@ -166,7 +166,7 @@ public class TooltipDescriptionTests
     [TestMethod]
     public void DescriptionErrorTagTest()
     {
-        TooltipDescription tooltipDescription = new TooltipDescription(_errorDescription, Localization.ENUS);
+        TooltipDescription tooltipDescription = new(_errorDescription, Localization.ENUS);
 
         Assert.IsTrue(tooltipDescription.HasErrorTag);
     }

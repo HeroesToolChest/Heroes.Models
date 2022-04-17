@@ -8,7 +8,7 @@ namespace Heroes.Models.Tests;
 [TestClass]
 public class HeroTests
 {
-    private readonly Hero _hero = new Hero();
+    private readonly Hero _hero = new();
 
     public HeroTests()
     {

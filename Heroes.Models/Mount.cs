@@ -56,7 +56,7 @@ public class Mount : ExtractableBase<Mount>, IExtractable
     /// <summary>
     /// Gets a unique collection of <see cref="Mount"/> ids. This are usually just texture variations of the same model.
     /// </summary>
-    public HashSet<string> VariationMountIds { get; } = new HashSet<string>();
+    public HashSet<string> VariationMountIds { get; } = new();
 
     /// <summary>
     /// Gets or sets the franchise the mount belongs to.

@@ -15,7 +15,7 @@ public class PortraitPack : ExtractableBase<PortraitPack>, IExtractable
     /// <summary>
     /// Gets a unique collection of reward portrait ids in the portrait pack.
     /// </summary>
-    public HashSet<string> RewardPortraitIds { get; } = new HashSet<string>();
+    public HashSet<string> RewardPortraitIds { get; } = new();
 
     /// <summary>
     /// Gets or sets the event name associated with this portrait.

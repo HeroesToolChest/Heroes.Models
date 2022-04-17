@@ -41,17 +41,17 @@ public class HeroSkin : ExtractableBase<HeroSkin>, IExtractable
     /// <summary>
     /// Gets a unique collection of features.
     /// </summary>
-    public HashSet<string> Features { get; } = new HashSet<string>();
+    public HashSet<string> Features { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of <see cref="HeroSkin"/> ids. This are usually just texture variations of the same model.
     /// </summary>
-    public HashSet<string> VariationSkinIds { get; } = new HashSet<string>();
+    public HashSet<string> VariationSkinIds { get; } = new();
 
     /// <summary>
     /// Gets a unique colection of <see cref="VoiceLine"/> ids that are associated with this hero skin.
     /// </summary>
-    public HashSet<string> VoiceLineIds { get; } = new HashSet<string>();
+    public HashSet<string> VoiceLineIds { get; } = new();
 
     /// <summary>
     /// Gets or sets the franchise the hero skin belongs to.

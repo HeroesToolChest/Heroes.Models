@@ -13,7 +13,7 @@ public class UnitWeaponTests
     [DataRow("weaponId2")]
     public void EqualsTest(string id)
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = id,
         };
@@ -24,7 +24,7 @@ public class UnitWeaponTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = "weaponId1",
         };
@@ -40,7 +40,7 @@ public class UnitWeaponTests
     [DataRow("weaponId2")]
     public void NotEqualsTest(string id)
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = "abc",
         };
@@ -54,7 +54,7 @@ public class UnitWeaponTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = "abc",
         };
@@ -70,12 +70,12 @@ public class UnitWeaponTests
     [DataRow("WEAPONID1", "WEAPONID1")]
     public void OperatorEqualTest(string id, string id2)
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = id,
         };
 
-        UnitWeapon unitWeapon2 = new UnitWeapon()
+        UnitWeapon unitWeapon2 = new()
         {
             WeaponNameId = id2,
         };
@@ -99,12 +99,12 @@ public class UnitWeaponTests
     [DataRow("WEAPONID1", "WEAPONID11")]
     public void OperatorNotEqualTest(string id, string id2)
     {
-        UnitWeapon unitWeapon = new UnitWeapon()
+        UnitWeapon unitWeapon = new()
         {
             WeaponNameId = id,
         };
 
-        UnitWeapon unitWeapon2 = new UnitWeapon()
+        UnitWeapon unitWeapon2 = new()
         {
             WeaponNameId = id2,
         };
@@ -126,7 +126,7 @@ public class UnitWeaponTests
     [DataRow(-1, 0)]
     public void GetWeponAttackSpeedTests(double period, double attackPerSecond)
     {
-        UnitWeapon weapon = new UnitWeapon()
+        UnitWeapon weapon = new()
         {
             Period = period,
         };
@@ -137,8 +137,8 @@ public class UnitWeaponTests
     [TestMethod]
     public void AddWeaponAttributeFactorTests()
     {
-        UnitWeapon unitWeapon = new UnitWeapon();
-        WeaponAttributeFactor weaponAttributeFactor = new WeaponAttributeFactor()
+        UnitWeapon unitWeapon = new();
+        WeaponAttributeFactor weaponAttributeFactor = new()
         {
             Type = "type1",
             Value = 5,
@@ -148,7 +148,7 @@ public class UnitWeaponTests
 
         Assert.IsTrue(unitWeapon.AttributeFactors.Contains(weaponAttributeFactor));
 
-        WeaponAttributeFactor weaponAttributeFactor2 = new WeaponAttributeFactor()
+        WeaponAttributeFactor weaponAttributeFactor2 = new()
         {
             Type = "type1",
             Value = 7,
@@ -163,7 +163,7 @@ public class UnitWeaponTests
     [TestMethod]
     public void AttributeFactorDoesNotExistTest()
     {
-        UnitWeapon unitWeapon = new UnitWeapon();
+        UnitWeapon unitWeapon = new();
 
         Assert.IsFalse(unitWeapon.AttributeFactors.Contains(new WeaponAttributeFactor()));
     }

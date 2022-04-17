@@ -27,7 +27,7 @@ public class UnitWeapon : IEquatable<UnitWeapon>
     /// <summary>
     /// Gets the collection of attribute factors.
     /// </summary>
-    public HashSet<WeaponAttributeFactor> AttributeFactors { get; } = new HashSet<WeaponAttributeFactor>();
+    public HashSet<WeaponAttributeFactor> AttributeFactors { get; } = new();
 
     /// <summary>
     /// Gets or sets the time between attacks.

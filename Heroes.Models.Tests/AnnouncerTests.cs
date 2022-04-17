@@ -14,7 +14,7 @@ public class AnnouncerTests
     [DataRow("ANN2")]
     public void EqualsTest(string id)
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = id,
         };
@@ -25,7 +25,7 @@ public class AnnouncerTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = "ann1",
         };
@@ -41,7 +41,7 @@ public class AnnouncerTests
     [DataRow("ann2")]
     public void NotEqualsTest(string id)
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = "announcer",
         };
@@ -55,17 +55,17 @@ public class AnnouncerTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = "announcer",
         };
 
-        Banner banner = new Banner()
+        Banner banner = new()
         {
             Id = "banner",
         };
 
-        Banner bannerSameId = new Banner()
+        Banner bannerSameId = new()
         {
             Id = "announcer",
         };
@@ -83,12 +83,12 @@ public class AnnouncerTests
     [DataRow("ANN1", "ann1")]
     public void OperatorEqualTest(string id, string id2)
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = id,
         };
 
-        Announcer announcer2 = new Announcer()
+        Announcer announcer2 = new()
         {
             Id = id2,
         };
@@ -112,12 +112,12 @@ public class AnnouncerTests
     [DataRow("ANN1", "")]
     public void OperatorNotEqualTest(string id, string id2)
     {
-        Announcer announcer = new Announcer()
+        Announcer announcer = new()
         {
             Id = id,
         };
 
-        Announcer announcer2 = new Announcer()
+        Announcer announcer2 = new()
         {
             Id = id2,
         };

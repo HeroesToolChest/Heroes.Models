@@ -11,7 +11,7 @@ namespace Heroes.Models;
 /// </summary>
 public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
 {
-    private readonly Dictionary<AbilityTalentId, Ability> _abilitiesByAbilityTalentId = new Dictionary<AbilityTalentId, Ability>();
+    private readonly Dictionary<AbilityTalentId, Ability> _abilitiesByAbilityTalentId = new();
 
     /// <summary>
     /// Gets or sets the id of CUnit element stored in blizzard xml file.
@@ -31,27 +31,27 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <summary>
     /// Gets a unique collection of the hero play styles.
     /// </summary>
-    public HashSet<string> HeroDescriptors { get; } = new HashSet<string>();
+    public HashSet<string> HeroDescriptors { get; } = new();
 
     /// <summary>
     /// Gets or sets the Life properties.
     /// </summary>
-    public UnitLife Life { get; set; } = new UnitLife();
+    public UnitLife Life { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the Energy properties.
     /// </summary>
-    public UnitEnergy Energy { get; set; } = new UnitEnergy();
+    public UnitEnergy Energy { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the Shield properties.
     /// </summary>
-    public UnitShield Shield { get; set; } = new UnitShield();
+    public UnitShield Shield { get; set; } = new();
 
     /// <summary>
     /// Gets a collection unit armor.
     /// </summary>
-    public HashSet<UnitArmor> Armor { get; } = new HashSet<UnitArmor>();
+    public HashSet<UnitArmor> Armor { get; } = new();
 
     /// <summary>
     /// Gets or sets the size of the radius.
@@ -91,17 +91,17 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <summary>
     /// Gets a unique collection of basic attack weapons.
     /// </summary>
-    public HashSet<UnitWeapon> Weapons { get; } = new HashSet<UnitWeapon>();
+    public HashSet<UnitWeapon> Weapons { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of attributes.
     /// </summary>
-    public HashSet<string> Attributes { get; } = new HashSet<string>();
+    public HashSet<string> Attributes { get; } = new();
 
     /// <summary>
     /// Gets a unique collection of additional units associated with this unit.
     /// </summary>
-    public HashSet<string> UnitIds { get; } = new HashSet<string>();
+    public HashSet<string> UnitIds { get; } = new();
 
     /// <summary>
     /// Gets or sets the parent link of this unit.
@@ -136,7 +136,7 @@ public class Unit : ExtractableBase<Unit>, IExtractable, IMapSpecific
     /// <summary>
     /// Gets or sets the unit portraits.
     /// </summary>
-    public UnitPortrait UnitPortrait { get; set; } = new UnitPortrait();
+    public UnitPortrait UnitPortrait { get; set; } = new();
 
     /// <summary>
     /// Returns a collection of all the primary abilities (no parent linked abilities).

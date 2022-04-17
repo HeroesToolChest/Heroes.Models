@@ -10,8 +10,8 @@ namespace Heroes.Models;
 /// </summary>
 public class Bundle : ExtractableBase<Bundle>, IExtractable
 {
-    private readonly HashSet<string> _heroSkins = new HashSet<string>();
-    private readonly Dictionary<string, HashSet<string>> _heroSkinsByHeroId = new Dictionary<string, HashSet<string>>();
+    private readonly HashSet<string> _heroSkins = new();
+    private readonly Dictionary<string, HashSet<string>> _heroSkinsByHeroId = new();
 
     /// <summary>
     /// Gets or sets the sort name used for sorting the bundles.

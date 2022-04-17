@@ -13,7 +13,7 @@ public class UnitArmorTests
     [DataRow("Merc")]
     public void EqualsTest(string type)
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = type,
         };
@@ -24,7 +24,7 @@ public class UnitArmorTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = "Hero",
         };
@@ -40,7 +40,7 @@ public class UnitArmorTests
     [DataRow("hero")]
     public void NotEqualsTest(string type)
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = "merc",
         };
@@ -54,7 +54,7 @@ public class UnitArmorTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = "merc",
         };
@@ -70,12 +70,12 @@ public class UnitArmorTests
     [DataRow("HERO", "hero")]
     public void OperatorEqualTest(string type, string type2)
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = type,
         };
 
-        UnitArmor unitArmor2 = new UnitArmor()
+        UnitArmor unitArmor2 = new()
         {
             Type = type2,
         };
@@ -97,12 +97,12 @@ public class UnitArmorTests
     [DataRow("hero", "")]
     public void OperatorNotEqualTest(string type, string type2)
     {
-        UnitArmor unitArmor = new UnitArmor()
+        UnitArmor unitArmor = new()
         {
             Type = type,
         };
 
-        UnitArmor unitArmor2 = new UnitArmor()
+        UnitArmor unitArmor2 = new()
         {
             Type = type2,
         };

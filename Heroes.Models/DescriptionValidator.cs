@@ -14,7 +14,7 @@ public class DescriptionValidator
     private readonly Localization _localization = Localization.ENUS;
     private readonly ReadOnlyMemory<char> _gameStringMemory;
 
-    private readonly Stack<string> _textStack = new Stack<string>(101);
+    private readonly Stack<string> _textStack = new(101);
 
     private int _iterator;
 
@@ -156,7 +156,7 @@ public class DescriptionValidator
     {
         ValidateGameString(string.Empty);
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         if (_textStack.Count < 1)
             return string.Empty;
@@ -208,7 +208,7 @@ public class DescriptionValidator
     private void ValidateGameString(string startTag)
     {
         ReadOnlySpan<char> gameStringSpan = _gameStringMemory.Span;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         for (; _iterator < gameStringSpan.Length; _iterator++)
         {
@@ -299,7 +299,7 @@ public class DescriptionValidator
     private string ParsePlainText(bool includeNewlineTags, bool includeScaling)
     {
         ReadOnlySpan<char> gameStringSpan = _gameStringMemory.Span;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         for (; _iterator < gameStringSpan.Length; _iterator++)
         {
@@ -377,7 +377,7 @@ public class DescriptionValidator
     private string ParseColoredText(bool includeScaling)
     {
         ReadOnlySpan<char> gameStringSpan = _gameStringMemory.Span;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         for (; _iterator < gameStringSpan.Length; _iterator++)
         {

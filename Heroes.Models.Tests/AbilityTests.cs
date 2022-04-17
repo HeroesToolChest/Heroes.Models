@@ -19,7 +19,7 @@ public class AbilityTests
     [DataRow("abil1", "abilbutton", AbilityTypes.W, true, AbilityTiers.Basic)]
     public void EqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier)
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -35,7 +35,7 @@ public class AbilityTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
             {
@@ -45,7 +45,7 @@ public class AbilityTests
             Tier = AbilityTiers.Basic,
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
             {
@@ -71,7 +71,7 @@ public class AbilityTests
     [DataRow("abil11", "abil77", AbilityTypes.Q, false)]
     public void NotEqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive)
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -93,7 +93,7 @@ public class AbilityTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -102,7 +102,7 @@ public class AbilityTests
             },
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -127,7 +127,7 @@ public class AbilityTests
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Basic)]
     public void OperatorEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, AbilityTiers tier2)
     {
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
             {
@@ -137,7 +137,7 @@ public class AbilityTests
             Tier = tier2,
         };
 
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -168,7 +168,7 @@ public class AbilityTests
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Hearth, "abil1", "abil1", AbilityTypes.Q, false, AbilityTiers.Heroic)]
     public void OperatorNotEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, AbilityTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, AbilityTiers tier2)
     {
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
             {
@@ -178,7 +178,7 @@ public class AbilityTests
             Tier = tier2,
         };
 
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -188,7 +188,7 @@ public class AbilityTests
             Tier = tier,
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -213,7 +213,7 @@ public class AbilityTests
     [TestMethod]
     public void AbilityAddedSuccesfullyToHashSetTest()
     {
-        Ability ability1 = new Ability()
+        Ability ability1 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -222,7 +222,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId("AbilitY1", "abil1")
             {
@@ -231,7 +231,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        HashSet<Ability> abilities = new HashSet<Ability>();
+        HashSet<Ability> abilities = new();
         Assert.IsTrue(abilities.Add(ability1));
         Assert.IsTrue(abilities.Add(ability2));
     }
@@ -239,7 +239,7 @@ public class AbilityTests
     [TestMethod]
     public void AbilityAddedFailedToHashSetTest()
     {
-        Ability ability1 = new Ability()
+        Ability ability1 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -248,7 +248,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -257,7 +257,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        HashSet<Ability> abilities = new HashSet<Ability>();
+        HashSet<Ability> abilities = new();
         Assert.IsTrue(abilities.Add(ability1));
         Assert.IsFalse(abilities.Add(ability2));
     }
@@ -265,7 +265,7 @@ public class AbilityTests
     [TestMethod]
     public void GetAbilitiesCountTest()
     {
-        Ability ability1 = new Ability()
+        Ability ability1 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -274,7 +274,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -283,7 +283,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability3 = new Ability()
+        Ability ability3 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
             {
@@ -292,7 +292,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(ability1);
         unit.AddAbility(ability2);
         unit.AddAbility(ability3);
@@ -303,7 +303,7 @@ public class AbilityTests
     [TestMethod]
     public void ContainsAbilityTest()
     {
-        Ability ability1 = new Ability()
+        Ability ability1 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -312,7 +312,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -321,7 +321,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability3 = new Ability()
+        Ability ability3 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
             {
@@ -330,7 +330,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(ability1);
         unit.AddAbility(ability2);
         unit.AddAbility(ability3);
@@ -373,7 +373,7 @@ public class AbilityTests
     [TestMethod]
     public void RemoveAbilityTest()
     {
-        Ability ability1 = new Ability()
+        Ability ability1 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -382,7 +382,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability2 = new Ability()
+        Ability ability2 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability1", "abil1")
             {
@@ -391,7 +391,7 @@ public class AbilityTests
             IconFileName = "test.png",
         };
 
-        Ability ability3 = new Ability()
+        Ability ability3 = new()
         {
             AbilityTalentId = new AbilityTalentId("Ability2", "abil2")
             {
@@ -399,7 +399,7 @@ public class AbilityTests
             },
         };
 
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(ability1);
         unit.AddAbility(ability2);
         unit.AddAbility(ability3);
@@ -452,7 +452,7 @@ public class AbilityTests
     [TestMethod]
     public void AddPassiveAbilityTest()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
@@ -474,7 +474,7 @@ public class AbilityTests
     [TestMethod]
     public void ContainsPassiveAbilityTest()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
@@ -522,7 +522,7 @@ public class AbilityTests
     [TestMethod]
     public void RemovePassiveAbilityTest()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
@@ -553,7 +553,7 @@ public class AbilityTests
     [TestMethod]
     public void GetAbilityTests()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
@@ -593,7 +593,7 @@ public class AbilityTests
     [TestMethod]
     public void TryGetAbilityTests()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId(string.Empty, "pass1")
@@ -632,7 +632,7 @@ public class AbilityTests
     [TestMethod]
     public void GetAbilitiesTests()
     {
-        Unit unit = new Unit();
+        Unit unit = new();
         unit.AddAbility(new Ability()
         {
             AbilityTalentId = new AbilityTalentId("hello", "pass1")

@@ -8,8 +8,8 @@ namespace Heroes.Models.Tests;
 [TestClass]
 public class UnitTests
 {
-    private readonly Unit _unit = new Unit();
-    private readonly Unit _nullUnit = new Unit();
+    private readonly Unit _unit = new();
+    private readonly Unit _nullUnit = new();
 
     public UnitTests()
     {

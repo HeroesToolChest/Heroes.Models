@@ -8,7 +8,7 @@ public class TypeDescription : ExtractableBase<Boost>, IExtractable
     /// <summary>
     /// Gets or sets the texture sheet associated with the type description.
     /// </summary>
-    public TextureSheet TextureSheet { get; set; } = new TextureSheet();
+    public TextureSheet TextureSheet { get; set; } = new();
 
     /// <summary>
     /// Gets or sets the icon slot number on the <see cref="TextureSheet"/>. Zero index based.

@@ -17,7 +17,7 @@ public class TalentTests
     [DataRow("abil1", "abilbutton", AbilityTypes.W, true, TalentTiers.Level13)]
     public void EqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, TalentTiers tier)
     {
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -33,7 +33,7 @@ public class TalentTests
     [TestMethod]
     public void EqualsMethodTests()
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
             {
@@ -43,7 +43,7 @@ public class TalentTests
             Tier = AbilityTiers.Basic,
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abilbutton")
             {
@@ -69,7 +69,7 @@ public class TalentTests
     [DataRow("abil11", "abil77", AbilityTypes.Q, false, TalentTiers.Level20)]
     public void NotEqualsTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, TalentTiers tier)
     {
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -93,7 +93,7 @@ public class TalentTests
     [TestMethod]
     public void NotSameObjectTest()
     {
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -102,7 +102,7 @@ public class TalentTests
             },
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId("abil1", "abil77")
             {
@@ -127,7 +127,7 @@ public class TalentTests
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, TalentTiers.Level20, "abil1", "abil1", AbilityTypes.Q, false, TalentTiers.Level20)]
     public void OperatorEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, TalentTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, TalentTiers tier2)
     {
-        Talent talent2 = new Talent()
+        Talent talent2 = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
             {
@@ -137,7 +137,7 @@ public class TalentTests
             Tier = tier2,
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -168,7 +168,7 @@ public class TalentTests
     [DataRow("abil1", "abil1", AbilityTypes.Q, false, TalentTiers.Level1, "abil1", "abil1", AbilityTypes.Q, false, TalentTiers.Level7)]
     public void OperatorNotEqualTest(string referenceId, string buttonId, AbilityTypes abilityTypes, bool isPassive, TalentTiers tier, string referenceId2, string buttonId2, AbilityTypes abilityTypes2, bool isPassive2, TalentTiers tier2)
     {
-        Talent talent2 = new Talent()
+        Talent talent2 = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId2, buttonId2)
             {
@@ -178,7 +178,7 @@ public class TalentTests
             Tier = tier2,
         };
 
-        Talent talent = new Talent()
+        Talent talent = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
@@ -188,7 +188,7 @@ public class TalentTests
             Tier = tier,
         };
 
-        Ability ability = new Ability()
+        Ability ability = new()
         {
             AbilityTalentId = new AbilityTalentId(referenceId, buttonId)
             {
