@@ -1,43 +1,42 @@
-﻿namespace Heroes.Models
+﻿namespace Heroes.Models;
+
+/// <summary>
+/// Specifies the type of hero franchise.
+/// </summary>
+public enum Franchise
 {
     /// <summary>
-    /// Specifies the type of hero franchise.
+    /// Indicates a unknown franchise.
     /// </summary>
-    public enum Franchise
-    {
-        /// <summary>
-        /// Indicates a unknown franchise.
-        /// </summary>
-        Unknown = -1,
+    Unknown = -1,
 
-        /// <summary>
-        /// Indicates a classic franchise.
-        /// </summary>
-        Classic = 0,
+    /// <summary>
+    /// Indicates a classic franchise.
+    /// </summary>
+    Classic = 0,
 
-        /// <summary>
-        /// Indicates a Diablo franchise.
-        /// </summary>
-        Diablo = 1,
+    /// <summary>
+    /// Indicates a Diablo franchise.
+    /// </summary>
+    Diablo = 1,
 
-        /// <summary>
-        /// Indicates an Overwatch franchise.
-        /// </summary>
-        Overwatch = 2,
+    /// <summary>
+    /// Indicates an Overwatch franchise.
+    /// </summary>
+    Overwatch = 2,
 
-        /// <summary>
-        /// Indicates a Starcraft franchise.
-        /// </summary>
-        Starcraft = 3,
+    /// <summary>
+    /// Indicates a Starcraft franchise.
+    /// </summary>
+    Starcraft = 3,
 
-        /// <summary>
-        /// Indicates a Warcraft franchise.
-        /// </summary>
-        Warcraft = 4,
+    /// <summary>
+    /// Indicates a Warcraft franchise.
+    /// </summary>
+    Warcraft = 4,
 
-        /// <summary>
-        /// Indicates a Nexus franchise.
-        /// </summary>
-        Nexus = 5,
-    }
+    /// <summary>
+    /// Indicates a Nexus franchise.
+    /// </summary>
+    Nexus = 5,
 }

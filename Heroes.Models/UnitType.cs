@@ -1,23 +1,22 @@
-﻿namespace Heroes.Models
+﻿namespace Heroes.Models;
+
+/// <summary>
+/// Specifies the basic attack type of the unit.
+/// </summary>
+public enum UnitType
 {
     /// <summary>
-    /// Specifies the basic attack type of the unit.
+    /// Indicates an unknown basic attack type.
     /// </summary>
-    public enum UnitType
-    {
-        /// <summary>
-        /// Indicates an unknown basic attack type.
-        /// </summary>
-        Unknown,
+    Unknown,
 
-        /// <summary>
-        /// Indicates a melee unit.
-        /// </summary>
-        Melee,
+    /// <summary>
+    /// Indicates a melee unit.
+    /// </summary>
+    Melee,
 
-        /// <summary>
-        /// Indicates a ranged unit.
-        /// </summary>
-        Ranged,
-    }
+    /// <summary>
+    /// Indicates a ranged unit.
+    /// </summary>
+    Ranged,
 }

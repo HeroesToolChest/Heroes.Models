@@ -1,24 +1,23 @@
-﻿namespace Heroes.Models.AbilityTalents.Tooltip
+﻿namespace Heroes.Models.AbilityTalents.Tooltip;
+
+/// <summary>
+/// Contains the information releated to cooldown tooltip.
+/// </summary>
+public class TooltipCooldown
 {
     /// <summary>
-    /// Contains the information releated to cooldown tooltip.
+    /// Gets or sets the cooldown text.
     /// </summary>
-    public class TooltipCooldown
+    public TooltipDescription? CooldownTooltip { get; set; }
+
+    /// <summary>
+    /// Gets or sets the toggle cooldown.
+    /// </summary>
+    public double? ToggleCooldown { get; set; }
+
+    /// <inheritdoc/>
+    public override string? ToString()
     {
-        /// <summary>
-        /// Gets or sets the cooldown text.
-        /// </summary>
-        public TooltipDescription? CooldownTooltip { get; set; }
-
-        /// <summary>
-        /// Gets or sets the toggle cooldown.
-        /// </summary>
-        public double? ToggleCooldown { get; set; }
-
-        /// <inheritdoc/>
-        public override string? ToString()
-        {
-            return CooldownTooltip?.RawDescription;
-        }
+        return CooldownTooltip?.RawDescription;
     }
 }

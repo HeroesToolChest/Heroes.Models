@@ -1,24 +1,23 @@
-﻿namespace Heroes.Models.Veterancy
+﻿namespace Heroes.Models.Veterancy;
+
+/// <summary>
+/// Contains the information releated to veterancy levels.
+/// </summary>
+public class VeterancyLevel
 {
     /// <summary>
-    /// Contains the information releated to veterancy levels.
+    /// Gets or sets the minimum xp for this level.
     /// </summary>
-    public class VeterancyLevel
+    public int MinimumVeterancyXP { get; set; }
+
+    /// <summary>
+    /// Gets or sets the veterancy modification.
+    /// </summary>
+    public VeterancyModification VeterancyModification { get; set; } = new VeterancyModification();
+
+    /// <inheritdoc/>
+    public override string ToString()
     {
-        /// <summary>
-        /// Gets or sets the minimum xp for this level.
-        /// </summary>
-        public int MinimumVeterancyXP { get; set; }
-
-        /// <summary>
-        /// Gets or sets the veterancy modification.
-        /// </summary>
-        public VeterancyModification VeterancyModification { get; set; } = new VeterancyModification();
-
-        /// <inheritdoc/>
-        public override string ToString()
-        {
-            return $"{nameof(MinimumVeterancyXP)}: {MinimumVeterancyXP}";
-        }
+        return $"{nameof(MinimumVeterancyXP)}: {MinimumVeterancyXP}";
     }
 }

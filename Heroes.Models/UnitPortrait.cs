@@ -1,18 +1,17 @@
-﻿namespace Heroes.Models
+﻿namespace Heroes.Models;
+
+/// <summary>
+/// Contains the properties for a unit's portrait.
+/// </summary>
+public class UnitPortrait
 {
     /// <summary>
-    /// Contains the properties for a unit's portrait.
+    /// Gets or sets the target info panel file name.
     /// </summary>
-    public class UnitPortrait
-    {
-        /// <summary>
-        /// Gets or sets the target info panel file name.
-        /// </summary>
-        public string? TargetInfoPanelFileName { get; set; }
+    public string? TargetInfoPanelFileName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the minimap icon file name.
-        /// </summary>
-        public string? MiniMapIconFileName { get; set; }
-    }
+    /// <summary>
+    /// Gets or sets the minimap icon file name.
+    /// </summary>
+    public string? MiniMapIconFileName { get; set; }
 }

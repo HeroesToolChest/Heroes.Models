@@ -1,38 +1,37 @@
-﻿namespace Heroes.Models
+﻿namespace Heroes.Models;
+
+/// <summary>
+/// Specifies the type of rarity.
+/// </summary>
+public enum Rarity
 {
     /// <summary>
-    /// Specifies the type of rarity.
+    /// Indicates that the rarity is unknown.
     /// </summary>
-    public enum Rarity
-    {
-        /// <summary>
-        /// Indicates that the rarity is unknown.
-        /// </summary>
-        Unknown,
+    Unknown,
 
-        /// <summary>
-        /// Indicates that there is no rarity.
-        /// </summary>
-        None,
+    /// <summary>
+    /// Indicates that there is no rarity.
+    /// </summary>
+    None,
 
-        /// <summary>
-        /// Indicates a common rarity.
-        /// </summary>
-        Common,
+    /// <summary>
+    /// Indicates a common rarity.
+    /// </summary>
+    Common,
 
-        /// <summary>
-        /// Indicates a rare rarity.
-        /// </summary>
-        Rare,
+    /// <summary>
+    /// Indicates a rare rarity.
+    /// </summary>
+    Rare,
 
-        /// <summary>
-        /// Indicates an epic rarity.
-        /// </summary>
-        Epic,
+    /// <summary>
+    /// Indicates an epic rarity.
+    /// </summary>
+    Epic,
 
-        /// <summary>
-        /// Indicates a legendary rarity.
-        /// </summary>
-        Legendary,
-    }
+    /// <summary>
+    /// Indicates a legendary rarity.
+    /// </summary>
+    Legendary,
 }
