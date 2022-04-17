@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("HeroesData")]
+﻿[assembly: InternalsVisibleTo("HeroesData")]
 [assembly: InternalsVisibleTo("HeroesData.Parser")]
 [assembly: InternalsVisibleTo("HeroesData.Parser.Tests")]
 

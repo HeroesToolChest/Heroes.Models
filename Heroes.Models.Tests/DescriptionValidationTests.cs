@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Heroes.Models.Tests;
+﻿namespace Heroes.Models.Tests;
 
 [TestClass]
 public class DescriptionValidationTests

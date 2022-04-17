@@ -1,7 +1,4 @@
-﻿using Heroes.Models.AbilityTalents.Tooltip;
-using System;
-
-namespace Heroes.Models.AbilityTalents;
+﻿namespace Heroes.Models.AbilityTalents;
 
 /// <summary>
 /// Contains the all information for ability and talent tooltips.

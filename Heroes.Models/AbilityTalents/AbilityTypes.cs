@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Heroes.Models.AbilityTalents;
+﻿namespace Heroes.Models.AbilityTalents;
 
 /// <summary>
 /// Specifices the type of an ability.

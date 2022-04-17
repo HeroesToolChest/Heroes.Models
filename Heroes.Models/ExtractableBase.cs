@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Heroes.Models;
+﻿namespace Heroes.Models;
 
 /// <summary>
 /// Base class that provides basic information for extractable game data.

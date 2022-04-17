@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Heroes.Models.Veterancy;
+﻿namespace Heroes.Models.Veterancy;
 
 /// <summary>
 /// Contains the informatino related to the modications for veterancies.

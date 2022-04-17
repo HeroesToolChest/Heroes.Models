@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Heroes.Models.AbilityTalents;
+﻿namespace Heroes.Models.AbilityTalents;
 
 /// <summary>
 /// Contains the neccessary properties for a unique identifier for abilites and talents.

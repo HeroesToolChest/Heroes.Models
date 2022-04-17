@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Heroes.Models;
+﻿namespace Heroes.Models;
 
 /// <summary>
 /// Contains the information related to unit weapon.

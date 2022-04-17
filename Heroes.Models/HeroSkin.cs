@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Heroes.Models;
+﻿namespace Heroes.Models;
 
 /// <summary>
 /// Contains the information for hero skin data.

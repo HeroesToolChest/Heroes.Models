@@ -1,9 +1,4 @@
-﻿using Heroes.Models.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Heroes.Models.Tests;
+﻿namespace Heroes.Models.Tests;
 
 [SuppressMessage("Naming", "CA1712:Do not prefix enum values with type name", Justification = "For tests.")]
 [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1602:Enumeration items should be documented", Justification = "For tests.")]

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Heroes.Models;
+﻿namespace Heroes.Models;
 
 /// <summary>
 /// Contains the information for boost data.

@@ -1,11 +1,4 @@
-﻿using Heroes.Models.AbilityTalents;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-
-namespace Heroes.Models.Tests;
+﻿namespace Heroes.Models.Tests;
 
 [TestClass]
 [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Test")]

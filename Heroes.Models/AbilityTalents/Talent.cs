@@ -1,9 +1,4 @@
-﻿using Heroes.Models.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Heroes.Models.AbilityTalents;
+﻿namespace Heroes.Models.AbilityTalents;
 
 /// <summary>
 /// Contains the information for talent data.
