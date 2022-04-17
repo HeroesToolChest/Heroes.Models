@@ -2,13 +2,17 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("HeroesData")]
+[assembly: InternalsVisibleTo("Heroes.Models.Tests")]
 
 namespace Heroes.Models.Extensions;
 
 /// <summary>
 /// Static class for enum extension.
 /// </summary>
-public static class EnumExtensions
+internal static class EnumExtensions
 {
     /// <summary>
     /// Returns the friendly name of the enum.
